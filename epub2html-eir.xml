@@ -1,0 +1,10 @@
+<domain name="http://larouchepub.com" docroot="C:\Users\Richard\Documents\websites\EIR" remoteDocRoot="/www" login="josi" pwd="">
+<option id="pdfIndexPath" value="/eiw/">
+<option id="publicArticlesRootPath" value="/">
+<option id="unlistedArticlesRootPath" value="/eiw/public/unlisted/">
+<option id="publicIssueIndexRootPath" value="/eiw/public/">
+<option id="unlistedIssueIndexRootPath" value="/eiw/public/unlisted/">
+<option id="publicIssueIndexArchiveRootPath" value="/eiw/public/">
+<option id="browserPath" value="C:\Users\Richard\AppData\Local\Yandex\YandexBrowser\Application\browser.exe">
+<option id="browserScriptPath" value="C:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\epub2htmlRunJS.bat">
+
