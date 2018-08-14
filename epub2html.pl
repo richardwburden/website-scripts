@@ -61,16 +61,20 @@ my $docRoot = $domain->attr('docroot');
 my $domainName = $domain->attr('name');
 my $bsp = $options{'browserScriptPath'};
 if (not defined $bsp) {$bsp = 'epub2htmlRunJS.bat'}
+my $bspl = $options{'browserScriptPathLocal'};
+if (not defined $bspl) {$bspl = 'epub2htmlRunJSlocal.bat'}
 my $browserPath = $options{'browserPath'};
 if (not defined $browserPath) {$browserPath = '%BROWSER_PATH%'}
 
 if ($appendBrowserScript)
 {
     open (BROWSERSCRIPT, ">>$bsp") || die "can't open $bsp for appending: $!";
+    open (BROWSERSCRIPT_LOCAL, ">>$bspl") || die "can't open $bspl for appending: $!";
 }
 else
 {
     open (BROWSERSCRIPT, "+>$bsp") || die "can't open $bsp for writing: $!";
+    open (BROWSERSCRIPT_LOCAL, "+>$bspl") || die "can't open $bspl for writing: $!";
 }
 
 #process the input file/directory/glob pattern.
@@ -366,14 +370,20 @@ foreach $infilepath (@infiles)
     }
 }
 close BROWSERSCRIPT;
+close BROWSERSCRIPT_LOCAL;
 
 sub writeBrowserScript
 {
     my $ofp = $_[0];
+    my $ofpcopy = $ofp;
+    $ofpcopy =~ s%\.([^\.]*)$%.copy.$1%;
     my $docRootRelPath = substr($ofp,length($docRoot));
     my $url = $docRootRelPath;
     $url =~ s%\\%/%g;
     $url = $domainName.$url;
+    my $localurl = 'file:///'.$docRoot.$docRootRelPath;
+    $localurl =~ s%\\%/%g;
+    print BROWSERSCRIPT_LOCAL  $browserPath.' --headless --dump-dom '.$localurl.' > '.$ofpcopy."\n".'move '.$ofpcopy.' '.$ofp."\n";
     print BROWSERSCRIPT $browserPath.' --headless --dump-dom '.$url.' > '.$ofp."\n";
 }
 sub updateImageLinks ($$$)
