@@ -19,6 +19,7 @@ sub updateLinksToArticles($$$);
 %empty = (); #use as 3rd parameter for HTML::Element->as_HTML() to specify that the HTML generated shall close all open tags
 
 open(INDEXTEMPLATE, "issue_index_template.html") || die "can't open issue_index_template.html for reading: $!";
+open(ARCHIVEINDEXTEMPLATE, "archive_issue_index_template.html") || die "can't open archive_issue_index_template.html for reading: $!";
 open(ARTICLETEMPLATE, "article_template.html") || die "can't open article_template.html for reading: $!";
 
 #get command-line options other than the config file selector and the input file/directory/glob pattern.  These must appear first on the command line, and all paths must contain only forward slashes, and no slash at the beginning or end. Only one option (-xu or -xp) to relocate the index page can be used. The final component of $piip (the argument for -xp) and $uiip (the argument for -xu) is assumed to be a filename; it will be appended to the configuration file option 'publicIssueIndexRootPath' or 'unlistedIssueIndexRootPath'.  If $piip and $uiip is left empty, the configuration file option '[public/unlisted]IssueIndexRootPath' will be ignored and the issue index page will be generated in the same directory, with the same file basename, as its .xhtml source
@@ -109,6 +110,7 @@ else
 
 #Find the table of contents and process it first.
 my $ttree = undef;
+my $arch_ttree = undef;
 my $tree = undef;
 my $content = undef;
 my $body_text = undef;
@@ -179,7 +181,8 @@ foreach $infilepath (@infiles)
 	    my $url = $pathFromIndex2PDFIndex.'/'.$pdfLink->attr('href');
 	    push @singleArticleURLs, $url
 	}
-
+	my $tocIssueTitleText = $body_text;
+	$tocIssueTitleText = s/^.*?Volume\s*(\d+)\s*,\s*Number\s*(\d+),\s*(\S+)\s*(\d+)\s*,\s*(\d+).*/Volume $1, Number $2, $3 $4, $5/;
 	my $volIssueDateText = $body_text;
 	$volIssueDateText =~ s/^.*?Volume\s*(\d+)\s*,\s*Number\s*(\d+),\s*(\S+)\s*(\d+)\s*,\s*(\d+).*/Volume $1, Issue $2_Friday, $3 $4, $5/;
 	$vol = $1;
@@ -199,21 +202,56 @@ foreach $infilepath (@infiles)
 	else {$tenissueGroup = $year.'_'.$tenissueGroup.'-'.$tenissueGroupEnd}
 	$yearIssue = $year.'-'.$zissue;
 	($volIssueText,$DateText) = split /_/,$volIssueDateText;
-	
+
+	my $piiarp = $options{'publicIssueIndexArchiveRootPath'};
+
+	my $arch_outfilepath = "$piiarp/$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/index.html";
+	my $full_arch_outfilepath = $docRoot.$archoutfilepath;
+	open (ARCH_OUTFILEPATH, "+>$full_arch_outfilepath") || die "can't open $full_arch_outfilepath for writing: $!";
+
 	my $br = HTML::Element->new('br');
 	$ttree->parse_file(\*INDEXTEMPLATE);
+	$arch_ttree->parse_file(\*ARCHIVEINDEXTEMPLATE);
 
 	my $volIssueDate = $ttree->look_down('id','volIssueDate');
 	$volIssueDate->push_content($volIssueText,$br,$DateText);
+
+	my $tocIssueTitle = $arch_ttree->look_down('id','tocIssueTitle');
+	$tocIssueTitle->push_content($tocIssueTitleText);
+
 	
 	my $intPDF = $ttree->look_down('id','intPDF');
 	$intPDF->attr('href',"$root/eiw/private/$year/$tenissueGroup/$yearIssue/pdf/eirv$zvol"."n$zissue.pdf");
+	my $fullPDFview = $arch_ttree->look_down('id','fullPDFview');
+	$fullPDFview->attr('href',"$root/eiw/public/$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday.pdf");
+
+	my $fullPDFdownload = $arch_ttree->look_down('id','fullPDFdownload');
+	$fullPDFdownload->attr('href',"$root/eiw/public/$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday.php?ext=pdf");
+
+	my $epubDownload = $arch_ttree->look_down('id','epubDownload');
+	$epubDownload->attr('href',"$root/eiw/public/$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday.php?ext=epub");
+
+	my $mobiDownload = $arch_ttree->look_down('id','mobiDownload');
+	$mobiDownload->attr('href',"$root/eiw/public/$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday.php?ext=mobi");
+
+
 	my $coverLink = $ttree->look_down('id','coverLink');
 	$coverLink->attr('href',"$root/eiw/private/$year/$tenissueGroup/$yearIssue/pdf/eirv$zvol"."n$zissue.pdf");
+
+	my $archCoverLink = $arch_ttree->look_down('id','archCoverLink');
+	$coverLink->attr('href',"$root/eiw/public/$year/$tenissueGroup/$yearIssue/index.html");
+
 	my $coverImg = $ttree->look_down('id','coverImg');
 	$coverImg->attr('src',"$root/eiw/public/$year/$tenissueGroup/$yearIssue/images/eirv$zvol"."n$zissue".'lg.jpg');
+
+	my $cover = $arch_ttree->look_down('id','cover');
+	$cover->attr('src',"$root/eiw/public/$year/$tenissueGroup/$yearIssue/images/eirv$zvol"."n$zissue".'jpg');
+
 	$coverImg->attr('width',undef);
 	$coverImg->attr('height',undef);
+	$cover->attr('width',undef);
+	$cover->attr('height',undef);
+
 	my $pqPDF = $ttree->look_down('id','pqPDF');
 	$pqPDF->attr('href',"$root/eiw/private/$year/$tenissueGroup/$yearIssue/pdf/eirv$zvol"."n$zissue".'hi-res.pdf');
 	my $mobi = $ttree->look_down('id','mobi');
@@ -223,35 +261,47 @@ foreach $infilepath (@infiles)
 	my $archive = $ttree->look_down('id','archive');
 	$archive->attr('href',"$root/eiw/public/$year/index.html");
 	
+	my $acontent = $content->clone();
+
 	my $toc = $ttree->look_down('id','toc');
 	$toc->unshift_content($content);
+
+	my $atoc = $arch_ttree->look_down('id','toc');
+	$atoc->unshift_content($acontent);
+
 	#remove the body tag from $content
 	$content->replace_with_content->delete;
+	$acontent->replace_with_content->delete;
 
 	updateImageLinks ($ttree,$infilepath,$outfilepath);
+	updateImageLinks ($arch_ttree,$infilepath,$arch_outfilepath);
 
 	#add links to PDFs.  Save the path to this index in $indexOutfilePath
 	#with forward slashes, so it can be used as a base URL
 	#$indexOutfilePath = $outfilepath;
 	#$indexOutfilePath =~ s%\\%/%g;
 
-	my @htmlLinks = $toc->find_by_tag_name('a');
-	foreach $htmlLink (@htmlLinks)
+	foreach $toccopy ($toc,$atoc)
 	{
-	    if (! defined $htmlLink->attr('href')) {next}
-	    my $htmlHref = $htmlLink->attr('href');
-	    #skip links to targets that are not articles from the epub
-	    if ($htmlHref !~ /\.xhtml$/) {next}
-	    if ($htmlHref =~ m%/%) {next}
-	    #get the next PDF link
-	    my $saurl = shift (@singleArticleURLs);
-	    $saurlList{$htmlHref} = $saurl;
-	    $htmlLink->push_content(' <span class="tocLinkHTML">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>');
-	    #insert the PDF link
-	    $htmlLink->postinsert(' <a href="'.$saurl.'"><span class="tocLinkAltPDF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></a>');
+	    my @htmlLinks = $toccopy->find_by_tag_name('a');
+	    foreach $htmlLink (@htmlLinks)
+	    {
+		if (! defined $htmlLink->attr('href')) {next}
+		my $htmlHref = $htmlLink->attr('href');
+		#skip links to targets that are not articles from the epub
+		if ($htmlHref !~ /\.xhtml$/) {next}
+		if ($htmlHref =~ m%/%) {next}
+		#get the next PDF link
+		my $saurl = shift (@singleArticleURLs);
+		$saurlList{$htmlHref} = $saurl;
+		$htmlLink->push_content(' <span class="tocLinkHTML">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>');
+		#insert the PDF link
+		$htmlLink->postinsert(' <a href="'.$saurl.'"><span class="tocLinkAltPDF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></a>');
+	    }
 	}
 
 	updateLinksToArticles ($ttree,$infilepath,$outfilepath);
+	updateLinksToArticles ($arch_ttree,$infilepath,$arch_outfilepath);
 
 	my $output = $ttree->as_HTML("","\t",\%empty);
 	$ttree->delete;
@@ -264,6 +314,12 @@ foreach $infilepath (@infiles)
 	}
 	close INFILE;
 	if (not $publicsOnly) {writeBrowserScript($outfilepath)}
+	
+	$output = $arch_ttree->as_HTML("","\t",\%empty);
+	$arch_ttree->delete;
+	print ARCH_OUTFILE $output;
+	close ARCH_OUTFILE;
+
 	last;
     }
 }
