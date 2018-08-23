@@ -182,7 +182,7 @@ foreach $infilepath (@infiles)
 	    push @singleArticleURLs, $url
 	}
 	my $tocIssueTitleText = $body_text;
-	$tocIssueTitleText = s/^.*?Volume\s*(\d+)\s*,\s*Number\s*(\d+),\s*(\S+)\s*(\d+)\s*,\s*(\d+).*/Volume $1, Number $2, $3 $4, $5/;
+	$tocIssueTitleText =~ s/^.*?Volume\s*(\d+)\s*,\s*Number\s*(\d+),\s*(\S+)\s*(\d+)\s*,\s*(\d+).*/Volume $1, Number $2, $3 $4, $5/;
 	my $volIssueDateText = $body_text;
 	$volIssueDateText =~ s/^.*?Volume\s*(\d+)\s*,\s*Number\s*(\d+),\s*(\S+)\s*(\d+)\s*,\s*(\d+).*/Volume $1, Issue $2_Friday, $3 $4, $5/;
 	$vol = $1;
@@ -205,12 +205,29 @@ foreach $infilepath (@infiles)
 
 	my $piiarp = $options{'publicIssueIndexArchiveRootPath'};
 
-	my $arch_outfilepath = "$piiarp/$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/index.html";
-	my $full_arch_outfilepath = $docRoot.$archoutfilepath;
-	open (ARCH_OUTFILEPATH, "+>$full_arch_outfilepath") || die "can't open $full_arch_outfilepath for writing: $!";
+	my $arch_outfilepath = $piiarp."$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/index.html";
+	my $full_arch_outfilepath = $docRoot.$arch_outfilepath;
+	$full_arch_outfilepath =~ s%/%\\%g;
+
+	open (ARCH_OUTFILE, "+>$full_arch_outfilepath") || die "can't open $full_arch_outfilepath for writing: $!";
+
+	my $pathFromIndex2ArchivePDFIndex = findRelPath($full_arch_outfilepath,$docRoot.$pdfIndexPath);
+
+	#append to @singleArticleURLs another copy of the single article PDFs in the same order
+	#as before, but this time, make them relative the location of the 
+	#archive issue index.
+	foreach $pdfLink (@pdfLinks)
+	{
+	    my $url = $pathFromIndex2ArchivePDFIndex.'/'.$pdfLink->attr('href');
+	    push @singleArticleURLs, $url
+	}
 
 	my $br = HTML::Element->new('br');
 	$ttree->parse_file(\*INDEXTEMPLATE);
+	
+	$arch_ttree =  HTML::TreeBuilder->new();
+	#include the server side include, which is inside a comment
+	$arch_ttree->store_comments(1);
 	$arch_ttree->parse_file(\*ARCHIVEINDEXTEMPLATE);
 
 	my $volIssueDate = $ttree->look_down('id','volIssueDate');
@@ -223,29 +240,29 @@ foreach $infilepath (@infiles)
 	my $intPDF = $ttree->look_down('id','intPDF');
 	$intPDF->attr('href',"$root/eiw/private/$year/$tenissueGroup/$yearIssue/pdf/eirv$zvol"."n$zissue.pdf");
 	my $fullPDFview = $arch_ttree->look_down('id','fullPDFview');
-	$fullPDFview->attr('href',"$root/eiw/public/$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday.pdf");
+	$fullPDFview->attr('href',"$piiarp$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday.pdf");
 
 	my $fullPDFdownload = $arch_ttree->look_down('id','fullPDFdownload');
-	$fullPDFdownload->attr('href',"$root/eiw/public/$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday.php?ext=pdf");
+	$fullPDFdownload->attr('href',"$piiarp$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday.php?ext=pdf");
 
 	my $epubDownload = $arch_ttree->look_down('id','epubDownload');
-	$epubDownload->attr('href',"$root/eiw/public/$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday.php?ext=epub");
+	$epubDownload->attr('href',"$piiarp$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday.php?ext=epub");
 
 	my $mobiDownload = $arch_ttree->look_down('id','mobiDownload');
-	$mobiDownload->attr('href',"$root/eiw/public/$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday.php?ext=mobi");
+	$mobiDownload->attr('href',"$piiarp$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday.php?ext=mobi");
 
 
 	my $coverLink = $ttree->look_down('id','coverLink');
 	$coverLink->attr('href',"$root/eiw/private/$year/$tenissueGroup/$yearIssue/pdf/eirv$zvol"."n$zissue.pdf");
 
 	my $archCoverLink = $arch_ttree->look_down('id','archCoverLink');
-	$coverLink->attr('href',"$root/eiw/public/$year/$tenissueGroup/$yearIssue/index.html");
+	$coverLink->attr('href',"$piiarp$year/$tenissueGroup/$yearIssue/index.html");
 
 	my $coverImg = $ttree->look_down('id','coverImg');
 	$coverImg->attr('src',"$root/eiw/public/$year/$tenissueGroup/$yearIssue/images/eirv$zvol"."n$zissue".'lg.jpg');
 
 	my $cover = $arch_ttree->look_down('id','cover');
-	$cover->attr('src',"$root/eiw/public/$year/$tenissueGroup/$yearIssue/images/eirv$zvol"."n$zissue".'jpg');
+	$cover->attr('src',"$piiarp$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday".'-cover.jpg');
 
 	$coverImg->attr('width',undef);
 	$coverImg->attr('height',undef);
@@ -263,18 +280,29 @@ foreach $infilepath (@infiles)
 	
 	my $acontent = $content->clone();
 
+	#for the archive issue index, delete everything before and including the title of the issue: "EIR Contents", website URL, Vol., No., date, "Cover This Week", large cover image, caption, title of the issue (class cmt)
+	my $cmt = $acontent->look_down('class','cmt');
+	my $arch_content = $cmt->parent();
+	my @accs = $arch_content->content_list();
+	foreach $acc (@accs)
+	{
+	    if ($acc->attr('class') ne 'cmt') {$acc->delete()}
+	    else {$acc->delete(); last}
+	}
+
 	my $toc = $ttree->look_down('id','toc');
 	$toc->unshift_content($content);
 
 	my $atoc = $arch_ttree->look_down('id','toc');
-	$atoc->unshift_content($acontent);
+	$atoc->unshift_content($arch_content);
 
 	#remove the body tag from $content
 	$content->replace_with_content->delete;
-	$acontent->replace_with_content->delete;
+	#remove the outer div tag from $arch_content
+	$arch_content->replace_with_content->delete;
 
 	updateImageLinks ($ttree,$infilepath,$outfilepath);
-	updateImageLinks ($arch_ttree,$infilepath,$arch_outfilepath);
+	updateImageLinks ($arch_ttree,$infilepath,$full_arch_outfilepath);
 
 	#add links to PDFs.  Save the path to this index in $indexOutfilePath
 	#with forward slashes, so it can be used as a base URL
@@ -292,7 +320,8 @@ foreach $infilepath (@infiles)
 		if ($htmlHref !~ /\.xhtml$/) {next}
 		if ($htmlHref =~ m%/%) {next}
 		#get the next PDF link
-		my $saurl = shift (@singleArticleURLs);
+		# @singleArticleURLs contains two relative URLs for each single Article PDF: first, the relative URLs for the subscriber's issue index page, in their order of appearance in the table of contents, then those for the archive issue index page, in the same order, in that order.
+		my $saurl = shift @singleArticleURLs;
 		$saurlList{$htmlHref} = $saurl;
 		$htmlLink->push_content(' <span class="tocLinkHTML">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>');
 		#insert the PDF link
@@ -301,7 +330,7 @@ foreach $infilepath (@infiles)
 	}
 
 	updateLinksToArticles ($ttree,$infilepath,$outfilepath);
-	updateLinksToArticles ($arch_ttree,$infilepath,$arch_outfilepath);
+	updateLinksToArticles ($arch_ttree,$infilepath,$full_arch_outfilepath);
 
 	my $output = $ttree->as_HTML("","\t",\%empty);
 	$ttree->delete;
