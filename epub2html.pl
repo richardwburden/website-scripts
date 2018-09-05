@@ -10,11 +10,17 @@ use Getopt::Long qw(:config no_ignore_case);
 #use Encode::Encoder;
 $HTML::Tagset::isKnown{"domain"} = 1;
 $HTML::Tagset::isHeadOrBodyElement{"domain"} = 1;
+sub findAbsPath($$);
 sub findRelPath($$);
 sub prepareFiles($$$$$$$;$);
 sub filenameFromPath($);
 sub updateImageLinks($$$);
-sub updateLinksToArticles($$$);
+sub updateLinksToArticles($$$$);
+sub titleCase($);
+sub removePageNumber($);
+sub removeBrs($);
+sub isEditorial($);
+%titleCaseDict = (qw/A a AN an THE the LAROUCHE LaRouche PAC PAC LAROUCHEPAC LaRouchePAC LPAC LPAC ZEPP-LAROUCHE Zepp-LaRouche UN UN US US USA USA UK UK EU EU/); 
 
 %empty = (); #use as 3rd parameter for HTML::Element->as_HTML() to specify that the HTML generated shall close all open tags
 
@@ -165,22 +171,12 @@ foreach $infilepath (@infiles)
 #Fetch the index with links to the PDFs
 	my $pdfIndexPath = $options{'pdfIndexPath'};
 	$pdfIndexPath =~ s%/%\\%g;
-	my $pathFromIndex2PDFIndex = findRelPath($outfilepath,$docRoot.$pdfIndexPath);
+#	my $pathFromIndex2PDFIndex = findRelPath($outfilepath, $docRoot.$pdfIndexPath);
 	$pdfIndexPath =~ s%\\%/%g;
 	my $mech = WWW::Mechanize->new();
 	$mech->get($domainName.$pdfIndexPath);
 	my $pdfIndexTree = HTML::TreeBuilder->new();
 	$pdfIndexTree->parse($mech->content());
-#Get the URLs of single article PDFs.  Assumed to be in the correct order in 
-#the index at $pdfIndexPath.  URLs assumed to end in /pdf/filename.pdf where 
-#filename begins with a page number.
-	my @pdfLinks = $pdfIndexTree->look_down('_tag','a','href',qr/\/pdf\/[0-9]+.*pdf$/);
-	my @singleArticleURLs = ();
-	foreach $pdfLink (@pdfLinks)
-	{
-	    my $url = $pathFromIndex2PDFIndex.'/'.$pdfLink->attr('href');
-	    push @singleArticleURLs, $url
-	}
 	my $tocIssueTitleText = $body_text;
 	$tocIssueTitleText =~ s/^.*?Volume\s*(\d+)\s*,\s*Number\s*(\d+),\s*(\S+)\s*(\d+)\s*,\s*(\d+).*/Volume $1, Number $2, $3 $4, $5/;
 	my $volIssueDateText = $body_text;
@@ -211,14 +207,31 @@ foreach $infilepath (@infiles)
 
 	open (ARCH_OUTFILE, "+>$full_arch_outfilepath") || die "can't open $full_arch_outfilepath for writing: $!";
 
-	my $pathFromIndex2ArchivePDFIndex = findRelPath($full_arch_outfilepath,$docRoot.$pdfIndexPath);
+#	my $pathFromIndex2ArchivePDFIndex = findRelPath($outfilepath,$full_arch_outfilepath);
+
+#Get the URLs of single article PDFs.  Assumed to be in the correct order in 
+#the index at $pdfIndexPath.  URLs assumed to end in /pdf/filename.pdf where 
+#filename begins with a page number.
+	my @pdfLinks = $pdfIndexTree->look_down('_tag','a','href',qr/pdf\/[0-9][^\/]*\.pdf$/);
+	my @singleArticleURLs = ();
+
+	foreach $pdfLink (@pdfLinks)
+	{
+	    my $pdfLinkHref = $pdfLink->attr('href');
+	    my $absPdfLinkHref = findAbsPath($pdfIndexPath,$pdfLinkHref);
+	    my $url = findRelPath($outfilepath,$docRoot.$absPdfLinkHref);
+	    push @singleArticleURLs, $url
+	}
+
 
 	#append to @singleArticleURLs another copy of the single article PDFs in the same order
 	#as before, but this time, make them relative the location of the 
 	#archive issue index.
 	foreach $pdfLink (@pdfLinks)
 	{
-	    my $url = $pathFromIndex2ArchivePDFIndex.'/'.$pdfLink->attr('href');
+	    $pdfLinkHref = $pdfLink->attr('href');
+	    $absPdfLinkHref = findAbsPath($pdfIndexPath,$pdfLinkHref);
+	    $url = findRelPath($full_arch_outfilepath,$docRoot.$absPdfLinkHref);
 	    push @singleArticleURLs, $url
 	}
 
@@ -309,28 +322,135 @@ foreach $infilepath (@infiles)
 	#$indexOutfilePath = $outfilepath;
 	#$indexOutfilePath =~ s%\\%/%g;
 
-	foreach $toccopy ($toc,$atoc)
+	my @htmlLinks = $toc->find_by_tag_name('a');
+	foreach $htmlLink (@htmlLinks)
 	{
-	    my @htmlLinks = $toccopy->find_by_tag_name('a');
-	    foreach $htmlLink (@htmlLinks)
-	    {
-		if (! defined $htmlLink->attr('href')) {next}
-		my $htmlHref = $htmlLink->attr('href');
-		#skip links to targets that are not articles from the epub
-		if ($htmlHref !~ /\.xhtml$/) {next}
-		if ($htmlHref =~ m%/%) {next}
-		#get the next PDF link
-		# @singleArticleURLs contains two relative URLs for each single Article PDF: first, the relative URLs for the subscriber's issue index page, in their order of appearance in the table of contents, then those for the archive issue index page, in the same order, in that order.
-		my $saurl = shift @singleArticleURLs;
-		$saurlList{$htmlHref} = $saurl;
-		$htmlLink->push_content(' <span class="tocLinkHTML">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>');
-		#insert the PDF link
-		$htmlLink->postinsert(' <a href="'.$saurl.'"><span class="tocLinkAltPDF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></a>');
-	    }
+	    if (! defined $htmlLink->attr('href')) {next}
+	    my $htmlHref = $htmlLink->attr('href');
+	    #skip links to targets that are not articles from the epub
+	    if ($htmlHref !~ /\.xhtml$/) {next}
+	    if ($htmlHref =~ m%/%) {next}
+	    #get the next PDF link
+	    # @singleArticleURLs contains two relative URLs for each single Article PDF: first, the relative URLs for the subscriber's issue index page, in their order of appearance in the table of contents, then those for the archive issue index page, in the same order, in that order.
+	    my $saurl = shift @singleArticleURLs;
+	    #save this $saurl in a hash to use when inserting a link to the PDF
+	    #into the subscriber's HTML article page, which will be placed in the same directory as the subscriber's issue index page.  We will not repeat this step when generating the archive issue index page, because that would cause the first hash for each $htmlHref to be overwritten by a value appropriate for a page in the directory of the archive issue index page.
+	    $saurlList{$htmlHref} = $saurl;
+	    
+	    #insert the HTML icon into the end of the HTML link
+	    my $span = HTML::Element->new('span');
+	    $span->attr('class','tocLinkHTML');
+	    $span->push_content('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
+	    $htmlLink->push_content($span);
+
+	    #insert the PDF link
+	    $span = HTML::Element->new('span');
+	    $span->attr('class','tocLinkAltPDF');
+	    $span->push_content('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
+    	    my $pinsert = HTML::Element->new('a');
+	    $pinsert->attr('href',$saurl);
+	    $pinsert->push_content($span);
+	    $htmlLink->postinsert($pinsert);
 	}
 
-	updateLinksToArticles ($ttree,$infilepath,$outfilepath);
-	updateLinksToArticles ($arch_ttree,$infilepath,$full_arch_outfilepath);
+	@htmlLinks = $atoc->find_by_tag_name('a');
+	foreach $htmlLink (@htmlLinks)
+	{
+	    if (! defined $htmlLink->attr('href')) {next}
+	    my $htmlHref = $htmlLink->attr('href');
+	    #skip links to targets that are not articles from the epub
+	    if ($htmlHref !~ /\.xhtml$/) {next}
+	    if ($htmlHref =~ m%/%) {next}
+	    #get the next PDF link
+	    # @singleArticleURLs contains two relative URLs for each single Article PDF: first, the relative URLs for the subscriber's issue index page, in their order of appearance in the table of contents, then those for the archive issue index page, in the same order, in that order.
+	    my $saurl = shift @singleArticleURLs;
+	    my $pinsert = HTML::Element->new('a');
+	    if ($saurl =~ m%/private/%)
+	    {	
+		#replace the unlisted HTML link with the subscribers-only PDF link and a hidden placeholder for the future public PDF link
+		$htmlLink->attr('href',$saurl);
+		$htmlLink->attr('class','tocLinkSubPDF');
+		$pinsert->attr('class','tocLinkHiddenPDF');
+		$pinsert->attr('href','#');
+	    }
+	    else
+	    {
+		#replace the unlisted HTML link with the public HTML link if available (in updateLinksToArticles), otherwise, link it to the archive issue index page, in both cases followed by a public PDF link.
+		$htmlLink->attr('class','tocLinkHTML');
+		if (not defined $publics{$htmlHref})
+		{
+		    $htmlLink->attr('href','#');
+		}
+		$pinsert->attr('class','tocLinkAltPDF');
+		$pinsert->attr('href',$saurl);
+	    }
+	    $pinsert->push_content('&nbsp;');
+	    $htmlLink->postinsert($pinsert);
+	    #put a space before the non-breaking public PDF link so it can wrap to the next line if necessary.
+	    $htmlLink->postinsert(' ');
+	}
+	my @tocSections = $atoc->look_down('_tag',qr/h[234]/,'class',qr/department|.*section/i);
+	foreach $tocsec (@tocSections)
+	{
+	    $tocsec->tag('h2');
+	    $tocsec->attr('class','tocSection');
+	    removeBrs($tocsec);
+	}
+	my @tocArticles = $atoc->look_down('_tag','p','class',qr/.*title\b/i);
+	foreach $tocart (@tocArticles)
+	{
+	    $tocart->tag('h3');
+	    $tocart->attr('class','tocArticle');
+	    removeBrs($tocart);
+	}
+	my @tocbylines = $atoc->look_down('_tag','p','class',qr/.*byline/i);
+	foreach $tocbyline (@tocbylines)
+	{
+	    $tocbyline->attr('class','tocAuthor');
+	}
+	my @tocblurbs = $atoc->look_down('_tag','p','class',qr/.*blurb/i);
+	foreach $tocblurb (@tocblurbs)
+	{
+	    $tocblurb->attr('class','tocBlurb');
+	}
+
+	my @atnks = $atoc->look_down('_tag','p','class',qr/articletitlenokicker/i);
+	foreach $atnk (@atnks)
+	{
+	    $atnk->attr('class','tocArticle');
+	    $atnk->tag('h3');
+	    $atnk->objectify_text;
+	    my @atnkcontent = $atnk->content_list;
+	    removePageNumber (\@atnkcontent);
+	    $atnk->deobjectify_text;
+	    removeBrs($atnk);
+	}
+	my @kicks =  $atoc->look_down('_tag','p','class',qr/(content|toc).*kicker/i);
+	foreach $kick (@kicks)
+	{
+	    $kick->objectify_text;
+	    my @kickcontent = $kick->content_list;
+	    titleCase (\@kickcontent);
+	    if (removePageNumber (\@kickcontent) and not isEditorial($kick))
+	    {
+		$kick->objectify_text;
+		my $kickr = $kick->right;
+		my $kickra = $kickr->find_by_tag_name('a');
+		$kick->deobjectify_text;
+		$kickra->unshift_content(': ');
+		$kickra->unshift_content(@kickcontent);
+		$kick->delete; #remove empty tag; contents have been moved to $kickra
+	    }
+	    else #this kicker applies to multiple titles
+	    {
+		$kick->tag('h2');
+		$kick->attr('class','tocSection');
+		$kick->deobjectify_text;
+	    }
+	}
+	
+	updateLinksToArticles ($ttree,$infilepath,$outfilepath,1);
+	updateLinksToArticles ($arch_ttree,$infilepath,$full_arch_outfilepath,1);
 
 	my $output = $ttree->as_HTML("","\t",\%empty);
 	$ttree->delete;
@@ -428,7 +548,7 @@ foreach $infilepath (@infiles)
 	$content->replace_with_content->delete;
 
 	updateImageLinks ($ttree,$infilepath,$outfilepath);
-	updateLinksToArticles ($ttree,$infilepath,$outfilepath);
+	updateLinksToArticles ($ttree,$infilepath,$outfilepath,0);
 
 	
 	#remove the department from single article pages. It only makes sense
@@ -515,29 +635,39 @@ sub updateImageLinks ($$$)
 	$img->attr('src',$newsrc)
     }
 }
-sub updateLinksToArticles ($$$)
+sub updateLinksToArticles ($$$$)
 {
 #We need to update links to articles in the same issue if 1) the destination
 #is an article, or an anchor in an article, that is to be moved 2) if the article that contains
 #the link is to be moved, and the destination is not an anchor in the same article.
-    my ($ttree,$infilepath,$outfilepath) = @_;
+    my ($ttree,$infilepath,$outfilepath,$toc) = @_;
     my @infile = File::Spec->splitpath($infilepath);
     my $infilename = $infile[2];
     $infilename =~ s%\#.*$%%;
-    #select only links to files in the same directory.  Usually their URLs contain
-    #no slashes.
-    my @ltas = $ttree->look_down('_tag','a','href',qr%^[^/]+$%);
-    #Links to anchors in the same file, and to other files in the same epub,
-    # beginning with "../Text/" are generated by the Calibre epub editor,
-    #which also places the .xhtml files in the Text directory.
-    my @extra_ltas = $ttree->look_down('_tag','a','href',qr%^\.\./Text/%);
-    foreach $elta (@extra_ltas)
+    my @ltas = ();
+    my @extra_ltas = ();
+    if ($toc)  #this is the table of contents.
     {
-	my $href = $elta->attr('href');
-	$href =~ s%^\.\./Text/%%;
-	$elta->attr('href',$href);
+	my $tocid = $ttree->look_down('id','toc');
+	@ltas = $tocid->look_down('_tag','a','href',qr%\.xhtml$%);
     }
-    push @ltas,@extra_ltas;
+    else
+    {
+	#select only links to files in the same directory.  Usually their URLs contain
+	#no slashes.
+	@ltas = $ttree->look_down('_tag','a','href',qr%^[^/]+$%);
+	#Links to anchors in the same file, and to other files in the same epub,
+	# beginning with "../Text/" are generated by the Calibre epub editor,
+	#which also places the .xhtml files in the Text directory.
+	@extra_ltas = $ttree->look_down('_tag','a','href',qr%^\.\./Text/%);
+	foreach $elta (@extra_ltas)
+	{
+	    my $href = $elta->attr('href');
+	    $href =~ s%^\.\./Text/%%;
+	    $elta->attr('href',$href);
+	}
+	push @ltas,@extra_ltas;
+    }
     my $parp = $options{'publicArticlesRootPath'};
     my $uarp = $options{'unlistedArticlesRootPath'};
     foreach $lta (@ltas)
@@ -634,6 +764,20 @@ sub get_config
 			$$optionsRef{$key} = '';
 		}
 	}
+}
+
+sub findAbsPath($$)
+{
+    my ($a,$b) = @_;
+    #find absolute path of relative path $b given absolute path $a as base
+    #find document-relative path to from document $a to $b
+    my $aFS = $a;
+    $aFS =~ s%\\%/%g;
+    my $bFS = $b;
+    $bFS =~ s%\\%/%g;
+    my $base_uri = URI->new($aFS);
+    my $abs_uri = URI->new_abs($bFS,$aFS);
+    return $abs_uri;
 }
 
 sub findRelPath($$)
@@ -896,6 +1040,105 @@ sub getTitle
 
     close INFILE;
     return $titleText;
+}
+
+#expects an HTML::Element object.  Replaces br tags with spaces.
+sub removeBrs ($)
+{
+    my @brs = $_[0]->find_by_tag_name('br');
+    foreach $br (@brs)
+    {
+	$br->postinsert(' ');
+	$br->delete;
+    }
+}
+#expects an HTML::Element object, deobjectifies text.
+sub isEditorial ($)
+{
+    $_[0]->deobjectify_text;
+    my $text = $_[0]->as_text;
+    if ($text =~ /^\s*Editorials?\b/i) {return 1}
+    else {return 0}
+}
+    
+
+#Must pass a reference to an array of HTML::Element objects, i.e.
+#must call objectify_text on the parent of the array before calling.
+#return 1 if page number found, 0 otherwise.  Page number found if first non-whitespace exists and is a digit.
+sub removePageNumber ($)
+{
+    my $tref = $_[0];
+    foreach $item (@$tref)
+    {
+	my @texts = $item->find_by_tag_name('~text');
+	foreach $text (@texts)
+	{
+	    my $t = $text->attr('text');
+	    if ($t =~ /\S/)
+	    {
+		if ($t =~ /^\s*(\d+)/)
+		{
+		    $t =~ s/(\d+)//;
+		    $text->attr('text',$t);
+		    return 1;
+		}
+		else
+		{
+		    return 0;
+		}
+	    }
+	}
+    }
+    return 0;
+}
+#Must pass a reference to an array of HTML::Element objects, i.e.
+#must call objectify_text on the parent of the array before calling.
+sub titleCase ($)
+{
+    my $tref = $_[0];
+    foreach $item (@$tref)
+    {
+	my @texts = $item->find_by_tag_name('~text');
+	foreach $text (@texts)
+	{
+	    my $t = $text->attr('text');
+	    my @words = split /\W+/,$t;
+	    my @wordSeparators = split /\w+/,$t; 
+	    my $firstword = 1;
+	    my $newtext = shift @wordSeparators;
+	    my $ws = undef;
+	    foreach $word (@words)
+	    {
+		if (length($word) < 1) 
+		{
+		    $ws = shift @wordSeparators;
+		    $newtext .= $ws;
+		    next;
+		}
+		elsif (defined $titleCaseDict{$word} and not $firstword)
+		{
+		    $word = $titleCaseDict{$word};
+		}
+		else
+		{
+		    my $firstlet = substr($word,0,1);
+		    my $rest = substr($word,1);
+		    $rest = lc($rest);
+		    $firstlet = uc($firstlet);
+		    $word = $firstlet.$rest;
+		}
+		$firstword = 0;
+		$ws = shift @wordSeparators;
+		if (defined $ws)
+		{
+		    if ($ws =~ /^\./ and (length($word) == 1))
+		    {$word = uc($word)}
+		    $newtext .= $word.$ws;
+		}
+	    }
+	    $text->attr('text',$newtext);
+	}
+    }
 }
 
 sub usage
