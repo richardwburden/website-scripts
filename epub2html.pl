@@ -20,8 +20,9 @@ sub titleCase($);
 sub removePageNumber($);
 sub removeBrs($);
 sub isEditorial($);
-%titleCaseDict = (qw/A a AN an THE the LAROUCHE LaRouche PAC PAC LAROUCHEPAC LaRouchePAC LPAC LPAC ZEPP-LAROUCHE Zepp-LaRouche UN UN US US USA USA UK UK EU EU/); 
-
+#For conversion of kickers in all-caps to part of the title or a section heading in the archive issue index page.
+%titleCaseDict = (qw/LAROUCHE LaRouche PAC PAC LAROUCHEPAC LaRouchePAC LPAC LPAC ZEPP-LAROUCHE Zepp-LaRouche UN UN US US USA USA UK UK EU EU/); 
+%articlesTitleCaseDict = (qw/A a AN an THE the/); 
 %empty = (); #use as 3rd parameter for HTML::Element->as_HTML() to specify that the HTML generated shall close all open tags
 
 open(INDEXTEMPLATE, "issue_index_template.html") || die "can't open issue_index_template.html for reading: $!";
@@ -205,6 +206,9 @@ foreach $infilepath (@infiles)
 	my $full_arch_outfilepath = $docRoot.$arch_outfilepath;
 	$full_arch_outfilepath =~ s%/%\\%g;
 
+	my $arch_root = findRelPath($full_arch_outfilepath,$docRoot.'/');
+
+
 	open (ARCH_OUTFILE, "+>$full_arch_outfilepath") || die "can't open $full_arch_outfilepath for writing: $!";
 
 #	my $pathFromIndex2ArchivePDFIndex = findRelPath($outfilepath,$full_arch_outfilepath);
@@ -253,29 +257,32 @@ foreach $infilepath (@infiles)
 	my $intPDF = $ttree->look_down('id','intPDF');
 	$intPDF->attr('href',"$root/eiw/private/$year/$tenissueGroup/$yearIssue/pdf/eirv$zvol"."n$zissue.pdf");
 	my $fullPDFview = $arch_ttree->look_down('id','fullPDFview');
-	$fullPDFview->attr('href',"$piiarp$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday.pdf");
+	$fullPDFview->attr('href',"$arch_root/eiw/private/$year/$tenissueGroup/$yearIssue/pdf/eirv$zvol"."n$zissue.pdf");
+
+	my $phpRootPath = $options{'phpRootPath'};
+	my $phpPath = "$phpRootPath$year/$tenissueGroup/$yearIssue/eirv$zvol"."n$zissue-$year$zmonth$zmday.php";
 
 	my $fullPDFdownload = $arch_ttree->look_down('id','fullPDFdownload');
-	$fullPDFdownload->attr('href',"$piiarp$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday.php?ext=pdf");
+	$fullPDFdownload->attr('href',"$phpPath?ext=pdf");
 
 	my $epubDownload = $arch_ttree->look_down('id','epubDownload');
-	$epubDownload->attr('href',"$piiarp$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday.php?ext=epub");
+	$epubDownload->attr('href',"$phpPath?ext=epub");
 
 	my $mobiDownload = $arch_ttree->look_down('id','mobiDownload');
-	$mobiDownload->attr('href',"$piiarp$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday.php?ext=mobi");
+	$mobiDownload->attr('href',"$phpPath?ext=mobi");
 
 
 	my $coverLink = $ttree->look_down('id','coverLink');
 	$coverLink->attr('href',"$root/eiw/private/$year/$tenissueGroup/$yearIssue/pdf/eirv$zvol"."n$zissue.pdf");
 
 	my $archCoverLink = $arch_ttree->look_down('id','archCoverLink');
-	$coverLink->attr('href',"$piiarp$year/$tenissueGroup/$yearIssue/index.html");
+	$archCoverLink->attr('href',"$arch_root/eiw/public/$year/$tenissueGroup/$yearIssue/index.html");
 
 	my $coverImg = $ttree->look_down('id','coverImg');
 	$coverImg->attr('src',"$root/eiw/public/$year/$tenissueGroup/$yearIssue/images/eirv$zvol"."n$zissue".'lg.jpg');
 
 	my $cover = $arch_ttree->look_down('id','cover');
-	$cover->attr('src',"$piiarp$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday".'-cover.jpg');
+	$cover->attr('src',"/graphics/eircovers/$year/eirv$zvol"."n$zissue.jpg");
 
 	$coverImg->attr('width',undef);
 	$coverImg->attr('height',undef);
@@ -1105,19 +1112,23 @@ sub titleCase ($)
 	    my @words = split /\W+/,$t;
 	    my @wordSeparators = split /\w+/,$t; 
 	    my $firstword = 1;
-	    my $newtext = shift @wordSeparators;
+	    my $newtext = "";
 	    my $ws = undef;
 	    foreach $word (@words)
 	    {
 		if (length($word) < 1) 
 		{
 		    $ws = shift @wordSeparators;
-		    $newtext .= $ws;
+		    if (defined $ws) {$newtext .= $ws}
 		    next;
 		}
-		elsif (defined $titleCaseDict{$word} and not $firstword)
+		elsif (defined $titleCaseDict{$word})
 		{
 		    $word = $titleCaseDict{$word};
+		}
+		elsif (defined $articlesTitleCaseDict{$word} and not $firstword)
+		{
+		    $word = $articlesTitleCaseDict{$word}
 		}
 		else
 		{
@@ -1129,12 +1140,21 @@ sub titleCase ($)
 		}
 		$firstword = 0;
 		$ws = shift @wordSeparators;
+		#if the text begins with a word, the first word separator will be an empty string.  Get the next word separator, so that we have the word separator that follows the word, if it exists.
+		if (defined $ws and length($ws) == 0) {$ws = shift @wordSeparators}
 		if (defined $ws)
 		{
 		    if ($ws =~ /^\./ and (length($word) == 1))
 		    {$word = uc($word)}
 		    $newtext .= $word.$ws;
 		}
+		else #if no word separator follows the word, just get the word.
+		{$newtext .= $word}
+	    }
+	    if (@wordSeparators > 0)
+	    {
+		$ws = shift @wordSeparators;
+		$newtext .= $ws;
 	    }
 	    $text->attr('text',$newtext);
 	}

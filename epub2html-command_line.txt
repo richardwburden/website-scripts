@@ -1,27 +1,6 @@
-perl -w epub2html.pl  --ud 2018/eirv45n35-20180831/HKJolkytu987 --fft  -i ../Images=graphics/2018/4535 --iu ../Images=graphics/2018/4535 eir /r/eiw/private/2018/35/OEBPS/Text/
+perl -w epub2html.pl  --ud 2018/eirv45n36-20180907/GGnb9843Mxkc --fft  -i ../Images=graphics/2018/4536 --iu ../Images=graphics/2018/4536 eird /r/eiw/private/2018/36/OEBPS/Text/
 
 Run it again without -xu, to generate the public pages with links to the public archive index.  --abs to append browser script
 
-perl -w epub2html.pl -po --abs -b Section0001.xhtml=other/2018/4535-boyd-muellers_desperate.html -b Section0002.xhtml=other/editorials/2018/4535-kokinda-mid-term_elections.html -b Section0003.xhtml=other/editorials/2018/4535-stop_false-flag_chem_attack.html -b Section0007.xhtml=other/2018/4535-obit-anthony_morss.html -i ../Images=graphics/2018/4535  eir /r/eiw/private/2018/35/OEBPS/Text
+perl -w epub2html.pl --abs --po -b 03-24_EIR36_a_section.xhtml=other/2018/4536-wertz-fdr_forgotton_man.html -b Section0002.xhtml=other/2018/4536-lantz-us_mexico_fair_trade.html -b Section0003.xhtml=other/2018/4536-kokinda-stop_impeachment_congress.html -i ../Images=graphics/2018/4536  eird /r/eiw/private/2018/36/OEBPS/Text
 
-
-
-perl -w epub2html.pl  --ud 2018/eirv45n34-20180824/UjhuOOPL897Z --fft  -i ../Images=graphics/2018/4534 --iu ../Images=graphics/2018/4534 eir /r/eiw/private/2018/34/OEBPS/Text/
-
-Run it again without -xu, to generate the public pages with links to the public archive index.  --abs to append browser script
-
-perl -w epub2html.pl -po --abs -b Section0001.xhtml=other/editorials/2018/4534-history_midterm_elections.html -b 06-20_EIR34_a_section.xhtml=other/2018/4534-wertz-in_the_footsteps_of_fdr.html -b Section0004.xhtml=other/2018/4534-nbw_petition.html -i ../Images=graphics/2018/4534  eir /r/eiw/private/2018/34/OEBPS/Text
-
-
-
-
-
-
-perl -w epub2html.pl  --ud 2018/eirv45n33-20180817/GLOQ89nb3Rsz --fft  -i ../Images=graphics/2018/4533 --iu ../Images=graphics/2018/4533 eir /r/eiw/private/2018/33/OEBPS/Text/
-
-Run it again without -xu, to generate the public pages with links to the public archive index.  --abs to append browser script
-
-perl -w epub2html.pl --abs -b Section0001.xhtml=other/editorials/2018/4533-90_days_to_make_a_breakout.html -b 04-17_EIR33_a_section.xhtml=other/2018/4533-boyd-fish_stinks_from_the_head.html -i ../Images=graphics/2018/4533  eir /r/eiw/private/2018/33/OEBPS/Text
-
-
-perl -w epub2html.pl  --ud 2018/eirv45n33-20180817/niuo2X97YB_rwb_test_main_branch --fft  -i ../Images=graphics/2018/4533 --iu ../Images=graphics/2018/4533 eir_main_branch /r/eiw/private/2018/33/OEBPS/Text/
