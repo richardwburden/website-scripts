@@ -20,6 +20,7 @@ sub titleCase($);
 sub removePageNumber($);
 sub removeBrs($);
 sub isEditorial($);
+sub publicArticlePDFPathFromPrivate($$$$$);
 #For conversion of kickers in all-caps to part of the title or a section heading in the archive issue index page.
 %titleCaseDict = (qw/LAROUCHE LaRouche PAC PAC LAROUCHEPAC LaRouchePAC LPAC LPAC ZEPP-LAROUCHE Zepp-LaRouche UN UN US US USA USA UK UK EU EU/); 
 %articlesTitleCaseDict = (qw/A a AN an THE the/); 
@@ -140,6 +141,7 @@ if ($uf ne "")
 }
 if ($fft)
 {
+    print "The unlisted HTML files will be written to the filename right of the '=' in the lines below, under the directory $options{'unlistedArticlesRootPath'}, which is the value of 'unlistedArticlesRootPath' in the configuration file. Using the lines below in the command-line will write the files to the filename or path right of the '=' under the directory $options{'publicArticlesRootPath'} ('publicArticlesRootPath' in the config. file).  The '^' is used to indicate continuation of the command line in the Windows shell. Any valid path where this script has permission to write may follow the '='.\n";
     foreach $infilepath (@infiles)
     {
 	my @infile = File::Spec->splitpath($infilepath);
@@ -151,7 +153,7 @@ if ($fft)
 	my $title = getTitle($infilepath);
 	my $newFileName = filenameFromTitle($title);
 	$ffts{$infile[2]} = $newFileName;
-	print "$infile[2] --> $newFileName\n";
+	print "-b $infile[2]"."="."$newFileName ^\n";
     }
 }
 
@@ -169,15 +171,7 @@ foreach $infilepath (@infiles)
 	#remove the table of contents from the list of files
 	splice @infiles,$count,1;
 
-#Fetch the index with links to the PDFs
-	my $pdfIndexPath = $options{'pdfIndexPath'};
-	$pdfIndexPath =~ s%/%\\%g;
-#	my $pathFromIndex2PDFIndex = findRelPath($outfilepath, $docRoot.$pdfIndexPath);
-	$pdfIndexPath =~ s%\\%/%g;
-	my $mech = WWW::Mechanize->new();
-	$mech->get($domainName.$pdfIndexPath);
-	my $pdfIndexTree = HTML::TreeBuilder->new();
-	$pdfIndexTree->parse($mech->content());
+	#extract the volume and issue numbers and date from the text of the epub's "PDF edition" table of contents and convert them to the formats that will be used in URLs on the site.
 	my $tocIssueTitleText = $body_text;
 	$tocIssueTitleText =~ s/^.*?Volume\s*(\d+)\s*,\s*Number\s*(\d+),\s*(\S+)\s*(\d+)\s*,\s*(\d+).*/Volume $1, Number $2, $3 $4, $5/;
 	my $volIssueDateText = $body_text;
@@ -187,18 +181,30 @@ foreach $infilepath (@infiles)
 	$issue = $2;
 	$zissue = sprintf('%02d', $issue);
 	$month = $3;
-	%zmonths=(qw/January 01 February 02 March 03 April 04 May 05 June 06 July 07 August 08 September 09 October 10 November 11 December 12/);
+	my %zmonths=(qw/January 01 February 02 March 03 April 04 May 05 June 06 July 07 August 08 September 09 October 10 November 11 December 12/);
 	$zmonth = $zmonths{$month};
 	$mday = $4;
 	$zmday = sprintf('%02d', $mday);
 	$year = $5;
 	my $issueMod10 = $issue % 10;
-	my $tenissueGroup = $issue - $issueMod10;
+        $tenissueGroup = $issue - $issueMod10;
 	my $tenissueGroupEnd = $tenissueGroup + 9;
 	if ($tenissueGroup == 0){$tenissueGroup = $year.'_01-09'}
 	else {$tenissueGroup = $year.'_'.$tenissueGroup.'-'.$tenissueGroupEnd}
 	$yearIssue = $year.'-'.$zissue;
 	($volIssueText,$DateText) = split /_/,$volIssueDateText;
+
+
+#Fetch the index with links to the PDFs
+	my $pdfIndexPath = $options{'pdfIndexPath'};
+	if ($pdfIndexPath =~ m%\]\]\]$%)
+	{$pdfIndexPath =~ s%\]\]\]$%%}
+	else
+	{$pdfIndexPath .= "public/$year/$tenissueGroup/$yearIssue/"}
+	my $mech = WWW::Mechanize->new();
+	$mech->get($domainName.$pdfIndexPath);
+	my $pdfIndexTree = HTML::TreeBuilder->new();
+	$pdfIndexTree->parse($mech->content());
 
 	my $piiarp = $options{'publicIssueIndexArchiveRootPath'};
 
@@ -219,6 +225,11 @@ foreach $infilepath (@infiles)
 	my @pdfLinks = $pdfIndexTree->look_down('_tag','a','href',qr/pdf\/[0-9][^\/]*\.pdf$/);
 	my @singleArticleURLs = ();
 
+	my $phpRootPath = $options{'phpRootPath'};
+
+	my $isPublicArchiveIndex = $phpRootPath !~ m%/private%;
+
+
 	foreach $pdfLink (@pdfLinks)
 	{
 	    my $pdfLinkHref = $pdfLink->attr('href');
@@ -236,6 +247,8 @@ foreach $infilepath (@infiles)
 	    $pdfLinkHref = $pdfLink->attr('href');
 	    $absPdfLinkHref = findAbsPath($pdfIndexPath,$pdfLinkHref);
 	    $url = findRelPath($full_arch_outfilepath,$docRoot.$absPdfLinkHref);
+	    if ($isPublicArchiveIndex)
+	    {$url = publicArticlePDFPathFromPrivate($url,$year,$zvol,$zissue,$zmonth.$zmday)}
 	    push @singleArticleURLs, $url
 	}
 
@@ -256,11 +269,25 @@ foreach $infilepath (@infiles)
 	
 	my $intPDF = $ttree->look_down('id','intPDF');
 	$intPDF->attr('href',"$root/eiw/private/$year/$tenissueGroup/$yearIssue/pdf/eirv$zvol"."n$zissue.pdf");
-	my $fullPDFview = $arch_ttree->look_down('id','fullPDFview');
-	$fullPDFview->attr('href',"$arch_root/eiw/private/$year/$tenissueGroup/$yearIssue/pdf/eirv$zvol"."n$zissue.pdf");
 
-	my $phpRootPath = $options{'phpRootPath'};
-	my $phpPath = "$phpRootPath$year/$tenissueGroup/$yearIssue/eirv$zvol"."n$zissue-$year$zmonth$zmday.php";
+	my $fullIssueLinks = $arch_ttree->look_down('id','fullIssueLinks');
+	
+	#if this archive index is still private, the class will remain as it is in the template, serveIssueSub
+	if ($isPublicArchiveIndex)
+	{$fullIssueLinks->attr('class','serveIssue')}
+
+	my $fullPDFview = $arch_ttree->look_down('id','fullPDFview');
+
+	if ($isPublicArchiveIndex)
+	{$fullPDFview->attr('href',"$arch_root/eiw/public/$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday.pdf")}
+	else
+	{$fullPDFview->attr('href',"$arch_root/eiw/private/$year/$tenissueGroup/$yearIssue/pdf/eirv$zvol"."n$zissue.pdf")}
+
+	my $phpPath = "";
+	if ($isPublicArchiveIndex)
+	{$phpPath = "$phpRootPath$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday.php"}
+	else
+	{$phpPath = "$phpRootPath$year/$tenissueGroup/$yearIssue/eirv$zvol"."n$zissue-$year$zmonth$zmday.php"}
 
 	my $fullPDFdownload = $arch_ttree->look_down('id','fullPDFdownload');
 	$fullPDFdownload->attr('href',"$phpPath?ext=pdf");
@@ -377,8 +404,11 @@ foreach $infilepath (@infiles)
 		#replace the unlisted HTML link with the subscribers-only PDF link and a hidden placeholder for the future public PDF link
 		$htmlLink->attr('href',$saurl);
 		$htmlLink->attr('class','tocLinkSubPDF');
-		$pinsert->attr('class','tocLinkHiddenPDF');
 		$pinsert->attr('href','#');
+		my $span = HTML::Element->new('span');
+		$span->attr('class','tocLinkHiddenPDF');
+		$span->push_content('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
+		$pinsert->push_content($span);
 	    }
 	    else
 	    {
@@ -388,10 +418,13 @@ foreach $infilepath (@infiles)
 		{
 		    $htmlLink->attr('href','#');
 		}
-		$pinsert->attr('class','tocLinkAltPDF');
+		my $span = HTML::Element->new('span');
+		$span->attr('class','tocLinkAltPDF');
+		$span->push_content('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
+
 		$pinsert->attr('href',$saurl);
+		$pinsert->push_content($span);
 	    }
-	    $pinsert->push_content('&nbsp;');
 	    $htmlLink->postinsert($pinsert);
 	    #put a space before the non-breaking public PDF link so it can wrap to the next line if necessary.
 	    $htmlLink->postinsert(' ');
@@ -440,13 +473,14 @@ foreach $infilepath (@infiles)
 	    titleCase (\@kickcontent);
 	    if (removePageNumber (\@kickcontent) and not isEditorial($kick))
 	    {
-		$kick->objectify_text;
+#		$kick->objectify_text;
 		my $kickr = $kick->right;
 		my $kickra = $kickr->find_by_tag_name('a');
-		$kick->deobjectify_text;
+#		$kick->deobjectify_text;
 		$kickra->unshift_content(': ');
 		$kickra->unshift_content(@kickcontent);
 		$kick->delete; #remove empty tag; contents have been moved to $kickra
+		$kickra->deobjectify_text;
 	    }
 	    else #this kicker applies to multiple titles
 	    {
@@ -1062,7 +1096,7 @@ sub removeBrs ($)
 #expects an HTML::Element object, deobjectifies text.
 sub isEditorial ($)
 {
-    $_[0]->deobjectify_text;
+   # $_[0]->deobjectify_text;
     my $text = $_[0]->as_text;
     if ($text =~ /^\s*Editorials?\b/i) {return 1}
     else {return 0}
@@ -1160,7 +1194,17 @@ sub titleCase ($)
 	}
     }
 }
-
+sub publicArticlePDFPathFromPrivate($$$$$)
+{
+    #change relative path to a URL of form   https://larouchepub.com/eiw/private/2018/2018_30-39/2018-37/pdf/29-32_4537.pdf
+    #to a relative path to a URL of form https://larouchepub.com/eiw/public/2018/eirv45n37-20180914/29-32_4537.pdf
+    my ($url,$year,$zvol,$znum,$mmdd) = @_;
+    my $volNumDate = "eirv$zvol"."n$znum"."-"."$year$mmdd";
+    $url =~ s%/private/%/public/%;
+    $url =~ s%\d\d\d\d_\d\d\-\d\d/\d\d\d\d\-\d\d/%$volNumDate/%;
+    $url =~ s%/pdf%%;
+    return $url;
+}
 sub usage
 {
     my $dcf = $program_basename.'.xml';

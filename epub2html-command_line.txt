@@ -1,3 +1,12 @@
+perl -w epub2html.pl  --ud 2018/eirv45n37-20180914/llokiMNH4356 --fft  -i ../Images=graphics/2018/4537 --iu ../Images=graphics/2018/4537 eird /r/eiw/private/2018/37/OEBPS/Text/
+
+Run it again without -xu, to generate the public pages with links to the public archive index.  --abs to append browser script
+
+perl -w epub2html.pl --abs --po -b 3-8_EIR37_a_section.xhtml=other/2018/4537-boyd-lpac_statement-open_sedition.html -b 9-24_EIR37_b_section.xhtml=hzl/2018/4537-webcast-africa_powerhouse.html -i ../Images=graphics/2018/4537  eird /r/eiw/private/2018/37/OEBPS/Text
+
+
+
+
 perl -w epub2html.pl  --ud 2018/eirv45n36-20180907/GGnb9843Mxkc --fft  -i ../Images=graphics/2018/4536 --iu ../Images=graphics/2018/4536 eird /r/eiw/private/2018/36/OEBPS/Text/
 
 Run it again without -xu, to generate the public pages with links to the public archive index.  --abs to append browser script
