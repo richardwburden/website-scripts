@@ -1023,7 +1023,7 @@ sub filenameFromTitle
     if (not defined $filenameExt) {$filenameExt = 'html'}
     $title =~ s/[^a-z0-9]/_/gi;
     $title =~ s/__+/_/g;
-    $title = substr($title,0,20);
+    $title = substr($title,0,30);
     $title = lc($title);
     #guarantee that the title-derived basename (Basename From Title) is unique
     while (defined $bfts{$title})
@@ -1196,11 +1196,12 @@ sub titleCase ($)
 }
 sub publicArticlePDFPathFromPrivate($$$$$)
 {
-    #change relative path to a URL of form   https://larouchepub.com/eiw/private/2018/2018_30-39/2018-37/pdf/29-32_4537.pdf
+    #change relative path to a URL of form   https://larouchepub.com/eiw/private/2018/2018_30-39/2018-37/pdf/29-32_4537.pdf or https://larouchepub.com/eiw/public/2018/2018_30-39/2018-37/2018-37/pdf/29-32_4537.pdf
     #to a relative path to a URL of form https://larouchepub.com/eiw/public/2018/eirv45n37-20180914/29-32_4537.pdf
     my ($url,$year,$zvol,$znum,$mmdd) = @_;
     my $volNumDate = "eirv$zvol"."n$znum"."-"."$year$mmdd";
     $url =~ s%/private/%/public/%;
+    $url =~ s%\d\d\d\d_\d\d\-\d\d/\d\d\d\d\-\d\d/\d\d\d\d\-\d\d/%$volNumDate/%;
     $url =~ s%\d\d\d\d_\d\d\-\d\d/\d\d\d\d\-\d\d/%$volNumDate/%;
     $url =~ s%/pdf%%;
     return $url;
