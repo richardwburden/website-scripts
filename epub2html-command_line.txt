@@ -1,11 +1,10 @@
-perl -w epub2html.pl  --ud 2018/eirv45n38-20180921/zjc987JplME3 --fft  -i ../Images=graphics/2018/4538 --iu ../Images=graphics/2018/4538 eir /r/eiw/private/2018/38/OEBPS/Text/
+perl -w epub2html.pl  --ud 2018/eirv45n39-20180928/ijm345LKO121 --fft  -i ../Images=graphics/2018/4539 --iu ../Images=graphics/2018/4539 eir /r/eiw/private/2018/39/OEBPS/Text/
 
 perl -w epub2html.pl --abs --po ^
--b Section0001.xhtml=other/2018/4538-boyd-russiagate_docs_declass.html ^
--b Section0003.xhtml=other/2018/4538-sigerson-silence_drums_of_war.html ^
--b Section0004.xhtml=hzl/2018/4538-helga_zepp_larouche_keynote.html ^
--b Section0013.xhtml=other/2018/4538-black-us_forces_aid_al-qaeda.html ^
--i ../Images=graphics/2018/4538  eir /r/eiw/private/2018/38/OEBPS/Text
+-b 03-17_EIR18_a_section.xhtml=hzl/2018/4539-zepp_larouche_webcast_victory_.html ^
+-b Section0003.xhtml=other/2018/4539-bombshell_trump_declassificati.html ^
+-b Section0004.xhtml=other/2018/4539-the_leaders_of_the_united_stat.html ^
+-i ../Images=graphics/2018/4539  eir /r/eiw/private/2018/39/OEBPS/Text
 
 perl -w epub2html.pl  --ud 2018/eirv45n37-20180914/llokiMNH4356 --fft  -i ../Images=graphics/2018/4537 --iu ../Images=graphics/2018/4537 eird /r/eiw/private/2018/37/OEBPS/Text/
 

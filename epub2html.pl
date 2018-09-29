@@ -44,7 +44,7 @@ my $uf = "";
 my $appendBrowserScript = 0;
 my $publicsOnly = 0;
 
-GetOptions ('public|b=s%' => \%publics, 'unlisted|u=s%' => \%unlisteds, 'imageDirs|i=s%' => \%imageDirs, 'unlistedImageDirs|iu=s%' => \%unlistedImageDirs, 'privateImageDirs|ip=s%' => \%privateImageDirs, 'unlistedIssueIndexPath|xu=s' => \$uiip, 'publicIssueIndexPath|xp=s' => \$piip, 'unlistedFilename|uf=s' => \$uf, 'appendBrowserScript|abs' => \$appendBrowserScript, 'publicsOnly|po' => \$publicsOnly, 'unlistedDirname|ud=s' => \$ud, 'filenamesFromTitles|fft' => \$fft,);
+GetOptions ('public|b=s%' => \%publics, 'unlisted|u=s%' => \%unlisteds, 'imageDirs|i=s%' => \%imageDirs, 'unlistedImageDirs|iu=s%' => \%unlistedImageDirs, 'privateImageDirs|ip=s%' => \%privateImageDirs, 'unlistedIssueIndexPath|xu=s' => \$uiip, 'publicIssueIndexPath|xp=s' => \$piip, 'unlistedFilename|uf=s' => \$uf, 'appendBrowserScript|abs' => \$appendBrowserScript, 'publicsOnly|po' => \$publicsOnly, 'unlistedDirname|ud=s' => \$ud, 'filenamesFromTitles|fft' => \$fft, 'archiveIndexOnly|aio' => \$aio);
 
 my $program_basename = $0;
 $program_basename =~ s/\.[^\.]*$//;
@@ -518,6 +518,8 @@ foreach $infilepath (@infiles)
 #now process the article pages
 foreach $infilepath (@infiles)
 {
+    #don't process article pages if we're only generating the archive index.
+    if ($aio) {last}
     my $saurl = filenameFromPath ($infilepath);
     #skip if only public articles are to be processed and this is not a 
     #public article
