@@ -1,4 +1,4 @@
-perl -w epub2html.pl  --ud 2018/eirv45n39-20180928/rwb-M8M9ijm345LKO121 --fft  -i ../Images=graphics/2018/4539 --iu ../Images=graphics/2018/4539 eir /r/eiw/private/2018/39/OEBPS/Text/ --aio --vi=4539
+perl -w epub2html.pl  --ud 2018/eirv45n40-20181005/Bziocj342341 --pft other -i ../Images=graphics/2018/4540 --iu ../Images=graphics/2018/4540 eir /r/eiw/private/2018/40/OEBPS/Text/ 
 
 perl -w epub2html.pl  --ud 2018/eirv45n39-20180928/ijm345LKO121 --fft  -i ../Images=graphics/2018/4539 --iu ../Images=graphics/2018/4539 eir /r/eiw/private/2018/39/OEBPS/Text/
 

@@ -1113,7 +1113,7 @@ sub prepareFiles($$$$$$$;$)
 	$outfiledir = $docRoot.$uarp.'/'.$ud . '/';
 	$outfiledir =~ s%/%\\%g;
     }
-    if ($fft)
+    if ($fft ne "" or $pft ne "")
     {
 	$outfilename = $ffts{$infile[2]};
     }
