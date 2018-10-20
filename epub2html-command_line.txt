@@ -1,13 +1,31 @@
-perl -w epub2html.pl  --ud 2018/eirv45n40-20181005/Bziocj342341 --pft other -i ../Images=graphics/2018/4540 --iu ../Images=graphics/2018/4540 eir /r/eiw/private/2018/40/OEBPS/Text/ 
+perl -w epub2html.pl  --ud 2018/eirv45n42-20181019/nuJi9803mwsp --pft other -i ../Images=graphics/2018/4542 --iu ../Images=graphics/2018/4542 eir /r/eiw/private/2018/42/OEBPS/Text/ 
+
+perl -w epub2html.pl --abs --po ^
+-b 05-24_EIR42_a_section.xhtml=other/2018/4542-public_credit_cutting_the_gord.html ^
+-b Section0001.xhtml=other/editorials/2018/4542-as_election_day_approaches_the.html ^
+-b Section0004.xhtml=other/2018/4542-south_dakota_congressional_can.html ^
+-i ../Images=graphics/2018/4542  eir /r/eiw/private/2018/42/OEBPS/Text
+
+perl -w epub2html.pl --abs --po ^
+-b 05-24_EIR42_a_section.xhtml=other/2018/4542-public_credit_cutting_the_gord.html ^
+-b 25-39_EIR42_b_section.xhtml=other/2018/4542-zepp_larouche_webcast_the_stak.html ^
+-b 40-50_EIR42_c_section.xhtml=other/2018/4542-riemann_refutes_euler_behind_a.html ^
+-b Section0001.xhtml=other/2018/4542-as_election_day_approaches_the.html ^
+-b Section0002.xhtml=other/2018/index.html ^
+-b Section0003.xhtml=other/2018/4542-national_sovereignty_and_a_new.html ^
+-b Section0004.xhtml=other/2018/4542-south_dakota_congressional_can.html ^
+-b Section0005.xhtml=other/2018/4542-mike_pence_s_dumb_ass_speech_o.html ^
+-i ../Images=graphics/2018/4542  eir /r/eiw/private/2018/42/OEBPS/Text
+
+perl -w epub2html.pl  --ud 2018/eirv45n41-20181012/tgy768cVE091 --pft other -i ../Images=graphics/2018/4541 --iu ../Images=graphics/2018/4541 eir /r/eiw/private/2018/41/OEBPS/Text/ 
 
 perl -w epub2html.pl  --ud 2018/eirv45n39-20180928/ijm345LKO121 --fft  -i ../Images=graphics/2018/4539 --iu ../Images=graphics/2018/4539 eir /r/eiw/private/2018/39/OEBPS/Text/
 
 perl -w epub2html.pl --abs --po ^
--b 03-17_EIR18_a_section.xhtml=hzl/2018/4539-webcast-victory_over_brit_empire.html ^
--b Section0002.xhtml=other/2018/4539-boyd-mnhtn-reality_intrudes.html ^
--b 18-39_EIR18_b_section.xhtml=other/2018/4539-interview_with_kesha_rogers.html ^
--b Section0004.xhtml=other/2018/4539-nbw_petition.html ^
--i ../Images=graphics/2018/4539  eir /r/eiw/private/2018/39/OEBPS/Text
+-b 05-27_EIR41_a_section.xhtml=other/2018/4541-italy_confronts_eu_works_with.html ^
+-b Section0001.xhtml=other/editorials/2018/4541-this_election_will_not_be_2016.html ^
+-b Section0005.xhtml=other/2018/4541-roger_stone_endorses_kesha_rog.html ^
+-i ../Images=graphics/2018/4541  eir /r/eiw/private/2018/41/OEBPS/Text
 
 perl -w epub2html.pl  --ud 2018/eirv45n37-20180914/llokiMNH4356 --fft  -i ../Images=graphics/2018/4537 --iu ../Images=graphics/2018/4537 eird /r/eiw/private/2018/37/OEBPS/Text/
 
