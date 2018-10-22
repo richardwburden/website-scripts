@@ -71,8 +71,9 @@ $HTML::Tagset::isKnown{"domain"} = 1;
 $HTML::Tagset::isHeadOrBodyElement{"domain"} = 1;
 sub findAbsPath($$);
 sub findRelPath($$);
-sub prepareFiles($$$$$$$;$);
+sub prepareFiles($$$$$$;$);
 sub filenameFromPath($);
+sub updateSiteRelativeLinks($$$);
 sub updateImageLinks($$$);
 sub updateLinksToArticles($$$$);
 sub titleCase($);
@@ -234,7 +235,7 @@ my $arch_ttree = undef;
 my $tree = undef;
 my $content = undef;
 my $body_text = undef;
-my $root = undef;
+#my $root = undef;
 my %saurlList = ();
 my $count = -1;
 my $indexFileName = "";
@@ -272,7 +273,7 @@ foreach $infilepath (@infiles)
     $outfilepath = $infilepath;
     #If only public files are to be processed, we don't need to write this index, but go ahead and read it to get information to be used in the public article pages.
     if ($publicsOnly) {$outfilepath = ''}
-    if (prepareFiles($infilepath,\$ttree,\$tree,\$content,\$body_text,\$root,\$outfilepath,'tocOnly'))
+    if (prepareFiles($infilepath,\$ttree,\$tree,\$content,\$body_text,\$outfilepath,'tocOnly'))
     {
 	#record the original filename of the table of contents file
 	$indexFileName = filenameFromPath($infilepath);
@@ -332,7 +333,7 @@ foreach $infilepath (@infiles)
 	my $full_arch_outfilepath = $docRoot.$arch_outfilepath;
 	$full_arch_outfilepath =~ s%/%\\%g;
 
-	my $arch_root = findRelPath($full_arch_outfilepath,$docRoot.'/');
+#	my $arch_root = findRelPath($full_arch_outfilepath,$docRoot.'/');
 
 
 	open (ARCH_OUTFILE, "+>$full_arch_outfilepath") || die "can't open $full_arch_outfilepath for writing: $!";
@@ -388,7 +389,7 @@ foreach $infilepath (@infiles)
 
 	
 	my $intPDF = $ttree->look_down('id','intPDF');
-	$intPDF->attr('href',"$root/eiw/private/$year/$tenissueGroup/$yearIssue/pdf/eirv$zvol"."n$zissue.pdf");
+	$intPDF->attr('href',"/eiw/private/$year/$tenissueGroup/$yearIssue/pdf/eirv$zvol"."n$zissue.pdf");
 
 	my $fullIssueLinks = $arch_ttree->look_down('id','fullIssueLinks');
 	
@@ -399,9 +400,9 @@ foreach $infilepath (@infiles)
 	my $fullPDFview = $arch_ttree->look_down('id','fullPDFview');
 
 	if ($isPublicArchiveIndex)
-	{$fullPDFview->attr('href',"$arch_root/eiw/public/$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday.pdf")}
+	{$fullPDFview->attr('href',"/eiw/public/$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday.pdf")}
 	else
-	{$fullPDFview->attr('href',"$arch_root/eiw/private/$year/$tenissueGroup/$yearIssue/pdf/eirv$zvol"."n$zissue.pdf")}
+	{$fullPDFview->attr('href',"/eiw/private/$year/$tenissueGroup/$yearIssue/pdf/eirv$zvol"."n$zissue.pdf")}
 
 	my $phpPath = "";
 	if ($isPublicArchiveIndex)
@@ -420,13 +421,13 @@ foreach $infilepath (@infiles)
 
 
 	my $coverLink = $ttree->look_down('id','coverLink');
-	$coverLink->attr('href',"$root/eiw/private/$year/$tenissueGroup/$yearIssue/pdf/eirv$zvol"."n$zissue.pdf");
+	$coverLink->attr('href',"/eiw/private/$year/$tenissueGroup/$yearIssue/pdf/eirv$zvol"."n$zissue.pdf");
 
 	my $archCoverLink = $arch_ttree->look_down('id','archCoverLink');
-	$archCoverLink->attr('href',"$arch_root/eiw/public/$year/$tenissueGroup/$yearIssue/index.html");
+	$archCoverLink->attr('href',"/eiw/public/$year/$tenissueGroup/$yearIssue/index.html");
 
 	my $coverImg = $ttree->look_down('id','coverImg');
-	$coverImg->attr('src',"$root/eiw/public/$year/$tenissueGroup/$yearIssue/images/eirv$zvol"."n$zissue".'lg.jpg');
+	$coverImg->attr('src',"/eiw/public/$year/$tenissueGroup/$yearIssue/images/eirv$zvol"."n$zissue".'lg.jpg');
 
 	my $cover = $arch_ttree->look_down('id','cover');
 	$cover->attr('src',"/graphics/eircovers/$year/eirv$zvol"."n$zissue.jpg");
@@ -437,13 +438,13 @@ foreach $infilepath (@infiles)
 	$cover->attr('height',undef);
 
 	my $pqPDF = $ttree->look_down('id','pqPDF');
-	$pqPDF->attr('href',"$root/eiw/private/$year/$tenissueGroup/$yearIssue/pdf/eirv$zvol"."n$zissue".'hi-res.pdf');
+	$pqPDF->attr('href',"/eiw/private/$year/$tenissueGroup/$yearIssue/pdf/eirv$zvol"."n$zissue".'hi-res.pdf');
 	my $mobi = $ttree->look_down('id','mobi');
-	$mobi->attr('href',"$root/eiw/private/$year/$tenissueGroup/$yearIssue/ebook/eirv$zvol"."n$zissue.mobi");
+	$mobi->attr('href',"/eiw/private/$year/$tenissueGroup/$yearIssue/ebook/eirv$zvol"."n$zissue.mobi");
 	my $epub = $ttree->look_down('id','epub');
-	$epub->attr('href',"$root/eiw/private/$year/$tenissueGroup/$yearIssue/ebook/eirv$zvol"."n$zissue.epub");
+	$epub->attr('href',"/eiw/private/$year/$tenissueGroup/$yearIssue/ebook/eirv$zvol"."n$zissue.epub");
 	my $archive = $ttree->look_down('id','archive');
-	$archive->attr('href',"$root/eiw/public/$year/index.html");
+	$archive->attr('href',"/eiw/public/$year/index.html");
 	
 	my $acontent = $content->clone();
 
@@ -645,8 +646,9 @@ foreach $infilepath (@infiles)
 	}
 	
 	updateLinksToArticles ($ttree,$infilepath,$outfilepath,1);
+	updateSiteRelativeLinks ($ttree,$infilepath,$outfilepath);
 	updateLinksToArticles ($arch_ttree,$infilepath,$full_arch_outfilepath,1);
-
+	updateSiteRelativeLinks ($arch_ttree,$infilepath,$full_arch_outfilepath);
 	my $output = $ttree->as_HTML("","\t",\%empty);
 	$ttree->delete;
 	$tree->delete;
@@ -680,7 +682,7 @@ foreach $infilepath (@infiles)
     if ($publicsOnly and not defined $publics{$saurl}) {next};
 
     $outfilepath = $infilepath;
-    if (prepareFiles($infilepath,\$ttree,\$tree,\$content,\$body_text,\$root,\$outfilepath))
+    if (prepareFiles($infilepath,\$ttree,\$tree,\$content,\$body_text,\$outfilepath))
     {
 	my $saPDFurl = $saurlList{$saurl};
 	#calculate relative path from $outfilepath to PDF using relative path
@@ -716,13 +718,13 @@ foreach $infilepath (@infiles)
 	}
 	if ($iirp ne "")
 	{
-	    $issueIndexLink->attr('href',$root.$iirp.$iip);
+	    $issueIndexLink->attr('href',$iirp.$iip);
 	}
 	else
 	    #use the default link to the issue index page in the EIR archive, which is under construction when the issue is new.
 	{
 	    my $piiarp = $options{'publicIssueIndexArchiveRootPath'};
-	    $issueIndexLink->attr('href',$root.$piiarp."$year/eirv$zvol"."n$zissue".'-'."$year$zmonth$zmday/index.html");
+	    $issueIndexLink->attr('href',$piiarp."$year/eirv$zvol"."n$zissue".'-'."$year$zmonth$zmday/index.html");
 	}
 	$issueIndexLink->unshift_content("$month $mday, $year");
 	my $ab = $ttree->look_down('id','article_body');
@@ -746,7 +748,7 @@ foreach $infilepath (@infiles)
 
 	updateImageLinks ($ttree,$infilepath,$outfilepath);
 	updateLinksToArticles ($ttree,$infilepath,$outfilepath,0);
-
+	updateSiteRelativeLinks ($ttree,$infilepath,$outfilepath);
 	
 	#remove the department from single article pages. It only makes sense
 	#to have it in a document that contains more than 1 department.
@@ -779,6 +781,72 @@ sub writeBrowserScript
     
     print BROWSERSCRIPT $browserPath.' '.$browserOptions.' '.$url.' > '.$ofp."\n";
 } 
+
+sub isTargetedDomain
+{
+    return $_[0] =~ m%(www\.)?$domainName%i;
+}
+
+sub updateSiteRelativeLinks ($$$)
+{
+    my ($ttree, $infilepath, $outfilepath) = @_;
+    my @srs = $ttree->find_by_tag_name('script');
+    push (@srs, $ttree->find_by_tag_name('link'));
+    push (@srs, $ttree->find_by_tag_name('a'));
+    foreach $sr (@srs)
+    {
+	my $src = $sr->attr('src');
+	if ($sr->tag ne 'script') {$src = $sr->attr('href')}
+	my $srcUri = URI->new($src);
+	#skip email links
+	if (defined $srcUri->scheme and $srcUri->scheme eq "mailto") {next} 
+	#skip absolute links to sites other than the site to which the pages generated by this script will be posted.
+	if (defined $srcUri->authority and not isTargetedDomain($srcUri->authority)) {next}
+	#skip absolute links that are not HTTP
+	if (defined $srcUri->scheme and $srcUri->scheme !~ /^http/) {next}
+
+	if (not defined $srcUri->path or $srcUri->path eq '') {$srcUri->path('/')}
+	#site relative links to the document root are acceptable as-is.
+	if ($srcUri->path eq '/') {next}
+
+	if (defined $srcUri->scheme) {$srcUri->scheme(undef)}
+	if (defined $srcUri->authority) {$srcUri->authority(undef)}
+
+	my @src = File::Spec->splitpath($srcUri->path);
+	my $srcdir = $src[1];
+
+	#skip non-site-relative links
+	if (substr($srcdir,0,1) ne '/') {next} 
+	
+	$srcdir = $docRoot.$srcdir;
+	$src = $srcdir.$src[2];
+	$src =~ s%\\%/%g;
+	 
+	my $newsrcpath = "";
+	my @infilepath = File::Spec->splitpath($infilepath);
+	$srcdir =~ s%/$%%; #remove '/' at end
+	#calculate absolute path from the original HTML file location
+	my $infilepathFS = $infilepath;
+	$infilepathFS =~ s%\\%/%g;
+	my $pathUri = URI->new($src);
+	$newsrcpath = $pathUri->abs($infilepathFS);
+	
+	#calculate new relative path from the HTML output file location
+	$newsrcpath =~ s%\\%/%g;
+	my $newsrc = findRelPath($outfilepath,$newsrcpath);
+	#preserve the query string while updating the path
+	$srcUri->path($newsrc);
+	if ($sr->tag ne 'script')
+	{
+	    $sr->attr('href',$srcUri)
+	}
+	else
+	{
+	    $sr->attr('src',$srcUri)
+	}
+    }
+}
+
 sub updateImageLinks ($$$)
 {
     my ($ttree, $infilepath, $outfilepath) = @_;
@@ -789,8 +857,12 @@ sub updateImageLinks ($$$)
 	my @src = File::Spec->splitpath($src);
 	my $srcdir = $src[1];
 
-	#no need to change site-root-relative image links
-	if (substr($srcdir,0,1) eq '/') {next} 
+	if (substr($srcdir,0,1) eq '/') 
+	{
+	    $srcdir = $docRoot.$srcdir;
+	    $src = $srcdir.$src[2];
+	    $src =~ s%\\%/%g;
+	} 
 
 	my $id = $img->id;
 	#the link to the cover image was updated when created.
@@ -968,7 +1040,6 @@ sub findAbsPath($$)
 {
     my ($a,$b) = @_;
     #find absolute path of relative path $b given absolute path $a as base
-    #find document-relative path to from document $a to $b
     my $aFS = $a;
     $aFS =~ s%\\%/%g;
     my $bFS = $b;
@@ -993,9 +1064,9 @@ sub findRelPath($$)
     return $dest;
 }
 
-sub prepareFiles($$$$$$$;$)
+sub prepareFiles($$$$$$;$)
 {
-    ($infilepath,$ttree,$tree,$content,$body_text,$root,$outfilepath,$flag) = @_;
+    ($infilepath,$ttree,$tree,$content,$body_text,$outfilepath,$flag) = @_;
     print STDERR "Processing $infilepath\n";
     my @infile = File::Spec->splitpath($infilepath);
     #Don't process the cover page
@@ -1127,7 +1198,7 @@ sub prepareFiles($$$$$$$;$)
 	open(DEBUG,">$outfilepath.debug.log") || die "can't open $outfilepath.debug.log for writing: $!"; 
 
 	#find document-relative path to $docRoot
-	$root = findRelPath($outfilepath,$docRoot.'/');
+#	$root = findRelPath($outfilepath,$docRoot.'/');
     }
 
     return 1;
