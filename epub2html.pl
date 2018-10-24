@@ -24,6 +24,7 @@ Options whose name(s) are followed by '=' require an argument.  The letter follo
  appendBrowserScript|abs
  publicsOnly|po
  archiveIndexOnly|aio
+ ghArchive|gha
  volume|vol=s
  issue|iss=s
  volumeIssue|vi=s
@@ -49,6 +50,8 @@ appendBrowserScript|abs causes the browser script to be appended instead of over
 publicsOnly|po  causes only public pages and the archive issue index page to be generated
 
 archiveIndexOnly|aio  causes only the archive issue index page to be generated
+
+ghArchive|gha  get the cover image from /graphics/eircovers/YYYY/ and full issue files from George Hollis's back issue directory for this issue (/eiw/private/YYYY/YYYY_N0-NN/YYYY-NN/ instead of John Sigerson's EIR archive directory (/eiw/public/YYYY/eirvVVnNN-YYYYMMDD/)
 
 volume|vol=s, issue|iss=s  specifies the volume and issue numbers (one or two digits each)
 volumeIssue|vi=s  four digit combination volume and issue number.  Volume and issue numbers specified on the command-line must match those specified in the issue index page in the unzipped EPUB.  It is necessary to use these options only if filenamesFromTitles|fft is used and the pathname of the Text directory in the unzipped EPUB (where the .xhtml files are located) does not contain the correct year and issue or volume and issue in one of the following formats: /YYYY/NN/, /VV/NN/, or vVVnNN, where YYYY is a four-digit year, VV the volume number, NN the issue number, and VV or NN may be 1 or 2 digits, and the slashes separating directory names may be forward or backward.
@@ -88,6 +91,7 @@ sub publicArticlePDFPathFromPrivate($$$$$);
 
 open(INDEXTEMPLATE, "issue_index_template.html") || die "can't open issue_index_template.html for reading: $!";
 open(ARCHIVEINDEXTEMPLATE, "archive_issue_index_template.html") || die "can't open archive_issue_index_template.html for reading: $!";
+open(ARCHIVEINDEXTEMPLATEDOCTYPE, "archive_issue_index_template_doctype.txt") || die "can't open archive_issue_index_doctype.txt for reading: $!";
 open(ARTICLETEMPLATE, "article_template.html") || die "can't open article_template.html for reading: $!";
 
 #get command-line options other than the config file selector and the input file/directory/glob pattern.  These must appear first on the command line, and all paths must contain only forward slashes, and no slash at the beginning or end. Only one option (-xu or -xp) to relocate the index page can be used. The final component of $piip (the argument for -xp) and $uiip (the argument for -xu) is assumed to be a filename; it will be appended to the configuration file option 'publicIssueIndexRootPath' or 'unlistedIssueIndexRootPath'.  If $piip and $uiip is left empty, the configuration file option '[public/unlisted]IssueIndexRootPath' will be ignored and the issue index page will be generated in the same directory, with the same file basename, as its .xhtml source
@@ -107,6 +111,7 @@ my $ud = "";
 my $appendBrowserScript = 0;
 my $publicsOnly = 0;
 my $aio = 0;
+my $gha = 0;
 my $vol = undef;
 my $issue = undef;
 my $vi = undef; #four digit $zvol.$zissue
@@ -114,7 +119,7 @@ my $zvol = undef; #two digit with leading 0 for value < 10
 my $zissue = undef; #two digit with leading 0 for value < 10
 my $help = 0;
 
-GetOptions ('help|?' => \$help, 'public|b=s%' => \%publics, 'unlisted|u=s%' => \%unlisteds, 'imageDirs|i=s%' => \%imageDirs, 'unlistedImageDirs|iu=s%' => \%unlistedImageDirs, 'privateImageDirs|ip=s%' => \%privateImageDirs, 'unlistedIssueIndexPath|xu=s' => \$uiip, 'publicIssueIndexPath|xp=s' => \$piip, 'appendBrowserScript|abs' => \$appendBrowserScript, 'publicsOnly|po' => \$publicsOnly, 'unlistedDirname|ud=s' => \$ud, 'filenamesFromTitles|fft' => \$fft, 'pathnamesFromTitles|pft=s' => \$pft,'archiveIndexOnly|aio' => \$aio, 'volume|vol=s' => \$vol, 'issue|iss=s' => \$issue, 'volumeIssue|vi=s' => \$vi);
+GetOptions ('help|?' => \$help, 'public|b=s%' => \%publics, 'unlisted|u=s%' => \%unlisteds, 'imageDirs|i=s%' => \%imageDirs, 'unlistedImageDirs|iu=s%' => \%unlistedImageDirs, 'privateImageDirs|ip=s%' => \%privateImageDirs, 'unlistedIssueIndexPath|xu=s' => \$uiip, 'publicIssueIndexPath|xp=s' => \$piip, 'appendBrowserScript|abs' => \$appendBrowserScript, 'publicsOnly|po' => \$publicsOnly, 'unlistedDirname|ud=s' => \$ud, 'filenamesFromTitles|fft' => \$fft, 'pathnamesFromTitles|pft=s' => \$pft,'archiveIndexOnly|aio' => \$aio,'ghArchive|gha' => \$gha,'volume|vol=s' => \$vol, 'issue|iss=s' => \$issue, 'volumeIssue|vi=s' => \$vi);
 pod2usage(1) if $help;
 
 my $program_basename = $0;
@@ -381,6 +386,13 @@ foreach $infilepath (@infiles)
 	$arch_ttree->store_comments(1);
 	$arch_ttree->parse_file(\*ARCHIVEINDEXTEMPLATE);
 
+	my $aitdoctype = "";
+	while(<ARCHIVEINDEXTEMPLATEDOCTYPE>)
+	{
+	    $aitdoctype .= $_;
+	}
+	close ARCHIVEINDEXTEMPLATEDOCTYPE;
+
 	my $volIssueDate = $ttree->look_down('id','volIssueDate');
 	$volIssueDate->push_content($volIssueText,$br,$DateText);
 
@@ -399,14 +411,15 @@ foreach $infilepath (@infiles)
 
 	my $fullPDFview = $arch_ttree->look_down('id','fullPDFview');
 
-	if ($isPublicArchiveIndex)
-	{$fullPDFview->attr('href',"/eiw/public/$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday.pdf")}
+	#In John Sigerson's archive index pages, links to serve the whole issue are hidden until they are public.  Only if we want a John Sigerson-style archive index page for an issue that is not yet public with visible subscriber-only links to serve the whole issue would we use the path to George Hollis's "back issue"
+	if ($isPublicArchiveIndex or not $gha)
+	{$fullPDFview->attr('href',"eirv$zvol"."n$zissue-$year$zmonth$zmday.pdf")}
 	else
 	{$fullPDFview->attr('href',"/eiw/private/$year/$tenissueGroup/$yearIssue/pdf/eirv$zvol"."n$zissue.pdf")}
 
 	my $phpPath = "";
-	if ($isPublicArchiveIndex)
-	{$phpPath = "$phpRootPath$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday.php"}
+	if ($isPublicArchiveIndex or not $gha)
+	{$phpPath = "eirv$zvol"."n$zissue-$year$zmonth$zmday.php"}
 	else
 	{$phpPath = "$phpRootPath$year/$tenissueGroup/$yearIssue/eirv$zvol"."n$zissue-$year$zmonth$zmday.php"}
 
@@ -430,8 +443,14 @@ foreach $infilepath (@infiles)
 	$coverImg->attr('src',"/eiw/public/$year/$tenissueGroup/$yearIssue/images/eirv$zvol"."n$zissue".'lg.jpg');
 
 	my $cover = $arch_ttree->look_down('id','cover');
-	$cover->attr('src',"/graphics/eircovers/$year/eirv$zvol"."n$zissue.jpg");
-
+	if ($gha)
+	{
+	    $cover->attr('src',"/graphics/eircovers/$year/eirv$zvol"."n$zissue.jpg");
+	}
+	else
+	{
+	    $cover->attr('src',"eirv$zvol"."n$zissue-$year$zmonth$zmday-cover.jpg");
+	}
 	$coverImg->attr('width',undef);
 	$coverImg->attr('height',undef);
 	$cover->attr('width',undef);
@@ -661,7 +680,8 @@ foreach $infilepath (@infiles)
 	close INFILE;
 	if (not $publicsOnly) {writeBrowserScript($outfilepath)}
 	
-	$output = $arch_ttree->as_HTML("","\t",\%empty);
+	$output = $aitdoctype;
+	$output .= $arch_ttree->as_HTML("","\t",\%empty);
 	$arch_ttree->delete;
 	print ARCH_OUTFILE $output;
 	close ARCH_OUTFILE;
@@ -866,7 +886,7 @@ sub updateImageLinks ($$$)
 
 	my $id = $img->id;
 	#the link to the cover image was updated when created.
-	if (defined $id and $id eq 'coverImg') {next}
+	if (defined $id and $id eq 'coverImg' or $id eq 'cover') {next}
 
 	my $srcUri = URI->new($src);
 	my $newsrcpath = "";

@@ -1,4 +1,4 @@
-perl -w epub2html.pl  --ud 2018/eirv45n42-20181019/nuJi9803mwsp --pft other -i ../Images=graphics/2018/4542 --iu ../Images=graphics/2018/4542 eir /r/eiw/private/2018/42/OEBPS/Text/ 
+perl -w epub2html.pl  --ud 2018/eirv45n42-20181019/nuJi9803mwsp1 --pft other -i ../Images=graphics/2018/4542 --iu ../Images=graphics/2018/4542 eir /r/eiw/private/2018/42/OEBPS/Text/ 
 
 perl -w epub2html.pl --abs --po ^
 -b 05-24_EIR42_a_section.xhtml=other/2018/4542-public_credit_cutting_the_gord.html ^
