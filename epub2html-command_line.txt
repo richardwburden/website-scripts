@@ -1,21 +1,57 @@
-perl -w epub2html.pl  --ud 2018/eirv45n42-20181019/nuJi9803mwsp1 --pft other -i ../Images=graphics/2018/4542 --iu ../Images=graphics/2018/4542 eir /r/eiw/private/2018/42/OEBPS/Text/ 
+perl -w epub2html.pl  --ud 2018/eirv45n44-20181102/jol342ftm094 --pft other -i ../Images=graphics/2018/4544 --iu ../Images=graphics/2018/4544 eir /r/eiw/private/2018/44/OEBPS/Text/ 
+
+perl -w epub2html.pl --po ^
+-b 03-9_EIR44_a_section.xhtml=hzl/2018/4544-a_community_of_mankind_s_share.html ^
+-b 10-26_EIR44_b_section.xhtml=other/2018/4544-the_parker_solar_probe_rendezv.html ^
+-b 41-51_EIR44_d_section.xhtml=other/2018/4544-the_ipcc_s_very_big_political.html ^
+-b Section0004.xhtml=other/2018/4544-larouche_hamilton_candidates_c.html ^
+-i ../Images=graphics/2018/4544  eir /r/eiw/private/2018/44/OEBPS/Text
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n44-20181102\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n44-20181102\index-compliant.html
+
+perl -w epub2html.pl --po ^
+-b 03-9_EIR44_a_section.xhtml=other/2018/4544-a_community_of_mankind_s_share.html ^
+-b 10-26_EIR44_b_section.xhtml=other/2018/4544-the_parker_solar_probe_rendezv.html ^
+-b 27-38_EIR44_c_section.xhtml=other/2018/4544-update_on_the_coup_desperate_m.html ^
+-b 41-51_EIR44_d_section.xhtml=other/2018/4544-the_ipcc_s_very_big_political.html ^
+-b 52-57_EIR44_e_section.xhtml=other/2018/4544-lyndon_h_larouche_jr_in_2001_a.html ^
+-b Section0001.xhtml=other/2018/index.html ^
+-b Section0002.xhtml=other/2018/4544-china_report_the_phenomenal_de.html ^
+-b Section0003.xhtml=other/2018/4544-larouche_s_personal_column_a_p.html ^
+-b Section0004.xhtml=other/2018/4544-larouche_hamilton_candidates_c.html ^
+-b Section0005.xhtml=other/2018/4544-obituary_congressman_cornelius.html ^
+-b Section0006.xhtml=other/2018/4544-keep_em_high_while_they_die_th.html ^
+-b Section0007.xhtml=other/2018/4544-while_ipcc_promotes_mass_murde.html ^
+-i ../Images=graphics/2018/4544  eir /r/eiw/private/2018/44/OEBPS/Text
+
+
+perl -w epub2html.pl  --ud 2018/eirv45n43-20181026/plo090dnj435 --pft other -i ../Images=graphics/2018/4543 --iu ../Images=graphics/2018/4543 eir /r/eiw/private/2018/43/OEBPS/Text/ 
+
+perl -w epub2html.pl --abs --po ^
+-b Section0001.xhtml=other/editorials/2018/4543-america_s_soul_as_of_october_1.html ^
+-b Section0007.xhtml=other/2018/4543-interview_kesha_rogers_indepen.html ^
+-i ../Images=graphics/2018/4543  eir /r/eiw/private/2018/43/OEBPS/Text
+
+perl -w epub2html.pl --abs --po ^
+-b 07-24_EIR43_a_section.xhtml=other/2018/4543-moon_mars_crash_program_under.html ^
+-b 25-44_EIR43_b_section.xhtml=other/2018/4543-zepp_larouche_address_the_new.html ^
+-b 45-56_EIR43_c_section.xhtml=other/2018/4543-the_new_bretton_woods_system_f.html ^
+-b Section0001.xhtml=other/editorials/2018/4543-america_s_soul_as_of_october_1.html ^
+-b Section0002.xhtml=other/2018/index.html ^
+-b Section0003.xhtml=other/2018/4543-china_s_space_program_for_the.html ^
+-b Section0004.xhtml=other/2018/4543-strategic_shift_italy_promotes.html ^
+-b Section0005.xhtml=other/2018/4543-eurogroup_a_ruthless_gang.html ^
+-b Section0006.xhtml=other/2018/4543-view_from_the_philippines_chin.html ^
+-b Section0007.xhtml=other/2018/4543-interview_kesha_rogers_indepen.html ^
+-i ../Images=graphics/2018/4543  eir /r/eiw/private/2018/43/OEBPS/Text
 
 perl -w epub2html.pl --abs --po ^
 -b 05-24_EIR42_a_section.xhtml=other/2018/4542-public_credit_cutting_the_gord.html ^
 -b Section0001.xhtml=other/editorials/2018/4542-as_election_day_approaches_the.html ^
 -b Section0004.xhtml=other/2018/4542-south_dakota_congressional_can.html ^
--i ../Images=graphics/2018/4542  eir /r/eiw/private/2018/42/OEBPS/Text
+-i ../Images=graphics/2018/4543  eir /r/eiw/private/2018/43/OEBPS/Text
 
-perl -w epub2html.pl --abs --po ^
--b 05-24_EIR42_a_section.xhtml=other/2018/4542-public_credit_cutting_the_gord.html ^
--b 25-39_EIR42_b_section.xhtml=other/2018/4542-zepp_larouche_webcast_the_stak.html ^
--b 40-50_EIR42_c_section.xhtml=other/2018/4542-riemann_refutes_euler_behind_a.html ^
--b Section0001.xhtml=other/2018/4542-as_election_day_approaches_the.html ^
--b Section0002.xhtml=other/2018/index.html ^
--b Section0003.xhtml=other/2018/4542-national_sovereignty_and_a_new.html ^
--b Section0004.xhtml=other/2018/4542-south_dakota_congressional_can.html ^
--b Section0005.xhtml=other/2018/4542-mike_pence_s_dumb_ass_speech_o.html ^
--i ../Images=graphics/2018/4542  eir /r/eiw/private/2018/42/OEBPS/Text
+
 
 perl -w epub2html.pl  --ud 2018/eirv45n41-20181012/tgy768cVE091 --pft other -i ../Images=graphics/2018/4541 --iu ../Images=graphics/2018/4541 eir /r/eiw/private/2018/41/OEBPS/Text/ 
 

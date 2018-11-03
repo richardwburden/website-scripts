@@ -886,7 +886,7 @@ sub updateImageLinks ($$$)
 
 	my $id = $img->id;
 	#the link to the cover image was updated when created.
-	if (defined $id and $id eq 'coverImg' or $id eq 'cover') {next}
+	if (defined $id and ($id eq 'coverImg' or $id eq 'cover')) {next}
 
 	my $srcUri = URI->new($src);
 	my $newsrcpath = "";
