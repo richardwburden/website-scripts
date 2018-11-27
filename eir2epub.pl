@@ -7,6 +7,8 @@ use File::Spec;
 use Fcntl ':mode';
 use File::Copy;
 use HTML::Entities;
+use URI;
+use URI::file;
 #use Encode::Encoder;
 $HTML::Tagset::isKnown{"domain"} = 1;
 $HTML::Tagset::isHeadOrBodyElement{"domain"} = 1;
@@ -14,6 +16,8 @@ $HTML::Tagset::isHeadOrBodyElement{"domain"} = 1;
 %empty = (); #use as 3rd parameter for HTML::Element->as_HTML() to specify that the HTML generated shall close all open tags
 
 sub wrap ($$);
+sub processCss ($);
+sub usage;
 
 my $program_basename = $0;
 $program_basename =~ s/\.[^\.]*$//;
@@ -40,6 +44,18 @@ my $domainName = $domain->attr('name');
 if (not defined $options{'backup_prefix'})
 {die "prefix for backup file must be defined in config file\n"}
 
+my $browserPath = $options{'browserPath'};
+my $browserOptions = $options{'browserOptions'};
+if (not defined $browserOptions) {$browserOptions = '--headless --dump-dom'}
+if (not defined $browserPath) {$browserPath = '%BROWSER_PATH%'}
+my $processCssScriptPath = $options{'processCssScriptPath'};
+my $jqueryPath = $options{'jqueryPath'};
+if (not defined $processCssScriptPath) {$processCssScriptPath = 'processCss.js'}
+if (not defined $jqueryPath) {$jqueryPath = 'jquery-1.11.3.min.js'}
+$processCssScriptURL = URI::file->new($processCssScriptPath);
+$jqueryURL = URI::file->new($jqueryPath);
+
+
 my $inpath = "";
 if (defined $ARGV[1]) {$inpath = $ARGV[1]}
 #Extract filenames from $inpath
@@ -50,6 +66,8 @@ $inpath = File::Spec->join($docRoot,$inpath);
 
 @inpath = File::Spec->splitpath($inpath);
 @infiles = ();
+@cssfiles = ();
+%processedCss = ();
 
 my $is_directory = 0;
 my $mode = undef;
@@ -60,17 +78,23 @@ if (defined $mode)
 if ($is_directory)
 {
     my $globpath = File::Spec->join($inpath,'*.?htm?');
-    print "globpath: $globpath\n";
+    print "glob path: $globpath\n";
     @infiles = glob ($globpath);
+    my $cssglob =  File::Spec->join($inpath,'/css/*.css');
+    print "css glob path: $cssglob\n";
+    @cssfiles = glob ($cssglob);
+    foreach $cssf (@cssfiles)
+    {
+	#skip the css file with filename ending '_0.css' because this does not contain character style overrides.
+	if ($cssf =~ m%_0\.css$%i) {next}
+	my $result = processCss($cssf);
+	#get the relative path of the css file (of the form css/filename.css)
+	$cssf =~ s%\\%/%g;
+	$cssf =~ s%.*/css/(.*\.css)$%css/$1%i;
+	$processedCss{$cssf} = $result;
+    }
 }
-elsif ($inpath[2] =~ /[\?\*]/)
-{
-    print "globpath: $inpath\n";
-    @infiles = glob ($inpath);
-}
-
-else
-{@infiles = ($inpath)}
+else {usage}
 
 foreach $infilepath (@infiles)
 {
@@ -119,6 +143,9 @@ foreach $infilepath (@infiles)
     my $tree = HTML::TreeBuilder->new();
     $tree->store_comments(1);
     $tree->parse_file(\*INFILE);
+    my @csslinks = $tree->look_down('_tag','link','type','text/css');
+    my $cssURL = $csslinks[1]->attr('href');
+    my $styles_text = $processedCss{$cssURL};
     $content = $tree->look_down('id','content');
     if (!defined $content){$content = $tree->find_by_tag_name('body')}
     if (!defined $content){$content = $tree}
@@ -349,6 +376,37 @@ if (defined $sub_it_class)
     close DEBUG;
 }
 
+sub processCss ($)
+{
+    my $webpageFn = $_[0];
+    my $webpage2Fn = $_[0];
+    $webpageFn =~ s%css$%html%i;
+    $webpage2Fn =~ s%\.css$%_2.html%i;
+    my $webpageURL = URI::file->new($webpageFn);
+    my $scriptURL = URI::file->new($_[0]);
+
+    open (WEBPAGE,"+>$webpageFn") || die "can't open $webpageFn for writing: $!";
+
+    my $stree = HTML::TreeBuilder->new();
+    my $csslink = HTML::Element->new('link','href'=>$scriptURL,'rel'=>'stylesheet','type'=>'text/css');
+    my $jquery = HTML::Element->new('script','type'=>'text/javascript','src'=>$jqueryURL);
+    my $script = HTML::Element->new('script','type'=>'text/javascript','src'=>$processCssScriptURL);
+    my $initscript = HTML::Element->new('script','type'=>'text/javascript');
+    $initscript->push_content('$(window).load(processCss);');
+    my $head = $stree->find_by_tag_name('head');
+    $head->push_content($csslink,$jquery,$script,$initscript);
+    print WEBPAGE $stree->as_HTML("","\t",\%empty);
+    close WEBPAGE;
+    #use a browser to execute the JavaScript
+    my $cmd = $browserPath.' '.$browserOptions.' '.$webpageURL.' > '.$webpage2Fn;
+    system($cmd);
+    open (WEBPAGE2, $webpage2Fn) || die "can't open $webpage2Fn for reading: $!";
+    $stree->parse_file($webpage2Fn);
+    my $btext = $stree->find_by_tag_name('body')->as_text;
+    close WEBPAGE2;
+    return $btext;
+}
+
 sub wrap ($$)
 {
     my ($elem,$wrappers_ref) = @_;
@@ -549,16 +607,15 @@ sub usage
 {
     my $dcf = $program_basename.'.xml';
     print <<EOF;
-perl $0 {-|<config pathname>} <pathname>
+perl $0 {-|<config pathname>} <dir>
 <config pathname> is the pathname of the configuration file, relative to $0
 - uses the default configuration file, $dcf
-<pathname> is the pathname of the input file, relative to the website
+<dir> is the pathname of the input directory (must be a directory), relative to the website
 document root as specified in the configuration file, however:
 It should begin with a forward slash, use only forward slashes, and
 should be quoted if it contains spaces.  The spaces and other non-web-safe
-characters should not be converted to web-safe entities like '%20'
+characters should not be converted to web-safe entities like '%20'.  The input directory must contain a subdirectory 'css' which contains the css files referenced in the XHTML files in the input directory.
 
-In the input file: insert a style tag with attributes bo,it,boit,sup,sub,supit to indicate which of the InDesign-generated CSS classes are to be replaced with <strong>,<em>,<strong><em>,<sup>,<sub>,<sup><em> tags respectively. If the CSS class name is of the form "char-style-override-N" where N is an integer, then the value of the attribute can be just that integer N, otherwise, the full name of the class must be used.  Within each of the style tag attributes, mulitple values may be used to cause the substitutions to be applied to multiple CSS classes, with each value separated by a comma.
 EOF
 
 exit

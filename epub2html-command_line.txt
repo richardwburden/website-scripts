@@ -1,3 +1,45 @@
+/eiw/public/unlisted/2018/eirv45n47-20181123/zmp098kmi564
+perl -w epub2html.pl  --ud 2018/eirv45n47-20181123/zmp098kmi564 --pft other -i ../Images=graphics/2018/4547 --iu ../Images=graphics/2018/4547 eir /r/eiw/private/2018/47/OEBPS/Text/
+
+/eiw/public/unlisted/2018/eirv45n46-20181116/fmo987drt453
+perl -w epub2html.pl  --ud 2018/eirv45n46-20181116/fmo987drt453 --pft other -i ../Images=graphics/2018/4546 --iu ../Images=graphics/2018/4546 eir /r/eiw/private/2018/46/OEBPS/Text/
+
+perl -w epub2html.pl --abs --po ^
+-b 20-35_EIR46_c_section.xhtml=hzl/2018/4546-from_paris_it_s_now_or_never_f.html ^
+-b Section0001.xhtml=other/editorials/2018/4546-a_bridge_to_the_future.html ^
+-b Section0004.xhtml=other/2018/4546-four_power_priority_mass_produ.html ^
+-b Section0007.xhtml=other/editorials/2018/4546-fireside_chat_a_four_power_agr.html ^
+-i ../Images=graphics/2018/4546  eir /r/eiw/private/2018/46/OEBPS/Text
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n46-20181116\index-test.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n46-20181116\index-compliant.html
+
+
+perl -w epub2html.pl --abs --po ^
+-b 05-17_EIR46_a_section.xhtml=other/2018/4546-the_time_is_long_overdue_for_a.html ^
+-b 18-19_EIR46_b_section.xhtml=other/2018/4546-259th_birthday_of_schiller_the.html ^
+-b 20-35_EIR46_c_section.xhtml=other/2018/4546-from_paris_it_s_now_or_never_f.html ^
+-b 36-61_EIR46_d_section.xhtml=other/2018/4546-a_lesson_from_wilhelm_furtw_ng.html ^
+-b Section0001.xhtml=other/2018/4546-a_bridge_to_the_future.html ^
+-b Section0002.xhtml=other/2018/index.html ^
+-b Section0003.xhtml=other/2018/4546-towards_fusion_power_overview.html ^
+-b Section0004.xhtml=other/2018/4546-four_power_priority_mass_produ.html ^
+-b Section0005.xhtml=other/2018/4546-china_report_ciie_china_s_refo.html ^
+-b Section0006.xhtml=other/2018/4546-zepp_larouche_webcast_use_trum.html ^
+-b Section0007.xhtml=other/2018/4546-fireside_chat_a_four_power_agr.html ^
+-i ../Images=graphics/2018/4546  eir /r/eiw/private/2018/46/OEBPS/Text
+
+/eiw/public/unlisted/2018/eirv45n45-20181109/glkpo98724ai
+perl -w epub2html.pl  --ud 2018/eirv45n45-20181109/glkpo98724ai --pft other -i ../Images=graphics/2018/4545 --iu ../Images=graphics/2018/4545 eir /r/eiw/private/2018/45/OEBPS/Text/
+
+perl -w epub2html.pl --abs --po ^
+-b 04-33_EIR45_a_section.xhtml=other/2018/4545-larouche_s_new_bretton_woods_o.html ^
+-b 34-50_EIR45_b_section.xhtml=hzl/2018/4545-are_we_sleepwalkers_what_have.html ^
+-b Section0001.xhtml=other/editorials/2018/4545-the_american_people_want_an_ec.html ^
+-b Section0005.xhtml=other/2018/4545-will_south_africa_lead_preside.html ^
+-i ../Images=graphics/2018/4545  eir /r/eiw/private/2018/45/OEBPS/Text
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n45-20181109\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n45-20181109\index-compliant.html
+
 perl -w epub2html.pl  --ud 2018/eirv45n44-20181102/jol342ftm094 --pft other -i ../Images=graphics/2018/4544 --iu ../Images=graphics/2018/4544 eir /r/eiw/private/2018/44/OEBPS/Text/ 
 
 perl -w epub2html.pl --po ^
