@@ -66,8 +66,6 @@ $inpath = File::Spec->join($docRoot,$inpath);
 
 @inpath = File::Spec->splitpath($inpath);
 @infiles = ();
-@cssfiles = ();
-%processedCss = ();
 
 my $is_directory = 0;
 my $mode = undef;
@@ -80,19 +78,6 @@ if ($is_directory)
     my $globpath = File::Spec->join($inpath,'*.?htm?');
     print "glob path: $globpath\n";
     @infiles = glob ($globpath);
-    my $cssglob =  File::Spec->join($inpath,'/css/*.css');
-    print "css glob path: $cssglob\n";
-    @cssfiles = glob ($cssglob);
-    foreach $cssf (@cssfiles)
-    {
-	#skip the css file with filename ending '_0.css' because this does not contain character style overrides.
-	if ($cssf =~ m%_0\.css$%i) {next}
-	my $result = processCss($cssf);
-	#get the relative path of the css file (of the form css/filename.css)
-	$cssf =~ s%\\%/%g;
-	$cssf =~ s%.*/css/(.*\.css)$%css/$1%i;
-	$processedCss{$cssf} = $result;
-    }
 }
 else {usage}
 
@@ -127,25 +112,11 @@ foreach $infilepath (@infiles)
 # (each class name begins with CharOverride-)
 
     my $first_line = <INFILE>;
-    my $second_line = <INFILE>;
-    $styles_text = $second_line;
-    chomp $styles_text;
-    if ($styles_text =~ /<\!\-\-/)
-    {
-	$styles_text =~ s/^.*?<\!\-\-//;
-	$styles_text =~ s/\-\->.*$//;
-    }
-    $styles_text =~ s/^\s+//;
-    $styles_text =~ s/\s+$//;
-
-    $second_line = '<!--'.$styles_text.'-->'."\n";
 
     my $tree = HTML::TreeBuilder->new();
     $tree->store_comments(1);
     $tree->parse_file(\*INFILE);
-    my @csslinks = $tree->look_down('_tag','link','type','text/css');
-    my $cssURL = $csslinks[1]->attr('href');
-    my $styles_text = $processedCss{$cssURL};
+    my $styles_text = processCss($tree);
     $content = $tree->look_down('id','content');
     if (!defined $content){$content = $tree->find_by_tag_name('body')}
     if (!defined $content){$content = $tree}
@@ -378,33 +349,33 @@ if (defined $sub_it_class)
 
 sub processCss ($)
 {
-    my $webpageFn = $_[0];
-    my $webpage2Fn = $_[0];
-    $webpageFn =~ s%css$%html%i;
-    $webpage2Fn =~ s%\.css$%_2.html%i;
-    my $webpageURL = URI::file->new($webpageFn);
-    my $scriptURL = URI::file->new($_[0]);
-
-    open (WEBPAGE,"+>$webpageFn") || die "can't open $webpageFn for writing: $!";
-
-    my $stree = HTML::TreeBuilder->new();
-    my $csslink = HTML::Element->new('link','href'=>$scriptURL,'rel'=>'stylesheet','type'=>'text/css');
+    my $tree = $_[0];
+    #open temporary file for writing
+    open (TEMP,"+>temp.html") || die "can't open temp.html for writing: $!";
+    #insert script tags
     my $jquery = HTML::Element->new('script','type'=>'text/javascript','src'=>$jqueryURL);
-    my $script = HTML::Element->new('script','type'=>'text/javascript','src'=>$processCssScriptURL);
-    my $initscript = HTML::Element->new('script','type'=>'text/javascript');
+    my $script = HTML::Element->new('script','type'=>'text/javascript','src'=>$processCssScriptURL);   my $initscript = HTML::Element->new('script','type'=>'text/javascript');
     $initscript->push_content('$(window).load(processCss);');
-    my $head = $stree->find_by_tag_name('head');
-    $head->push_content($csslink,$jquery,$script,$initscript);
-    print WEBPAGE $stree->as_HTML("","\t",\%empty);
-    close WEBPAGE;
-    #use a browser to execute the JavaScript
-    my $cmd = $browserPath.' '.$browserOptions.' '.$webpageURL.' > '.$webpage2Fn;
+    my $head = $tree->find_by_tag_name('head');
+    $head->push_content($jquery,$script,$initscript);
+    #write $tree to a temporary HTML file
+    print TEMP $tree->as_HTML("","\t",\%empty);
+    close TEMP;
+    #restore $tree to its original contents
+    $jquery->delete;
+    $script->delete;
+    $initscript->delete;
+    #use a browser to execute the JavaScript on the temporary HTML file and save to another temporary HTML file
+    my $cmd = $browserPath.' '.$browserOptions.' temp.html > temp2.html';
     system($cmd);
-    open (WEBPAGE2, $webpage2Fn) || die "can't open $webpage2Fn for reading: $!";
-    $stree->parse_file($webpage2Fn);
-    my $btext = $stree->find_by_tag_name('body')->as_text;
-    close WEBPAGE2;
-    return $btext;
+    #read and parse the 2nd temporary HTML file
+    open (TEMP, 'temp2.html') || die "can't open temp2.html for reading: $!";
+    my $stree = HTML::TreeBuilder->new;
+    $stree->parse_file(\*WEBPAGE2);
+    #extract and return the processed css character style overrides
+    my $text = $stree->look_down('id','CharOverrides')->as_text;
+    close TEMP;
+    return $text;
 }
 
 sub wrap ($$)
