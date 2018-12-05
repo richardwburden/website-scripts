@@ -178,7 +178,7 @@ function getCharOverrides() {
 
 function processCss()
 {
-	var stylenames = ['bo','it','boit','sup','supb','supit','supbit','sub','subb','subit','subbit','ns','nw','nsw','sc','uc','lc'];
+	var stylenames = ['bo','it','sup','sub','ns','nw','sc','uc','lc'];
 	var stylevals = {};
 	for (var i=0;i<stylenames.length;i++)
 	{
@@ -213,23 +213,14 @@ function processCss()
 		if (fw == 'bold' || fw > 500 || ff.match(/demi|bold/i))
 		{
 			nw = false;
-			if (fs != 'italic' && !(ff.match(/italic/i)))
-			{stylevals['bo'] += cnum + ',';}
-			else 
-			{
-				ns = false; 
-				stylevals['boit'] += cnum + ',';
-			}	
+			stylevals['bo'] += cnum + ',';
 		}
-		else if (fs == 'italic' || ff.match(/italic/i)) 
+		if (fs == 'italic' || ff.match(/italic/i)) 
 		{
-			ns = false;
+			ns = false; 
 			stylevals['it'] += cnum + ',';
 		}
-		if (tt == 'uppercase') {stylevals['uc'] += cnum + ',';}
-		if (tt == 'lowercase') {stylevals['lc'] += cnum + ',';}
-		if (fv == 'small-caps') {stylevals['sc'] += cnum + ',';}
-	
+
 		/* test whether the computed style will remain normal style when the span tag is wrapped by <em>.  This would indicate that the css rule for this character style override is explicitly font-style:normal and that the font family does not match /italic/i */
 		var ittag = $('<em></em>');
 		ittag.append(span);
@@ -246,28 +237,22 @@ function processCss()
 		console.log(fw);
 		if (fw == 'bold' || fw > 500) {nw = false;}
 
-		if (ns && nw) {stylevals['nsw'] += cnum + ',';} 
-		else if (ns) {stylevals['ns'] += cnum + ',';} 
-		else if (nw) {stylevals['nw'] += cnum + ',';} 
+		if (ns) {stylevals['ns'] += cnum + ',';} 
+		if (nw) {stylevals['nw'] += cnum + ',';} 
 		
 		/* clean-up */
 		ittag.remove();
 		strongtag.remove();
 		
+		if (tt == 'uppercase') {stylevals['uc'] += cnum + ',';}
+		if (tt == 'lowercase') {stylevals['lc'] += cnum + ',';}
+		if (fv == 'small-caps') {stylevals['sc'] += cnum + ',';}
+
 		if (va == 'super')
-		{
-			if (ns && nw){stylevals['sup'] += cnum + ',';}
-			else if (ns) {stylevals['supb'] += cnum + ',';}
-			else if (nw) {stylevals['supit'] += cnum + ',';}
-			else {stylevals['supbit'] += cnum + ',';}
-		}
+		{stylevals['sup'] += cnum + ',';}
 		if (va == 'sub')
-		{
-			if (ns && nw){stylevals['sub'] += cnum + ',';}
-			else if (ns) {stylevals['subb'] += cnum + ',';}
-			else if (nw) {stylevals['subit'] += cnum + ',';}
-			else {stylevals['subbit'] += cnum + ',';}
-		}
+		{stylevals['sub'] += cnum + ',';}
+
 		// console.log('ff: ' + ff);
 /* The user may specify how a particular character style override is to be handled by editing the CSS file, adding '_XX_' to the beginning of the font-family for that style (adding a font-family if there is none), where XX is any character style override type recognized by eir2epub.pl, e.g. 'h1' for the 'h1_class', 'sf' for the 'sf_class'   */		
 		var ffprefix = ff.match(/^"?_[^_]*_/);

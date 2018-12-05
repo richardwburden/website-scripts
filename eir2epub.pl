@@ -381,9 +381,11 @@ foreach $infilepath (@infiles)
     my $newelem = undef;
     my $tag = undef;
     my %attribs = ();
+    # don't delete replaced tags until all replacements are done, so that a tag may receive multiple wrappers
+    my @replaced_tags = ();
     my $arritem = undef;
     foreach $arr (\@footnote_links,\@footnote_anchors,\@MajorSubheads,\@Subheads,\@kickers,\@dkickers, \@bylines,
-		  \@Heads,\@italics,\@bolds,\@bold_italics,\@superscripts,\@superbscripts,\@itsuperscripts,\@itsuperbscripts,\@subscripts,\@subbscripts,\@itsubscripts,\@itsubbscripts,\@ucase,\@normals,\@normal_weights,\@normal_normals,\@layouts,\@h1s,\@extracts,\@extractbs,\@extractms,\@extractes,\@spaceAbove,\@departments,
+		  \@Heads,\@italics,\@bolds,\@superscripts,\@subscripts,\@ucase,\@normals,\@normal_weights,\@layouts,\@h1s,\@extracts,\@extractbs,\@extractms,\@extractes,\@spaceAbove,\@departments,
 		  \@ArticleTitles,\@ArticleTitleNoKickers,\@ArticleBlurbs,\@ArticleBylines,\@cmt)
     {
 	my @wrappers = ();
@@ -405,13 +407,18 @@ foreach $infilepath (@infiles)
 	    }
 	    print DEBUG '$arritem: '.$arritem->as_HTML("","\t",\%empty);
 	    my @newelems = wrap ($arritem, \@wrappers);
+	    my $listcontainer = HTML::Element->new('div','class','list_container');
+	    $listcontainer->push_content(@newelems);
 	    foreach $newelem (@newelems)
 	    {print DEBUG '$newelem: '.$newelem->as_HTML("","\t",\%empty)}
-	    my $ex_arritem = $arritem->replace_with(@newelems);
+	    my $ex_arritem = $arritem->replace_with($listcontainer);
+	    $arritem = $listcontainer;
 	    print DEBUG '$ex_arritem: '.$ex_arritem->as_HTML("","\t",\%empty);
 	    $ex_arritem->delete;
 	}
     }
+    my @listcontainers = $tree->look_down('_tag','div','class','list_container');
+    foreach my $lc (@listcontainers) {my $lcb = $lc->replace_with_content; $lcb->delete}
     print OUTFILE $first_line;
     $tree->deobjectify_text();
     my $output = $tree->as_HTML("","\t",\%empty);
