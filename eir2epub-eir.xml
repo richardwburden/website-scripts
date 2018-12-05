@@ -1,9 +1,11 @@
 <domain name="http://larouchepub.com" docroot="P:\EIR">
 <option id="backup_prefix" value="eir2epub_" />
 
-<!-- the following paths are always taken as-is -->
+<!-- the following paths are is always taken as-is -->
 <option id="browserPath" value="C:\Users\Richard\AppData\Local\Yandex\YandexBrowser\Application\browser.exe">
 <!-- <option id="browserOptions" value="--headless --dump-dom --fart"> default value is "--headless --dump-dom" -->
-<option id="processCssScriptPath" value="C:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts\processCss.js">
-<option id="jqueryPath" value="C:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts\jquery-1.11.3.min.js">
+
+<!-- the following paths assume a local server with document root same as docroot defined above in the domain tag  -->
+<option id="processCssScriptURL" value="/js/processCss.js">
+<option id="jqueryURL" value="/js/jquery-1.11.3.min.js">
 

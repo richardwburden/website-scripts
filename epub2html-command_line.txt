@@ -1,4 +1,26 @@
+/eiw/public/unlisted/2018/eirv45n48-20181130/bni873dhj091
+perl -w epub2html.pl  --ud 2018/eirv45n48-20181130/bni873dhj091 --pft other -i ../Images=graphics/2018/4548 --iu ../Images=graphics/2018/4548 eir /r/eiw/private/2018/48/OEBPS/Text/
+
+perl -w epub2html.pl --po ^
+-b Section0001.xhtml=other/editorials/2018/4548-when_great_ideas_penetrate_the.html ^
+-b Section0003.xhtml=other/2018/4548-testimony_before_the_danish_pa.html ^
+-b Section0004.xhtml=other/editorials/2018/4548-make_all_nations_great_again_t.html ^
+-i ../Images=graphics/2018/4548 eir /r/eiw/private/2018/48/OEBPS/Text/
+
+-b 05-14_EIR48_a_section.xhtml=other/2018/4548-zepp_larouche_webcast_only_lyn.html ^
+-b 15-17_EIR48_b_section.xhtml=other/2018/4548-europe_can_only_survive_throug.html ^
+-b 18-29_EIR48_c_section.xhtml=other/2018/4548-rachel_carson_whore_of_babylon.html ^
+-b 30-71_EIR48_d_section.xhtml=other/2018/4548-the_science_of_physical_econom.html ^
+-b Section0001.xhtml=other/2018/4548-when_great_ideas_penetrate_the.html ^
+-b Section0002.xhtml=other/2018/index.html ^
+-b Section0003.xhtml=other/2018/4548-testimony_before_the_danish_pa.html ^
+-b Section0004.xhtml=other/2018/4548-make_all_nations_great_again_t.html ^
+-b Section0005.xhtml=other/2018/4548-in_remembrance_douglas_degroot.html ^
+
 /eiw/public/unlisted/2018/eirv45n47-20181123/zmp098kmi564
+
+
+
 perl -w epub2html.pl  --ud 2018/eirv45n47-20181123/zmp098kmi564 --pft other -i ../Images=graphics/2018/4547 --iu ../Images=graphics/2018/4547 eir /r/eiw/private/2018/47/OEBPS/Text/
 
 /eiw/public/unlisted/2018/eirv45n46-20181116/fmo987drt453

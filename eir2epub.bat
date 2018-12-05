@@ -1,2 +1,2 @@
-perl -wd eir2epub.pl %1 %2
+perl -w eir2epub.pl %1 %2
 pause

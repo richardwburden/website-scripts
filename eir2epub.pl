@@ -1,6 +1,8 @@
 # This script crashes when the input file contains span tags with no attributes.
 # Misbehaves if the input file contains a tag that normally contains text or other tags (not <br /> or <meta ... />) that is closed without a closing tag that repeats the tag name, e.g. contains <div ... /> instead of <div ...>...</div>
 
+#This script requires a web server to be running on the local host with the document root same as in the config file for this script.
+
 use HTML::TreeBuilder;
 use HTML::Element;
 use File::Spec;
@@ -9,6 +11,7 @@ use File::Copy;
 use HTML::Entities;
 use URI;
 use URI::file;
+use Cwd;
 #use Encode::Encoder;
 $HTML::Tagset::isKnown{"domain"} = 1;
 $HTML::Tagset::isHeadOrBodyElement{"domain"} = 1;
@@ -16,7 +19,7 @@ $HTML::Tagset::isHeadOrBodyElement{"domain"} = 1;
 %empty = (); #use as 3rd parameter for HTML::Element->as_HTML() to specify that the HTML generated shall close all open tags
 
 sub wrap ($$);
-sub processCss ($);
+sub processCss ($$);
 sub usage;
 
 my $program_basename = $0;
@@ -40,7 +43,8 @@ get_config ($configPath, \$domain, \%options);
 
 my $docRoot = $domain->attr('docroot');
 my $domainName = $domain->attr('name');
-
+my $localHostURL = $options{'localHostURL'};
+if (not defined $localHostURL) {$localHostURL = 'http://localhost:8000'}
 if (not defined $options{'backup_prefix'})
 {die "prefix for backup file must be defined in config file\n"}
 
@@ -48,12 +52,12 @@ my $browserPath = $options{'browserPath'};
 my $browserOptions = $options{'browserOptions'};
 if (not defined $browserOptions) {$browserOptions = '--headless --dump-dom'}
 if (not defined $browserPath) {$browserPath = '%BROWSER_PATH%'}
-my $processCssScriptPath = $options{'processCssScriptPath'};
-my $jqueryPath = $options{'jqueryPath'};
-if (not defined $processCssScriptPath) {$processCssScriptPath = 'processCss.js'}
-if (not defined $jqueryPath) {$jqueryPath = 'jquery-1.11.3.min.js'}
-$processCssScriptURL = URI::file->new($processCssScriptPath);
-$jqueryURL = URI::file->new($jqueryPath);
+my $processCssScriptURL = $options{'processCssScriptURL'};
+my $jqueryURL = $options{'jqueryURL'};
+if (not defined $processCssScriptURL) {$processCssScriptURL = 'processCss.js'}
+if (not defined $jqueryURL) {$jqueryURL = 'jquery-1.11.3.min.js'}
+#$processCssScriptURL = URI::file->new($processCssScriptPath);
+#$jqueryURL = URI::file->new($jqueryPath);
 
 
 my $inpath = "";
@@ -89,6 +93,7 @@ foreach $infilepath (@infiles)
     my $backup = File::Spec->join($infile[0],$infile[1],$options{'backup_prefix'}.$infile[2]);
 
     my $outfile = File::Spec->join($infile[0],$infile[1],$infile[2]);
+    my $outfiledir = File::Spec->join($infile[0],$infile[1]);
     my $infile = $backup;
     copy ($outfile,$infile) || die "can't copy $outfile to $infile: $!";
     open(INFILE, $infile) || die "can't open $infile for reading: $!";
@@ -116,7 +121,11 @@ foreach $infilepath (@infiles)
     my $tree = HTML::TreeBuilder->new();
     $tree->store_comments(1);
     $tree->parse_file(\*INFILE);
-    my $styles_text = processCss($tree);
+    my $styles_text = processCss($tree,$outfiledir);
+    my $styles_comment = HTML::Element->new('~comment','text' => $styles_text);
+    my $head = $tree->find_by_tag_name('head');
+    $head->preinsert($styles_comment); #for debugging processCss
+    
     $content = $tree->look_down('id','content');
     if (!defined $content){$content = $tree->find_by_tag_name('body')}
     if (!defined $content){$content = $tree}
@@ -125,29 +134,42 @@ foreach $infilepath (@infiles)
     my $bold_class = undef;
     my $bold_it_class = undef;
     my $sub_class = undef;
+    my $subb_class = undef;
     my $sub_it_class = undef;
+    my $subb_it_class = undef;
     my $super_class = undef;
+    my $superb_class = undef;
     my $super_it_class = undef;
+    my $superb_it_class = undef;
     my $h1_class = undef;
     my $sc_class = undef;
     my $uc_class = undef;
-    my $sf_class = undef;
+    my $sharp_flat_class = undef;
     my $ns_class = undef;
+    my $nw_class = undef;
+    my $nsw_class = undef;
+
     if ($styles_text =~ /;/ )
     {
 	my %styles = split m/;/,$styles_text;
 	$it_class = $styles{'it'};
 	$bold_class = $styles{'bo'};
 	$sub_class = $styles{'sub'};
+	$subb_class = $styles{'subb'};
 	$sub_it_class = $styles{'subit'};
+	$subb_it_class = $styles{'subbit'};
 	$super_class = $styles{'sup'};
+	$superb_class = $styles{'supb'};
 	$super_it_class = $styles{'supit'};
+	$superb_it_class = $styles{'supbit'};
 	$bold_it_class = $styles{'boit'};
 	$h1_class = $styles{'h1'};
 	$sm_caps_class = $styles{'sc'};
 	$uc_class = $styles{'uc'};
 	$sharp_flat_class = $styles{'sf'};
 	$ns_class = $styles{'ns'}; #font-style: normal
+	$nw_class = $styles{'nw'}; #font-weight: normal
+	$nsw_class = $styles{'nsw'}; #font-style: normal; font-weight: normal
     }
 
     my @MajorSubheads = $content->look_down('_tag','p','class',qr/MajorSubhead/i);
@@ -249,6 +271,20 @@ foreach $infilepath (@infiles)
 	}
 	push(@superscripts,'','sup');
     }
+    my @superbscripts = ();
+    if (defined $superb_class)
+    {
+	my @matches = ();
+	getMatchingContent(\@matches, $superb_class);
+	foreach my $elem (@matches)
+	{
+	    if (not defined $elem->look_down('_tag','a','class',qr/Footnote/))
+	    {#remove footnote links and anchors (do not superscript them)
+		push (@superbscripts,$elem);
+	    }
+	}
+	push(@superbscripts,'','|','<','strong','+','sup');
+    }
 
     my @itsuperscripts = ();
     if (defined $super_it_class)
@@ -264,6 +300,20 @@ foreach $infilepath (@infiles)
 	}
 	push(@itsuperscripts,'','|','<','em','+','sup');
     }
+    my @itsuperbscripts = ();
+    if (defined $superb_it_class)
+    {
+	my @matches = ();
+	getMatchingContent(\@matches, $superb_it_class);
+	foreach my $elem (@matches)
+	{
+	    if (not defined $elem->look_down('_tag','a','class',qr/Footnote/))
+	    {#remove footnote links and anchors (do not superscript them)
+		push (@itsuperbscripts,$elem);
+	    }
+	}
+	push(@itsuperbscripts,'','|','<','em','<','strong','+','sup');
+    }
     
     my @subscripts = ();
     if (defined $sub_class)
@@ -271,12 +321,25 @@ foreach $infilepath (@infiles)
 	getMatchingContent(\@subscripts, $sub_class);
 	push(@subscripts,'','sub');
     }
-my @itsubscripts = ();
-if (defined $sub_it_class)
-{
-    getMatchingContent(\@itsubscripts, $sub_it_class);
-    push(@itsubscripts,'','|','<','em','+','sub');
-}
+    my @subbscripts = ();
+    if (defined $subb_class)
+    {
+	getMatchingContent(\@subbscripts, $subb_class);
+	push(@subscripts,'','|','<','strong','+','sub');
+    }
+    my @itsubscripts = ();
+    if (defined $sub_it_class)
+    {
+	getMatchingContent(\@itsubscripts, $sub_it_class);
+	push(@itsubscripts,'','|','<','em','+','sub');
+    }
+    my @itsubbscripts = ();
+    if (defined $subb_it_class)
+    {
+	getMatchingContent(\@itsubbscripts, $subb_it_class);
+	push(@itsubbscripts,'','|','<','em','<','strong','+','sub');
+    }
+
     my @sharpflats = ();
     if (defined $sharp_flat_class)
     {
@@ -301,6 +364,18 @@ if (defined $sub_it_class)
 	getMatchingContent(\@normals, $ns_class);
 	push(@normals,'','fsn','class','span');
     }
+    my @normal_weights = ();
+    if (defined $nw_class)
+    {
+	getMatchingContent(\@normal_weights, $nw_class);
+	push(@normal_weights,'','fwn','class','span');
+    }
+    my @normal_normals = ();
+    if (defined $nsw_class)
+    {
+	getMatchingContent(\@normal_normals, $nsw_class);
+	push(@normal_normals,'','fswn','class','span');
+    }
 
     my $prev_newelem = undef;
     my $newelem = undef;
@@ -308,7 +383,7 @@ if (defined $sub_it_class)
     my %attribs = ();
     my $arritem = undef;
     foreach $arr (\@footnote_links,\@footnote_anchors,\@MajorSubheads,\@Subheads,\@kickers,\@dkickers, \@bylines,
-		  \@Heads,\@italics,\@bolds,\@bold_italics,\@superscripts,\@itsuperscripts,\@subscripts,\@itsubscripts,\@ucase,\@normals,\@layouts,\@h1s,\@extracts,\@extractbs,\@extractms,\@extractes,\@spaceAbove,\@departments,
+		  \@Heads,\@italics,\@bolds,\@bold_italics,\@superscripts,\@superbscripts,\@itsuperscripts,\@itsuperbscripts,\@subscripts,\@subbscripts,\@itsubscripts,\@itsubbscripts,\@ucase,\@normals,\@normal_weights,\@normal_normals,\@layouts,\@h1s,\@extracts,\@extractbs,\@extractms,\@extractes,\@spaceAbove,\@departments,
 		  \@ArticleTitles,\@ArticleTitleNoKickers,\@ArticleBlurbs,\@ArticleBylines,\@cmt)
     {
 	my @wrappers = ();
@@ -338,7 +413,6 @@ if (defined $sub_it_class)
 	}
     }
     print OUTFILE $first_line;
-    print OUTFILE $second_line;
     $tree->deobjectify_text();
     my $output = $tree->as_HTML("","\t",\%empty);
     print OUTFILE $output;
@@ -347,11 +421,16 @@ if (defined $sub_it_class)
     close DEBUG;
 }
 
-sub processCss ($)
+sub processCss ($$)
 {
     my $tree = $_[0];
+    my $dir = $_[1];
+    my $dirURL = $dir;
+    $dirURL = $localHostURL . substr($dirURL,length($docRoot));
+    $dirURL =~ s%\\%/%g;
+    my $savedDir = getcwd();
     #open temporary file for writing
-    open (TEMP,"+>temp.html") || die "can't open temp.html for writing: $!";
+    open (TEMP,"+>$dir\\temp.html") || die "can't open $dir\\temp.html for writing: $!";
     #insert script tags
     my $jquery = HTML::Element->new('script','type'=>'text/javascript','src'=>$jqueryURL);
     my $script = HTML::Element->new('script','type'=>'text/javascript','src'=>$processCssScriptURL);   my $initscript = HTML::Element->new('script','type'=>'text/javascript');
@@ -366,15 +445,17 @@ sub processCss ($)
     $script->delete;
     $initscript->delete;
     #use a browser to execute the JavaScript on the temporary HTML file and save to another temporary HTML file
-    my $cmd = $browserPath.' '.$browserOptions.' temp.html > temp2.html';
+    chdir $dir;
+    my $cmd = $browserPath.' '.$browserOptions.' '.$dirURL.'/temp.html > temp2.html';
     system($cmd);
     #read and parse the 2nd temporary HTML file
-    open (TEMP, 'temp2.html') || die "can't open temp2.html for reading: $!";
+    open (TEMP, "temp2.html") || die "can't open $dir\\temp2.html for reading: $!";
     my $stree = HTML::TreeBuilder->new;
-    $stree->parse_file(\*WEBPAGE2);
+    $stree->parse_file(\*TEMP);
     #extract and return the processed css character style overrides
     my $text = $stree->look_down('id','CharOverrides')->as_text;
     close TEMP;
+    chdir $savedDir;
     return $text;
 }
 
