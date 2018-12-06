@@ -1,3 +1,18 @@
+/eiw/public/unlisted/2018/eirv45n49-20181207/sie873232poi
+perl -w epub2html.pl  --ud 2018/eirv45n49-20181207/sie873232poi --pft other -i ../Images=graphics/2018/4549 --iu ../Images=graphics/2018/4549 eir /r/eiw/private/2018/49/OEBPS/Text/
+
+-b 07-25_EIR49_a_section.xhtml=other/2018/4549-zepp_larouche_webcast_ukraine.html ^
+-b 26-43_EIR49_c_section.xhtml=other/2018/4549-a_wedding_anniversary_the_sixt.html ^
+-b Section0001.xhtml=other/2018/4549-necessary_perspectives_for_vic.html ^
+-b Section0002.xhtml=other/2018/index.html ^
+-b Section0003.xhtml=other/2018/4549-larouche_pac_webcast_italy_and.html ^
+-b Section0004.xhtml=other/2018/4549-america_is_an_idea_not_a_place.html ^
+
+perl -w epub2html.pl --po ^
+-b Section0001.xhtml=other/editorials/2018/4549-necessary_perspectives_for_vic.html ^
+-b Section0003.xhtml=other/2018/4549-larouche_pac_webcast_italy_and.html ^
+
+
 /eiw/public/unlisted/2018/eirv45n48-20181130/bni873dhj091
 perl -w epub2html.pl  --ud 2018/eirv45n48-20181130/bni873dhj091 --pft other -i ../Images=graphics/2018/4548 --iu ../Images=graphics/2018/4548 eir /r/eiw/private/2018/48/OEBPS/Text/
 

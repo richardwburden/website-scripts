@@ -5,7 +5,8 @@
 <option id="browserPath" value="C:\Users\Richard\AppData\Local\Yandex\YandexBrowser\Application\browser.exe">
 <!-- <option id="browserOptions" value="--headless --dump-dom --fart"> default value is "--headless --dump-dom" -->
 
-<!-- the following paths assume a local server with document root same as docroot defined above in the domain tag  -->
+<!-- <option id="localHostURL" value="http://localhost:8000" > default value is "http://localhost:8000" -->
+<!-- the following paths assume a local webserver is running with document root URL defined as the value of localHostURL, above, and with the local file system pathname of the document root same as docroot defined above in the domain tag  -->
 <option id="processCssScriptURL" value="/js/processCss.js">
 <option id="jqueryURL" value="/js/jquery-1.11.3.min.js">
 

@@ -384,14 +384,16 @@ foreach $infilepath (@infiles)
     # don't delete replaced tags until all replacements are done, so that a tag may receive multiple wrappers
     my @replaced_tags = ();
     my $arritem = undef;
-    foreach $arr (\@footnote_links,\@footnote_anchors,\@MajorSubheads,\@Subheads,\@kickers,\@dkickers, \@bylines,
+    my @arr_of_arrs = (\@footnote_links,\@footnote_anchors,\@MajorSubheads,\@Subheads,\@kickers,\@dkickers, \@bylines,
 		  \@Heads,\@italics,\@bolds,\@superscripts,\@subscripts,\@ucase,\@normals,\@normal_weights,\@layouts,\@h1s,\@extracts,\@extractbs,\@extractms,\@extractes,\@spaceAbove,\@departments,
-		  \@ArticleTitles,\@ArticleTitleNoKickers,\@ArticleBlurbs,\@ArticleBylines,\@cmt)
+		       \@ArticleTitles,\@ArticleTitleNoKickers,\@ArticleBlurbs,\@ArticleBylines,\@cmt);
+    while ($arr = pop(@arr_of_arrs))
     {
 	my @wrappers = ();
 	$arritem = pop(@$arr);
 	if (not defined ($arritem)) {next}
 	
+	# '' marks the beginning of the wrappers in the array @$arr. All items before it are tags to be wrapped, and all items after it are wrappers.  Here we are moving items popped from the end of @$arr and pushing them onto the end of @wrappers.
 	while ($arritem ne '')
 	{
 	    push (@wrappers,$arritem);
@@ -411,14 +413,27 @@ foreach $infilepath (@infiles)
 	    $listcontainer->push_content(@newelems);
 	    foreach $newelem (@newelems)
 	    {print DEBUG '$newelem: '.$newelem->as_HTML("","\t",\%empty)}
-	    my $ex_arritem = $arritem->replace_with($listcontainer);
-	    $arritem = $listcontainer;
-	    print DEBUG '$ex_arritem: '.$ex_arritem->as_HTML("","\t",\%empty);
-	    $ex_arritem->delete;
+	    $arritem->replace_with($listcontainer);
+	    #replace $arritem with $listcontainer in each of the not yet processed lists.  This is done by assigning the value of $listcontainer to pointer in the not yet processed arrays whose value is the same as $arritem.  The HTML::Element method replace_with, in $arritem->replace_with($listcontainer), does not change the value of $arritem; instead, the content list of the parent of $arritem is changed, and $arritem loses its parent, which is why this method invocation would fail if $listcontainer were the parent of $arritem.
+	    foreach $future_arr (@arr_of_arrs)
+	    {
+		foreach $future_arritem (@$future_arr)
+		{
+		    #ignore wrappers at end of each array.  '' marks the beginning of the wrappers.
+		    if ($future_arritem eq '') {last}
+		    if ($arritem == $future_arritem)
+		    {$future_arritem = $listcontainer}
+		}
+	    }
+	    print DEBUG '$arritem replaced with '.$listcontainer->as_HTML("","\t",\%empty);
+	    $arritem->delete;
 	}
     }
     my @listcontainers = $tree->look_down('_tag','div','class','list_container');
     foreach my $lc (@listcontainers) {my $lcb = $lc->replace_with_content; $lcb->delete}
+    my @lcclasstags = $tree->look_down('class','list_container');
+    #remove copied 'list_container' class attribute from parent div.list_container
+    foreach my $lcct (@lcclasstags) {$lcct->attr('class',undef)}
     print OUTFILE $first_line;
     $tree->deobjectify_text();
     my $output = $tree->as_HTML("","\t",\%empty);
