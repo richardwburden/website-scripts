@@ -132,22 +132,14 @@ foreach $infilepath (@infiles)
 
     my $it_class = undef;
     my $bold_class = undef;
-    my $bold_it_class = undef;
     my $sub_class = undef;
-    my $subb_class = undef;
-    my $sub_it_class = undef;
-    my $subb_it_class = undef;
     my $super_class = undef;
-    my $superb_class = undef;
-    my $super_it_class = undef;
-    my $superb_it_class = undef;
     my $h1_class = undef;
     my $sc_class = undef;
     my $uc_class = undef;
     my $sharp_flat_class = undef;
     my $ns_class = undef;
     my $nw_class = undef;
-    my $nsw_class = undef;
 
     if ($styles_text =~ /;/ )
     {
@@ -155,21 +147,13 @@ foreach $infilepath (@infiles)
 	$it_class = $styles{'it'};
 	$bold_class = $styles{'bo'};
 	$sub_class = $styles{'sub'};
-	$subb_class = $styles{'subb'};
-	$sub_it_class = $styles{'subit'};
-	$subb_it_class = $styles{'subbit'};
 	$super_class = $styles{'sup'};
-	$superb_class = $styles{'supb'};
-	$super_it_class = $styles{'supit'};
-	$superb_it_class = $styles{'supbit'};
-	$bold_it_class = $styles{'boit'};
 	$h1_class = $styles{'h1'};
 	$sm_caps_class = $styles{'sc'};
 	$uc_class = $styles{'uc'};
 	$sharp_flat_class = $styles{'sf'};
 	$ns_class = $styles{'ns'}; #font-style: normal
 	$nw_class = $styles{'nw'}; #font-weight: normal
-	$nsw_class = $styles{'nsw'}; #font-style: normal; font-weight: normal
     }
 
     my @MajorSubheads = $content->look_down('_tag','p','class',qr/MajorSubhead/i);
@@ -250,13 +234,6 @@ foreach $infilepath (@infiles)
 	push(@bolds,'','strong');
     }
 
-    my @bold_italics = ();
-    if (defined $bold_it_class)
-    {
-	getMatchingContent(\@bold_italics, $bold_it_class);
-	push(@bold_italics,'','|','<','em','+','strong');
-    }
-
     my @superscripts = ();
     if (defined $super_class)
     {
@@ -271,73 +248,12 @@ foreach $infilepath (@infiles)
 	}
 	push(@superscripts,'','sup');
     }
-    my @superbscripts = ();
-    if (defined $superb_class)
-    {
-	my @matches = ();
-	getMatchingContent(\@matches, $superb_class);
-	foreach my $elem (@matches)
-	{
-	    if (not defined $elem->look_down('_tag','a','class',qr/Footnote/))
-	    {#remove footnote links and anchors (do not superscript them)
-		push (@superbscripts,$elem);
-	    }
-	}
-	push(@superbscripts,'','|','<','strong','+','sup');
-    }
 
-    my @itsuperscripts = ();
-    if (defined $super_it_class)
-    {
-	my @matches = ();
-	getMatchingContent(\@matches, $super_it_class);
-	foreach my $elem (@matches)
-	{
-	    if (not defined $elem->look_down('_tag','a','class',qr/Footnote/))
-	    {#remove footnote links and anchors (do not superscript them)
-		push (@itsuperscripts,$elem);
-	    }
-	}
-	push(@itsuperscripts,'','|','<','em','+','sup');
-    }
-    my @itsuperbscripts = ();
-    if (defined $superb_it_class)
-    {
-	my @matches = ();
-	getMatchingContent(\@matches, $superb_it_class);
-	foreach my $elem (@matches)
-	{
-	    if (not defined $elem->look_down('_tag','a','class',qr/Footnote/))
-	    {#remove footnote links and anchors (do not superscript them)
-		push (@itsuperbscripts,$elem);
-	    }
-	}
-	push(@itsuperbscripts,'','|','<','em','<','strong','+','sup');
-    }
-    
     my @subscripts = ();
     if (defined $sub_class)
     {
 	getMatchingContent(\@subscripts, $sub_class);
 	push(@subscripts,'','sub');
-    }
-    my @subbscripts = ();
-    if (defined $subb_class)
-    {
-	getMatchingContent(\@subbscripts, $subb_class);
-	push(@subscripts,'','|','<','strong','+','sub');
-    }
-    my @itsubscripts = ();
-    if (defined $sub_it_class)
-    {
-	getMatchingContent(\@itsubscripts, $sub_it_class);
-	push(@itsubscripts,'','|','<','em','+','sub');
-    }
-    my @itsubbscripts = ();
-    if (defined $subb_it_class)
-    {
-	getMatchingContent(\@itsubbscripts, $subb_it_class);
-	push(@itsubbscripts,'','|','<','em','<','strong','+','sub');
     }
 
     my @sharpflats = ();
@@ -369,12 +285,6 @@ foreach $infilepath (@infiles)
     {
 	getMatchingContent(\@normal_weights, $nw_class);
 	push(@normal_weights,'','fwn','class','span');
-    }
-    my @normal_normals = ();
-    if (defined $nsw_class)
-    {
-	getMatchingContent(\@normal_normals, $nsw_class);
-	push(@normal_normals,'','fswn','class','span');
     }
 
     my $prev_newelem = undef;
