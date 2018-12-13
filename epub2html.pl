@@ -112,6 +112,8 @@ my $appendBrowserScript = 0;
 my $publicsOnly = 0;
 my $aio = 0;
 my $gha = 0;
+#This is used to compute the directory name for the ten issue group beginning with issue 50.  Override in config file with option 'yearEndIssueNumber'.
+my $yearEndIssueNumber = 52;
 my $vol = undef;
 my $issue = undef;
 my $vi = undef; #four digit $zvol.$zissue
@@ -146,6 +148,10 @@ get_config ($configPath, \$domain, \%options);
 
 my $docRoot = $domain->attr('docroot');
 my $domainName = $domain->attr('name');
+#default year end issue number is 52.  This can be overridden in the config file.
+my $yein = $options{'yearEndIssueNumber'};
+if (defined $yein and $yein > 0) {$yearEndIssueNumber = $yein}
+
 my $bsp = $options{'browserScriptPath'};
 if (not defined $bsp) {$bsp = 'epub2htmlRunJS.bat'}
 my $browserPath = $options{'browserPath'};
@@ -315,6 +321,7 @@ foreach $infilepath (@infiles)
 	my $issueMod10 = $toc_issue % 10;
         $tenissueGroup = $toc_issue - $issueMod10;
 	my $tenissueGroupEnd = $tenissueGroup + 9;
+	if ($tenissueGroup == 50) {$tenissueGroupEnd = $yearEndIssueNumber}
 	if ($tenissueGroup == 0){$tenissueGroup = $year.'_01-09'}
 	else {$tenissueGroup = $year.'_'.$tenissueGroup.'-'.$tenissueGroupEnd}
 	$yearIssue = $year.'-'.$zissue;

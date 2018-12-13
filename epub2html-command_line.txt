@@ -1,4 +1,25 @@
-/eiw/public/unlisted/2018/eirv45n49-20181207/sie873232poi
+/eiw/public/unlisted/2018/eirv45n50-20181214/wss923lmn943
+
+perl -w epub2html.pl  --ud 2018/eirv45n50-20181214/wss923lmn943 --pft other -i ../Images=graphics/2018/4550 --iu ../Images=graphics/2018/4550 eir /r/eiw/private/2018/50/OEBPS/Text/
+
+
+perl -w epub2html.pl --po ^
+-b Section0001.xhtml=other/editorials/2018/4550-the_new_bretton_woods_system_l.html ^
+-b 04-28_EIR50_a_section.xhtml=other/2018/4550-larouche_pac_webcast_france_ri.html ^
+-b Section0006.xhtml=other/2018/4550-lopez_obrador_takes_office_pro.html ^
+-i ../Images=graphics/2018/4550 eir /r/eiw/private/2018/50/OEBPS/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n50-20181214\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n50-20181214\index-compliant.html
+
+-b 29-41_EIR_b_section.xhtml=other/2018/4550-america_an_unfinished_symphony.html ^
+-b 42-50_EIR50_c_section.xhtml=other/2018/4550-the_meaning_of_world_market_pa.html ^
+-b Section0002.xhtml=other/2018/index.html ^
+-b Section0003.xhtml=other/2018/4550-building_bridges_schiller_inst.html ^
+-b Section0004.xhtml=other/2018/4550-mass_strike_process_government.html ^
+-b Section0005.xhtml=other/2018/4550-zepp_larouche_webcast_the_batt.html ^
+
+
+
 perl -w epub2html.pl  --ud 2018/eirv45n49-20181207/sie873232poi --pft other -i ../Images=graphics/2018/4549 --iu ../Images=graphics/2018/4549 eir /r/eiw/private/2018/49/OEBPS/Text/
 
 -b 07-25_EIR49_a_section.xhtml=other/2018/4549-zepp_larouche_webcast_ukraine.html ^
