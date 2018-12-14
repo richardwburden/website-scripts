@@ -202,7 +202,7 @@ function epub2html()
 	var numbers = layouts.eq(i).find(':regex(class,figure-n.*)');
 	var captions = layouts.eq(i).find('.captions');
 	var ccaptions = layouts.eq(i).find('.ccaptions');
-	var overviews = layouts.eq(i).find(':regex(class,.*overview.*|figure-units)');
+	var overviews = layouts.eq(i).find(':regex(class,.*overview.*|figure-units|basic-paragraph)');
 
 	for (var k=0; k<titles.length; k++)
 	    {var contents = titles.eq(k).contents();
@@ -234,6 +234,7 @@ function epub2html()
 	for (var k=0; k<overviews.length; k++)
 	    {var contents = overviews.eq(k).contents();
 		var c = overviews.eq(k).attr("class");
+		if (c == 'basic-paragraph') {c = 'figure-units';}
 		var str = "<div class='" + c + "'></div>";
 		var newdiv = $(str);
 		newdiv.append(contents);
@@ -323,7 +324,10 @@ function epub2html()
 						break;
 					    }
 				    }
-				for (var k=0; k<overviews.length; k++)
+					
+/* items to be prepended (placed above the image) are processed in reverse order, so that they end up in the original order */
+
+				for (var k=overviews.length-1; k>=0; k--)
 				    {
 					var cpimg = overviews.eq(k).closestNext('img');
 					console.log ("comparing with " + cpimg.outerHTML());
@@ -335,7 +339,7 @@ function epub2html()
 						}
 				    }
 
-				for (var k=0; k<titles.length; k++)
+				for (var k=titles.length-1; k>=0; k--)
 				    {
 					var cpimg = titles.eq(k).closestNext('img');
 					console.log ("comparing with " + cpimg.outerHTML());
@@ -346,7 +350,7 @@ function epub2html()
 						break;
 					    }
 				    }
-for (var k=0; k<numbers.length; k++)
+for (var k=numbers.length-1; k>=0; k--)
 				    {
 					var cpimg = numbers.eq(k).closestNext('img');
 					console.log ("comparing with " + cpimg.outerHTML());
@@ -381,19 +385,22 @@ for (var k=0; k<numbers.length; k++)
 						imgwrapper.append(capts.eq(k));
 						break;
 				    }
-				for (var k=0; k<overviews.length; k++)
+
+/* items to be prepended (placed above the image) are processed in reverse order, so that they end up in the original order */
+					
+				for (var k=overviews.length-1; k>=0; k--)
 				    {
 						imgwrapper = checkTextWidth(overviews.eq(k),maxTextWidth,imgwrapper,imgwrapper2);
 						imgwrapper.prepend(overviews.eq(k));
 						break;
 				    }
-				for (var k=0; k<titles.length; k++)
+				for (var k=titles.length-1; k>=0; k--)
 				    {
 						imgwrapper = checkTextWidth(titles.eq(k),maxTextWidth,imgwrapper,imgwrapper2);
 						imgwrapper.prepend(titles.eq(k));
 						break;
 				    }
-for (var k=0; k<numbers.length; k++)
+for (var k=numbers.length-1; k>=0; k--)
 				    {
 						imgwrapper = checkTextWidth(numbers.eq(k),maxTextWidth,imgwrapper,imgwrapper2);
 						imgwrapper.prepend(numbers.eq(k));
