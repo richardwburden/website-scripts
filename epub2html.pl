@@ -209,6 +209,8 @@ if (defined $vol and defined $issue)
 elsif (defined $vi)
 {
     $zvol = substr ($vi,0,2);
+    #set $vol to the integer of $zvol to use for calculating the year
+    $vol = $zvol + 0;
     $zissue = substr ($vi,2,2);
 }
 else

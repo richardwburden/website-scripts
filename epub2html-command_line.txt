@@ -1,5 +1,7 @@
 /eiw/public/unlisted/2018/eirv45n50-20181214/wss923lmn943
 
+perl -w epub2html.pl  --ud 2018/lokJiuc3d9s850test --pft other -i ../Images=graphics/2018/4550 --iu ../Images=graphics/2018/4550 --vi 4550  eirtest /r/eiw/private/2018/50test/OEBPS/Text/
+
 perl -w epub2html.pl  --ud 2018/eirv45n50-20181214/wss923lmn943 --pft other -i ../Images=graphics/2018/4550 --iu ../Images=graphics/2018/4550 eir /r/eiw/private/2018/50/OEBPS/Text/
 
 
