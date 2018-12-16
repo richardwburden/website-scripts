@@ -1,5 +1,13 @@
 /eiw/public/unlisted/2018/eirv45n50-20181214/wss923lmn943
 
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\r\eiw\public\2018\eirv45n50-20181214\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\r\eiw\public\2018\eirv45n50-20181214\index-demo.html
+
+perl -w epub2html.pl --po ^
+-b Section0001.xhtml=other/editorials/2018/4550-the_new_bretton_woods_system_l.html ^
+-b 04-28_EIR50_a_section.xhtml=other/2018/4550-larouche_pac_webcast_france_ri.html ^
+-b Section0006.xhtml=other/2018/4550-lopez_obrador_takes_office_pro.html ^
+-i ../Images=graphics/2018/4550 --vi 4550 eirtest /r/eiw/private/2018/50test/OEBPS/Text/
+
 perl -w epub2html.pl  --ud 2018/lokJiuc3d9s850test --pft other -i ../Images=graphics/2018/4550 --iu ../Images=graphics/2018/4550 --vi 4550  eirtest /r/eiw/private/2018/50test/OEBPS/Text/
 
 perl -w epub2html.pl  --ud 2018/eirv45n50-20181214/wss923lmn943 --pft other -i ../Images=graphics/2018/4550 --iu ../Images=graphics/2018/4550 eir /r/eiw/private/2018/50/OEBPS/Text/

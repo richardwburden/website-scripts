@@ -1,0 +1,605 @@
+/* rules added for HTML5 compliance */
+
+/* img tags are inline by default.  In HTML5, this implies a nonzero default line-height.  since the clear images are intended to be as close to zero height as possible, this  rule is needed to eliminate blank space above or below the clear image.  With this rule, the clear image still performs its intended function, to force calculation of the height of the containing div to include all the div's content. */
+img.clear {display:block}
+
+/* end HTML5 compliance rules */
+
+body {
+	font-family: Arial, Helvetica, "Helvetica Neue", Geneva, sans-serif;
+	width: 100%;
+	margin: 0;
+	background-color: #CCCCCC;
+}
+
+#container {
+	width: 100%;
+	margin: 2px 0 4000px 0;
+	padding-bottom: 4px;
+	background-color: #ffffcc;
+	max-width: 1200px;
+	z-index: 1;
+}
+
+#container_margin {
+	position: relative;
+	margin: 2px 4px 0 4px;
+	text-align: center;
+	padding-top: 2px;
+}
+
+img {
+	max-width: 100%;
+}
+
+#header, #nbanner {
+	clear: both;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	z-index: 1;
+}
+
+#header {
+	background-color: #cdcd9b;
+	display: none;
+	height: auto;
+}
+
+#nbanner {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+#header a, #nbanner a {
+	display: block;
+}
+
+#content {
+	clear: both;
+	text-align: center;
+	padding: 0;
+	margin: 24px 0 0 0;
+	width: 100%;
+}
+
+div.tocYearTitleVolYear, div.tocIssueTitleVolYear {
+	text-align: center;
+	display: block;
+	clear: both;
+	font-size: 1em;
+	font-weight: bold;
+	line-height: normal;
+	position: relative;
+	letter-spacing: 0px;
+}
+
+div.tocYearTitleYear,div.tocYearTitleVol {
+	display: table-cell;
+}
+
+div.tocYearTitleVol {
+	padding-right: 0.7em;
+}
+
+div.tocYearTitleYear::before {
+	content: "(";
+}
+
+div.tocYearTitleYear::after {
+	content: ")";
+}
+
+div.container {
+	position: relative;
+}
+
+div.column1, div.column2 {
+	display: block;
+	float: none;
+	max-width: 100%;
+}
+
+.column1_margin {
+	margin: 0;
+}
+
+.column2_margin {
+	margin: 0;
+}
+
+.table {
+	display: table;
+}
+
+.tablec {
+	display: table;
+	margin: 0 auto;
+}
+
+.tr {
+	display: table-row;
+}
+
+.tocYearIssue {
+	text-align: left;
+	margin: 0 0 20px 0;
+	max-width: 100%;
+}
+
+.tocYearIssueName {
+	display: table-cell;
+	vertical-align: middle;
+	font-size: .8em;
+	font-weight: bold;
+	line-height: normal;
+	padding-left: 12px;
+}
+
+div.tocThumbtd {
+	display: table-cell;
+	width: 33px;
+	height: 42px;
+}
+
+img.tocThumb {
+	border: 1px solid #400030;
+	vertical-align: middle;
+}
+
+h3.tocIssueTitle {
+	text-align: center;
+	display: block;
+	font-size: 1em;
+	padding-top: 24px;
+}
+
+div.serveIssue {
+	position: absolute;
+	text-align: center;
+	display: block;
+	font-size: .8em;
+	right: 3%;
+	top: -222px;
+}
+
+div.serveIssueHidden {
+	position: absolute;
+	text-align: center;
+	display: none;
+	font-size: .8em;
+	right: 3%;
+	top: -222px;
+}
+
+.buttonA {
+	background-color: cccc99;
+	font-size: 11px;
+	width: 120px;
+	height: 24px;
+	text-decoration: none;
+	font-weight: bold;
+	border: none;
+	border-radius: 4px;
+	text-align: center;
+}
+
+.buttonA:hover {
+	box-shadow: 4px 2px 4px 0 rgba(0,0,0,0.24), 0 6px 6px 0 rgba(0,0,0,0.19);
+}
+
+p.tocThumbnail {
+	text-align: center;
+	position: relative;
+}
+
+div.tocThumbnailServeIssue {
+	display: block;
+	position: relative;
+	margin-top: 0px;
+}
+
+h3.tocFullIssueView {
+	text-align: center;
+	position: relative;
+	display: block;
+	font-size: 1em;
+}
+
+h3.tocFullIssueView:first-of-type {
+	padding-top: 0;
+	margin-top: 6px;
+}
+
+h3.tocFullIssueDownload {
+	text-align: left;
+	position: relative;
+	display: block;
+	font-size: 1em;
+}
+
+h3.tocFullIssue {
+	text-align: left;
+	position: relative;
+	display: block;
+	font-size: 1em;
+}
+
+h2.tocSection {
+	border-top-style: solid;
+	border-bottom-style: solid;
+	color: #400300;
+	border-bottom-width: 2px;
+	border-top-width: 2px;
+	font: 1.2em/1.5em "Arial Black", "AvenirNext-Heavy";
+	margin-top: 1em;
+}
+
+h2.tocSubSection {
+	border-top-style: solid;
+	border-bottom-style: solid;
+	color: #400300;
+	border-bottom-width: 1px;
+	border-top-width: 1px;
+	font: bold 1.0em/1.5em Arial, Helvetica, "Helvetica Neue", Geneva, sans-serif;
+	margin-top: 1em;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+h3.tocArticle {
+	text-decoration: none;
+	font-size: 1em;
+	padding-bottom: 0;
+	margin-bottom: 0;
+	line-height: 1.3em;
+}
+
+h3.tocArticleSub {
+	text-decoration: none;
+	font-size: 1em;
+	padding-bottom: 0;
+	margin-bottom: 0;
+	line-height: 1.3em;
+	text-indent: 2em;
+}
+
+h3.tocViewSettingsHead {
+	border-top-style: solid;
+	text-align: center;
+}
+
+p.tocAuthor {
+	font-size: .9em;
+	line-height: 1em;
+	font-style: italic;
+	margin-left: 2em;
+	margin-top: .5em;
+	margin-bottom: 0;
+}
+
+p.tocBlurb {
+	font-size: .9em;
+	margin-right: 4em;
+	margin-left: 4em;
+	margin-top: .5em;
+}
+
+p.tocBlurbSub {
+	font-size: .9em;
+	margin-right: 4em;
+	margin-left: 6em;
+	margin-top: .2em;
+	margin-bottom: .5em;
+}
+
+p.tocViewSettings {
+	text-align: center;
+}
+
+a {
+	text-decoration: none;
+	color: #400300;
+}
+
+a.tocLinkPDF, a.tocLinkAltPDF {
+	background: url(../../../../eiw/public/css/images/pdf_icon.gif) no-repeat right center;
+	padding-right: 40px;
+}
+
+a.tocLinkSubPDF {
+	background: url(../../../../eiw/public/css/images/pdf_icon_sub.gif) no-repeat right center;
+	padding-right: 136px;
+}
+
+a.tocLinkHiddenPDF, a.tocLinkHiddenHTML {
+	visibility: hidden;
+}
+
+a.tocLinkPDF:hover, a.tocLinkAltPDF:hover {
+	background: url(../../../../eiw/public/css/images/pdf_icon_ro.gif) no-repeat right center;
+	padding-right: 40px;
+}
+
+a.tocLinkSubPDF:hover {
+	background: url(../../../../eiw/public/css/images/pdf_icon_sub_ro.gif) no-repeat right center;
+	padding_right: 136px;
+}
+
+a.tocLinkHTML, a.tocLinkAltHTML {
+	background: url(../../../../eiw/public/css/images/html_icon.gif) no-repeat right center;
+	padding-right: 40px;
+}
+
+a.tocLinkHTML:hover, a.tocLinkAltHTML:hover {
+	background: url(../../../../eiw/public/css/images/html_icon_ro.gif) no-repeat right center;
+	padding-right: 40px;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #400300;
+}
+
+#pubname {
+	display: none;
+	font: 1.2em/1.5em "Arial Black";
+	text-align: center;
+	margin: 0;
+	padding: 0;
+}
+
+#pubname:before {
+	content: "Executive Intelligence Review";
+}
+
+#prefs {
+	display: block;
+	float: right;
+	position: relative;
+	font-size: .7em;
+	top: 6px;
+	right: 8px;
+	margin-top: 139px;
+}
+
+#prefs a {
+	color: #000;
+}
+
+#prefs a:hover {
+	text-decoration: underline;
+}
+
+#cover {
+	border-style: solid;
+	border-width: 1px;
+}
+
+#validators {
+	text-align: center;
+}
+
+#validatorsLeft {
+	left: 0px;
+	display: block;
+	position: relative;
+}
+
+#icon-xhtml, #icon-css {
+	border: 0;
+	width: 88px;
+	height: 31px;
+}
+
+@media print {
+
+body {
+	background: #ffffcc none no-repeat;
+	top: 0px;
+}
+
+#pubname {
+	display: block;
+	height: 50px;
+	margin: 0;
+}
+
+#prefs, #menu, div.serveIssue, #validators, #header, #nbanner {
+	display: none;
+}
+
+#content {
+	margin: 0;
+}
+
+div.tocYearTitleVolYear, div.tocIssueTitleVolYear {
+	margin: 0;
+	height: 30px;
+}
+
+div.column1, div.column2 {
+	display: block;
+	float: left;
+	clear: none;
+	width: 50%;
+	margin: 0;
+}
+
+.column1_margin {
+	margin-right: 5px;
+}
+
+.column2_margin {
+	margin-left: 5px;
+}
+
+}
+
+#toc {
+	text-align: left;
+	margin-left: 12px;
+	margin-right: 12px;
+	margin-bottom: 12px;
+}
+
+@media screen and (min-width: 252px) {
+
+div.tocIssueTitleVolYear {
+	margin-top: -12px;
+}
+	
+div.tocYearTitleVolYear
+	{
+		position: relative;
+		margin-top: -148px;
+		padding-left: 170px;
+		margin-bottom: 72px;
+	}
+
+div.serveIssue {
+	position: absolute;
+	text-align: center;
+	font-size: .8em;
+	right: 3%;
+	top: -222px;
+}
+
+div.column1, div.column2 {
+	float: none;
+	width: 100%;
+	margin: 0 auto;
+}
+
+}
+
+@media screen and (min-width:360px) {
+
+div.column1, div.column2 {
+	float: none;
+	width: 335px;
+	margin: 0 auto;
+}
+
+}
+
+@media screen and (min-width:453px) {
+
+#header {
+	display: block;
+}
+
+#nbanner {
+	display: none;
+}
+
+@media screen and (min-width:520px) {
+
+#prefs {
+	margin-top: 0;
+}
+	
+}
+
+@media screen and (min-width:550px) {
+
+div.tocYearTitleVol {
+	text-align: center;
+	display: block;
+	font: 1.2em/1.5em "Arial Black";
+	font-size: 1.5em;
+	position: relative;
+	padding-right: 0;
+}
+
+div.tocYearTitleYear {
+	text-align: center;
+	display: block;
+	font-size: 1.5em;
+	position: relative;
+	letter-spacing: 0;
+	margin-top: 24px;
+}
+
+div.tocYearTitleYear::before {
+	content: "";
+}
+
+div.tocYearTitleYear::after {
+	content: "";
+}
+
+.column1_margin {
+	margin-left: 24px;
+	margin-right: 5px;
+}
+
+.column2_margin {
+	margin-left: 5px;
+}
+
+}
+
+@media screen and (min-width:643px) {
+
+	div.tocYearTitleVolYear {
+	text-align: center;
+	display: block;
+	clear: both;
+	line-height: normal;
+	position: relative;
+	letter-spacing: 0;
+	margin-top: -148px;
+	margin-bottom: 72px;
+	padding: 0;
+}
+
+div.serveIssue {
+	position: absolute;
+	text-align: center;
+	font-size: .8em;
+	right: 3%;
+	top: -222px;
+}
+
+}
+
+@media screen and (min-width:715px)
+{
+div.column1, div.column2 {
+	display: block;
+	float: left;
+	clear: none;
+	width: 50%;
+	margin: 0;
+	background-color: #ffffcc;
+}
+
+	div.tocIssueTitleVolYear {
+	text-align: center;
+	display: block;
+	clear: both;
+	line-height: normal;
+	position: relative;
+	letter-spacing: 0px;
+	margin-top: -172px;
+	margin-bottom: 18px;
+	z-index: 0;
+}
+
+#container {
+	width: 708px;
+	margin: 2px auto 2000px;
+auto;
+}
+
+div.serveIssue {
+	position: absolute;
+	text-align: center;
+	font-size: .8em;
+	right: 3%;
+	top: -68px;
+}
+
+}

@@ -1,9 +1,18 @@
-/* HTML5 compliance */
+/* rules added for HTML5 compliance */
+
+/* to replace border attribute */
 img {border:0}
-.center {text-align:center} /* to simulate <div align="center"></div> with <div class="center"></div>, any block content inside <div class="center"></div> must have margin-left: auto  and margin-right:auto
-*/
+
+/* to replace align attribute */
+.center {text-align:center} /* to simulate <div align="center"></div> with <div class="center"></div>, any block content inside <div class="center"></div> must have margin-left: auto  and margin-right:auto */
+
+/* to replace face attribute */
 .standard_font_family {font-family:Arial,Helvetica,Geneva,Swiss,SunSans-Regular}
 
+/* img tags are inline by default.  In HTML5, this implies a nonzero default line-height.  since the clear images are intended to be as close to zero height as possible, this  rule is needed to eliminate blank space above or below the clear image.  With this rule, the clear image still performs its intended function, to force calculation of the height of the containing div to include all the div's content. */
+img.clear {display:block}
+
+/* end HTML5 compliance rules */
 
 .toc_box {border:1px solid black; padding:2px;margin: 1em 0}
 .extract {
