@@ -183,7 +183,13 @@ if (tw > maxTextWidth)
 return imgwrapper; 	
 }
 
-
+function getImageDimensions(imageNode) {
+  var source = imageNode.attr('src');
+	console.log("getImageDimensions: source: " + source); 
+  var imgClone = document.createElement("img");
+  imgClone.src = source;
+  return {width: imgClone.width, height: imgClone.height};
+}
 
 function epub2html()
 {
@@ -267,7 +273,14 @@ function epub2html()
 		// var fslink = imgs.eq(j).parent();
 		if (!imgs.eq(j).parent().is('a'))
 		    {
-			var fslink = $('<a href="' + imgs.eq(j).attr('src') + '" class="body_text">View full size<br /></a>');
+		    var vfs = 'View full size<br />';
+			var thisimg = imgs.eq(j);
+			var dims = getImageDimensions(thisimg);
+
+			console.log ("naturalWidth: " + dims.width);
+			
+			if (dims.width < 586) {vfs = '';}
+			var fslink = $('<a href="' + imgs.eq(j).attr('src') + '" class="body_text">' + vfs + '</a>');
 			fslink.append(imgclone);
 	 
 	
