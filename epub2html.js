@@ -432,5 +432,6 @@ for (var k=numbers.length-1; k>=0; k--)
     var mycontent = $('body').contents();
     $('<div id="convertedPage"></div>').appendTo('body');
     mycontent.appendTo('#convertedPage');
+	$('script').remove();
 
 }
