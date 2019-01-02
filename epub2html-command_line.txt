@@ -1,3 +1,21 @@
+perl -w epub2html.pl  --ud 2018/eirv45n51-20181221/mko9j8uder4X --pft other -i ../Images=graphics/2018/4551 --iu ../Images=graphics/2018/4551 eir /r/eiw/private/2018/51/OEBPS/Text/
+
+perl -w epub2html.pl --po ^
+-b 03-13_EIR51_a_section.xhtml=other/2018/4551-general_motors_is_no_longer_a.html ^
+-b Section0005.xhtml=other/2018/4551-bernie_s_geek_act_begins_keep.html ^
+-i ../Images=graphics/2018/4551 eir /r/eiw/private/2018/51/OEBPS/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n51-20181221\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n51-20181221\index-c.html
+
+
+-b 14-25_EIR51_b_section.xhtml=other/2018/4551-zepp_larouche_webcast_french_p.html ^
+-b 26-70_EIR51_c_section.xhtml=other/2018/4551-not_only_socialists_were_duped.html ^
+-b Section0001.xhtml=other/2018/index.html ^
+-b Section0002.xhtml=other/2018/4551-will_the_united_states_wake_up.html ^
+-b Section0003.xhtml=other/2018/4551-janet_yellen_has_yet_to_unders.html ^
+-b Section0004.xhtml=other/2018/4551-was_michael_cohen_brainwashed.html ^
+-b Section0005.xhtml=other/2018/4551-bernie_s_geek_act_begins_keep.html ^
+
 /eiw/public/unlisted/2018/eirv45n50-20181214/wss923lmn943
 
 java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\r\eiw\public\2018\eirv45n50-20181214\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\r\eiw\public\2018\eirv45n50-20181214\index-demo.html

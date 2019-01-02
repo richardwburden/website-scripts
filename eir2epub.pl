@@ -28,6 +28,15 @@ close STDERR;
 open (STDERR, ">$program_basename"."_err.txt") || die "can't open $program_basename"."_err.txt for writing: $!";
 
 if (@ARGV < 1) {usage()}
+
+#debug output is off by default.  It is turned on by using 'debug' as the first command-line argument OR by defining debug with any value in the configuration file.
+my $debug = 0;
+if (lc($ARGV[0]) eq 'debug')
+{
+    $debug = 1;
+    shift @ARGV
+}
+
 my $configPath = $ARGV[0];
 
 if ($configPath eq '-') {$configPath = "$program_basename.xml"}
@@ -56,6 +65,10 @@ my $processCssScriptURL = $options{'processCssScriptURL'};
 my $jqueryURL = $options{'jqueryURL'};
 if (not defined $processCssScriptURL) {$processCssScriptURL = 'processCss.js'}
 if (not defined $jqueryURL) {$jqueryURL = 'jquery-1.11.3.min.js'}
+
+#debug output is off by default.  It is turned on by using 'debug' as the first command-line argument OR by defining debug with any value in the configuration file.
+if (defined $options{'debug'}){$debug = 1}
+
 #$processCssScriptURL = URI::file->new($processCssScriptPath);
 #$jqueryURL = URI::file->new($jqueryPath);
 
@@ -97,8 +110,15 @@ foreach $infilepath (@infiles)
     my $infile = $backup;
     copy ($outfile,$infile) || die "can't copy $outfile to $infile: $!";
     open(INFILE, $infile) || die "can't open $infile for reading: $!";
-    open(OUTFILE,"+>$outfile") || die "can't open $outfile for writing: $!"; 
-    open(DEBUG,">$outfile.debug.html") || die "can't open $outfile.debug.html for writing: $!"; 
+    open(OUTFILE,"+>$outfile") || die "can't open $outfile for writing: $!";
+    if ($debug)
+    {
+	open(DEBUG,">$outfile.debug.html") || die "can't open $outfile.debug.html for writing: $!"; 
+    }
+    else # /dev/null for Windows
+    {
+	open(DEBUG,">nul") || die "can't open nul for writing: $!"; 
+    }
 
 #The first line of .xhtml files in .epub format typically looks like this:
 #<?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -157,11 +177,11 @@ foreach $infilepath (@infiles)
     }
 
     my @MajorSubheads = $content->look_down('_tag','p','class',qr/MajorSubhead/i);
-    push(@MajorSubheads,'','majorsubhead','class','h3');
+    push(@MajorSubheads,'','majorsubhead','class','h3','no more wrappers');
     my @Subheads = $content->look_down('_tag','p','class',qr/Subhead|Minor[\- ]section/i);
     push(@Subheads,'','subhead','class','h4');
     my @dkickers = $content->look_down('_tag','p','class',qr/FeatureKicker/i);
-    push(@dkickers,'','department','class','h2');
+    push(@dkickers,'','department','class','h2','no more wrappers');
     my @kickers = $content->look_down('_tag','p','class',qr/pt[\-\s]*Kicker/i);
     push(@kickers,'','kicker','class','h4');
     my @bylines = $content->look_down('_tag','p','class',qr/^Byline$/i);
@@ -291,13 +311,11 @@ foreach $infilepath (@infiles)
     my $newelem = undef;
     my $tag = undef;
     my %attribs = ();
-    # don't delete replaced tags until all replacements are done, so that a tag may receive multiple wrappers
-    my @replaced_tags = ();
     my $arritem = undef;
     my @arr_of_arrs = (\@footnote_links,\@footnote_anchors,\@MajorSubheads,\@Subheads,\@kickers,\@dkickers, \@bylines,
 		  \@Heads,\@italics,\@bolds,\@superscripts,\@subscripts,\@ucase,\@normals,\@normal_weights,\@layouts,\@h1s,\@extracts,\@extractbs,\@extractms,\@extractes,\@spaceAbove,\@departments,
 		       \@ArticleTitles,\@ArticleTitleNoKickers,\@ArticleBlurbs,\@ArticleBylines,\@cmt);
-    while ($arr = pop(@arr_of_arrs))
+    while ($arr = shift(@arr_of_arrs))
     {
 	my @wrappers = ();
 	$arritem = pop(@$arr);
@@ -309,7 +327,17 @@ foreach $infilepath (@infiles)
 	    push (@wrappers,$arritem);
 	    $arritem = pop(@$arr);
 	}
-	
+#If the first wrapper is 'no more wrappers', then after the tag is wrapped with this set of wrappers, no further wrappers are allowed, and 'no more wrappers' is removed from the array of wrappers.  Otherwise, the first wrapper must be restored to the array of wrappers using unshift.
+	my $wrappable = 1;
+	my $first_wrapper = shift(@wrappers);
+	if ($first_wrapper eq 'no more wrappers')
+	{$wrappable = 0}
+	else
+	{unshift(@wrappers,$first_wrapper)}	    
+	my $saved_array_item_separator = $,;
+	$, = "','";
+	print DEBUG '@wrappers: \''.@wrappers."'\n";
+	$, = $saved_array_item_separator;
 	while (defined ($arritem = pop(@$arr)))
 	{
 	    if (not defined $arritem->tag or $arritem->tag eq '')
@@ -317,25 +345,44 @@ foreach $infilepath (@infiles)
 		print DEBUG "Warning: blank tag\n";
 		next
 	    }
-	    print DEBUG '$arritem: '.$arritem->as_HTML("","\t",\%empty);
+	    print DEBUG '$arritem: '.$arritem.': '.$arritem->as_HTML("","\t",\%empty)."\n";
 	    my @newelems = wrap ($arritem, \@wrappers);
+
 	    my $listcontainer = HTML::Element->new('div','class','list_container');
-	    $listcontainer->push_content(@newelems);
-	    foreach $newelem (@newelems)
-	    {print DEBUG '$newelem: '.$newelem->as_HTML("","\t",\%empty)}
+	    $listcontainer->push_content(@newelems);	    print DEBUG '$arritem replaced with '.$listcontainer->as_HTML("","\t",\%empty)."\n";
+
+	    #foreach $newelem (@newelems)
+	    #{print DEBUG '$newelem: '.$newelem->as_HTML("","\t",\%empty)}
 	    $arritem->replace_with($listcontainer);
+	    print DEBUG '$arritem '.$arritem.' replaced with '.$listcontainer.': '.$listcontainer->as_HTML("","\t",\%empty)."\n";
+
 	    #replace $arritem with $listcontainer in each of the not yet processed lists.  This is done by assigning the value of $listcontainer to pointer in the not yet processed arrays whose value is the same as $arritem.  The HTML::Element method replace_with, in $arritem->replace_with($listcontainer), does not change the value of $arritem; instead, the content list of the parent of $arritem is changed, and $arritem loses its parent, which is why this method invocation would fail if $listcontainer were the parent of $arritem.
 	    foreach $future_arr (@arr_of_arrs)
 	    {
-		foreach $future_arritem (@$future_arr)
+		my $i = 0;
+		print DEBUG '$wrappable = '.$wrappable."\n";
+		while ($i < @$future_arr)
 		{
 		    #ignore wrappers at end of each array.  '' marks the beginning of the wrappers.
-		    if ($future_arritem eq '') {last}
-		    if ($arritem == $future_arritem)
-		    {$future_arritem = $listcontainer}
+		    if (@$future_arr[$i] eq '') {last}
+		    print DEBUG '@$future_arr['.$i.']: '.@$future_arr[$i].': '.@$future_arr[$i]->as_HTML("","\t",\%empty)."\n";
+
+		    if ($arritem == @$future_arr[$i])
+		    {
+			print DEBUG '$arritem matched'."\n";
+			if ($wrappable)
+			{
+			    @$future_arr[$i] = $listcontainer;
+			    $i++
+			}
+			else
+			{
+			    splice @$future_arr,$i,1  #remove item from @$future_arr
+			}
+		    }
+		    else {$i++}
 		}
 	    }
-	    print DEBUG '$arritem replaced with '.$listcontainer->as_HTML("","\t",\%empty);
 	    $arritem->delete;
 	}
     }
@@ -430,6 +477,7 @@ be passed on to the next eligible wrapper.
     my $original_content_captured = 0;
     my $original_atts_captured = 0;
     my $keep_atts = 1; #default.  The element that receives the original content will also receive the attributes of the original element (initially; attributes specified in the wrapper list will overwrite attributes of the same name)
+
     if (@$wrappers_ref[0] eq 'drop_atts') {$keep_atts = 0; $i++}
     while (defined (my $wrapper = @$wrappers_ref[$i++]))
     {
