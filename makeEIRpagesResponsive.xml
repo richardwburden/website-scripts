@@ -1,0 +1,12 @@
+<domain name="http://larouchepub.com" docroot="C:\Users\Richard\Documents\websites\EIR" remoteDocRoot="/www" login="josi" pwd="">
+
+<option id="browserPath" value="C:\Users\Richard\AppData\Local\Yandex\YandexBrowser\Application\browser.exe">
+<!-- <option id="browserOptions" value="--headless --dump-dom --fart"> default value is "--headless --dump-dom" -->
+<option id="browserScriptPath" value="C:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\makeEIRpagesResponsive.bat">
+<option id="articleTemplatePath" value="process_nr_article_template.html">
+
+<!-- <option id="localHostURL" value="http://localhost:8000" > default value is "http://localhost:8000" -->
+<!-- the following paths assume a local webserver is running with document root URL defined as the value of localHostURL, above, and with the local file system pathname of the document root same as docroot defined above in the domain tag  -->
+<!-- a null device to which unwanted debug output may be written. When running this script under UNIX, use "/dev/null" -->
+<option id="nullDevice" value="nul">
+<option id='responsivePagesPathPrefix' value='\r1'>

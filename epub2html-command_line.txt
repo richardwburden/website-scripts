@@ -1,3 +1,24 @@
+/eiw/public/unlisted/2019/eirv46n01-20190104/egk098Dif101
+
+perl -w epub2html.pl  --ud 2019/eirv46n01-20190104/egk098Dif101 --pft other -i ../Images=graphics/2019/4601 --iu ../Images=graphics/2019/4601 eir /r/eiw/private/2019/1/OEBPS/Text/
+
+perl -w epub2html.pl --po ^
+-b Section0001.xhtml=other/editorials/2019/4601-editorial_russiagaters_caught.html ^
+-b 15-31_EIR01_b_section.xhtml=other/2019/4601-order_of_battle_for_2019_let_u.html ^
+-i ../Images=graphics/2019/4601 eir /r/eiw/private/2019/1/OEBPS/Text/
+
+-b 05-14_EIR01_a_section.xhtml=other/2019/4601-zepp_larouche_webcast_trump_dr.html ^
+-b 32-56_EIR01_c_section.xhtml=other/2019/4601-toward_a_new_bretton_woods.html ^
+-b Section0001.xhtml=other/2019/4601-editorial_russiagaters_caught.html ^
+-b Section0002.xhtml=other/2019/index.html ^
+-b Section0003.xhtml=other/2019/4601-new_year_s_thoughts_from_germa.html ^
+-b Section0004.xhtml=other/2019/4601-foreign_affairs_magazine_dons.html ^
+
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n01-20190104\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n01-20190104\index.html
+
+
+
 perl -w epub2html.pl  --ud 2018/eirv45n51-20181221/mko9j8uder4X --pft other -i ../Images=graphics/2018/4551 --iu ../Images=graphics/2018/4551 eir /r/eiw/private/2018/51/OEBPS/Text/
 
 perl -w epub2html.pl --po ^
