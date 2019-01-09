@@ -193,8 +193,9 @@ function getImageDimensions(imageNode) {
 
 function processNRpage()
 {
-    var mycontent = $('body').contents();
-    $('<div id="convertedPage"></div>').appendTo('body');
-    mycontent.appendTo('#convertedPage');
+    $('#old_article_content').appendTo('#article_body');
+	var oac = $('#old_article_content table tr td:has(p)').contents();
+	$('#old_article_content').replaceWith(oac);
+	
 	$('script').remove();
 }

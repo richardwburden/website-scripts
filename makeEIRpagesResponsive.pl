@@ -109,6 +109,7 @@ open(ARTICLETEMPLATE, $articleTemplatePath) || die "can't open $articleTemplateP
 
 my $attree = HTML::TreeBuilder->new;
 $attree->parse_file(\*ARTICLETEMPLATE);
+close ARTICLETEMPLATE;
 
 #process the input file/directory/glob pattern.
 my $inpath = "";
@@ -165,7 +166,7 @@ foreach $infilepath (@infiles)
     
     my $outfile = File::Spec->join($outfiledir,$infile[2]);
     if (! open(INFILE, $infilepath)){print STDERR "can't open $infilepath for reading: $!"; next}
-  #  if (! open (OUTFILE,"+>$outfile")){print STDERR "can't open $outfile for writing: $!"; next}
+
     if ($debug)
     {
 	open(DEBUG,">$outfile.debug.html") || die "can't open $outfile.debug.html for writing: $!"; 
@@ -177,34 +178,35 @@ foreach $infilepath (@infiles)
     my $tree = HTML::TreeBuilder->new();
     $tree->store_comments(1);
     $tree->parse_file(\*INFILE);
+    close INFILE;
     my $dirURL = $outfiledir;
     $dirURL = $localHostURL . substr($dirURL,length($docRoot));
     $dirURL =~ s%\\%/%g;
     my $savedDir = getcwd();
     #open temporary file for writing
     open (TEMP,"+>$outfiledir\\temp.html") || die "can't open $outfiledir\\temp.html for writing: $!";
-    #insert script tags
-  #  my $jquery = HTML::Element->new('script','type'=>'text/javascript','src'=>$jqueryURL);
-   # my $script = HTML::Element->new('script','type'=>'text/javascript','src'=>$processNRpageURL);   my $initscript = HTML::Element->new('script','type'=>'text/javascript');
-    #$initscript->push_content('$(window).load(processNRpage);');
-  #  my $head = $attree->find_by_tag_name('head');
-   # $head->push_content($jquery,$script,$initscript);
-	
-    #write $tree to a temporary HTML file
- #   print TEMP $tree->as_HTML("","\t",\%empty);
-    #append content of article template
- #   print TEMP $articletemplate;
 
     my @acontent = $tree->find_by_tag_name('body')->content_list;
     my @ahead = $tree->find_by_tag_name('head')->content_list;
     my $acontentdiv = HTML::Element->new('div','id','old_article_content');
     $acontentdiv->push_content(@acontent);
-    my $atbody = $attree->find_by_tag_name('body');
+    
+    #make a clone of the article template
+    my $attreeClone = $attree->clone();
+
+    #insert the content of the old page into the clone of the article template
+    my $atbody = $attreeClone->find_by_tag_name('body');
     $atbody->push_content($acontentdiv);
-    my $athead = $attree->find_by_tag_name('head');
+    my $athead = $attreeClone->find_by_tag_name('head');
     $athead->push_content(@ahead);
-    print TEMP $attree->as_HTML("","\t",\%empty);
+
+    #write the stuffed clone of the article template to a temporary HTML file
+    print TEMP $attreeClone->as_HTML("","\t",\%empty);
     close TEMP;
+
+    #discard the stuffed clone of the article template
+    $attreeClone->delete;
+
     #use a browser to execute the JavaScript on the temporary HTML file and save to $outfile
     chdir $outfiledir;
     my $cmd = '"'.$browserPath.'" '.$browserOptions.' "'.$dirURL.'/temp.html" > "'.$outfile.'"';
