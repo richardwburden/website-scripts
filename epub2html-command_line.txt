@@ -1,3 +1,24 @@
+/eiw/public/unlisted/2019/eirv46n02-20190111/plo090jik78g
+perl -w epub2html.pl  --ud 2019/eirv46n02-20190111/plo090jik78g --pft other -i ../Images=graphics/2019/4602 --iu ../Images=graphics/2019/4602 eir /r/eiw/private/2019/2/OEBPS/Text/
+
+perl -w epub2html.pl --po ^
+-b Section0001.xhtml=hzl/2019/4602-new_year_s_message_from_helga.html ^
+-b 07-18_EIR02_a_section.xhtml=other/2019/4602-china_takes_a_decisive_lead_in.html ^
+-i ../Images=graphics/2019/4602 eir /r/eiw/private/2019/2/OEBPS/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n02-20190111\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n02-20190111\index.html
+
+
+
+-b 07-18_EIR02_a_section.xhtml=other/2019/4602-china_takes_a_decisive_lead_in.html ^
+-b 19-57_EIR02_b_section.xhtml=other/2019/4602-february_6_2007_kepler_cusa.html ^
+-b Section0001.xhtml=other/2019/4602-new_year_s_message_from_helga.html ^
+-b Section0002.xhtml=other/2019/4602-what_the_world_needs_now.html ^
+-b Section0003.xhtml=other/2019/index.html ^
+-b Section0004.xhtml=other/2019/4602-biological_science_overthrowin.html ^
+-b Section0005.xhtml=other/2019/4602-trump_opens_the_new_year_in_pr.html ^
+
+
 /eiw/public/unlisted/2019/eirv46n01-20190104/egk098Dif101
 
 perl -w epub2html.pl  --ud 2019/eirv46n01-20190104/egk098Dif101 --pft other -i ../Images=graphics/2019/4601 --iu ../Images=graphics/2019/4601 eir /r/eiw/private/2019/1/OEBPS/Text/

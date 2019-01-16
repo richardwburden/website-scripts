@@ -191,11 +191,126 @@ function getImageDimensions(imageNode) {
   return {width: imgClone.width, height: imgClone.height};
 }
 
+function greatestTextWidth(objs)
+{
+	var greatest = 0;
+	console.log("objs.length: " + objs.length);
+	for (var i=0;i<objs.length;i++)
+	{
+		var w = getTextWidth(objs[i]);
+		console.log('width of '+objs[i].html()+': '+w);
+		if (w > greatest) {greatest = w;}
+	}
+	return greatest;
+}
+
+function textTooWide (textobjs,maxTextWidth)
+{
+	var tw = greatestTextWidth(textobjs);
+	return (tw > maxTextWidth) 
+}
+function adjustObjWidth(obj, objName)
+{
+	var objWidth = obj.width();
+	var objOuterWidth = obj.outerWidth(true);
+	var objPaddingBorderMargin = objOuterWidth - objWidth;
+	var objParentWidth = obj.parent().width();
+	if (objOuterWidth > objParentWidth)
+	{	
+		objWidth = objParentWidth - objPaddingBorderMargin;
+		obj.width(objWidth);
+	}
+	var objWidthPct = (100 * objWidth / (objParentWidth - objPaddingBorderMargin)) + '%';
+	obj.width(objWidthPct);
+	console.log('width of '+ objName + ': '+obj.width()+'; changed to '+objWidthPct);
+	
+	return {num:objWidth, pct:objWidthPct};	
+}
+function getImageArrayWidth(imgs)
+{
+	var container = $('<div style="margin:0;padding:0;border:0;display:block;float:left;clear:none"></div>');
+	// Make a clone of the image without its width and height attributes.
+	for (var m = 0; m<imgs.length; m++)
+	{
+ 		var imgClone = imgs.eq(m).clone();
+		imgClone.css('max-width','none');
+		imgClone.removeAttr('width');
+		imgClone.removeAttr('height');
+		container.append(imgClone);
+	}
+	container.appendTo($('body'));
+	var w = container.width();
+	//container.remove();
+	return container.width();
+}
+function processImages(oac)
+{
+	var layouts = oac.find('table:has(img)');
+    for (var i = 0; i < layouts.length; i++)
+	{
+		var tableWidth = adjustObjWidth(layouts.eq(i),'table '+i);
+		layouts.eq(i).css({'margin':'0 auto'});
+		var rows = layouts.eq(i).find('tr');
+		console.log('table '+i+' has '+rows.length+' rows');
+		for (var j = 0; j < rows.length; j++)
+		{
+			var columns = rows.eq(j).find('td, th');
+			for (var k = 0; k < columns.length; k++)
+			{
+				console.log('Row '+j+', Column '+k+':');
+				var imgs = columns.eq(k).find('img');
+				// compute the combined width of the images in this cell when their height and width attributes are removed (exposing their natural height and width), as they are laid out according to their CSS styles.
+				var maxImgWidth = getImageArrayWidth(imgs);
+				console.log('maxImgWidth: '+maxImgWidth);
+				var colWidth = adjustObjWidth(columns.eq(k),'table '+i+', row '+j+', column '+k);
+				console.log('column width: '+colWidth.num+'('+colWidth.pct+')');
+				var objs = columns.eq(k).contents();
+				var textobjs = [];
+				for(n=0;n<objs.length;n++)
+				{
+					var text = objs.eq(n).text();
+					console.log('Row '+j+', Column '+k+':'+', object '+n+' text: "'+text+'"');
+					if (text!==null && text.length > 0 && text.match(/\S/))
+					{
+						console.log('Row '+j+', Column '+k+':'+', object '+n+' contains text');
+						//If the text is not more than 3 times the width of the image(s) in the same cell, limit the width of the text to the combined width of the images in the same cell
+						if (getTextWidth(objs.eq(n)) <= 3*maxImgWidth)
+						{objs.eq(n).css('max-width',maxImgWidth+'px');}
+						textobjs.push(objs.eq(n));
+					}
+				}
+
+				var maxWidth = 3*colWidth.num;
+				console.log('max column width: '+maxWidth);
+
+				if (tableWidth.pct != '100%' && textTooWide(textobjs,maxWidth))
+				{
+					layouts.eq(i).width('100%');
+					console.log('table '+i+' widened to 100% to accomodate long text');	
+				}
+								
+				if (imgs.length == 1)
+				{ imgs.eq(0).width(null); imgs.eq(0).height(null); }
+				else
+				{
+					for (var m = 0; m<imgs.length; m++)
+					{
+						adjustObjWidth(imgs.eq(m),'table '+i+', row '+j+', column '+k+', image '+m);	
+						imgs.eq(m).removeAttr('width');					
+						imgs.eq(m).removeAttr('height');					
+					}
+				}
+			}
+		}
+	}
+}
+
 function processNRpage()
 {
     $('#old_article_content').appendTo('#article_body');
 	var oac = $('#old_article_content table tr td:has(p)').contents();
 	$('#old_article_content').replaceWith(oac);
-	
+	$('font').replaceWith(function(){return $(this).contents();});
+	processImages(oac);
 	$('script').remove();
 }

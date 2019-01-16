@@ -187,7 +187,7 @@ foreach $infilepath (@infiles)
     open (TEMP,"+>$outfiledir\\temp.html") || die "can't open $outfiledir\\temp.html for writing: $!";
 
     my @acontent = $tree->find_by_tag_name('body')->content_list;
-    my @ahead = $tree->find_by_tag_name('head')->content_list;
+    my @atitle = $tree->find_by_tag_name('title');
     my $acontentdiv = HTML::Element->new('div','id','old_article_content');
     $acontentdiv->push_content(@acontent);
     
@@ -198,7 +198,7 @@ foreach $infilepath (@infiles)
     my $atbody = $attreeClone->find_by_tag_name('body');
     $atbody->push_content($acontentdiv);
     my $athead = $attreeClone->find_by_tag_name('head');
-    $athead->push_content(@ahead);
+    $athead->push_content(@atitle);
 
     #write the stuffed clone of the article template to a temporary HTML file
     print TEMP $attreeClone->as_HTML("","\t",\%empty);
