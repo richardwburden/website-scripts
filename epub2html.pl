@@ -343,7 +343,9 @@ foreach $infilepath (@infiles)
 
 	my $piiarp = $options{'publicIssueIndexArchiveRootPath'};
 
-	my $arch_outfilepath = $piiarp."$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/index.html";
+	#archive index page filename is index-nc.html because it is not fully HTML5 compliant.
+	#a XSL transform will be applied using java net.sf.saxon.Transform to make it compliant.
+	my $arch_outfilepath = $piiarp."$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/index-nc.html";
 	my $full_arch_outfilepath = $docRoot.$arch_outfilepath;
 	$full_arch_outfilepath =~ s%/%\\%g;
 
@@ -415,7 +417,7 @@ foreach $infilepath (@infiles)
 	my $fullIssueLinks = $arch_ttree->look_down('id','fullIssueLinks');
 	
 	#if this archive index is still private, the class will remain as it is in the template, serveIssueHidden
-	if ($isPublicArchiveIndex)
+	if ($isPublicArchiveIndex or $gha)
 	{$fullIssueLinks->attr('class','serveIssue')}
 
 	my $fullPDFview = $arch_ttree->look_down('id','fullPDFview');
@@ -452,14 +454,7 @@ foreach $infilepath (@infiles)
 	$coverImg->attr('src',"/eiw/public/$year/$tenissueGroup/$yearIssue/eirv$zvol"."n$zissue".'lg.jpg');
 
 	my $cover = $arch_ttree->look_down('id','cover');
-	if ($gha)
-	{
-	    $cover->attr('src',"/graphics/eircovers/$year/eirv$zvol"."n$zissue.jpg");
-	}
-	else
-	{
-	    $cover->attr('src',"eirv$zvol"."n$zissue-$year$zmonth$zmday-cover.jpg");
-	}
+	$cover->attr('src',"eirv$zvol"."n$zissue-$year$zmonth$zmday-cover.jpg");
 	$coverImg->attr('width',undef);
 	$coverImg->attr('height',undef);
 	$cover->attr('width',undef);

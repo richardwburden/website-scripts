@@ -49,7 +49,7 @@
 		</xsl:attribute>
 		<xsl:attribute name="onclick">
 			<xsl:text>window.location='</xsl:text>
-			<xsl:value-of select="replace(a/@href,'^.*/','')" />
+			<xsl:value-of select="a/@href" />
 			<xsl:text>';</xsl:text>
 		</xsl:attribute>
 		<xsl:value-of select="a/button/text()" />

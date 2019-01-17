@@ -1,8 +1,19 @@
 /eiw/public/unlisted/2019/eirv46n03-20190118/zko098hid657
 perl -w epub2html.pl  --ud 2019/eirv46n03-20190118/zko098hid657 --pft other -i ../Images=graphics/2019/4603 --iu ../Images=graphics/2019/4603 eir /r/eiw/private/2019/3/OEBPS/Text/
 
-perl -w epub2html.pl --po ^
+>perl -w epub2html.pl --po --gha ^
+-b 05-27_EIR03_a_section.xhtml=other/2019/4603-the_british_come_out_of_the_sh.html ^
+-b Section0001.xhtml=other/editorials/2019/4603-fbi_targeting_of_trump_comes_u.html ^
 -i ../Images=graphics/2019/4603 eir /r/eiw/private/2019/3/OEBPS/Text/
+
+-b 05-27_EIR03_a_section.xhtml=other/2019/4603-the_british_come_out_of_the_sh.html ^
+-b 28-45_EIR03_b_section.xhtml=other/2019/4603-creating_a_renaissance_out_of.html ^
+-b 46-77_EIR03_c_section.xhtml=other/2019/4603-world_in_crisis_needs_a_new_mo.html ^
+-b Section0001.xhtml=other/2019/4603-fbi_targeting_of_trump_comes_u.html ^
+-b Section0002.xhtml=other/2019/index.html ^
+-b Section0003.xhtml=other/2019/4603-zepp_larouche_webcast_the_unde.html ^
+-b Section0004.xhtml=other/2019/4603-larouche_s_operation_juarez_th.html ^
+-b Section0005.xhtml=other/2019/4603-is_science_subversive_the_pote.html ^
 
 java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n03-20190118\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n03-20190118\index.html
 
