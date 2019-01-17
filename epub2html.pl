@@ -51,7 +51,7 @@ publicsOnly|po  causes only public pages and the archive issue index page to be 
 
 archiveIndexOnly|aio  causes only the archive issue index page to be generated
 
-ghArchive|gha  get the cover image from /graphics/eircovers/YYYY/ and full issue files from George Hollis's back issue directory for this issue (/eiw/private/YYYY/YYYY_N0-NN/YYYY-NN/ instead of John Sigerson's EIR archive directory (/eiw/public/YYYY/eirvVVnNN-YYYYMMDD/)
+ghArchive|gha  get full issue files from George Hollis's back issue directory for this issue (/eiw/private/YYYY/YYYY_N0-NN/YYYY-NN/ instead of John Sigerson's EIR archive directory (/eiw/public/YYYY/eirvVVnNN-YYYYMMDD/)
 
 volume|vol=s, issue|iss=s  specifies the volume and issue numbers (one or two digits each)
 volumeIssue|vi=s  four digit combination volume and issue number.  Volume and issue numbers specified on the command-line must match those specified in the issue index page in the unzipped EPUB.  It is necessary to use these options only if filenamesFromTitles|fft is used and the pathname of the Text directory in the unzipped EPUB (where the .xhtml files are located) does not contain the correct year and issue or volume and issue in one of the following formats: /YYYY/NN/, /VV/NN/, or vVVnNN, where YYYY is a four-digit year, VV the volume number, NN the issue number, and VV or NN may be 1 or 2 digits, and the slashes separating directory names may be forward or backward.
