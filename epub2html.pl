@@ -355,9 +355,9 @@ foreach $infilepath (@infiles)
 #	my $pathFromIndex2ArchivePDFIndex = findRelPath($outfilepath,$full_arch_outfilepath);
 
 #Get the URLs of single article PDFs.  Assumed to be in the correct order in 
-#the index at $pdfIndexPath.  URLs assumed to end in /pdf/filename.pdf where 
+#the index at $pdfIndexPath.  URLs assumed to end in /filename.pdf where 
 #filename begins with a page number.
-	my @pdfLinks = $pdfIndexTree->look_down('_tag','a','href',qr/pdf\/[0-9][^\/]*\.pdf$/);
+	my @pdfLinks = $pdfIndexTree->look_down('_tag','a','href',qr/\/[0-9][^\/]*\.pdf$/);
 	my @singleArticleURLs = ();
 
 	my $phpRootPath = $options{'phpRootPath'};
@@ -410,7 +410,7 @@ foreach $infilepath (@infiles)
 
 	
 	my $intPDF = $ttree->look_down('id','intPDF');
-	$intPDF->attr('href',"/eiw/private/$year/$tenissueGroup/$yearIssue/pdf/eirv$zvol"."n$zissue.pdf");
+	$intPDF->attr('href',"/eiw/private/$year/$tenissueGroup/$yearIssue/eirv$zvol"."n$zissue-$year$zmonth$zmday.pdf");
 
 	my $fullIssueLinks = $arch_ttree->look_down('id','fullIssueLinks');
 	
@@ -424,7 +424,7 @@ foreach $infilepath (@infiles)
 	if ($isPublicArchiveIndex or not $gha)
 	{$fullPDFview->attr('href',"eirv$zvol"."n$zissue-$year$zmonth$zmday.pdf")}
 	else
-	{$fullPDFview->attr('href',"/eiw/private/$year/$tenissueGroup/$yearIssue/pdf/eirv$zvol"."n$zissue.pdf")}
+	{$fullPDFview->attr('href',"/eiw/private/$year/$tenissueGroup/$yearIssue/eirv$zvol"."n$zissue-$year$zmonth$zmday.pdf")}
 
 	my $phpPath = "";
 	if ($isPublicArchiveIndex or not $gha)
@@ -443,13 +443,13 @@ foreach $infilepath (@infiles)
 
 
 	my $coverLink = $ttree->look_down('id','coverLink');
-	$coverLink->attr('href',"/eiw/private/$year/$tenissueGroup/$yearIssue/pdf/eirv$zvol"."n$zissue.pdf");
+	$coverLink->attr('href',"/eiw/private/$year/$tenissueGroup/$yearIssue/eirv$zvol"."n$zissue-$year$zmonth$zmday.pdf");
 
 	my $archCoverLink = $arch_ttree->look_down('id','archCoverLink');
 	$archCoverLink->attr('href',"/eiw/public/$year/$tenissueGroup/$yearIssue/index.html");
 
 	my $coverImg = $ttree->look_down('id','coverImg');
-	$coverImg->attr('src',"/eiw/public/$year/$tenissueGroup/$yearIssue/images/eirv$zvol"."n$zissue".'lg.jpg');
+	$coverImg->attr('src',"/eiw/public/$year/$tenissueGroup/$yearIssue/eirv$zvol"."n$zissue".'lg.jpg');
 
 	my $cover = $arch_ttree->look_down('id','cover');
 	if ($gha)
@@ -466,11 +466,11 @@ foreach $infilepath (@infiles)
 	$cover->attr('height',undef);
 
 	my $pqPDF = $ttree->look_down('id','pqPDF');
-	$pqPDF->attr('href',"/eiw/private/$year/$tenissueGroup/$yearIssue/pdf/eirv$zvol"."n$zissue".'hi-res.pdf');
+	$pqPDF->attr('href',"/eiw/private/$year/$tenissueGroup/$yearIssue/eirv$zvol"."n$zissue-$year$zmonth$zmday".'-hi-res.pdf');
 	my $mobi = $ttree->look_down('id','mobi');
-	$mobi->attr('href',"/eiw/private/$year/$tenissueGroup/$yearIssue/ebook/eirv$zvol"."n$zissue.mobi");
+	$mobi->attr('href',"/eiw/private/$year/$tenissueGroup/$yearIssue/eirv$zvol"."n$zissue-$year$zmonth$zmday.mobi");
 	my $epub = $ttree->look_down('id','epub');
-	$epub->attr('href',"/eiw/private/$year/$tenissueGroup/$yearIssue/ebook/eirv$zvol"."n$zissue.epub");
+	$epub->attr('href',"/eiw/private/$year/$tenissueGroup/$yearIssue/eirv$zvol"."n$zissue-$year$zmonth$zmday.epub");
 	my $archive = $ttree->look_down('id','archive');
 	$archive->attr('href',"/eiw/public/$year/index.html");
 	

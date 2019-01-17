@@ -1,3 +1,16 @@
+/eiw/public/unlisted/2019/eirv46n03-20190118/zko098hid657
+perl -w epub2html.pl  --ud 2019/eirv46n03-20190118/zko098hid657 --pft other -i ../Images=graphics/2019/4603 --iu ../Images=graphics/2019/4603 eir /r/eiw/private/2019/3/OEBPS/Text/
+
+perl -w epub2html.pl --po ^
+-i ../Images=graphics/2019/4603 eir /r/eiw/private/2019/3/OEBPS/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n03-20190118\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n03-20190118\index.html
+
+
+
+
+
+
 /eiw/public/unlisted/2019/eirv46n02-20190111/plo090jik78g
 perl -w epub2html.pl  --ud 2019/eirv46n02-20190111/plo090jik78g --pft other -i ../Images=graphics/2019/4602 --iu ../Images=graphics/2019/4602 eir /r/eiw/private/2019/2/OEBPS/Text/
 
