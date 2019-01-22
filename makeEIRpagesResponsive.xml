@@ -1,5 +1,6 @@
 <domain name="http://larouchepub.com" docroot="C:\Users\Richard\Documents\websites\EIR" remoteDocRoot="/www" login="josi" pwd="">
 
+<option id="outputFileLinksPage" value="C:\Users\Richard\Documents\websites\EIR\r1\index.html">
 <option id="browserPath" value="C:\Users\Richard\AppData\Local\Yandex\YandexBrowser\Application\browser.exe">
 <!-- <option id="browserOptions" value="--headless --dump-dom --fart"> default value is "--headless --dump-dom" -->
 <option id="browserScriptPath" value="C:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\makeEIRpagesResponsive.bat">

@@ -212,17 +212,35 @@ function textTooWide (textobjs,maxTextWidth)
 function adjustObjWidth(obj, objName)
 {
 	var objWidth = obj.width();
-	var objOuterWidth = obj.outerWidth(true);
+	//console.log(objName+' margin: '+obj.css('margin'));
+	var objOuterWidth = obj.outerWidth();
+	if (obj.prop('tagName') != 'TABLE') //include the margin
+	{
+		objOuterWidth = obj.outerWidth(true);
+	}
+	console.log(objName+' outerWidth: '+objOuterWidth);
 	var objPaddingBorderMargin = objOuterWidth - objWidth;
 	var objParentWidth = obj.parent().width();
+	//var objParentCode = obj.parent()[0].outerHTML.substring(0,30);
+	//console.log('objParent: '+objParentCode+ ' objParentWidth: '+objParentWidth);
 	if (objOuterWidth > objParentWidth)
 	{	
 		objWidth = objParentWidth - objPaddingBorderMargin;
 		obj.width(objWidth);
 	}
-	var objWidthPct = (100 * objWidth / (objParentWidth - objPaddingBorderMargin)) + '%';
-	obj.width(objWidthPct);
-	console.log('width of '+ objName + ': '+obj.width()+'; changed to '+objWidthPct);
+	objWidthPct = '100%';
+	if (obj.prop('tagName') != 'TABLE')
+	{
+		objWidthPct = (100 * objWidth / (objParentWidth - objPaddingBorderMargin)) + '%';
+		obj.attr('width',objWidthPct);
+		console.log('width of '+ objName + ': '+objWidth+'; changed to '+objWidthPct);
+	}
+	else
+	{
+		obj.css('max-width', objWidth+'px');
+		obj.removeAttr('width');
+		console.log('width attribute of '+ objName + ' ('+objWidth+') replaced with CSS style attribute max-width');
+	}
 	
 	return {num:objWidth, pct:objWidthPct};	
 }
@@ -240,12 +258,13 @@ function getImageArrayWidth(imgs)
 	}
 	container.appendTo($('body'));
 	var w = container.width();
-	//container.remove();
-	return container.width();
+	container.remove();
+	return w;
 }
-function processImages(oac)
+function processImages(layouts)
 {
-	var layouts = oac.find('table:has(img)');
+	console.log('layouts: '+ layouts.length);
+	
     for (var i = 0; i < layouts.length; i++)
 	{
 		var tableWidth = adjustObjWidth(layouts.eq(i),'table '+i);
@@ -283,14 +302,16 @@ function processImages(oac)
 				var maxWidth = 3*colWidth.num;
 				console.log('max column width: '+maxWidth);
 
-				if (tableWidth.pct != '100%' && textTooWide(textobjs,maxWidth))
+				if (textTooWide(textobjs,maxWidth))
 				{
-					layouts.eq(i).width('100%');
+					layouts.eq(i).css('max-width','none');
 					console.log('table '+i+' widened to 100% to accomodate long text');	
+					//this attribute now required because the column has become wider than the image
+					columns.eq(k).attr('align','center');
 				}
 								
 				if (imgs.length == 1)
-				{ imgs.eq(0).width(null); imgs.eq(0).height(null); }
+				{ imgs.eq(0).removeAttr('width'); imgs.eq(0).removeAttr('height'); }
 				else
 				{
 					for (var m = 0; m<imgs.length; m++)
@@ -307,10 +328,19 @@ function processImages(oac)
 
 function processNRpage()
 {
+	console.log('processNRpage');
     $('#old_article_content').appendTo('#article_body');
-	var oac = $('#old_article_content table tr td:has(p)').contents();
-	$('#old_article_content').replaceWith(oac);
-	$('font').replaceWith(function(){return $(this).contents();});
-	processImages(oac);
+	var oac = $('#old_article_content table tr td:has(p)');
+	$('#old_article_content').replaceWith(oac.contents());
+	$('font').replaceWith(function(){
+		var newTag = $('<span></span>');
+		var size = $(this).attr('size');
+		if (size == '-1') {newTag.css('font-size','80%');}
+		newTag.css('line-height','normal');
+		newTag.append($(this).contents());
+		return newTag;});
+
+	var layouts = $('#article_body').find('table:has(img)');
+	processImages(layouts);
 	$('script').remove();
 }
