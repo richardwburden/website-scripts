@@ -209,12 +209,14 @@ function textTooWide (textobjs,maxTextWidth)
 	var tw = greatestTextWidth(textobjs);
 	return (tw > maxTextWidth) 
 }
-function adjustObjWidth(obj, objName)
+
+function adjustObjWidth(obj, objName,share_row)
+// share_row is boolean: true if obj shares a cell or a row inside a table and should therefore be given a percentage width. Otherwise, its width attribute will be converted to a CSS max-width style
 {
 	var objWidth = obj.width();
 	//console.log(objName+' margin: '+obj.css('margin'));
 	var objOuterWidth = obj.outerWidth();
-	if (obj.prop('tagName') != 'TABLE') //include the margin
+	if (share_row) //include the margin
 	{
 		objOuterWidth = obj.outerWidth(true);
 	}
@@ -229,7 +231,7 @@ function adjustObjWidth(obj, objName)
 		obj.width(objWidth);
 	}
 	objWidthPct = '100%';
-	if (obj.prop('tagName') != 'TABLE')
+	if (share_row)
 	{
 		objWidthPct = (100 * objWidth / (objParentWidth - objPaddingBorderMargin)) + '%';
 		obj.attr('width',objWidthPct);
@@ -267,7 +269,7 @@ function processImages(layouts)
 	
     for (var i = 0; i < layouts.length; i++)
 	{
-		var tableWidth = adjustObjWidth(layouts.eq(i),'table '+i);
+		var tableWidth = adjustObjWidth(layouts.eq(i),'table '+i,false);
 		layouts.eq(i).css({'margin':'0 auto'});
 		var rows = layouts.eq(i).find('tr');
 		console.log('table '+i+' has '+rows.length+' rows');
@@ -281,7 +283,7 @@ function processImages(layouts)
 				// compute the combined width of the images in this cell when their height and width attributes are removed (exposing their natural height and width), as they are laid out according to their CSS styles.
 				var maxImgWidth = getImageArrayWidth(imgs);
 				console.log('maxImgWidth: '+maxImgWidth);
-				var colWidth = adjustObjWidth(columns.eq(k),'table '+i+', row '+j+', column '+k);
+				var colWidth = adjustObjWidth(columns.eq(k),'table '+i+', row '+j+', column '+k,true);
 				console.log('column width: '+colWidth.num+'('+colWidth.pct+')');
 				var objs = columns.eq(k).contents();
 				var textobjs = [];
@@ -316,8 +318,8 @@ function processImages(layouts)
 				{
 					for (var m = 0; m<imgs.length; m++)
 					{
-						adjustObjWidth(imgs.eq(m),'table '+i+', row '+j+', column '+k+', image '+m);	
-						imgs.eq(m).removeAttr('width');					
+						adjustObjWidth(imgs.eq(m),'table '+i+', row '+j+', column '+k+', image '+m,true);	
+						imgs.eq(m).removeAttr('width');				
 						imgs.eq(m).removeAttr('height');					
 					}
 				}
@@ -328,7 +330,7 @@ function processImages(layouts)
 
 function processNRpage()
 {
-	console.log('processNRpage');
+	//console.log('processNRpage');
     $('#old_article_content').appendTo('#article_body');
 	var oac = $('#old_article_content table tr td:has(p)');
 	$('#old_article_content').replaceWith(oac.contents());
@@ -342,5 +344,17 @@ function processNRpage()
 
 	var layouts = $('#article_body').find('table:has(img)');
 	processImages(layouts);
+	var freeImages = $('#article_body').find('img[width]');
+	//console.log('free images :'+freeImages.length);
+	//free images are those not contained in a table cell.  Here we strip them of width and height attributes and center them in a containing div.  Since the default img css is max-width:100%, the image will display horizontally centered and at its native dimensions if the container is wide enough or more than wide enough; otherwise, the picture will shrink proporionally, maintaining aspect ratio, to fit its container.  The container's height is automatically calculated from the height of its content, one image.
+	for (var n=0; n<freeImages.length; n++)
+	{
+		freeImages.eq(n).removeAttr('width');
+		freeImages.eq(n).removeAttr('height');
+		freeImages.eq(n).css('margin','0 auto');
+		var fiContainer = $('<div style="width:100%; text-align:center"></div>');
+		freeImages.eq(n).before(fiContainer);
+		fiContainer.append(freeImages.eq(n));
+	}
 	$('script').remove();
 }

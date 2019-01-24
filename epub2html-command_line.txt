@@ -1,3 +1,23 @@
+/eiw/public/unlisted/2019/eirv46n04-20190125/phjim98s3d42
+perl -w epub2html.pl  --ud 2019/eirv46n04-20190125/phjim98s3d42 --pft other -i ../Images=graphics/2019/4604 --iu ../Images=graphics/2019/4604 eir /r/eiw/private/2019/4/OEBPS/Text/
+
+perl -w epub2html.pl --po --gha ^
+-b 11-29_EIR04_b_section.xhtml=other/2019/4604-mass_strike_benefit_mankind.html ^
+-b 30-71_EIR04_c_section.xhtml=lar/2019/4604-understanding_science_of_music-lar.html ^
+-b Section0005.xhtml=other/editorials/2019/4604-1989_jailing_of_larouche.html ^
+-i ../Images=graphics/2019/4604 eir /r/eiw/private/2019/4/OEBPS/Text/
+
+-b 04-10_EIR04_a_section.xhtml=other/2019/4604-zepp_larouche_webcast_brit_pan.html ^
+-b 11-29_EIR04_b_section.xhtml=other/2019/4604-a_mass_strike_for_the_benefit.html ^
+-b 30-71_EIR04_c_section.xhtml=other/2019/4604-science_and_culture_truth_is_b.html ^
+-b Section0001.xhtml=other/2019/4604-the_elite_that_failed.html ^
+-b Section0002.xhtml=other/2019/index.html ^
+-b Section0003.xhtml=other/2019/4604-german_establishment_pledges_f.html ^
+-b Section0004.xhtml=other/2019/4604-china_s_lunar_far_side_mission.html ^
+-b Section0005.xhtml=other/2019/4604-thirty_years_ago_today_editori.html ^
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n04-20190125\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n04-20190125\index.html
+
 /eiw/public/unlisted/2019/eirv46n03-20190118/zko098hid657
 perl -w epub2html.pl  --ud 2019/eirv46n03-20190118/zko098hid657 --pft other -i ../Images=graphics/2019/4603 --iu ../Images=graphics/2019/4603 eir /r/eiw/private/2019/3/OEBPS/Text/
 

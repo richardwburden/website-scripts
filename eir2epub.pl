@@ -314,7 +314,7 @@ foreach $infilepath (@infiles)
     my $arritem = undef;
     my @arr_of_arrs = (\@footnote_links,\@footnote_anchors,\@MajorSubheads,\@Subheads,\@kickers,\@dkickers, \@bylines,
 		  \@Heads,\@italics,\@bolds,\@superscripts,\@subscripts,\@ucase,\@normals,\@normal_weights,\@layouts,\@h1s,\@extracts,\@extractbs,\@extractms,\@extractes,\@spaceAbove,\@departments,
-		       \@ArticleTitles,\@ArticleTitleNoKickers,\@ArticleBlurbs,\@ArticleBylines,\@cmt);
+		       \@ArticleTitles,\@ArticleTitleNoKickers,\@ArticleBlurbs,\@ArticleBylines,\@cmt,\@sharpflats);
     while ($arr = shift(@arr_of_arrs))
     {
 	my @wrappers = ();

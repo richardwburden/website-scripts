@@ -30,6 +30,9 @@ use WWW::Mechanize;
 use Getopt::Long qw(:config no_ignore_case);
 use Pod::Usage;
 use Cwd;
+use Encode qw/encode decode /;
+use HTML::Entities qw/:DEFAULT encode_entities_numeric/;
+
 
 $HTML::Tagset::isKnown{"domain"} = 1;
 $HTML::Tagset::isHeadOrBodyElement{"domain"} = 1;
@@ -104,6 +107,8 @@ my $browserPath = $options{'browserPath'};
 my $browserOptions = $options{'browserOptions'};
 if (not defined $browserOptions) {$browserOptions = '--headless --dump-dom'}
 if (not defined $browserPath) {$browserPath = '%BROWSER_PATH%'}
+my $delCmd = $options{'delCmd'};
+if (not defined $delCmd) {$delCmd = 'del'}
 my $responsivePagesPathPrefix = $options{'responsivePagesPathPrefix'};
 my $nullDevice = $options{'nullDevice'};
 my $localHostURL = $options{'localHostURL'};
@@ -201,7 +206,7 @@ foreach $infilepath (@infiles)
 
 foreach $infilepath (keys %relocations)
 {
-    if (! open(INFILE, $infilepath)){print STDERR "can't open $infilepath for reading: $!"; next}
+    if (! open(INFILE, "<:encoding(utf-8)", $infilepath)){print STDERR "can't open $infilepath for reading: $!"; next}
     my $outfile = $relocations{$infilepath};
     my @outfile = File::Spec->splitpath($outfile);
     my $outfiledir = File::Spec->join($outfile[0],$outfile[1]);
@@ -218,12 +223,29 @@ foreach $infilepath (keys %relocations)
     $tree->store_comments(1);
     $tree->parse_file(\*INFILE);
     close INFILE;
+
+    
+    my $safeChars = "";
+    my $typeMeta = $tree->look_down('_tag','meta','http-equiv',qr/content-type/);
+    #if not utf-8, encode all unsafe characters as HTML entities
+    if ((not defined $typeMeta) or $typeMeta->attr('content') !~ /charset=utf-8/i)
+    {$safeChars = undef}
+=head
+    #if not utf-8, read it again as iso-8859-1, and encode it as utf-8
+    {
+	if (! open(INFILE, "<:encoding(Latin-1)", $infilepath)){print STDERR "can't open $infilepath for reading: $!"; next}
+	$tree->store_comments(1);
+	$tree->parse_file(\*INFILE);
+	close INFILE;
+    }
+=cut
     my $dirURL = $outfiledir;
     $dirURL = $localHostURL . substr($dirURL,length($docRoot));
     $dirURL =~ s%\\%/%g;
     my $savedDir = getcwd();
-    #open temporary file for writing
-    open (TEMP,"+>$outfiledir\\temp.html") || die "can't open $outfiledir\\temp.html for writing: $!";
+    #open temporary file for writing. Write it out in utf-8.
+    open (TEMP,"+>:encoding(utf-8)","$outfiledir\\temp.html") || die "can't open $outfiledir\\temp.html for writing: $!";
+    #open (TEMP,"+>$outfiledir\\temp.html") || die "can't open $outfiledir\\temp.html for writing: $!";
 
     my @acontent = $tree->find_by_tag_name('body')->content_list;
     my @atitle = $tree->find_by_tag_name('title');
@@ -245,7 +267,13 @@ foreach $infilepath (keys %relocations)
     updateDocumentRelativeLinks ($attreeClone,$infilepath,$outfile,$changedLinksHashRef);
 
     #write the stuffed clone of the article template to a temporary HTML file
-    print TEMP $attreeClone->as_HTML("","\t",\%empty);
+    my $tempfile = $attreeClone->as_HTML($safeChars,"\t",\%empty);
+    #decode_entities ($tempfile);
+   # $tempfile =~ s%\xc297%&8212;%gs;
+    #encode_entities_numeric ($tempfile);
+   # my %safeEntities = ('&lt;','<','&gt;','>');
+    #_decode_entities($tempfile,{lt=>'<',gt=>'>'});
+    print TEMP $tempfile;
     close TEMP;
 
     #discard the stuffed clone of the article template
@@ -255,6 +283,7 @@ foreach $infilepath (keys %relocations)
     chdir $outfiledir;
     my $cmd = '"'.$browserPath.'" '.$browserOptions.' "'.$dirURL.'/temp.html" > "'.$outfile.'"';
     system($cmd);
+    system($delCmd.' temp.html');
     chdir $savedDir;
     my $outfileURL = substr($outfile,length($docRoot));
     $outfileURL =~ s%\\%/%g;
