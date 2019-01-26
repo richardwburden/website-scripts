@@ -15,6 +15,10 @@ Options whose name(s) are followed by '=' require an argument.  The letter follo
 
 appendBrowserScript|abs causes the browser script to be appended instead of overwritten. Regardless of options, this script generates a browser script that can be used to invoke a browser to download  all the non-responsive EIR pages that are linked from the EIR home page, insert JavaScript in those pages, execute the JavaScript, then write the result.  The browser script is written to the value of 'browserScriptPath' in the config file.  Each line of the browser script will contain bp bo URL > lpp, where 'bp' is the value of 'browserPath' in the config file, 'bo' the value of 'browserOptions', 'URL' the absolute URL of the page on the site, and 'lpp' is the local page path, the absolute path of the location in the local file system corresponding to the URL to which the new responsive page will be uploaded. The 'docroot' attribute of the 'domain' tag in the config file is prepended to the path portion of the URL to calculate the lpp.  If the config. file lacks 'browserOptions', '--headless --dump-dom', the options appropriate for Chrome and other Chromium-based browsers such as Yandex, are inserted by default.
 
+ runJavaScript|rjs
+
+launches a headless browser on each input file to run the JavaScript.  Off by default.
+
 =cut
 
 use HTML::TreeBuilder;
@@ -50,8 +54,9 @@ sub updateDocumentRelativeLinks($$$$);
 
 my $help = 0;
 my $appendBrowserScript = 0;
+my $runJavaScript = 0;
 
-GetOptions ('help|?' => \$help,'appendBrowserScript|abs' => \$appendBrowserScript);
+GetOptions ('help|?' => \$help,'appendBrowserScript|abs' => \$appendBrowserScript,'runJavaScript|rjs' => \$runJavaScript);
 pod2usage(1) if $help;
 
 my $program_basename = $0;
@@ -72,7 +77,7 @@ if (lc($ARGV[0]) eq 'debug')
 if (@ARGV < 2) {usage()}
 
 #process the config file selector
-my $configPath = $ARGV[0];
+my $configPath = shift @ARGV;
 
 if ($configPath eq '-') {$configPath = "$program_basename.xml"}
 else {$configPath = "$program_basename-$configPath.xml"}
@@ -109,6 +114,8 @@ if (not defined $browserOptions) {$browserOptions = '--headless --dump-dom'}
 if (not defined $browserPath) {$browserPath = '%BROWSER_PATH%'}
 my $delCmd = $options{'delCmd'};
 if (not defined $delCmd) {$delCmd = 'del'}
+my $mvCmd = $options{'mvCmd'};
+if (not defined $mvCmd) {$mvCmd = 'move'}
 my $responsivePagesPathPrefix = $options{'responsivePagesPathPrefix'};
 my $nullDevice = $options{'nullDevice'};
 my $localHostURL = $options{'localHostURL'};
@@ -138,8 +145,12 @@ $attree->parse_file(\*ARTICLETEMPLATE);
 close ARTICLETEMPLATE;
 
 #process the input file/directory/glob pattern.
-my $inpath = "";
-$inpath = $ARGV[1];
+@infiles = ();
+%relocations = ();
+
+while (@ARGV)
+{
+my $inpath = shift @ARGV;
 #Extract filenames from $inpath
 
 $inpath =~ s%/%\\%g;
@@ -147,8 +158,6 @@ $inpath =~ s%/%\\%g;
 $inpath = File::Spec->join($docRoot,$inpath);
 
 @inpath = File::Spec->splitpath($inpath);
-@infiles = ();
-%relocations = ();
 
 my $is_directory = 0;
 my $mode = undef;
@@ -163,11 +172,14 @@ if ($is_directory)
 elsif ($inpath[2] =~ /[\?\*]/)
 {
     print "globpath: $inpath\n";
-    @infiles = glob ($inpath);
+    push @infiles, glob ($inpath);
 }
 
 else
-{@infiles = ($inpath)}
+{
+    push @infiles, $inpath
+}
+}
 
 #build hash of new URLs for pages to be made responsive keyed by their current URLs 
 foreach $infilepath (@infiles)
@@ -177,7 +189,7 @@ foreach $infilepath (@infiles)
     my $responsive = 0;
     while (<INFILE>)
     {
-	if ($_ =~ /meta content="width=device-width/) {$responsive = 1; last}
+	if ($_ =~ /meta[^>]+content="width=device-width/) {$responsive = 1; last}
     }
     close INFILE;
     if ($responsive){next}
@@ -204,7 +216,7 @@ foreach $infilepath (@infiles)
     $relocations{$infilepath} = $outfile;
 }
 
-foreach $infilepath (keys %relocations)
+foreach $infilepath (sort (keys %relocations))
 {
     if (! open(INFILE, "<:encoding(utf-8)", $infilepath)){print STDERR "can't open $infilepath for reading: $!"; next}
     my $outfile = $relocations{$infilepath};
@@ -243,9 +255,6 @@ foreach $infilepath (keys %relocations)
     $dirURL = $localHostURL . substr($dirURL,length($docRoot));
     $dirURL =~ s%\\%/%g;
     my $savedDir = getcwd();
-    #open temporary file for writing. Write it out in utf-8.
-    open (TEMP,"+>:encoding(utf-8)","$outfiledir\\temp.html") || die "can't open $outfiledir\\temp.html for writing: $!";
-    #open (TEMP,"+>$outfiledir\\temp.html") || die "can't open $outfiledir\\temp.html for writing: $!";
 
     my @acontent = $tree->find_by_tag_name('body')->content_list;
     my @atitle = $tree->find_by_tag_name('title');
@@ -266,28 +275,64 @@ foreach $infilepath (keys %relocations)
     my $changedLinksHashRef = updateSiteRelativeLinks ($attreeClone,$infilepath,$outfile);
     updateDocumentRelativeLinks ($attreeClone,$infilepath,$outfile,$changedLinksHashRef);
 
-    #write the stuffed clone of the article template to a temporary HTML file
-    my $tempfile = $attreeClone->as_HTML($safeChars,"\t",\%empty);
-    #decode_entities ($tempfile);
-   # $tempfile =~ s%\xc297%&8212;%gs;
-    #encode_entities_numeric ($tempfile);
-   # my %safeEntities = ('&lt;','<','&gt;','>');
-    #_decode_entities($tempfile,{lt=>'<',gt=>'>'});
-    print TEMP $tempfile;
-    close TEMP;
+    if ($runJavaScript)
+    {
+	#open temporary file for writing. Write it out in utf-8.
+	open (TEMP,"+>:encoding(utf-8)","$outfiledir\\temp.html") || die "can't open $outfiledir\\temp.html for writing: $!";
+
+	#write the stuffed clone of the article template to a temporary HTML file
+	print TEMP $attreeClone->as_HTML($safeChars,"\t",\%empty);
+	close TEMP;
+
+	#use a browser to execute the JavaScript on the temporary HTML file and save to $outfile
+	chdir $outfiledir;
+	my $cmd = '"'.$browserPath.'" '.$browserOptions.' "'.$dirURL.'/temp.html" > "'.$outfile.'"';
+	system($cmd);
+	system($delCmd.' temp.html');
+	chdir $savedDir;
+    }
+    else
+    {
+	open (OUTFILE,"+>:encoding(utf-8)","$outfile") || warn "can't open $outfiledir for writing: $!";
+	print OUTFILE $attreeClone->as_HTML($safeChars,"\t",\%empty);
+	close OUTFILE;
+    }
 
     #discard the stuffed clone of the article template
     $attreeClone->delete;
 
-    #use a browser to execute the JavaScript on the temporary HTML file and save to $outfile
-    chdir $outfiledir;
-    my $cmd = '"'.$browserPath.'" '.$browserOptions.' "'.$dirURL.'/temp.html" > "'.$outfile.'"';
-    system($cmd);
-    system($delCmd.' temp.html');
-    chdir $savedDir;
+    open (OUTFILE,"<:encoding(utf-8)","$outfile") || warn "can't open $outfiledir for reading: $!";
+    my $good = 1;
+    while (<OUTFILE>)
+    {
+	if ($_ =~ /<!-- old article content table cell not found -->/) {$good = 0; last}
+	if ($_ =~ /<head/i) {last}
+    }
+    close OUTFILE;
+    my $warning = "";
+    if (not $good)
+    {
+	my $oldOutfile = $outfile;
+	$outfile =~ s%\.(.*?)$%.bad.$1%;
+	$warning = "BAD PAGE: ";
+	system ($mvCmd.' "'.$oldOutfile.'" "'.$outfile.'"');
+    }
     my $outfileURL = substr($outfile,length($docRoot));
     $outfileURL =~ s%\\%/%g;
-    print OFLP '<a href="'.$outfileURL.'">'.$outfileURL.'</a><br />'."\n";
+    print OFLP '<p>'.$warning.'<a href="'.$outfileURL.'">'.$outfileURL.'</a></p>'."\n";
+
+=head
+    if ($good)
+    {
+	my $outfileURL = substr($outfile,length($docRoot));
+	$outfileURL =~ s%\\%/%g;
+	print OFLP '<p><a href="'.$outfileURL.'">'.$outfileURL.'</a></p>'."\n";
+    }
+    else
+    {
+	system($delCmd.' "'.$outfile.'"');
+    }
+=cut
 }
 close OFLP;
 

@@ -79,6 +79,7 @@ jQuery.fn.outerHTML = function(s) {
 })(jQuery);
 
 
+
 (function($) {
     $.fn.closestNext = function(selector) {
         selector = selector.replace(/^\s+|\s+$/g, "");
@@ -210,36 +211,82 @@ function textTooWide (textobjs,maxTextWidth)
 	return (tw > maxTextWidth) 
 }
 
+function getContentWidth(obj, objName)
+{
+	var descendants = obj.find("*");
+	console.log('getContentWidth: '+descendants.length+' descendants of '+objName+' found');
+	var maxWidth = 0;
+	for (var i=0; i<descendants.length; i++)
+	{
+		var w = descendants.eq(i).attr('width');
+		if (w !== undefined && w > maxWidth)
+		{
+			console.log('getContentWidth: width of '+descendants.eq(i).outerHTML().substring(0,30)+': '+w);
+			maxWidth = w;
+		}
+		else if ((w === undefined || w === 0) && descendants.eq(i).prop('tagName') === 'IMG')
+		{
+			w = getImageArrayWidth(descendants.eq(i));
+			if (w > maxWidth) {maxWidth = w;}
+		}
+	}
+	if (maxWidth > 0) {return maxWidth;}
+	else {return obj.width();}
+}
+
 function adjustObjWidth(obj, objName,share_row)
 // share_row is boolean: true if obj shares a cell or a row inside a table and should therefore be given a percentage width. Otherwise, its width attribute will be converted to a CSS max-width style
 {
 	var objWidth = obj.width();
+	if (share_row && obj.attr('width') === undefined)
+	{objWidth = getContentWidth(obj,objName);}
+
 	//console.log(objName+' margin: '+obj.css('margin'));
 	var objOuterWidth = obj.outerWidth();
 	if (share_row) //include the margin
 	{
 		objOuterWidth = obj.outerWidth(true);
+		if (objOuterWidth === 0) 
+		{
+		//	obj.attr('width','100%');
+		//	objOuterWidth = obj.outerWidth(true);
+			objOuterWidth = objWidth;
+		}
 	}
-	console.log(objName+' outerWidth: '+objOuterWidth);
+	console.log(objName+' outerWidth: '+objOuterWidth+' tagName: '+obj.prop("tagName"));
 	var objPaddingBorderMargin = objOuterWidth - objWidth;
 	var objParentWidth = obj.parent().width();
-	//var objParentCode = obj.parent()[0].outerHTML.substring(0,30);
-	//console.log('objParent: '+objParentCode+ ' objParentWidth: '+objParentWidth);
+	if (objParentWidth === undefined)
+	{
+		objParentWidth = objOuterWidth;	
+	}
+	var objParentCode = obj.parent()[0].outerHTML.substring(0,30);
+	console.log('objParent: '+objParentCode+ ' objParentWidth: '+objParentWidth);
 	if (objOuterWidth > objParentWidth)
 	{	
 		objWidth = objParentWidth - objPaddingBorderMargin;
 		obj.width(objWidth);
+		console.log('adjusted objWidth: '+objWidth);
 	}
-	objWidthPct = '100%';
+	var objWidthPct = '100%';
 	if (share_row)
 	{
-		objWidthPct = (100 * objWidth / (objParentWidth - objPaddingBorderMargin)) + '%';
+		if (objParentWidth > objPaddingBorderMargin)
+		{
+			objWidthPct = (100 * objWidth / (objParentWidth - objPaddingBorderMargin)) + '%';
+		}
 		obj.attr('width',objWidthPct);
 		console.log('width of '+ objName + ': '+objWidth+'; changed to '+objWidthPct);
+	}
+	else if (obj.prop('tagName') === 'TABLE')
+	{
+		obj.css('max-width', '100%');
+		obj.removeAttr('width');
 	}
 	else
 	{
 		obj.css('max-width', objWidth+'px');
+		objWidth = 0;
 		obj.removeAttr('width');
 		console.log('width attribute of '+ objName + ' ('+objWidth+') replaced with CSS style attribute max-width');
 	}
@@ -273,21 +320,32 @@ function processImages(layouts)
 		layouts.eq(i).css({'margin':'0 auto'});
 		var rows = layouts.eq(i).find('tr');
 		console.log('table '+i+' has '+rows.length+' rows');
+		var maxRowWidth = 0;
 		for (var j = 0; j < rows.length; j++)
 		{
+			var rowWidth = 0;
 			var columns = rows.eq(j).find('td, th');
 			for (var k = 0; k < columns.length; k++)
 			{
 				console.log('Row '+j+', Column '+k+':');
 				var imgs = columns.eq(k).find('img');
+				console.log(imgs.length+' images found');
+				if (imgs.length > 0)  //center the images
+					{columns.eq(k).attr('align','center');}
+
+
 				// compute the combined width of the images in this cell when their height and width attributes are removed (exposing their natural height and width), as they are laid out according to their CSS styles.
 				var maxImgWidth = getImageArrayWidth(imgs);
+				rowWidth += maxImgWidth;
+				if (rowWidth > maxRowWidth) {maxRowWidth = rowWidth;}
 				console.log('maxImgWidth: '+maxImgWidth);
+				
 				var colWidth = adjustObjWidth(columns.eq(k),'table '+i+', row '+j+', column '+k,true);
 				console.log('column width: '+colWidth.num+'('+colWidth.pct+')');
+	
 				var objs = columns.eq(k).contents();
 				var textobjs = [];
-				for(n=0;n<objs.length;n++)
+				for(var n=0;n<objs.length;n++)
 				{
 					var text = objs.eq(n).text();
 					console.log('Row '+j+', Column '+k+':'+', object '+n+' text: "'+text+'"');
@@ -302,17 +360,26 @@ function processImages(layouts)
 				}
 
 				var maxWidth = 3*colWidth.num;
-				console.log('max column width: '+maxWidth);
-
-				if (textTooWide(textobjs,maxWidth))
+				var maxMaxWidth = 3*maxRowWidth;
+				console.log('max text length for this column: '+maxWidth);
+				console.log('max text length for this table: '+maxMaxWidth);
+				
+				if (textTooWide(textobjs,maxMaxWidth))
 				{
 					layouts.eq(i).css('max-width','none');
-					console.log('table '+i+' widened to 100% to accomodate long text');	
+					console.log('table '+i+' CSS max-width removed to accomodate long text');	
+					//this attribute now required because the column has become wider than the image
+					columns.eq(k).attr('align','center');
+				}
+	            else if (textTooWide(textobjs,maxWidth))
+				{
+					layouts.eq(i).css('max-width','maxRowWidth'+'px');
+					console.log('table '+i+' CSS max-width adjusted to accomodate long text');	
 					//this attribute now required because the column has become wider than the image
 					columns.eq(k).attr('align','center');
 				}
 								
-				if (imgs.length == 1)
+				if (imgs.length === 1)
 				{ imgs.eq(0).removeAttr('width'); imgs.eq(0).removeAttr('height'); }
 				else
 				{
@@ -323,28 +390,99 @@ function processImages(layouts)
 						imgs.eq(m).removeAttr('height');					
 					}
 				}
+				for (var m = 0; m<imgs.length; m++)
+				{
+					if (imgs.eq(m).parents('a').length === 0)
+					{
+						var src = imgs.eq(m).attr('src');
+						var linkToSelf = $('<a href='+src+' title="View full size"></a>');
+						imgs.eq(m).before(linkToSelf);
+						linkToSelf.append(imgs.eq(m));
+					}
+				}
+	
+				if (rowWidth > maxRowWidth) {maxRowWidth = rowWidth;}
 			}
+			if (maxRowWidth > tableWidth.num) {tableWidth.num = maxRowWidth;}
 		}
+	
+		if (layouts.eq(i).css('max-width') !== 'none')
+		{
+			layouts.eq(i).css('max-width',tableWidth.num+'px');
+			console.log('table '+i+' CSS max-width set to '+tableWidth.num+'px to accomodate images');	
+		}
+		console.log('removing table width and height attributes and CSS');
+		layouts.eq(i).css('width', 'auto');
+		layouts.eq(i).css('height', 'auto');
+		layouts.eq(i).removeAttr('width');
+		layouts.eq(i).removeAttr('height');
 	}
 }
+
+(function($) {
+    $.fn.replaceFontTag = function (bodyFontSize) {
+		var size = this.attr('size');
+		if (size !== '-1') 
+		{
+			return this.contents();	
+		}
+		else
+		{
+			var bodyFontSizeNumber = bodyFontSize.match(/^\d+/);
+			var bodyFontSizeUnits = bodyFontSize.match(/[a-z]+$/i);
+			var newMinus1Size = (0.8*bodyFontSizeNumber) + bodyFontSizeUnits;
+			//console.log('newMinus1Size: '+newMinus1Size);
+			var newTag = $('<span></span>');
+			newTag.css('font-size',newMinus1Size);
+			newTag.css('line-height','normal');
+			newTag.append(this.contents());
+			return newTag;
+		}	
+	};
+})(jQuery);
 
 function processNRpage()
 {
 	//console.log('processNRpage');
+	// #old_article_content contains the entire contents of the body tag of the original page. #article_body is the container for the article content in the template from which the new, responsive page is to be generated.
     $('#old_article_content').appendTo('#article_body');
-	var oac = $('#old_article_content table tr td:has(p)');
-	$('#old_article_content').replaceWith(oac.contents());
-	$('font').replaceWith(function(){
-		var newTag = $('<span></span>');
-		var size = $(this).attr('size');
-		if (size == '-1') {newTag.css('font-size','80%');}
-		newTag.css('line-height','normal');
-		newTag.append($(this).contents());
-		return newTag;});
-
+	// select the first table cell from #old_article_content that contains a p tag.  This should be the cell that contains the article content.  If that cell is found, replace #old_article_content with the content of that cell.  #article_body now contains the old article's content.  If that cell is not found, insert a comment at the beginning of the document to alert the perl script that this page is defective and should not be posted on the website.
+	var oac = $('#old_article_content table tr td:has(p)').eq(0);
+	console.log('oac.length: '+oac.length);
+	if (oac.length === 0)
+	{
+		$('html').prepend('<!-- old article content table cell not found -->');
+		// shorten the file to be written, since it's going to be deleted.  Delete 'head' last because it contains a reference to this script.
+//		$('body').remove();  
+//		$('head').remove();  
+//		return;
+	}
+	//console.log('oac length: '+oac.length);
+	else
+	{
+		$('#old_article_content').replaceWith(oac.contents());
+	}
+	var bodyFontSize = $('body').css('font-size');
+	var fontTags = $('font');
+	for (var p=0; p<fontTags.length; p++)
+	{
+		var replacement = fontTags.eq(p).replaceFontTag(bodyFontSize);
+		fontTags.eq(p).replaceWith(replacement);
+	}
 	var layouts = $('#article_body').find('table:has(img)');
+
+	if (oac.length === 0)
+	{
+		layouts = $('#old_article_content').find('table:has(img)');
+	}
 	processImages(layouts);
+	
 	var freeImages = $('#article_body').find('img[width]');
+	if (oac.length === 0)
+	{
+		freeImages = $('#old_article_content').find('img[width]');
+	}
+	
 	//console.log('free images :'+freeImages.length);
 	//free images are those not contained in a table cell.  Here we strip them of width and height attributes and center them in a containing div.  Since the default img css is max-width:100%, the image will display horizontally centered and at its native dimensions if the container is wide enough or more than wide enough; otherwise, the picture will shrink proporionally, maintaining aspect ratio, to fit its container.  The container's height is automatically calculated from the height of its content, one image.
 	for (var n=0; n<freeImages.length; n++)
