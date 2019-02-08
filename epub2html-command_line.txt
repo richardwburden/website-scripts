@@ -1,3 +1,47 @@
+/eiw/public/unlisted/2019/eirv46n06-20190208/dt98i3kj76f6
+perl -w epub2html.pl  --ud 2019/eirv46n06-20190208/dt98i3kj76f6 --pft other -i ../Images=graphics/2019/4606 --iu ../Images=graphics/2019/4606 eir /r/eiw/private/2019/6/OEBPS/Text/
+
+perl -w epub2html.pl --po --gha ^
+-b Section0001.xhtml=other/editorials/2019/4606-the_new_strategic_architecture.html ^
+-b 40-58_EIR065_d_section.xhtml=lar/2019/4606-musical_theory_in_phys_sci-lar.html ^
+-b Section0005.xhtml=other/2019/4606-agape_as_policy_gen_macarthur.html ^
+-i ../Images=graphics/2019/4606 eir /r/eiw/private/2019/6/OEBPS/Text/
+
+-b 05-19_EIR06_a_section.xhtml=other/2019/4606-brit_pawns_attack_trump_the_ro.html ^
+-b 20-32_EIR06_b_section.xhtml=other/2019/4606-zepp_larouche_webcast_to_shut.html ^
+-b 33-39_EIR06_c_section.xhtml=other/2019/4606-radio_astronomy_peeking_into_t.html ^
+-b 40-58_EIR065_d_section.xhtml=other/2019/4606-memorandum_the_axiomatic_basis.html ^
+-b Section0001.xhtml=other/2019/4606-the_new_strategic_architecture.html ^
+-b Section0002.xhtml=other/2019/index.html ^
+-b Section0003.xhtml=other/2019/4606-caught_notes_on_robert_mueller.html ^
+-b Section0004.xhtml=other/2019/4606-historic_u_s_china_agreement_b.html ^
+-b Section0005.xhtml=other/2019/4606-agap_as_policy_general_douglas.html ^
+-b Section0006.xhtml=other/2019/4606-interview_jacques_cheminade_th.html ^
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n06-20190208\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n06-20190208\index.html
+
+
+/eiw/public/unlisted/2019/eirv46n05-20190201/aio093lop465
+perl -w epub2html.pl  --ud 2019/eirv46n05-20190201/aio093lop465 --pft other -i ../Images=graphics/2019/4605 --iu ../Images=graphics/2019/4605 eir /r/eiw/private/2019/5/OEBPS/Text/
+
+perl -w epub2html.pl --po --gha ^
+-b 21-40_EIR05_b_section.xhtml=other/2019/4605-one_million_new_family_farms.html ^
+-b 41-52_EIR05_c_section.xhtml=lar/2019/4605-memorandum_to_the_iclc-lar.html ^
+-b Section0001.xhtml=other/editorials/2019/4605-citizen_alert_shut_this_down_r.html ^
+-i ../Images=graphics/2019/4605 eir /r/eiw/private/2019/5/OEBPS/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n05-20190201\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n05-20190201\index.html
+
+
+-b 06-20_EIR05_a_section.xhtml=other/2019/4605-zepp_larouche_webcast_british.html ^
+-b 21-40_EIR05_b_section.xhtml=other/2019/4605-farm_state_glass_steagall_supp.html ^
+-b 41-52_EIR05_c_section.xhtml=other/2019/4605-memorandum_to_the_internationa.html ^
+-b Section0001.xhtml=other/2019/4605-citizen_alert_shut_this_down_r.html ^
+-b Section0002.xhtml=other/2019/index.html ^
+-b Section0003.xhtml=other/2019/4605-the_common_aims_of_mankind_the.html ^
+-b Section0004.xhtml=other/2019/4605-lebanon_s_president_aoun_propo.html ^
+
+
 /eiw/public/unlisted/2019/eirv46n04-20190125/phjim98s3d42
 perl -w epub2html.pl  --ud 2019/eirv46n04-20190125/phjim98s3d42 --pft other -i ../Images=graphics/2019/4604 --iu ../Images=graphics/2019/4604 eir /r/eiw/private/2019/4/OEBPS/Text/
 

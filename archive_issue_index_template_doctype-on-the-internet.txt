@@ -1,7 +1,7 @@
 <!DOCTYPE html       [
  <!ENTITY % w3centities-f PUBLIC
          "-//W3C//ENTITIES Combined Set//EN//XML"
-         "file:///C:/Users/Richard/Dropbox_insecure/Dropbox/software/website-scripts/website-scripts/w3centities-f.ent"
+         "http://www.w3.org/2003/entities/2007/w3centities-f.ent"
        >
        %w3centities-f;
 ]>
