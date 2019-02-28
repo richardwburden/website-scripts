@@ -1,3 +1,54 @@
+/eiw/public/unlisted/2019/eirv46n08-20190301/1m69hJ3deXz0
+perl -w epub2html.pl  --ud 2019/eirv46n08-20190301/1m69hJ3deXz0 --pft other -i ../Images=graphics/2019/4608 --iu ../Images=graphics/2019/4608 eir /r/eiw/private/2019/8/OEBPS/Text/
+
+perl -w epub2html.pl --po --gha ^
+-b Section0001.xhtml=other/editorials/2019/4608-let_s_realize_the_dream_of_all-hzl.html ^
+-b Section0010.xhtml=other/2019/4608-dennis_small_justice_for_the_w.html ^
+-b 48-64_EIR08_b_section.xhtml=other/2019/4608-lyndon_h_larouche_jr_obituary.html ^
+-i ../Images=graphics/2019/4608 eir /r/eiw/private/2019/8/OEBPS/Text/
+
+-b 07-47_EIR08_a_section.xhtml=other/2019/4608-schiller_institute_conference.html ^
+-b 48-64_EIR08_b_section.xhtml=other/2019/4608-obituary.html ^
+-b 65-70_EIR08_c_section.xhtml=other/2019/4608-end_the_wall_street_nightmare.html ^
+-b Section0001.xhtml=other/2019/4608-let_s_realize_the_dream_of_all.html ^
+-b Section0002.xhtml=other/2019/4608-lyndon_larouche_s_present_and.html ^
+-b Section0003.xhtml=other/2019/index.html ^
+-b Section0004.xhtml=other/2019/4608-panel_i_let_us_create_a_new_mo.html ^
+-b Section0005.xhtml=other/2019/4608-jacques_cheminade_the_coming_w.html ^
+-b Section0006.xhtml=other/2019/4608-john_gong_chinese_investment_a.html ^
+-b Section0007.xhtml=other/2019/4608-ambassador_vassily_a_nebenzia.html ^
+-b Section0008.xhtml=other/2019/4608-william_binney_there_is_no_suc.html ^
+-b Section0009.xhtml=other/2019/4608-jason_ross_the_urgent_need_for.html ^
+-b Section0010.xhtml=other/2019/4608-dennis_small_justice_for_the_w.html ^
+-b Section0011.xhtml=other/2019/4608-from_the_q_a_session_of_panel.html ^
+-b Section0012.xhtml=other/2019/4608-messages_of_condolence.html ^
+-b Section0013.xhtml=other/2019/4608-petition.html ^
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n08-20190301\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n08-20190301\index.html
+
+/eiw/public/unlisted/2019/eirv46n07-20190215/lo8J76fW4cx1
+perl -w epub2html.pl  --ud 2019/eirv46n07-20190215/lo8J76fW4cx1 --pft other -i ../Images=graphics/2019/4607 --iu ../Images=graphics/2019/4607 eir /r/eiw/private/2019/7/OEBPS/Text/
+
+perl -w epub2html.pl --po --gha ^
+-b Section0002.xhtml=other/editorials/2019/4607-man_s_fate.html ^
+-b Section0001.xhtml=other/2019/4607-lyndon_h_larouche_jr_1922-2019.html ^
+-b 36-60_EIR07_c_section.xhtml=lar/2019/4607-systems_analysis_is_white_coll-lar.html ^
+-i ../Images=graphics/2019/4607 eir /r/eiw/private/2019/7/OEBPS/Text/
+
+-b 06-18_EIR07_a_section.xhtml=other/2019/4607-the_green_new_deal_is_fascist.html ^
+-b 19-35_EIR05_b_section.xhtml=other/2019/4607-president_trump_s_poetic_call.html ^
+-b 36-60_EIR07_c_section.xhtml=other/2019/4607-systems_analysis_is_white_coll.html ^
+-b Section0001.xhtml=other/2019/4607-lyndon_h_larouche_jr_1922_2019.html ^
+-b Section0002.xhtml=other/2019/4607-man_s_fate.html ^
+-b Section0003.xhtml=other/2019/index.html ^
+-b Section0004.xhtml=other/2019/4607-the_finite_but_unbounded_unive.html ^
+-b Section0005.xhtml=other/2019/4607-american_counter_intelligence.html ^
+-b Section0006.xhtml=other/2019/4607-walter_jones_a_most_unusual_co.html ^
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n07-20190215\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n07-20190215\index.html
+
+
+
 /eiw/public/unlisted/2019/eirv46n06-20190208/dt98i3kj76f6
 perl -w epub2html.pl  --ud 2019/eirv46n06-20190208/dt98i3kj76f6 --pft other -i ../Images=graphics/2019/4606 --iu ../Images=graphics/2019/4606 eir /r/eiw/private/2019/6/OEBPS/Text/
 

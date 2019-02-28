@@ -784,6 +784,15 @@ foreach $infilepath (@infiles)
 	if (defined $byline) {$byline->postinsert($pdfLink)}
 	elsif (defined $head) {$head->postinsert($pdfLink)}
 	else {$iiLinkPara->postinsert($pdfLink)}
+
+	#non-breaking space entities in the template or the epub get converted
+	#into illegal characters that display as question marks in the web page,
+	#therefore it is necessary to use a div class="nbsp" in the epub and 
+	#in the template and convert it here to the entity.
+	my @nbsp = $ttree->look_down('class','nbsp');
+	foreach $nbsp (@nbsp)
+	{$nbsp->replace_with('&nbsp;&nbsp;&nbsp;&nbsp;')->delete}
+
 	my $output = $ttree->as_HTML("","\t",\%empty);
 	$ttree->delete;
 	$tree->delete;
