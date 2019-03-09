@@ -1,3 +1,36 @@
+/eiw/public/unlisted/2019/eirv46n09-20190308/kci3_2h77_kl
+perl -w epub2html.pl  --ud 2019/eirv46n09-20190308/kci3_2h77_kl --pft other -i ../Images=graphics/2019/4609 --iu ../Images=graphics/2019/4609 eir /r/eiw/private/2019/9/OEBPS/Text/
+
+perl -w epub2html.pl --po --gha ^
+-b Section0018.xhtml=other/2019/4609-messages_of_condolence.html ^
+-b 65-81_EIR08_c_section.xhtml=lar/2019/4609-metaphor-lar.html ^
+-b Section0001.xhtml=other/editorials/2019/4609-bill_binney_and_larry_johnson.html ^
+-i ../Images=graphics/2019/4609 eir /r/eiw/private/2019/9/OEBPS/Text/
+
+-b 08-31_EIR09_a_section.xhtml=other/2019/4609-zepp_larouche_webcast_defeat_t.html ^
+-b 32-64_EIR09_b_section.xhtml=other/2019/4609-greeting_from_r_p_tsokolibane.html ^
+-b 65-81_EIR08_c_section.xhtml=other/2019/4609-end_the_folly_in_sense_percept.html ^
+-b Section0001.xhtml=other/2019/4609-bill_binney_and_larry_johnson.html ^
+-b Section0002.xhtml=other/2019/index.html ^
+-b Section0003.xhtml=other/2019/4609-schiller_institute_conference.html ^
+-b Section0004.xhtml=other/2019/4609-megan_beets_panel_ii_the_aesth.html ^
+-b Section0005.xhtml=other/2019/4609-bruce_director_larouche_s_conc.html ^
+-b Section0006.xhtml=other/2019/4609-diane_sare_the_choral_principl.html ^
+-b Section0007.xhtml=other/2019/4609-john_sigerson_an_introduction.html ^
+-b Section0008.xhtml=other/2019/4609-panel_ii_the_aesthetic_educati.html ^
+-b Section0009.xhtml=other/2019/4609-video_excerpt_the_woman_on_mar.html ^
+-b Section0010.xhtml=other/2019/4609-kesha_rogers_frontiers_of_spac.html ^
+-b Section0011.xhtml=other/2019/4609-thomas_wysmuller_what_nasa_has.html ^
+-b Section0012.xhtml=other/2019/4609-larry_bell_what_makes_people_e.html ^
+-b Section0013.xhtml=other/2019/4609-benjamin_deniston_larouche_s_s.html ^
+-b Section0014.xhtml=other/2019/4609-hal_cooper_jr_rail_energy_and.html ^
+-b Section0015.xhtml=other/2019/4609-panel_iii_the_frontiers_of_sci.html ^
+-b Section0016.xhtml=other/2019/4609-video_excerpt_concluding_remar.html ^
+-b Section0017.xhtml=other/2019/4609-closing_remarks.html ^
+-b Section0018.xhtml=other/2019/4609-messages_of_condolence.html ^
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n09-20190308\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n09-20190308\index.html
+
 /eiw/public/unlisted/2019/eirv46n08-20190301/1m69hJ3deXz0
 perl -w epub2html.pl  --ud 2019/eirv46n08-20190301/1m69hJ3deXz0 --pft other -i ../Images=graphics/2019/4608 --iu ../Images=graphics/2019/4608 eir /r/eiw/private/2019/8/OEBPS/Text/
 
