@@ -1,3 +1,45 @@
+/eiw/public/unlisted/2019/eirv46n11-20190322/p8hK7s4d_O9i
+perl -w epub2html.pl  --ud 2019/eirv46n11-20190322/p8hK7s4d_O9i --pft other -i ../Images=graphics/2019/4611 --iu ../Images=graphics/2019/4611 eir /r/eiw/private/2019/11/OEBPS/Text/
+
+perl -w epub2html.pl --po --gha ^
+-b Section0002.xhtml=other/2019/4611-milan_conference_summary.html ^
+-b 17-23_EIR11_b_section.xhtml=other/2019/4611-civilization_sprouts_on_the_moon.html ^
+-i ../Images=graphics/2019/4611 eir /r/eiw/private/2019/11/OEBPS/Text/
+
+-b 03-16_EIR11_a_section.xhtml=other/2019/4611-conference_italy_on_the_new_si.html ^
+-b 17-23_EIR11_b_section.xhtml=other/2019/4611-civilization_sprouts_on_the_mo.html ^
+-b 24-26_EIR11_c_section.xhtml=other/2019/4611-messages_of_condolence_on_the.html ^
+-b 27-34_EIR11_d_section.xhtml=other/2019/4611-music_biology_the_human_mind_t.html ^
+-b Section0001.xhtml=other/2019/index.html ^
+-b Section0002.xhtml=other/2019/4611-0.html ^
+-b Section0003.xhtml=other/2019/4611-zepp_larouche_webcast_neo_cons.html ^
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n11-20190322\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n11-20190322\index.html
+
+/eiw/public/unlisted/2019/eirv46n10-20190315/p7hj7s3d_o9i
+perl -w epub2html.pl  --ud 2019/eirv46n10-20190315/p7hj7s3d_o9i --pft other -i ../Images=graphics/2019/4610 --iu ../Images=graphics/2019/4610 eir /r/eiw/private/2019/10/OEBPS/Text/
+
+perl -w epub2html.pl --po --gha ^
+-b 03-22_EIR10_a_section.xhtml=hzl/2019/4610-webcast_italy_joins_china-hzl.html ^
+-b 23-41_EIR10_b_section.xhtml=other/2019/4610-trump_committee_on_climate.html ^
+-b 51-73_EIR10_d_section.xhtml=lar/2019/4610-end_of_sense_deception-lar.html ^
+-i ../Images=graphics/2019/4610 eir /r/eiw/private/2019/10/OEBPS/Text/
+
+-b 03-22_EIR10_a_section.xhtml=other/2019/4610-zepp_larouche_webcast_italy_jo.html ^
+-b 23-41_EIR10_b_section.xhtml=other/2019/4610-president_trump_s_committee_on.html ^
+-b 42-50_EIR10_c_section.xhtml=other/2019/4610-n_y_times_caught_in_twice_told.html ^
+-b 51-73_EIR10_d_section.xhtml=other/2019/4610-the_future_in_science_the_comi.html ^
+-b Section0001.xhtml=other/2019/index.html ^
+-b Section0002.xhtml=other/2019/4610-italy_s_move_to_join_belt_and.html ^
+-b Section0003.xhtml=other/2019/4610-interview_discussion_with_phil.html ^
+-b Section0004.xhtml=other/2019/4610-pro_war_democrats_seek_to_over.html ^
+-b Section0005.xhtml=other/2019/4610-the_larouche_alternative_to_th.html ^
+-b Section0006.xhtml=other/2019/4610-larouche_south_africa_honors_t.html ^
+-b Section0007.xhtml=other/2019/4610-messages_of_condolence_on_the.html ^
+-b Section0008.xhtml=other/2019/4610-forget_popular_opinion_brahms.html ^
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n10-20190315\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n10-20190315\index.html
+
 /eiw/public/unlisted/2019/eirv46n09-20190308/kci3_2h77_kl
 perl -w epub2html.pl  --ud 2019/eirv46n09-20190308/kci3_2h77_kl --pft other -i ../Images=graphics/2019/4609 --iu ../Images=graphics/2019/4609 eir /r/eiw/private/2019/9/OEBPS/Text/
 

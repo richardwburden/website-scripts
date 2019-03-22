@@ -3,6 +3,8 @@
 
 #This script requires a web server to be running on the local host with the document root same as in the config file for this script.
 
+#/* The user may specify how a particular character style override is to be handled by editing the CSS file, adding '_XX_' to the beginning of the font-family for that style (adding a font-family if there is none), where XX is any character style override type recognized by eir2epub.pl, e.g. 'h1' for the 'h1_class', 'sf' for the 'sf_class'   */	
+
 use HTML::TreeBuilder;
 use HTML::Element;
 use File::Spec;
@@ -647,6 +649,13 @@ document root as specified in the configuration file, however:
 It should begin with a forward slash, use only forward slashes, and
 should be quoted if it contains spaces.  The spaces and other non-web-safe
 characters should not be converted to web-safe entities like '%20'.  The input directory must contain a subdirectory 'css' which contains the css files referenced in the XHTML files in the input directory.
+
+This script crashes when the input file contains span tags with no attributes.
+Misbehaves if the input file contains a tag that normally contains text or other tags (not <br /> or <meta ... />) that is closed without a closing tag that repeats the tag name, e.g. contains <div ... /> instead of <div ...>...</div>
+
+This script requires a web server to be running on the local host with the document root same as in the config file for this script.
+
+The user may specify how a particular character style override is to be handled by editing the CSS file, adding '_XX_' to the beginning of the font-family for that style (adding a font-family if there is none), where XX is any character style override type recognized by eir2epub.pl, e.g. 'h1' for the 'h1_class', 'sf' for the 'sf_class' 
 
 EOF
 
