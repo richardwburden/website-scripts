@@ -1,3 +1,341 @@
+#TEST# /eiw/public/unlisted/2019/eirv46n26-20190705/Wk90B64Jqa-4
+perlo -w epub2html.pl  --ud 2019/eirv46n26-20190705/Wk90B64Jqa-4 --pft other -i ../Images=graphics/2019/4626 --iu ../Images=graphics/2019/4626 eir /r/eiw/private/2019/26/a/OEBPS/Text/
+
+
+/eiw/public/unlisted/2019/eirv46n26-20190705/Wk90B64Jaq-3
+perlo -w epub2html.pl  --ud 2019/eirv46n26-20190705/Wk90B64Jaq-3 --pft other -i ../Images=graphics/2019/4626 --iu ../Images=graphics/2019/4626 eir /r/eiw/private/2019/26/OEBPS/Text/
+
+perlo -w epub2html.pl --po --gha ^
+-b 03-19_EIR09_a_section.xhtml=hzl/2019/4626-webcast_trump_kim_meet-hzl.html ^
+-b 20-54_EIR09_b_section_.xhtml=other/2019/4626-larouche_at_work_reagan_sdi.html ^
+-b 55-61_EIR09_c_section.xhtml=other/2019/4626-petition_on_anthropogenic_gw.html ^
+-b 62-74_EIR09_d_section.xhtml=lar/2019/4626-1997_isnt_1929_lesson_from_gauss-lar.html ^
+-i ../Images=graphics/2019/4626 eir /r/eiw/private/2019/26/OEBPS/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n26-20190705\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n26-20190705\index.html
+
+
+-b 03-19_EIR09_a_section.xhtml=other/2019/4626-zepp_larouche_webcast_trump_ki.html ^
+-b 20-54_EIR09_b_section_.xhtml=other/2019/4626-lyndon_larouche_at_work_reagan.html ^
+-b 55-61_EIR09_c_section.xhtml=other/2019/4626-petition_on_anthropogenic_glob.html ^
+-b 62-74_EIR09_d_section.xhtml=other/2019/4626-1997_is_not_1929_a_lesson_from.html ^
+-b Section0001.xhtml=other/2019/index.html ^
+-b Section0002.xhtml=other/2019/4626-the_strategic_urgency_of_exone.html ^
+-b Section0003.xhtml=other/2019/4626-voices_against_war_escalate_ar.html ^
+-b Section0004.xhtml=other/2019/4626-larouche_s_ideas_presented_to.html ^
+-b Section0005.xhtml=other/2019/4626-schiller_institute_report_brin.html ^
+-b Section0006.xhtml=other/2019/4626-the_u_s_as_importer_u_s_china.html ^
+-b Section0007.xhtml=other/2019/4626-another_silicon_valley_monster.html ^
+-b Section0008.xhtml=other/2019/4626-california_labor_bucks_the_gre.html ^
+-b Section0009.xhtml=other/2019/4626-when_future_historians_review.html ^
+
+
+/eiw/public/unlisted/2019/eirv46n25-20190628/bnl871POx6_2
+perlo -w epub2html.pl  --ud 2019/eirv46n25-20190628/bnl871POx6_2 --pft other -i ../Images=graphics/2019/4625 --iu ../Images=graphics/2019/4625 eir /r/eiw/private/2019/25/OEBPS/Text/
+
+perlo -w epub2html.pl --po --gha ^
+-b 06-15_EIR25_a_section.xhtml=hzl/2019/4625-webcast_exon_larouche_stop_ww3-hzl.html ^
+-b Section0001.xhtml=other/editorials/2019/4625-from_cyberwar_to_nuclear_war.html ^
+-b 27-40_EIR25_c_section.xhtml=other/2019/4625-african_high_speed_rail_finance.html ^
+-b 41-51_EIR25_d_section.xhtml=lar/2019/4625-science_vs_statistics-lar.html ^
+-i ../Images=graphics/2019/4625 eir /r/eiw/private/2019/25/OEBPS/Text/
+
+-b 06-15_EIR25_a_section.xhtml=other/2019/4625-zepp_larouche_webcast_the_exon.html ^
+-b 16-26_EIR25_b_section_.xhtml=other/2019/4625-the_past_is_prologue_marijuana.html ^
+-b 27-40_EIR25_c_section.xhtml=other/2019/4625-african_high_speed_rail_financ.html ^
+-b 41-51_EIR25_d_section.xhtml=other/2019/4625-science_vs_statistics_when_fat.html ^
+-b Section0001.xhtml=other/2019/4625-from_cyberwar_to_nuclear_war.html ^
+-b Section0002.xhtml=other/2019/index.html ^
+-b Section0003.xhtml=other/2019/4625-mobilization_to_exonerate_lynd.html ^
+-b Section0004.xhtml=other/2019/4625-medical_marijuana_is_a_fraud.html ^
+-b Section0005.xhtml=other/2019/4625-california_belt_road_forum_an.html ^
+-b Section0006.xhtml=other/2019/4625-leading_italian_senator_heads.html ^
+-b Section0007.xhtml=other/2019/4625-he_questions_the_premise_of_ru.html ^
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n25-20190628\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n25-20190628\index.html
+
+/eiw/public/unlisted/2019/eirv46n24-20190621/KvlniZj8jnrM
+perlo -w epub2html.pl  --ud 2019/eirv46n24-20190621/KvlniZj8jnrM --pft other -i ../Images=graphics/2019/4624 --iu ../Images=graphics/2019/4624 eir /r/eiw/private/2019/24/OEBPS/Text/
+
+perlo -w epub2html.pl --po --gha ^
+-b 04-24_EIR24_a_section.xhtml=other/2019/4624-interview_artemis_generation.html ^
+-b 25-33_EIR24_b_section.xhtml=other/2019/4624-interview_with_kris_stewart.html ^
+-b Section0001.xhtml=other/editorials/2019/4624-feature_video_exonerate_lyn.html ^
+-b Section0005.xhtml=hzl/2019/4624-webcast_war_danger_vs_lyns_ideas.html ^
+-b Section0009.xhtml=other/editorials/2019/4624-from_strangelove_to_dearlove.html ^
+-i ../Images=graphics/2019/4624 eir /r/eiw/private/2019/24/OEBPS/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n24-20190621\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n24-20190621\index.html
+
+-b 04-24_EIR24_a_section.xhtml=other/2019/4624-interview_the_artemis_generati.html ^
+-b 25-33_EIR24_b_section.xhtml=other/2019/4624-interview_with_kris_stewart_wh.html ^
+-b 34-61_EIR24_c_section.xhtml=other/2019/4624-from_larouche_s_webcast_of_apr.html ^
+-b Section0001.xhtml=other/2019/4624-major_feature_length_video_com.html ^
+-b Section0002.xhtml=other/2019/index.html ^
+-b Section0003.xhtml=other/2019/4624-put_the_real_russiagate_crimin.html ^
+-b Section0004.xhtml=other/2019/4624-italy_considers_moves_toward_m.html ^
+-b Section0005.xhtml=other/2019/4624-zepp_larouche_webcast_as_globa.html ^
+-b Section0006.xhtml=other/2019/4624-german_eco_dictatorship_decarb.html ^
+-b Section0007.xhtml=other/2019/4624-north_american_development_ban.html ^
+-b Section0008.xhtml=other/2019/4624-larouche_pac_class_music_and_c.html ^
+-b Section0009.xhtml=other/2019/4624-from_strangelove_to_dearlove_i.html ^
+
+/eiw/public/unlisted/2019/eirv46n23-20190614/1Sjvuklpo98c
+perlo -w epub2html.pl  --ud 2019/eirv46n23-20190614/1Sjvuklpo98c --pft other -i ../Images=graphics/2019/4623 --iu ../Images=graphics/2019/4623 eir /r/eiw/private/2019/23/OEBPS/Text/
+
+perlo -w epub2html.pl --po --gha ^
+-b 05-21_EIR23_a_section.xhtml=lar/2019/4623-in_the_garden_of_gethsemane-lar.html ^
+-b Section0001.xhtml=other/editorials/2019/4623-one_single_human_mission.html ^
+-b Section0004.xhtml=hzl/2019/4623-lhl_door_to_true_humanity-hzl.html ^
+-b Section0007.xhtml=other/2019/4623-u_s_china_coop_philippines.html ^
+-i ../Images=graphics/2019/4623 eir /r/eiw/private/2019/23/OEBPS/Text/
+
+-b 05-21_EIR23_a_section.xhtml=other/2019/4623-in_the_garden_of_gethsemane.html ^
+-b 22-38_EIR23_b_section.xhtml=other/2019/4623-interview_president_of_italian.html ^
+-b 39-42_EIR23_c_section.xhtml=other/2019/4623-agreement_among_four_powers_ca.html ^
+-b Section0001.xhtml=other/2019/4623-one_single_human_mission.html ^
+-b Section0002.xhtml=other/2019/index.html ^
+-b Section0003.xhtml=other/2019/4623-the_triumph_of_lyndon_h_larouc.html ^
+-b Section0004.xhtml=other/2019/4623-lyndon_h_larouche_jr_the_door.html ^
+-b Section0005.xhtml=other/2019/4623-interview_speed_and_sigerson_l.html ^
+-b Section0006.xhtml=other/2019/4623-from_sana_a_yemen_solemn_comme.html ^
+-b Section0007.xhtml=other/2019/4623-u_s_china_cooperation_in_the_p.html ^
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n23-20190614\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n23-20190614\index.html
+
+
+/eiw/public/unlisted/2019/eirv46n22-20190607/dgPl0_27SaiI
+perlo -w epub2html.pl  --ud 2019/eirv46n22-20190607/dgPl0_27SaiI --pft other -i ../Images=graphics/2019/4622 --iu ../Images=graphics/2019/4622 eir /r/eiw/private/2019/22/OEBPS/Text/
+
+/eiw/public/unlisted/2019/eirv46n21-20190531/bZ98jd4eiOp1
+
+perlo -w epub2html.pl  --ud 2019/eirv46n21-20190531/bZ98jd4eiOp1 --pft other -i ../Images=graphics/2019/4621 --iu ../Images=graphics/2019/4621 eir /r/eiw/private/2019/21/OEBPS/Text/
+
+perlo -w epub2html.pl --po --gha ^
+-b Section0001.xhtml=other/editorials/2019/4621-trump_vs_british_war_party.html ^
+-b 06-19_EIR21_a_section.xhtml=hzl/2019/4621-hzl_in_china-hzl.html ^
+-b Section0004.xhtml=other/2019/4621-trump_orders_declassification.html ^
+-i ../Images=graphics/2019/4621 eir /r/eiw/private/2019/21/OEBPS/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n21-20190531\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n21-20190531\index.html
+
+
+-b 06-19_EIR21_a_section.xhtml=other/2019/4621-zepp_larouche_in_china_the_hig.html ^
+-b 20-57_EIR21_b_section.xhtml=other/2019/4621-popular_misconceptions_about_s.html ^
+-b Section0001.xhtml=other/2019/4621-trump_escalates_fight_against.html ^
+-b Section0002.xhtml=other/2019/index.html ^
+-b Section0003.xhtml=other/2019/4621-conference_of_all_asian_nation.html ^
+-b Section0004.xhtml=other/2019/4621-the_british_seek_war_president.html ^
+-b Section0005.xhtml=other/2019/4621-nunes_letter_what_role_may_uk.html ^
+-b Section0006.xhtml=other/2019/4621-larouche_pac_class_lyndon_laro.html ^
+
+/eiw/public/unlisted/2019/eirv46n20-20190524/fs0MPLMN87Yh
+
+perlo -w epub2html.pl  --ud 2019/eirv46n20-20190524/fs0MPLMN87Yh --pft other -i ../Images=graphics/2019/4620 --iu ../Images=graphics/2019/4620 eir /r/eiw/private/2019/20/OEBPS/Text/
+
+perlo -w epub2html.pl --po --gha ^
+-b Section0001.xhtml=other/editorials/2019/4620-trump_deploys_pompeo_for_peace.html ^
+-b 22-62_EIR20_b_section.xhtml=other/2019/4620-so_you_wish_to_educate_the_prez.html ^
+-i ../Images=graphics/2019/4620 eir /r/eiw/private/2019/20/OEBPS/Text/
+
+-b 08-21_EIR20_a_section.xhtml=other/2019/4620-expose_the_big_lie_of_russiaga.html ^
+-b 22-62_EIR20_b_section.xhtml=other/2019/4620-so_you_wish_to_educate_the_pre.html ^
+-b Section0001.xhtml=other/2019/4620-trump_deploys_pompeo_for_peace.html ^
+-b Section0002.xhtml=other/2019/4620-prosecutors_zero_in_on_british.html ^
+-b Section0003.xhtml=other/2019/index.html ^
+-b Section0004.xhtml=other/2019/4620-interview_with_gbtimes_zepp_la.html ^
+-b Section0005.xhtml=other/2019/4620-u_s_a_vs_lyndon_larouche_he_s.html ^
+
+/eiw/public/unlisted/2019/eirv46n19-20190517/9o34ds0og89e
+
+perlo is a symlink to the older version of perl at 
+C:\ProgramFiles\Perl-5.16.3-64bit\bin\perl.exe
+C:\ProgramFiles is a directory junction hard link to C:\Program Files
+
+perlo -w epub2html.pl  --ud 2019/eirv46n19-20190517/9o34ds0og89e --pft other -i ../Images=graphics/2019/4619 --iu ../Images=graphics/2019/4619 eir /r/eiw/private/2019/19/OEBPS/Text/
+
+perlo -w epub2html.pl --po --gha ^
+-b Section0001.xhtml=other/editorials/2019/4619-roger_stone_vs_crowdstrike_fil.html ^
+-b 06-19_EIR19_a_section.xhtml=other/2019/4619-lesson_from_machiavelli_the_ch.html ^
+-b Section0004.xhtml=other/2019/4619-larouche_pac_pamphlet_exonerat.html ^
+-i ../Images=graphics/2019/4619 eir /r/eiw/private/2019/19/OEBPS/Text/
+
+-b 06-19_EIR19_a_section.xhtml=other/2019/4619-lesson_from_machiavelli_the_ch.html ^
+-b 20-50_EIR19_b_section.xhtml=other/2019/4619-the_larouche_plan_rescuing_the.html ^
+-b Section0001.xhtml=other/2019/4619-roger_stone_vs_crowdstrike_fil.html ^
+-b Section0002.xhtml=other/2019/index.html ^
+-b Section0003.xhtml=other/2019/4619-zepp_larouche_webcast_prosecut.html ^
+-b Section0004.xhtml=other/2019/4619-larouche_pac_pamphlet_exonerat.html ^
+-b Section0005.xhtml=other/2019/4619-coup_plotters_respond_to_defea.html ^
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n19-20190517\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n19-20190517\index.html
+
+
+/eiw/public/unlisted/2019/eirv46n18-20190510/212ej87MKpOw
+
+perl -w epub2html.pl  --ud 2019/eirv46n18-20190510/212ej87MKpOw --pft other -i ../Images=graphics/2019/4618 --iu ../Images=graphics/2019/4618 eir /r/eiw/private/2019/18/OEBPS/Text/
+
+perl -w epub2html.pl --po --gha ^
+-b Section0001.xhtml=other/editorials/2019/4618-your_president_needs_you_now.html ^
+-b Section0007.xhtml=other/editorials/2019/4618-binney_must_testify_before_congress.html ^
+-b 05-40_EIR18_a_section.xhtml=hzl/2019/4618-can_a_individual_change_history-hzl.html ^
+-i ../Images=graphics/2019/4618 eir /r/eiw/private/2019/18/OEBPS/Text/
+
+-b 05-40_EIR18_a_section.xhtml=other/2019/4618-larouche_pac_class_can_a_singl.html ^
+-b 41-54_EIR18_b_section.xhtml=other/2019/4618-zepp_larouche_webcast_be_optim.html ^
+-b Section0001.xhtml=other/2019/4618-your_president_needs_you_now_n.html ^
+-b Section0002.xhtml=other/2019/index.html ^
+-b Section0003.xhtml=other/2019/4618-keats_great_odes_and_the_subli.html ^
+-b Section0004.xhtml=other/2019/4618-larouche_2012_webcast_no_to_th.html ^
+-b Section0005.xhtml=other/2019/4618-interview_larry_bell_european.html ^
+-b Section0006.xhtml=other/2019/4618-sri_lanka_terror_attack_target.html ^
+-b Section0007.xhtml=other/2019/4618-former_nsa_technical_director.html ^
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n18-20190510\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n18-20190510\index.html
+
+/eiw/public/unlisted/2019/eirv46n17-20190503/Lgi98bk20opQ
+
+perl -w epub2html.pl  --ud 2019/eirv46n17-20190503/Lgi98bk20opQ --pft other -i ../Images=graphics/2019/4617 --iu ../Images=graphics/2019/4617 eir /r/eiw/private/2019/17/OEBPS/Text/
+
+perl -w epub2html.pl --po --gha ^
+-b Section0001.xhtml=other/editorials/2019/4617-webcast-new_silk_road-hzl.html ^
+-b 10-19_EIR17_a_section.xhtml=other/2019/4617-attempted_coup_against_the_usa.html ^
+-b Section0005.xhtml=other/2019/4617-fbi_escalates_mccarthyite_atta.html ^
+-i ../Images=graphics/2019/4617 eir /r/eiw/private/2019/17/OEBPS/Text/
+
+-b 10-19_EIR17_a_section.xhtml=other/2019/4617-attempted_coup_against_the_usa.html ^
+-b 20-56_EIR17_b_section.xhtml=other/2019/4617-larouche_pac_class_can_a_singl.html ^
+-b 57-66_EIR17_c_section.xhtml=other/2019/4617-british_imperial_gangsters_att.html ^
+-b Section0001.xhtml=other/2019/4617-zepp_larouche_webcast_the_new.html ^
+-b Section0002.xhtml=other/2019/index.html ^
+-b Section0003.xhtml=other/2019/4617-1986_the_science_and_technolog.html ^
+-b Section0004.xhtml=other/2019/4617-for_the_exoneration_of_the_mos.html ^
+-b Section0005.xhtml=other/2019/4617-fbi_escalates_mccarthyite_atta.html ^
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n17-20190503\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n17-20190503\index.html
+
+/eiw/public/unlisted/2019/eirv46n16-20190426/Qmnjbo90xc_o
+
+perl -w epub2html.pl  --ud 2019/eirv46n16-20190426/Qmnjbo90xc_o --pft other -i ../Images=graphics/2019/4616 --iu ../Images=graphics/2019/4616 eir /r/eiw/private/2019/16/OEBPS/Text/
+
+perl -w epub2html.pl --po --gha ^
+-b Section0003.xhtml=other/2019/4616-a_new_missouri_basin_authority.html ^
+-b 32-53_EIR16_c_section.xhtml=lar/2019/4616-sci_tech_to_colonize_mars-lar.html ^
+-b Section0006.xhtml=other/2019/4616-ibero_american_memorial_for_la.html ^
+-b Section0007.xhtml=other/editorials/2019/4616-dozens_of_heads_of_state_to_at.html ^
+-i ../Images=graphics/2019/4616 eir /r/eiw/private/2019/16/OEBPS/Text/
+
+-b 04-25_EIR16_a_section.xhtml=other/2019/4616-stop_this_treasonous_hoax_muel.html ^
+-b 26-31_EIR16_b_section.xhtml=other/2019/4616-zepp_larouche_in_beijing_revie.html ^
+-b 32-53_EIR16_c_section.xhtml=other/2019/4616-the_science_and_technology_nee.html ^
+-b Section0001.xhtml=other/2019/4616-notre_dame_de_paris_on_fire.html ^
+-b Section0002.xhtml=other/2019/index.html ^
+-b Section0003.xhtml=other/2019/4616-a_new_missouri_basin_authority.html ^
+-b Section0004.xhtml=other/2019/4616-belt_and_road_initiative_a_win.html ^
+-b Section0005.xhtml=other/2019/4616-glimmerings_of_u_s_china_russi.html ^
+-b Section0006.xhtml=other/2019/4616-ibero_american_memorial_for_la.html ^
+-b Section0007.xhtml=other/2019/4616-dozens_of_heads_of_state_to_at.html ^
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n16-20190426\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n16-20190426\index.html
+
+
+/eiw/public/unlisted/2019/eirv46n15-20190419/aWOk94njs_1a
+
+perl -w epub2html.pl  --ud 2019/eirv46n15-20190419/aWOk94njs_1a --pft other -i ../Images=graphics/2019/4615 --iu ../Images=graphics/2019/4615 eir /r/eiw/private/2019/15/OEBPS/Text/
+
+perl -w epub2html.pl --po --gha ^
+-b 07-15_EIR15_a_section.xhtml=other/2019/4615-what_is_america_s_national_cre.html ^
+-b Section0004.xhtml=other/2019/4615-utter_fraud_of_green_new_deal.html ^
+-b Section0005.xhtml=other/2019/4615-mankind_s_true_potential_in_sp.html ^
+-i ../Images=graphics/2019/4615 eir /r/eiw/private/2019/15/OEBPS/Text/
+
+-b 07-15_EIR15_a_section.xhtml=other/2019/4615-what_is_america_s_national_cre.html ^
+-b 16-26_EIR15_b_section.xhtml=other/2019/4615-china_is_taking_bold_steps_on.html ^
+-b 27-54_EIR15_c_section.xhtml=other/2019/4615-a_design_for_legislation_savin.html ^
+-b Section0001.xhtml=other/2019/4615-the_three_men_london_is_in_cov.html ^
+-b Section0002.xhtml=other/2019/4615-lpac_tv_interview_bill_binney.html ^
+-b Section0003.xhtml=other/2019/index.html ^
+-b Section0004.xhtml=other/2019/4615-utter_fraud_of_green_new_deal.html ^
+-b Section0005.xhtml=other/2019/4615-mankind_s_true_potential_in_sp.html ^
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n15-20190419\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n15-20190419\index.html
+
+
+/eiw/public/unlisted/2019/eirv46n14-20190412/olp875_wq312
+
+perl -w epub2html.pl  --ud 2019/eirv46n14-20190412/olp875_wq312 --pft other -i ../Images=graphics/2019/4614 --iu ../Images=graphics/2019/4614 eir /r/eiw/private/2019/14/OEBPS/Text/
+
+perl -w epub2html.pl --po --gha ^
+-b Section0001.xhtml=other/editorials/2019/4614-commence_the_era_of_larouche_t.html ^
+-b 05-30_EIR14_a_section.xhtml=other/2019/4614-adventure_of_a_young_traveler.html ^
+-i ../Images=graphics/2019/4614 eir /r/eiw/private/2019/14/OEBPS/Text/
+
+-b 05-30_EIR14_a_section.xhtml=other/2019/4614-adventure_of_a_young_traveler.html ^
+-b 31-51_EIR14_b_section.xhtml=other/2019/4614-larouche_pac_webcast_lunar_set.html ^
+-b 52-61_EIR14_c_section.xhtml=other/2019/4614-zepp_larouche_webcast_new_para.html ^
+-b Section0001.xhtml=other/2019/4614-commence_the_era_of_larouche_t.html ^
+-b Section0002.xhtml=other/2019/index.html ^
+-b Section0003.xhtml=other/2019/4614-what_are_the_children_telling.html ^
+-b Section0004.xhtml=other/2019/4614-the_jesuits_charge_that_larouc.html ^
+-b Section0005.xhtml=other/2019/4614-what_is_america_s_national_cre.html ^
+-b Section0006.xhtml=other/2019/4614-nuclear_energy_recognition_of.html ^
+-b Section0007.xhtml=other/2019/4614-editorial.html ^
+-b Section0008.xhtml=other/2019/4614-prominent_persons_call_to_exon.html ^
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n14-20190412\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n14-20190412\index.html
+
+/eiw/public/unlisted/2019/eirv46n13-20190405/a90sdj3kmv1a
+
+perl -w epub2html.pl  --ud 2019/eirv46n13-20190405/a90sdj3kmv1a --pft other -i ../Images=graphics/2019/4613 --iu ../Images=graphics/2019/4613 eir /r/eiw/private/2019/13/OEBPS/Text/
+
+perl -w epub2html.pl --po --gha ^
+-b Section0002.xhtml=other/editorials/2019/4613-mueller_report_no_collusion_ti.html ^
+-b 06-19_EIR13_a_section.xhtml=other/2019/4613-open_the_age_of_reason.html ^
+-b Section0006.xhtml=other/2019/4613-mueller_magic_implodes_preside.html ^
+-b Section0007.xhtml=other/2019/4613-the_false_charges_behind_the_c.html ^
+-i ../Images=graphics/2019/4613 eir /r/eiw/private/2019/13/OEBPS/Text/
+
+
+
+-b 06-19_EIR13_a_section.xhtml=other/2019/4613-open_the_age_of_reason.html ^
+-b 20-48_EIR13_b_section.xhtml=other/2019/4613-italy_enhances_positive_seismi.html ^
+-b Section0001.xhtml=other/2019/index.html ^
+-b Section0002.xhtml=other/2019/4613-mueller_report_no_collusion_ti.html ^
+-b Section0003.xhtml=other/2019/4613-president_donald_j_trump_is_bo.html ^
+-b Section0004.xhtml=other/2019/4613-private_initiative_for_coloniz.html ^
+-b Section0005.xhtml=other/2019/4613-china_to_create_the_world_s_la.html ^
+-b Section0006.xhtml=other/2019/4613-mueller_magic_implodes_preside.html ^
+-b Section0007.xhtml=other/2019/4613-the_false_charges_behind_the_c.html ^
+-b Section0008.xhtml=other/2019/4613-thank_you_for_your_vigilance_r.html ^
+-b Section0009.xhtml=other/2019/4613-zepp_larouche_webcast_collapse.html ^
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n13-20190405\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n13-20190405\index.html
+
+/eiw/public/unlisted/2019/eirv46n12-20190329/Bll12cv34xp8
+perl -w epub2html.pl  --ud 2019/eirv46n12-20190329/Bll12cv34xp8 --pft other -i ../Images=graphics/2019/4612 --iu ../Images=graphics/2019/4612 eir /r/eiw/private/2019/12/OEBPS/Text/
+
+perl -w epub2html.pl --po --gha ^
+-b Section0002.xhtml=other/editorials/2019/4612-mueller_releases_report_now_dr.html ^
+-b Section0003.xhtml=other/2019/4612-italy_joins_belt_and_road_init.html ^
+-b 10-23_EIR12_a_section_.xhtml=hzl/2019/4612-italys_cooperation_with_nsr-hzl.html ^
+-b 26-36_EIR12_b_section.xhtml=other/2019/4612-open_letter_to_president_trump.html ^
+-i ../Images=graphics/2019/4612 eir /r/eiw/private/2019/12/OEBPS/Text/
+
+-b 10-23_EIR12_a_section_.xhtml=other/2019/4612-italy_s_cooperation_with_the_n.html ^
+-b 26-36_EIR12_b_section.xhtml=other/2019/4612-open_letter_to_president_trump.html ^
+-b 37-53_EIR12_c_section.xhtml=other/2019/4612-severe_flooding_hits_u_s_farm.html ^
+-b 54-57_EIR12_d_section.xhtml=other/2019/4612-the_secret_of_fire_beyond_sens.html ^
+-b Section0001.xhtml=other/2019/index.html ^
+-b Section0002.xhtml=other/2019/4612-mueller_releases_report_now_dr.html ^
+-b Section0003.xhtml=other/2019/4612-italy_joins_belt_and_road_init.html ^
+-b Section0005.xhtml=other/2019/4612-germany_at_a_crossroads_over_t.html ^
+-b Section0006.xhtml=other/2019/4612-exonerate_larouche_thank_you_v.html ^
+-b Section0007.xhtml=other/2019/4612-telesur_interview_dennis_small.html ^
+-b Section0008.xhtml=other/2019/4612-the_larouche_plan_to_hermetica.html ^
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n12-20190329\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n12-20190329\index.html
+
+
 /eiw/public/unlisted/2019/eirv46n11-20190322/p8hK7s4d_O9i
 perl -w epub2html.pl  --ud 2019/eirv46n11-20190322/p8hK7s4d_O9i --pft other -i ../Images=graphics/2019/4611 --iu ../Images=graphics/2019/4611 eir /r/eiw/private/2019/11/OEBPS/Text/
 

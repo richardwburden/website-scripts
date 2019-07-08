@@ -64,6 +64,7 @@ use HTML::Element;
 use File::Spec;
 use Fcntl ':mode';
 use File::Copy;
+use File::Path qw(make_path remove_tree);
 use HTML::Entities;
 use URI;
 use WWW::Mechanize;
@@ -1227,6 +1228,7 @@ sub prepareFiles($$$$$$;$)
     if ($outfilepath ne "")
     {
 	$outfilepath = $outfiledir.$outfilename;
+	make_path($outfiledir);
 	open(OUTFILE,"+>$outfilepath") || die "can't open $outfilepath for writing: $!"; 
 	open(DEBUG,">$outfilepath.debug.log") || die "can't open $outfilepath.debug.log for writing: $!"; 
 
@@ -1319,28 +1321,30 @@ sub getTitle
     $brspace->push_content(' ');
     
     my @brs = ();
-    my $kicker = $tree->look_down('class','kicker');
+    my $kicker = $tree->look_down('class',qr/^kicker/);
     if (defined $kicker)
     {
 	@brs = $kicker->find_by_tag_name('br');
 	foreach $br (@brs)
 	{$br->replace_with($brspace->clone())}
     }
-    my $head = $tree->look_down('_tag','h2','class','head');
+    my $head = $tree->look_down('_tag','h2','class',qr/^head/);
     if (not defined $head)
-    {$head = $tree->look_down('_tag','h3','class','head')}
+    {$head = $tree->look_down('_tag','h3','class',qr/^head/)}
      if (not defined $head)
-     {$head = $tree->look_down('_tag','h4','class','head')}
+     {$head = $tree->look_down('_tag','h4','class',qr/^head/)}
     if (defined $head)
     {
 	@brs = $head->find_by_tag_name('br');
 	foreach $br (@brs)
 	{$br->replace_with($brspace->clone())}
     }
+    my $doctitle = $tree->find_by_tag_name('title');
     
     $titleText = "";
     if (defined $kicker) {$titleText .= $kicker->as_text().': '}
     if (defined $head) {$titleText .= $head->as_text()}
+    if ($titleText eq "" and defined $doctitle) {$titleText = $doctitle->as_text()} 
 
     close INFILE;
     return $titleText;
