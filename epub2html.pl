@@ -104,6 +104,7 @@ my %privateImageDirs = ();
 my $fft = "";
 my $pft = "";
 my %ffts = (); #filenames from titles
+my %tffs = (); #titles from filenames
 my %bfts = (); #basenames from titles
 my $piip = "";
 my $uiip = "";
@@ -274,10 +275,10 @@ if ($fft ne "" or $pft ne "")
 	#Don't process the masthead
 	if ($infile[2] =~ /toc/i){next}
 
-	my $title = getTitle($infilepath);
-	my $newFileName = filenameFromTitle($title);
-	$ffts{$infile[2]} = $newFileName;
-	print "-b $infile[2]"."="."$pft$newFileName ^\n";
+	#my $title = getTitle($infilepath);
+	#my $newFileName = filenameFromTitle($title);
+	#$ffts{$infile[2]} = $newFileName;
+	#print "-b $infile[2]"."="."$pft$newFileName ^\n";
     }
 }
 
@@ -516,6 +517,11 @@ foreach $infilepath (@infiles)
 	    #into the subscriber's HTML article page, which will be placed in the same directory as the subscriber's issue index page.  We will not repeat this step when generating the archive issue index page, because that would cause the first hash for each $htmlHref to be overwritten by a value appropriate for a page in the directory of the archive issue index page.
 	    $saurlList{$htmlHref} = $saurl;
 	    
+	    my $filename = $htmlHref;
+	    $tffs{$htmlHref} = $htmlLink->as_text;
+	    $ffts{$htmlHref} = filenameFromTitle($htmlLink->as_text);
+	    print "-b $htmlHref"."="."$pft$ffts{$htmlHref} ^\n";
+
 	    #insert the HTML icon into the end of the HTML link
 	    my $span = HTML::Element->new('span');
 	    $span->attr('class','tocLinkHTML');
@@ -537,7 +543,7 @@ foreach $infilepath (@infiles)
 	{
 	    if (! defined $htmlLink->attr('href')) {next}
 	    my $htmlHref = $htmlLink->attr('href');
-	    my $htmlLinkText = $htmlLink->as_text;
+	    #my $htmlLinkText = $htmlLink->as_text;
 	    #skip links to targets that are not articles from the epub
 	    if ($htmlHref !~ /\.xhtml$/) {next}
 	    if ($htmlHref =~ m%/%) {next}
@@ -1108,7 +1114,7 @@ sub prepareFiles($$$$$$;$)
     #Don't process the masthead
     if ($infile[2] =~ /toc/i){return 0}
 
-    my $titleText = getTitle($infilepath);
+    my $titleText = $tffs{$infile[2]};
 
     open(INFILE, $infilepath) || die "can't open $infilepath for reading: $!";
 
@@ -1172,6 +1178,10 @@ sub prepareFiles($$$$$$;$)
 	    if (substr($uinfile[1],0,1) ne '\\') {$uinfile[1] = '\\'.$uinfile[1]} 
 	    $outfiledir = $docRoot.$uarp.$uinfile[1];
 	}
+	else 
+	{
+	    $outfilename = "index.html"
+	}
     }
     else #not the Table of Contents.  If 'tocOnly' flag is set, do not process.
     {
@@ -1218,7 +1228,7 @@ sub prepareFiles($$$$$$;$)
 	$outfiledir = $docRoot.$uarp.'/'.$ud . '/';
 	$outfiledir =~ s%/%\\%g;
     }
-    if ($fft ne "" or $pft ne "")
+    if (($fft ne "" or $pft ne "") and $flag ne 'tocOnly')
     {
 	$outfilename = $ffts{$infile[2]};
     }
@@ -1297,7 +1307,9 @@ sub filenameFromTitle
     }
     $bfts{$title} = "";
     return $zvol.$zissue.'-'.$title.'.'.$filenameExt;
-}    
+}  
+
+   
 
 sub getTitle
 {

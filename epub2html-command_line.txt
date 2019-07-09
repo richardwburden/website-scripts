@@ -1,6 +1,27 @@
 #TEST# /eiw/public/unlisted/2019/eirv46n26-20190705/Wk90B64Jqa-4
 perlo -w epub2html.pl  --ud 2019/eirv46n26-20190705/Wk90B64Jqa-4 --pft other -i ../Images=graphics/2019/4626 --iu ../Images=graphics/2019/4626 eir /r/eiw/private/2019/26/a/OEBPS/Text/
 
+perlo -w epub2html.pl --po --gha ^
+-b 03-19_EIR09_a_section.xhtml=hzl/2019/4626-test-trump_kim_meeting_revives_sing.html ^
+-b 20-54_EIR09_b_section_.xhtml=other/2019/4626-test-lyndon_larouche_at_work_reagan.html ^
+-b 55-61_EIR09_c_section.xhtml=other/2019/4626-test-petition_on_anthropogenic_glob.html ^
+-b 62-74_EIR09_d_section.xhtml=lar/2019/4626-test-1997_is_not_1929_a_lesson_from.html ^
+-i ../Images=graphics/2019/4626 eir /r/eiw/private/2019/26/a/OEBPS/Text/
+
+-b 03-19_EIR09_a_section.xhtml=other/2019/4626-trump_kim_meeting_revives_sing.html ^
+-b Section0002.xhtml=other/2019/4626-the_strategic_urgency_of_exone.html ^
+-b Section0003.xhtml=other/2019/4626-voices_against_war_escalate_ar.html ^
+-b Section0004.xhtml=other/2019/4626-larouche_s_ideas_presented_to.html ^
+-b Section0005.xhtml=other/2019/4626-bringing_larouche_s_america_a.html ^
+-b 20-54_EIR09_b_section_.xhtml=other/2019/4626-lyndon_larouche_at_work_reagan.html ^
+-b Section0006.xhtml=other/2019/4626-u_s_china_cooperation_with_mex.html ^
+-b Section0007.xhtml=other/2019/4626-another_silicon_valley_monster.html ^
+-b 55-61_EIR09_c_section.xhtml=other/2019/4626-petition_on_anthropogenic_glob.html ^
+-b Section0008.xhtml=other/2019/4626-california_labor_bucks_the_gre.html ^
+-b 62-74_EIR09_d_section.xhtml=other/2019/4626-1997_is_not_1929_a_lesson_from.html ^
+-b Section0009.xhtml=other/2019/4626-when_future_historians_review.html ^
+
+
 
 /eiw/public/unlisted/2019/eirv46n26-20190705/Wk90B64Jaq-3
 perlo -w epub2html.pl  --ud 2019/eirv46n26-20190705/Wk90B64Jaq-3 --pft other -i ../Images=graphics/2019/4626 --iu ../Images=graphics/2019/4626 eir /r/eiw/private/2019/26/OEBPS/Text/
