@@ -9,7 +9,9 @@ options with single character names may be preceded by a single hyphen '-'.
 
 Alternative names for an option are separated by '|'.
 
-Options whose name(s) are followed by '=' require an argument.  The letter following the '=' specifies the argument type (s for string). If the argument type is folllowed by '%', the option  may be used multiple times in the same command line with an argument for each instance.
+Options whose name(s) are followed by '!' are negatable by prepending 'no' or 'no-' to the option on the command line.
+
+Options whose name(s) are followed by '=' require an argument.  The letter following the '=' specifies the argument type (s for string). If the argument type is folllowed by '%', the option  may be used multiple times in the same command line with an argument for each instance. 
 
  unlistedDirname|ud=s
  filenamesFromTitles|fft
@@ -28,6 +30,10 @@ Options whose name(s) are followed by '=' require an argument.  The letter follo
  volume|vol=s
  issue|iss=s
  volumeIssue|vi=s
+ coverRegex|cr=s  (enclose regex string arguments in quotes, e.g. --cr="^cover")
+ mastheadRegex|mr=s
+ coverExists|ce! (no cover by default, omitting this option is equivalent to --noce or --no-ce)
+ mastheadExists|me! (masthead exists by default; omitting this option is equivalent to --me)
 
 All paths must contain only forward slashes, and no slash at the beginning or end. 
 
@@ -103,6 +109,10 @@ my %unlistedImageDirs = ();
 my %privateImageDirs = ();
 my $fft = "";
 my $pft = "";
+my $coverExists = 0;
+my $mastheadExists = 1;
+my $coverRegex = '^cover';
+my $mastheadRegex = 'toc';
 my %ffts = (); #filenames from titles
 my %tffs = (); #titles from filenames
 my %bfts = (); #basenames from titles
@@ -123,7 +133,7 @@ my $zvol = undef; #two digit with leading 0 for value < 10
 my $zissue = undef; #two digit with leading 0 for value < 10
 my $help = 0;
 
-GetOptions ('help|?' => \$help, 'public|b=s%' => \%publics, 'unlisted|u=s%' => \%unlisteds, 'imageDirs|i=s%' => \%imageDirs, 'unlistedImageDirs|iu=s%' => \%unlistedImageDirs, 'privateImageDirs|ip=s%' => \%privateImageDirs, 'unlistedIssueIndexPath|xu=s' => \$uiip, 'publicIssueIndexPath|xp=s' => \$piip, 'appendBrowserScript|abs' => \$appendBrowserScript, 'publicsOnly|po' => \$publicsOnly, 'unlistedDirname|ud=s' => \$ud, 'filenamesFromTitles|fft' => \$fft, 'pathnamesFromTitles|pft=s' => \$pft,'archiveIndexOnly|aio' => \$aio,'ghArchive|gha' => \$gha,'volume|vol=s' => \$vol, 'issue|iss=s' => \$issue, 'volumeIssue|vi=s' => \$vi);
+GetOptions ('help|?' => \$help, 'public|b=s%' => \%publics, 'unlisted|u=s%' => \%unlisteds, 'imageDirs|i=s%' => \%imageDirs, 'unlistedImageDirs|iu=s%' => \%unlistedImageDirs, 'privateImageDirs|ip=s%' => \%privateImageDirs, 'unlistedIssueIndexPath|xu=s' => \$uiip, 'publicIssueIndexPath|xp=s' => \$piip, 'appendBrowserScript|abs' => \$appendBrowserScript, 'publicsOnly|po' => \$publicsOnly, 'unlistedDirname|ud=s' => \$ud, 'filenamesFromTitles|fft' => \$fft, 'pathnamesFromTitles|pft=s' => \$pft,'archiveIndexOnly|aio' => \$aio,'ghArchive|gha' => \$gha,'volume|vol=s' => \$vol, 'issue|iss=s' => \$issue, 'volumeIssue|vi=s' => \$vi, 'coverRegex|cr=s' => \$coverRegex, 'mastheadRegex|mr=s' => \$mastheadRegex, 'coverExists|ce!' => \$coverExists, 'mastheadExists|me!' => \$mastheadExists);
 pod2usage(1) if $help;
 
 my $program_basename = $0;
@@ -255,6 +265,8 @@ my %saurlList = ();
 my $count = -1;
 my $indexFileName = "";
 
+my @noncmInfiles = ();  #infiles other than the cover and masthead
+
 if ($fft ne "" or $pft ne "")
 {
     print "The unlisted HTML files will be written to the filename right of the '=' in the lines below, under the directory\n$options{'unlistedArticlesRootPath'}$ud\n, which is the value of 'unlistedArticlesRootPath' in the configuration file follwed by the value of the 'unlistedDirectory' or 'ud' parameter in the command-line. Using the lines below in the command-line will write the files to the filename or path right of the '=' under the directory '$options{'publicArticlesRootPath'}' ('publicArticlesRootPath' in the config. file).  The '^' is used to indicate continuation of the command line in the Windows shell. Any valid path where this script has permission to write may follow the '='.\n";
@@ -266,23 +278,24 @@ if ($fft ne "" or $pft ne "")
 	    $pft .= '/'.$year.'/'
 	}
     }
-
-    foreach $infilepath (@infiles)
-    {
-	my @infile = File::Spec->splitpath($infilepath);
-	#Don't process the cover page
-	if ($infile[2] =~ /^cover/i) {next}
-	#Don't process the masthead
-	if ($infile[2] =~ /toc/i){next}
-
-	#my $title = getTitle($infilepath);
-	#my $newFileName = filenameFromTitle($title);
-	#$ffts{$infile[2]} = $newFileName;
-	#print "-b $infile[2]"."="."$pft$newFileName ^\n";
-    }
 }
 
+my $coverFound = 0;
+my $mastheadFound = 0;
 foreach $infilepath (@infiles)
+{
+    my @infile = File::Spec->splitpath($infilepath);
+    #Don't process the cover page
+    if ($coverExists and $infile[2] =~ /$coverRegex/i) {$coverFound = 1; next}
+    #Don't process the masthead
+    if ($mastheadExists and $infile[2] =~ /$mastheadRegex/i){$mastheadFound = 1; next}
+    push @noncmInfiles, $infilepath;
+}
+if ($coverExists and not $coverFound) {print "Cover with filename matching /$coverRegex/i not found\n"; exit}
+if ($mastheadExists and not $mastheadFound) {print "Masthead with filename matching /$mastheadRegex/i not found\n"; exit}
+
+
+foreach $infilepath (@noncmInfiles)
 {
     $count++;
     $outfilepath = $infilepath;
@@ -518,9 +531,16 @@ foreach $infilepath (@infiles)
 	    $saurlList{$htmlHref} = $saurl;
 	    
 	    my $filename = $htmlHref;
-	    $tffs{$htmlHref} = $htmlLink->as_text;
-	    $ffts{$htmlHref} = filenameFromTitle($htmlLink->as_text);
-	    print "-b $htmlHref"."="."$pft$ffts{$htmlHref} ^\n";
+	    my $htmlLinkClone = $htmlLink->clone();
+	    removeBrs($htmlLinkClone);
+	    my $titleText = $htmlLinkClone->as_text;
+	    $htmlLinkClone->delete;
+	    $tffs{$htmlHref} = $titleText;
+	    $ffts{$htmlHref} = filenameFromTitle($titleText);
+	    if (not $publicsOnly)
+	    {
+		print "-b $htmlHref"."="."$pft$ffts{$htmlHref} ^\n";
+	    }
 
 	    #insert the HTML icon into the end of the HTML link
 	    my $span = HTML::Element->new('span');
@@ -703,11 +723,12 @@ foreach $infilepath (@infiles)
 
 
 #now process the article pages
-foreach $infilepath (@infiles)
+foreach $infilepath (@noncmInfiles)
 {
     #don't process article pages if we're only generating the archive index.
     if ($aio) {last}
     my $saurl = filenameFromPath ($infilepath);
+    if ($saurl eq $indexFileName) {next} #don't re-process the index page
     #skip if only public articles are to be processed and this is not a 
     #public article
     if ($publicsOnly and not defined $publics{$saurl}) {next};
@@ -1109,11 +1130,6 @@ sub prepareFiles($$$$$$;$)
     ($infilepath,$ttree,$tree,$content,$body_text,$outfilepath,$flag) = @_;
     print STDERR "Processing $infilepath\n";
     my @infile = File::Spec->splitpath($infilepath);
-    #Don't process the cover page
-    if ($infile[2] =~ /^cover/i) {return 0}
-    #Don't process the masthead
-    if ($infile[2] =~ /toc/i){return 0}
-
     my $titleText = $tffs{$infile[2]};
 
     open(INFILE, $infilepath) || die "can't open $infilepath for reading: $!";
@@ -1133,9 +1149,11 @@ sub prepareFiles($$$$$$;$)
     my $outfilename = $infile[2];
     my $outfiledir =  File::Spec->join($infile[0],$infile[1]);
     $outfiledir.='\\';
+    my $toc = 0;
 
     if ($body_text =~ /Cover\s*This\s*Week/si)
     {
+	$toc = 1;
 	#relocate this issue's index page to public directory and filename
 	#specified in --thisIssueIndexPath or -t command line argument
 	my $piirp = $options{'publicIssueIndexRootPath'};
@@ -1180,6 +1198,7 @@ sub prepareFiles($$$$$$;$)
 	}
 	else 
 	{
+	    print STDERR "assigning filename 'index.html' to $infile[2]\n";
 	    $outfilename = "index.html"
 	}
     }
@@ -1217,9 +1236,8 @@ sub prepareFiles($$$$$$;$)
 	    if (substr($uinfile[1],0,1) ne '\\') {$uinfile[1] = '\\'.$uinfile[1]} 
 	    $outfiledir = $docRoot.$uarp.$uinfile[1];
 	}
+	$outfilename =~ s/\.xhtml$/\.html/i;
     }
-    $outfilename =~ s/\.xhtml$/\.html/i;
-
     if (defined $ud and $ud ne "")
     {
 	my $uarp = $options{'unlistedArticlesRootPath'};
@@ -1228,7 +1246,7 @@ sub prepareFiles($$$$$$;$)
 	$outfiledir = $docRoot.$uarp.'/'.$ud . '/';
 	$outfiledir =~ s%/%\\%g;
     }
-    if (($fft ne "" or $pft ne "") and $flag ne 'tocOnly')
+    if (($fft ne "" or $pft ne "") and (not $toc))
     {
 	$outfilename = $ffts{$infile[2]};
     }
@@ -1237,6 +1255,7 @@ sub prepareFiles($$$$$$;$)
 
     if ($outfilepath ne "")
     {
+	print STDERR "computing outfilepath for $infile[2]\n";
 	$outfilepath = $outfiledir.$outfilename;
 	make_path($outfiledir);
 	open(OUTFILE,"+>$outfilepath") || die "can't open $outfilepath for writing: $!"; 
@@ -1291,7 +1310,6 @@ sub incPath
 sub filenameFromTitle
 {
     my $title = $_[0];
-    if ($title eq "!!!Table of Contents!!!") {return "index.html"}
     my $filenameExt = $_[1];
     if (not defined $filenameExt) {$filenameExt = 'html'}
     $title =~ s/[^a-z0-9]/_/gi;
@@ -1309,58 +1327,6 @@ sub filenameFromTitle
     return $zvol.$zissue.'-'.$title.'.'.$filenameExt;
 }  
 
-   
-
-sub getTitle
-{
-    open(INFILE, $_[0]) || die "can't open $_[0] for reading: $!";
-	
-    my $first_line = <INFILE>; #skip the first line
-	
-    my $tree = HTML::TreeBuilder->new();
-    $tree->parse_file(\*INFILE);
-
-    my $content = $tree->find_by_tag_name('body');
-    my $body_text = $content->as_text();
-    if ($body_text =~ /Cover\s*This\s*Week/si)
-    {
-	close INFILE;
-	return "!!!Table of Contents!!!";
-    }
-
-#A span tag to replace <br> tags to insure that ->as_text() will render them as spaces
-    my $brspace = HTML::Element->new('span','class' => 'brspace');
-    $brspace->push_content(' ');
-    
-    my @brs = ();
-    my $kicker = $tree->look_down('class',qr/^kicker/);
-    if (defined $kicker)
-    {
-	@brs = $kicker->find_by_tag_name('br');
-	foreach $br (@brs)
-	{$br->replace_with($brspace->clone())}
-    }
-    my $head = $tree->look_down('_tag','h2','class',qr/^head/);
-    if (not defined $head)
-    {$head = $tree->look_down('_tag','h3','class',qr/^head/)}
-     if (not defined $head)
-     {$head = $tree->look_down('_tag','h4','class',qr/^head/)}
-    if (defined $head)
-    {
-	@brs = $head->find_by_tag_name('br');
-	foreach $br (@brs)
-	{$br->replace_with($brspace->clone())}
-    }
-    my $doctitle = $tree->find_by_tag_name('title');
-    
-    $titleText = "";
-    if (defined $kicker) {$titleText .= $kicker->as_text().': '}
-    if (defined $head) {$titleText .= $head->as_text()}
-    if ($titleText eq "" and defined $doctitle) {$titleText = $doctitle->as_text()} 
-
-    close INFILE;
-    return $titleText;
-}
 
 #expects an HTML::Element object.  Replaces br tags with spaces.
 sub removeBrs ($)

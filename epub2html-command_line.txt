@@ -1,3 +1,58 @@
+#TEST# /eiw/public/unlisted/2019/eirv46n27-20190712/BM9x-XZx_DE8
+perlo -wd epub2html.pl  --ud 2019/eirv46n27-20190712/BM9x-XZx_DE8 --pft other -i ../Images=graphics/2019/4627 --iu ../Images=graphics/2019/4627 --mr="^econ" eir /r/eiw/private/2019/27/OEBPS/Text/
+
+perlo -w epub2html.pl --po --gha ^
+-b Section0002.xhtml=r/test/2019/4627-bitter_truth_about_us_economic.html ^
+-b Section0003.xhtml=r/test/2019/4627-industrial_wasteland.html ^
+-b Section0004.xhtml=r/test/2019/4627-nyc_dark_age_or_renaissance.html ^
+-b Section0005.xhtml=r/test/2019/4627-seattle_is_dying_shut_down_dope_inc.html ^
+-b Section0006.xhtml=r/test/2019/4627-san_fran_end_the_hippies_disease.html ^
+-b Section0007.xhtml=r/test/2019/4627-us_public_transportation_breakdown.html ^
+-b Section0008.xhtml=r/test/2019/4627-devastation_in_the_farm_belt.html ^
+-b Section0009.xhtml=r/test/2019/4627-breakdown_of_u_s_public_health.html ^
+-b Section0010.xhtml=r/test/2019/4627-drugged_up_america.html ^
+-b Section0011.xhtml=r/test/2019/4627-ending_the_culture_of_death.html ^
+-b Section0012.xhtml=r/test/2019/4627-a_punctum_saliens.html ^
+-b Section0013.xhtml=r/test/2019/4627-four_laws-lar.html ^
+-i ../Images=graphics/2019/4627 --mr="^econ" eir /r/eiw/private/2019/27/OEBPS/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n27-20190712\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n27-20190712\index-test.html
+
+/eiw/public/unlisted/2019/eirv46n27-20190712/BM9jl_0hyDE8
+perlo -w epub2html.pl  --ud 2019/eirv46n27-20190712/BM9jl_0hyDE8 --pft other -i ../Images=graphics/2019/4627 --iu ../Images=graphics/2019/4627 eir /r/eiw/private/2019/27/OEBPS/Text/
+
+
+perlo -w epub2html.pl --po --gha ^
+-b Section0002.xhtml=other/2019/4627-bitter_truth_about_us_economic.html ^
+-b Section0003.xhtml=other/2019/4627-industrial_wasteland.html ^
+-b Section0004.xhtml=other/2019/4627-nyc_dark_age_or_renaissance.html ^
+-b Section0005.xhtml=other/2019/4627-seattle_is_dying_shut_down_dope_inc.html ^
+-b Section0006.xhtml=other/2019/4627-san_fran_end_the_hippies_disease.html ^
+-b Section0007.xhtml=other/2019/4627-us_public_transportation_breakdown.html ^
+-b Section0008.xhtml=other/2019/4627-devastation_in_the_farm_belt.html ^
+-b Section0009.xhtml=other/2019/4627-breakdown_of_u_s_public_health.html ^
+-b Section0010.xhtml=other/2019/4627-drugged_up_america.html ^
+-b Section0011.xhtml=other/2019/4627-ending_the_culture_of_death.html ^
+-b Section0012.xhtml=other/2019/4627-a_punctum_saliens.html ^
+-b Section0013.xhtml=lar/2019/4627-four_laws-lar.html ^
+-i ../Images=graphics/2019/4627 eir /r/eiw/private/2019/27/OEBPS/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n27-20190712\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n27-20190712\index.html
+
+-b Section0002.xhtml=other/2019/4627-the_bitter_truth_about_the_u_s.html ^
+-b Section0003.xhtml=other/2019/4627-industrial_wasteland.html ^
+-b Section0004.xhtml=other/2019/4627-dark_age_or_renaissance.html ^
+-b Section0005.xhtml=other/2019/4627-seattle_is_dying_shut_down_dop.html ^
+-b Section0006.xhtml=other/2019/4627-end_the_hippies_disease_time_f.html ^
+-b Section0007.xhtml=other/2019/4627-the_cost_of_u_s_public_transpo.html ^
+-b Section0008.xhtml=other/2019/4627-devastation_in_the_farm_belt_r.html ^
+-b Section0009.xhtml=other/2019/4627-breakdown_of_u_s_public_health.html ^
+-b Section0010.xhtml=other/2019/4627-drugged_up_america.html ^
+-b Section0011.xhtml=other/2019/4627-ending_the_culture_of_death_re.html ^
+-b Section0012.xhtml=other/2019/4627-a_punctum_saliens.html ^
+-b Section0013.xhtml=other/2019/4627-not_an_option_an_immediate_nec.html ^
+
+
 #TEST# /eiw/public/unlisted/2019/eirv46n26-20190705/Wk90B64Jqa-4
 perlo -w epub2html.pl  --ud 2019/eirv46n26-20190705/Wk90B64Jqa-4 --pft other -i ../Images=graphics/2019/4626 --iu ../Images=graphics/2019/4626 eir /r/eiw/private/2019/26/a/OEBPS/Text/
 
@@ -7,6 +62,8 @@ perlo -w epub2html.pl --po --gha ^
 -b 55-61_EIR09_c_section.xhtml=other/2019/4626-test-petition_on_anthropogenic_glob.html ^
 -b 62-74_EIR09_d_section.xhtml=lar/2019/4626-test-1997_is_not_1929_a_lesson_from.html ^
 -i ../Images=graphics/2019/4626 eir /r/eiw/private/2019/26/a/OEBPS/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n26-20190705\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n26-20190705\index-test.html
 
 -b 03-19_EIR09_a_section.xhtml=other/2019/4626-trump_kim_meeting_revives_sing.html ^
 -b Section0002.xhtml=other/2019/4626-the_strategic_urgency_of_exone.html ^
