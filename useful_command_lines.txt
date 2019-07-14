@@ -1,0 +1,42 @@
+View commits, latest first:
+
+git log
+
+To commit changes in GitShell:
+
+git commit -a
+
+to edit the last commit's message (does not bring up editor; must copy and paste into command line)
+
+git commit --amend -m "New and correct message"
+
+to copy your local repository to the remote, enter the following in GitShell:
+
+git push --mirror https://github.com/richardwburden/website-scripts
+
+
+changes since last commit:
+git diff --cached
+
+
+for a dry run, use the --dry-run parameter
+
+
+to view a previous version of a file, use git log to find the commit number, then
+
+git show commit_number:path_to_file   
+
+where path_to_file uses forward slashes and is relative to the current working directory.
+
+the output of git show can be written to a file so it can be viewed in an editor of your choice (be careful not to overwrite the current version of the file):
+
+git show commit_number:path_to_file > temp.pl
+
+--------------------------------------------------------------------------
+Using Saxon
+--------------------------------------------------------------------------
+display the version of Saxon
+java net.sf.saxon.Version
+
+do an XSL transform
+java net.sf.saxon.Transform -s:path_to_input_file -xsl:path_to_xsl_transform_file -o:path_to_output_file
