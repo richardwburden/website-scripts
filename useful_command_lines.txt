@@ -13,7 +13,7 @@ git commit --amend -m "New and correct message"
 to copy your local repository to the remote, enter the following in GitShell:
 
 git push --mirror https://github.com/richardwburden/website-scripts
-
+git push --mirror https://github.com/richardwburden/new_daybook
 
 changes since last commit:
 git diff --cached
