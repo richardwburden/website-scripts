@@ -1,7 +1,67 @@
+/special_report/2019/1123-EndChinaWitchhunt/
+
+
+
+perlo -w epub2html-sr.pl --no-me --sr=1123-EndChinaWitchhunt --ud 2019/1123-EndChinaWitchhunt -vi=4600 --fft -i ../Images=graphics/2019/1123-EndChinaWitchhunt --iu ../Images=graphics/2019/1123-EndChinaWitchhunt ecw /r/special_report/2019/1123-EndChinaWitchhunt/OEBPS/Text/
+
+perlo -w epub2html-sr.pl --po -vi=4600 --no-me --sr=1123-EndChinaWitchhunt  --gha ^
+-b Section0001.xhtml=the_secret_of_china_s_success.html ^
+-b Section0002.xhtml=china_and_the_united_states.html ^
+-b Section0003.xhtml=belt_road_charts_new_direction.html ^
+-b Section0004.xhtml=the_mccarthyite_assault_on_chi.html ^
+-b Section0005.xhtml=falun_gong_neocons_cult_weapon.html ^
+-b Section0006.xhtml=the_world_looks_to_the_belt_an.html ^
+-b Section0007.xhtml=will_china_s_belt_and_road_pol.html ^
+-i ../Images=graphics/2019/1123-EndChinaWitchhunt ecw /r/special_report/2019/1123-EndChinaWitchhunt/OEBPS/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\special_report\2019\1123-EndChinaWitchhunt\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\special_report\2019\1123-EndChinaWitchhunt\index.html
+
+
+/eiw/public/unlisted/2019/eirv46n46-20191122/dlpom980_76GhtY-MFdsA
+
+perlo -w epub2html.pl  --ud 2019/eirv46n46-20191122/dlpom980_76GhtY-MFdsA --pft other -i ../Images=graphics/2019/4646 --iu ../Images=graphics/2019/4646 eir /r/eiw/private/2019/46/OEBPS/Text/
+
+perlo -w epub2html.pl --po --gha ^
+-b Section0001.xhtml=other/editorials/2019/4646-they_want_war.html ^
+-b 05-12_EIR46_a_section.xhtml=lar/2019/4646-how_do_you_organize-lar.html ^
+-b Section0003.xhtml=other/2019/4646-study_lebanon_for_an_insight.html ^
+-b Section0004.xhtml=hzl/2019/4646-we_can_shape_a_new_era-hzl.html ^
+-b Section0014.xhtml=other/editorials/2019/4646-impeachers_mantra_war_is_peace.html ^
+-i ../Images=graphics/2019/4646 eir /r/eiw/private/2019/46/OEBPS/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n46-20191122\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n46-20191122\index.html
+
+
+-b Section0001.xhtml=other/2019/4646-you_are_now_hearing_the_real_r.html ^
+-b 05-12_EIR46_a_section.xhtml=other/2019/4646-how_do_you_organize_under_cond.html ^
+-b Section0003.xhtml=other/2019/4646-study_lebanon_for_an_insight_i.html ^
+-b 13-41_EIR46_b_section.xhtml=other/2019/4646-conference_program.html ^
+-b Section0004.xhtml=other/2019/4646-we_can_shape_a_new_era_of_mank.html ^
+-b Section0005.xhtml=other/2019/4646-the_potential_of_the_new_silk.html ^
+-b Section0006.xhtml=other/2019/4646-larouche_s_science_of_physical.html ^
+-b Section0007.xhtml=other/2019/4646-russia_in_china_s_one_belt_one.html ^
+-b Section0008.xhtml=other/2019/4646-connecting_the_belt_road_corri.html ^
+-b Section0009.xhtml=other/2019/4646-developing_relations_between_g.html ^
+-b Section0010.xhtml=other/2019/4646-pragmatism_against_ideology.html ^
+-b 42-67_EIR46_c_section.xhtml=other/2019/4646-can_europe_play_a_key_role_in.html ^
+-b Section0011.xhtml=other/2019/4646-the_moon_village_next_step_tow.html ^
+-b Section0012.xhtml=other/2019/4646-larouche_s_discoveries_educati.html ^
+-b Section0013.xhtml=other/2019/4646-in_defense_of_african_sovereig.html ^
+-b Section0014.xhtml=other/2019/4646-impeachers_mantra_war_is_peace.html ^
+
+
 /eiw/public/unlisted/2019/eirv46n45-20191115/ckkPlReL-89B5498M77Ffse
 
 perlo -w epub2html.pl  --ud 2019/eirv46n45-20191115/ckkPlReL-89B5498M77Ffse --pft other -i ../Images=graphics/2019/4645 --iu ../Images=graphics/2019/4645 eir /r/eiw/private/2019/45/OEBPS/Text/
 
+perlo -w epub2html.pl --po --gha ^
+-b Section0001.xhtml=other/editorials/2019/4645a-financial_economic_collapse_li.html ^
+-b 06-17_EIR45_a_section.xhtml=other/2019/4645a-the_ongoing_coup_full_scale_in.html ^
+-b Section0004.xhtml=other/2019/4645a-julian_assange_s_life_is_at_ri.html ^
+-b 18-29_EIR45_b_section.xhtml=hzl/2019/4645a-address_for_a_triple_anniversa.html ^
+-b 30-59_EIR45_c_section.xhtml=lar/2019/4645a-on_the_subject_of_strategic_me.html ^
+-b Section0008.xhtml=other/2019/4645a-green_insanity_and_electricity.html ^
+-i ../Images=graphics/2019/4645 eir /r/eiw/private/2019/45a/OEBPS/Text/
 
 -b Section0001.xhtml=other/2019/4645-financial_economic_collapse_li.html ^
 -b 06-17_EIR45_a_section.xhtml=other/2019/4645-the_ongoing_coup_full_scale_in.html ^
@@ -14,6 +74,7 @@ perlo -w epub2html.pl  --ud 2019/eirv46n45-20191115/ckkPlReL-89B5498M77Ffse --pf
 -b 30-59_EIR45_c_section.xhtml=other/2019/4645-on_the_subject_of_strategic_me.html ^
 -b Section0008.xhtml=other/2019/4645-green_insanity_and_electricity.html ^
 -b Section0009.xhtml=other/2019/4645-british_escalate_drive_to_impo.html ^
+-b Section0010.xhtml=other/2019/4645-why_i_oppose_the_proposed_poli.html ^
 
 java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n45-20191115\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n45-20191115\index.html
 
