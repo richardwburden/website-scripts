@@ -178,10 +178,19 @@ foreach $infilepath (@infiles)
 	$nw_class = $styles{'nw'}; #font-weight: normal
     }
 
+    my @LightSubheads = $content->look_down('_tag','p','class',qr/light_subhead/);
+    push(@LightSubheads,'','light_subhead','class','h4','no more wrappers');
+
+    my @MajorLightSubheads = $content->look_down('_tag','p','class',qr/MajorLightSubhead/i);
+    push(@MajorLightSubheads,'','light_subhead','class','h3','no more wrappers');
+
     my @MajorSubheads = $content->look_down('_tag','p','class',qr/MajorSubhead/i);
     push(@MajorSubheads,'','majorsubhead','class','h3','no more wrappers');
-    my @Subheads = $content->look_down('_tag','p','class',qr/Subhead|Minor[\- ]section/i);
+
+    my @Subheads = $content->look_down('_tag','p','class',qr/^Subhead|Minor[\- ]section/i);
     push(@Subheads,'','subhead','class','h4');
+
+
     my @dkickers = $content->look_down('_tag','p','class',qr/FeatureKicker/i);
     push(@dkickers,'','department','class','h2','no more wrappers');
     my @kickers = $content->look_down('_tag','p','class',qr/pt[\-\s]*Kicker/i);
@@ -314,7 +323,7 @@ foreach $infilepath (@infiles)
     my $tag = undef;
     my %attribs = ();
     my $arritem = undef;
-    my @arr_of_arrs = (\@footnote_links,\@footnote_anchors,\@MajorSubheads,\@Subheads,\@kickers,\@dkickers, \@bylines,
+    my @arr_of_arrs = (\@footnote_links,\@footnote_anchors,\@MajorSubheads,\@MajorLightSubheads,\@LightSubheads,\@Subheads,\@kickers,\@dkickers, \@bylines,
 		  \@Heads,\@italics,\@bolds,\@superscripts,\@subscripts,\@ucase,\@normals,\@normal_weights,\@layouts,\@h1s,\@extracts,\@extractbs,\@extractms,\@extractes,\@spaceAbove,\@departments,
 		       \@ArticleTitles,\@ArticleTitleNoKickers,\@ArticleBlurbs,\@ArticleBylines,\@cmt,\@sharpflats);
     while ($arr = shift(@arr_of_arrs))

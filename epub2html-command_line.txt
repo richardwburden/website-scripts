@@ -1,3 +1,45 @@
+/eiw/public/unlisted/2019/eirv46n47-20191129/mkNj09L6-GTf5kd43cCd
+
+perlo -w epub2html.pl  --ud 2019/eirv46n47-20191129/mkNj09L6-GTf5kd43cCd --pft other -i ../Images=graphics/2019/4647 --iu ../Images=graphics/2019/4647 eir /r/eiw/private/2019/47/OEBPS/Text/
+
+perlo -w epub2html.pl --po --gha ^
+-b Section0001.xhtml=other/editorials/2019/4647-house_closes_out_impeachment.html ^
+-b 05-19_EIR47_a_section.xhtml=lar/2019/4647-earth_is_being_invaded-lar.html ^
+-b 20-46_EIR47_b_section.xhtml=other/2019/4647-conference_program.html ^
+-b Section0007.xhtml=other/2019/4647-larouche_and_science.html ^
+-b Section0012.xhtml=other/2019/4647-larouche_a_florentine_mind.html ^
+-b Section0014.xhtml=other/2019/4647-larouche_unity_art_science.html ^
+-b Section0016.xhtml=other/2019/4647-here_n_there_now_n_then_god.html ^
+-b Section0018.xhtml=other/2019/4647-president_trump_bring_justice.html ^
+-b Section0020.xhtml=other/2019/4647-us_mccarthyite_attack_on_china.html ^
+-i ../Images=graphics/2019/4647 eir /r/eiw/private/2019/47/OEBPS/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n47-20191129\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2019\eirv46n47-20191129\index.html
+
+
+-b Section0001.xhtml=other/2019/4647-house_closes_out_impeachment_c.html ^
+-b 05-19_EIR47_a_section.xhtml=other/2019/4647-earth_is_being_invaded_by_hord.html ^
+-b Section0003.xhtml=other/2019/4647-nuclear_energy_now_and_fusion.html ^
+-b Section0004.xhtml=other/2019/4647-exposed_those_running_the_coup.html ^
+-b Section0005.xhtml=other/2019/4647-new_nuclear_report_is_a_lesson.html ^
+-b 20-46_EIR47_b_section.xhtml=other/2019/4647-european_conference_in_memory.html ^
+-b Section0006.xhtml=other/2019/4647-the_power_of_reason_the_living.html ^
+-b Section0007.xhtml=other/2019/4647-larouche_and_science.html ^
+-b Section0008.xhtml=other/2019/4647-the_man_who_should_have_been_p.html ^
+-b Section0009.xhtml=other/2019/4647-fatherland_nation_and_state_as.html ^
+-b Section0010.xhtml=other/2019/4647-the_importance_of_lyndon_larou.html ^
+-b Section0011.xhtml=other/2019/4647-remembrance_of_the_great_human.html ^
+-b Section0012.xhtml=other/2019/4647-larouche_a_florentine_mind.html ^
+-b Section0013.xhtml=other/2019/4647-the_larouche_solution_as_the_w.html ^
+-b 47-68_EIR47_c_section.xhtml=other/2019/4647-the_necessity_of_a_classical_r.html ^
+-b Section0014.xhtml=other/2019/4647-larouche_and_the_unity_of_art.html ^
+-b Section0015.xhtml=other/2019/4647-the_negro_spiritual_s_unique_c.html ^
+-b Section0016.xhtml=other/2019/4647-here_and_there_now_and_then_go.html ^
+-b Section0017.xhtml=other/2019/4647-memorial_concert_for_lyndon_h.html ^
+-b Section0018.xhtml=other/2019/4647-president_donald_trump_bring_j.html ^
+-b Section0019.xhtml=other/2019/4647-conference_dialogue_statecraft.html ^
+-b Section0020.xhtml=other/2019/4647-u_s_mccarthyite_attack_on_chin.html ^
+
 /special_report/2019/1123-EndChinaWitchhunt/
 
 
