@@ -198,7 +198,7 @@ foreach $infilepath (@infiles)
     my @bylines = $content->look_down('_tag','p','class',qr/^Byline$/i);
     push(@bylines,'','byline','class','p');
     my @Heads = ();
-    push (@Heads,  $content->look_down('_tag','p','class',qr/ptHead/i));
+    push (@Heads,  $content->look_down('_tag','p','class',qr/pt[\-\s]*Head/i));
     push(@Heads,'','head','class','h2');
 #    my @BigHeads =  $content->look_down('_tag','p','class',qr/Heading-3/i);
 #    push(@BigHeads,'','bighead','class','h1');
@@ -402,6 +402,22 @@ foreach $infilepath (@infiles)
     my @lcclasstags = $tree->look_down('class','list_container');
     #remove copied 'list_container' class attribute from parent div.list_container
     foreach my $lcct (@lcclasstags) {$lcct->attr('class',undef)}
+
+
+	#correct non-standard class names
+	my @credits = $tree->look_down('class',qr/credit/i);
+	foreach $credit (@credits)
+	{
+	    $credit->attr('class','PixCredit');
+	}
+	my @captions = $tree->look_down('class',qr/caption\b/i);
+	foreach $caption (@captions)
+	{
+	    my $ctext = $caption->attr('class');
+	    $ctext =~ s/caption/Captions/i;
+	    $caption->attr('class',$ctext);
+	}
+
     print OUTFILE $first_line;
     $tree->deobjectify_text();
     my $output = $tree->as_HTML("","\t",\%empty);

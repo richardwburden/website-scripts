@@ -18,6 +18,7 @@ git push --mirror https://github.com/richardwburden/new_daybook
 changes since last commit:
 git diff --cached
 
+Note that git diff displays the diffs with something like the less reader utility.  Navigate through the listing with PageUp and PageDown keys.  Type q to exit.
 
 for a dry run, use the --dry-run parameter
 
@@ -31,6 +32,11 @@ where path_to_file uses forward slashes and is relative to the current working d
 the output of git show can be written to a file so it can be viewed in an editor of your choice (be careful not to overwrite the current version of the file):
 
 git show commit_number:path_to_file > temp.pl
+
+
+to view changes since an arbitrary commit:
+git diff <commit> [<path>]
+
 
 --------------------------------------------------------------------------
 Using Saxon

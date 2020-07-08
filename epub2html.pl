@@ -91,6 +91,7 @@ sub removePageNumber($);
 sub removeBrs($);
 sub isEditorial($);
 sub publicArticlePDFPathFromPrivate($$$$$);
+sub correctNSClassNames($);
 #For conversion of kickers in all-caps to part of the title or a section heading in the archive issue index page.
 %titleCaseDict = (qw/LAROUCHE LaRouche PAC PAC LAROUCHEPAC LaRouchePAC LPAC LPAC ZEPP-LAROUCHE Zepp-LaRouche UN UN US US USA USA UK UK EU EU/); 
 %articlesTitleCaseDict = (qw/A a AN an THE the/); 
@@ -705,6 +706,8 @@ foreach $infilepath (@noncmInfiles)
 	    }
 	}
 	
+	correctNSClassNames ($ttree);
+
 	updateLinksToArticles ($ttree,$infilepath,$outfilepath,1);
 	updateSiteRelativeLinks ($ttree,$infilepath,$outfilepath);
 	updateLinksToArticles ($arch_ttree,$infilepath,$full_arch_outfilepath,1);
@@ -830,6 +833,8 @@ foreach $infilepath (@noncmInfiles)
 	my @nbsp = $ttree->look_down('class','nbsp');
 	foreach $nbsp (@nbsp)
 	{$nbsp->replace_with('&nbsp;&nbsp;&nbsp;&nbsp;')->delete}
+
+	correctNSClassNames($ttree);
 
 	my $output = $ttree->as_HTML("","\t",\%empty);
 	$ttree->delete;
@@ -1475,6 +1480,21 @@ sub publicArticlePDFPathFromPrivate($$$$$)
     $url =~ s%/pdf%%;
     return $url;
 }
+
+sub correctNSClassNames($)
+{
+	#correct non-standard class names introduced by Calibre's epub compressor.  Calibre will not allow the same class to have different CSS when used with different tags, so it creates new classes by appending '1' to the class name.
+    my $tree = $_[0];
+
+	my @head1s = $tree->look_down('class',qr/head1/i);
+	foreach $head1 (@head1s)
+	{
+	    my $class = $head1->attr('class');
+	    $class =~ s/1$//;
+	    $head1->attr('class',$class);
+	}
+}
+
 sub usage
 {
     my $dcf = $program_basename.'.xml';
