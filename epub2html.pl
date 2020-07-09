@@ -855,7 +855,7 @@ sub writeBrowserScript
     $url =~ s%\\%/%g;
     $url = $domainName.$url;
     
-    print BROWSERSCRIPT $browserPath.' '.$browserOptions.' '.$url.' > '.$ofp."\n";
+    print BROWSERSCRIPT '"'.$browserPath.'" '.$browserOptions.' '.$url.' > '.$ofp."\n";
 } 
 
 sub isTargetedDomain

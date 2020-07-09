@@ -195,7 +195,7 @@ foreach $infilepath (@infiles)
     push(@dkickers,'','department','class','h2','no more wrappers');
     my @kickers = $content->look_down('_tag','p','class',qr/pt[\-\s]*Kicker/i);
     push(@kickers,'','kicker','class','h4');
-    my @bylines = $content->look_down('_tag','p','class',qr/^Byline$/i);
+    my @bylines = $content->look_down('_tag','p','class',qr/^Byline\b/i);
     push(@bylines,'','byline','class','p');
     my @Heads = ();
     push (@Heads,  $content->look_down('_tag','p','class',qr/pt[\-\s]*Head/i));
@@ -452,8 +452,11 @@ sub processCss ($$)
     $initscript->delete;
     #use a browser to execute the JavaScript on the temporary HTML file and save to another temporary HTML file
     chdir $dir;
-    my $cmd = $browserPath.' '.$browserOptions.' '.$dirURL.'/temp.html > temp2.html';
+    my $cmd = '"'.$browserPath.'" '.$browserOptions.' '.$dirURL.'/temp.html > temp2.html';
+
+    print STDERR $cmd;
     system($cmd);
+    
     #read and parse the 2nd temporary HTML file
     open (TEMP, "temp2.html") || die "can't open $dir\\temp2.html for reading: $!";
     my $stree = HTML::TreeBuilder->new;

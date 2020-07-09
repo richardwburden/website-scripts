@@ -1,0 +1,12 @@
+<domain name="http://larouchepub.com" docroot="C:\Users\Richard\Dropbox_insecure\Dropbox\latest_eir">
+<option id="backup_prefix" value="eir2epub_" />
+
+<!-- the following paths are is always taken as-is -->
+<option id="browserPath" value="C:\Users\Richard\AppData\Local\Yandex\YandexBrowser\Application\browser.exe">
+<!-- <option id="browserOptions" value="--headless --dump-dom --fart"> default value is "--headless --dump-dom" -->
+
+<!-- <option id="localHostURL" value="http://localhost:8000" > default value is "http://localhost:8000" -->
+<!-- the following paths assume a local webserver is running with document root URL defined as the value of localHostURL, above, and with the local file system pathname of the document root same as docroot defined above in the domain tag  -->
+<option id="processCssScriptURL" value="/js/processCss.js">
+<option id="jqueryURL" value="/js/jquery-1.11.3.min.js">
+

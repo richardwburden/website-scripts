@@ -1,3 +1,41 @@
+eiw/public/unlisted/2020/eirv47n28-20200710/cplsuVh76dhyX9ksjursaQWlkfj3dfbch
+
+perlo -w epub2html.pl  --ud 2020/eirv47n28-20200710/cplsuVh76dhyX9ksjursaQWlkfj3dfbch --pft other -i ../Images=graphics/2020/4728 --iu ../Images=graphics/2020/4728 eir /r/eiw/private/2020/28/OEBPS/Text/
+
+perlo -w epub2html.pl --po --gha ^
+-b 03-15_EIR28_section_a.xhtml=lar/2020/4728-right_cultural_paradigm_shift-lar.html ^
+-b Section0002.xhtml=other/2020/4728-the_challenge_of_july_fourth.html ^
+-b 16-34_EIR28_section_b.xhtml=other/2020/4728-deep_space_mission_quasicrystals.html ^
+-b Section0004.xhtml=other/2020/4728-s_africa_nuclear_power_or_bust.html ^
+-b 35-56_EIR28_section_c.xhtml=other/2020/4728-food_production_can_unite-baker.html ^
+-b Section0006.xhtml=other/2020/4728-geopolitics_of_hunger-senny.html ^
+-b Section0007.xhtml=other/2020/4728-s_america_multipolar_road-formento.html ^
+-b Section0008.xhtml=other/2020/4728-us_workers-sci_progress-sweazy.html ^
+-b Section0011.xhtml=other/2020/4728-food_unites_people-callicrate.html ^
+-i ../Images=graphics/2020/4728 eir /r/eiw/private/2020/28/OEBPS/Text/
+
+perlo -w epub2html.pl --po --gha ^
+-b Section0002.xhtml=other/2020/4728-the_challenge_of_july_fourth.html ^
+-i ../Images=graphics/2020/4728 eir /r/eiw/private/2020/28/OEBPS/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2020\eirv47n28-20200710\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2020\eirv47n28-20200710\index.html
+
+-b 03-15_EIR28_section_a.xhtml=other/2020/4728-crucial_strategic_importance_o.html ^
+-b Section0002.xhtml=other/2020/4728-the_challenge_of_july_fourth.html ^
+-b Section0003.xhtml=other/2020/4728-lyndon_larouche_must_be_exoner.html ^
+-b 16-34_EIR28_section_b.xhtml=other/2020/4728-the_deep_space_mission_that_mi.html ^
+-b Section0004.xhtml=other/2020/4728-south_africa_nuclear_power_or.html ^
+-b Section0005.xhtml=other/2020/4728-you_can_t_fight_the_pandemic_o.html ^
+-b 35-56_EIR28_section_c.xhtml=other/2020/4728-how_food_production_can_unite.html ^
+-b Section0006.xhtml=other/2020/4728-prosper_or_perish_an_introduct.html ^
+-b Section0007.xhtml=other/2020/4728-south_america_on_the_new_multi.html ^
+-b Section0008.xhtml=other/2020/4728-returning_the_u_s_work_force_t.html ^
+-b Section0009.xhtml=other/2020/4728-the_caribbean_s_true_importanc.html ^
+-b Section0010.xhtml=other/2020/4728-an_agro_industrial_scientific.html ^
+-b Section0011.xhtml=other/2020/4728-food_unites_people_around_the.html ^
+-b Section0012.xhtml=other/2020/4728-let_us_return_to_the_best_mome.html ^
+-b Section0013.xhtml=other/2020/4728-discussion_conference_panel_2.html ^
+
 eiw/public/unlisted/2020/eirv47n27-20200703/fikj7hydy_o87jhw-vcxFdaLqn
 
 perlo -w epub2html.pl  --ud 2020/eirv47n27-20200703/fikj7hydy_o87jhw-vcxFdaLqnTest --pft other -i ../Images=graphics/2020/4727 --iu ../Images=graphics/2020/4727 eir /r/eiw/private/2020/27/OEBPS/Text/

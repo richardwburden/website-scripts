@@ -1,0 +1,18 @@
+<!-- use this one to generate, during the first week after publication, while the relevant index is still at /eiw/index.html (/eiw/]]]), the public archive index for later use, in which all the links are public, and the entire issue is publicly available in all formats. Make sure a local webserver is running. -->
+<domain name="http://localhost:8000" docroot="C:\Users\Richard\Documents\websites\EIR" remoteDocRoot="/www" login="josi" pwd="">
+
+<!-- each of the following paths contains only the part of the path that does not change from issue to issue; the remainder of the path is calculated from the volume number, issue number and date contained in the "PDF edition" table of contents in the epub, or a relative path supplied on the command-line.  The first of these, pdfIndexPath, contains the complete path if it ends with ']]]', e.g. "/eiw/]]]", in which case the ']]]' is NOT included in the path. -->
+<option id="pdfIndexPath" value="/eiw/]]]">
+<option id="publicArticlesRootPath" value="/">
+<option id="unlistedArticlesRootPath" value="/eiw/public/unlisted/">
+<option id="publicIssueIndexRootPath" value="/eiw/public/">
+<option id="unlistedIssueIndexRootPath" value="/eiw/public/unlisted/">
+<option id="publicIssueIndexArchiveRootPath" value="/eiw/public/">
+<option id="phpRootPath" value="/eiw/public/">
+
+
+<!-- the following paths are always taken as-is -->
+<option id="browserPath" value="C:\Users\Richard\AppData\Local\Yandex\YandexBrowser\Application\browser.exe">
+<!-- <option id="browserOptions" value="--headless --dump-dom --fart"> default value is "--headless --dump-dom" -->
+<option id="browserScriptPath" value="C:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\epub2htmlRunJS.bat">
+
