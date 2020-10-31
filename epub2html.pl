@@ -659,6 +659,10 @@ foreach $infilepath (@noncmInfiles)
 		my $kickr = $kick->right;
 		my $kickra = $kickr->find_by_tag_name('a');
 #		$kick->deobjectify_text;
+		if (not defined $kickra) 
+		{
+		    print STDERR "kicker without link in table of contents\n";
+		}
 		$kickra->unshift_content(': ');
 		$kickra->unshift_content(@kickcontent);
 		$kick->delete; #remove empty tag; contents have been moved to $kickra

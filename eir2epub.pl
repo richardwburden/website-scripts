@@ -143,9 +143,14 @@ foreach $infilepath (@infiles)
     my $tree = HTML::TreeBuilder->new();
     $tree->store_comments(1);
     $tree->parse_file(\*INFILE);
-    my $styles_text = processCss($tree,$outfiledir);
-    my $styles_comment = HTML::Element->new('~comment','text' => $styles_text);
     my $head = $tree->find_by_tag_name('head');
+    my $charset = HTML::Element->new('meta','charset' => 'utf-8');
+    $head->preinsert($charset); #allows broswer to correctly interpret locally saved temp.html file.  Necessary when browserPath set to empty string, to allow user to manually load temp.html into a browser, let it run JavaScript, then dump the DOM to temp2.html, instead of letting this script invoke a headless broswer.
+
+    my $styles_text = processCss($tree,$outfiledir);
+
+    my $styles_comment = HTML::Element->new('~comment','text' => $styles_text);
+    $head = $tree->find_by_tag_name('head');
     $head->preinsert($styles_comment); #for debugging processCss
     
     $content = $tree->look_down('id','content');
@@ -184,15 +189,16 @@ foreach $infilepath (@infiles)
     my @MajorLightSubheads = $content->look_down('_tag','p','class',qr/MajorLightSubhead/i);
     push(@MajorLightSubheads,'','light_subhead','class','h3','no more wrappers');
 
-    my @MajorSubheads = $content->look_down('_tag','p','class',qr/MajorSubhead/i);
+    my @MajorSubheads = $content->look_down('_tag','p','class',qr/Major[\-\s]*Subhead/i);
     push(@MajorSubheads,'','majorsubhead','class','h3','no more wrappers');
 
-    my @Subheads = $content->look_down('_tag','p','class',qr/^Subhead|Minor[\- ]section/i);
+    my @Subheads = $content->look_down('_tag','p','class',qr/^Subhead|Minor[\-\s]*section/i);
     push(@Subheads,'','subhead','class','h4');
 
-
-    my @dkickers = $content->look_down('_tag','p','class',qr/FeatureKicker/i);
+    my @dkickers = $content->look_down('_tag','p','class',qr/department/i);
     push(@dkickers,'','department','class','h2','no more wrappers');
+    my @editorials = $content->look_down('_tag','p','class',qr/Feature[\-\s]*Kicker/i);
+    push(@editorials,'','department','class','h3','no more wrappers');
     my @kickers = $content->look_down('_tag','p','class',qr/pt[\-\s]*Kicker/i);
     push(@kickers,'','kicker','class','h4');
     my @bylines = $content->look_down('_tag','p','class',qr/^Byline\b/i);
@@ -203,43 +209,43 @@ foreach $infilepath (@infiles)
 #    my @BigHeads =  $content->look_down('_tag','p','class',qr/Heading-3/i);
 #    push(@BigHeads,'','bighead','class','h1');
 
-    my @extracts = $content->look_down('_tag','p','class',qr/^extract\b/i);
+    my @extracts = $content->look_down('_tag','p','class',qr/^extract[\-\s]*$/i);
     push(@extracts,'','extract','class','p');
 
-    my @extractbs = $content->look_down('_tag','p','class',qr/extractbegin/i);
+    my @extractbs = $content->look_down('_tag','p','class',qr/extract[\-\s]*begin/i);
     push(@extractbs,'','extractbegin','class','p');
 
-    my @extractms = $content->look_down('_tag','p','class',qr/extractmiddle/i);
+    my @extractms = $content->look_down('_tag','p','class',qr/extract[\-\s]*middle/i);
     push(@extractms,'','extractmiddle','class','p');
 
-    my @extractes = $content->look_down('_tag','p','class',qr/extractend/i);
+    my @extractes = $content->look_down('_tag','p','class',qr/extract[\-\s]*end/i);
     push(@extractes,'','extractend','class','p');
    
-    my @spaceAbove = $content->look_down('_tag','p','class',qr/spaceabove\b/i);
+    my @spaceAbove = $content->look_down('_tag','p','class',qr/space[\-\s]*above\b/i);
     push (@spaceAbove,'','spaceabove','class','p');
 
-    my @cmt = $content->look_down('_tag','p','class',qr/^Contents.Main.*/i);
+    my @cmt = $content->look_down('_tag','p','class',qr/^Contents[\-\s]*Main.*/i);
     push (@cmt,'','cmt','class','h4');
 
-    my @departments = $content->look_down('_tag','p','class',qr/^Contents.Section/i);
+    my @departments = $content->look_down('_tag','p','class',qr/^Contents?[\-\s]*Section/i);
     push (@departments,'','department','class','h4');
 
-    my @ArticleTitleNoKickers = $content->look_down('_tag','p','class',qr/^Contents.Head.no.kicker/i);
+    my @ArticleTitleNoKickers = $content->look_down('_tag','p','class',qr/^Contents?[\-\s]*Head[\-\s]*no[\-\s]*kicker/i);
     push (@ArticleTitleNoKickers,'','|','<','articletitlenokicker','class','p','+','strong');
 
-    my @ArticleTitles = $content->look_down('_tag','p','class',qr/^Contents.Head$/i);
+    my @ArticleTitles = $content->look_down('_tag','p','class',qr/^Contents?[\-\s]*Head$/i);
     push (@ArticleTitles,'','|','<','articletitle','class','p','+','strong');
 
-    my @ArticleBlurbs = $content->look_down('_tag','p','class',qr/^Contents.Text/i);
+    my @ArticleBlurbs = $content->look_down('_tag','p','class',qr/^Contents?[\-\s]*Text/i);
     push (@ArticleBlurbs,'','articleblurb','class','p');
-    my @ArticleBylines = $content->look_down('_tag','p','class',qr/^Contents.byline/i);
+    my @ArticleBylines = $content->look_down('_tag','p','class',qr/^Contents?[\-\s]*byline/i);
     push (@ArticleBylines,'','tocbyline','class','p');
 
     my @footnote_links = ();
-    push (@footnote_links,  $content->look_down('_tag','a','class',qr/FootnoteLink/));
+    push (@footnote_links,  $content->look_down('_tag','a','class',qr/Footnote[\-\s]*Link/i));
     push (@footnote_links,'','a','|||',']','text','~text','^^^','[fn_','text','~text');
     my @footnote_anchors = ();
-    push (@footnote_anchors,  $content->look_down('_tag','a','class',qr/FootnoteAnchor/));
+    push (@footnote_anchors,  $content->look_down('_tag','a','class',qr/Footnote[\-\s]*Anchor/i));
     push (@footnote_anchors,'','a','|||',']','text','~text','^^^','[fn_','text','~text');
     my @layouts = ();
     push (@layouts, $content->look_down ('_tag','div','class',qr/_idGenObjectLayout/));
@@ -323,7 +329,7 @@ foreach $infilepath (@infiles)
     my $tag = undef;
     my %attribs = ();
     my $arritem = undef;
-    my @arr_of_arrs = (\@footnote_links,\@footnote_anchors,\@MajorSubheads,\@MajorLightSubheads,\@LightSubheads,\@Subheads,\@kickers,\@dkickers, \@bylines,
+    my @arr_of_arrs = (\@footnote_links,\@footnote_anchors,\@MajorSubheads,\@MajorLightSubheads,\@LightSubheads,\@Subheads,\@kickers,\@dkickers,\@editorials,\@bylines,
 		  \@Heads,\@italics,\@bolds,\@superscripts,\@subscripts,\@ucase,\@normals,\@normal_weights,\@layouts,\@h1s,\@extracts,\@extractbs,\@extractms,\@extractes,\@spaceAbove,\@departments,
 		       \@ArticleTitles,\@ArticleTitleNoKickers,\@ArticleBlurbs,\@ArticleBylines,\@cmt,\@sharpflats);
     while ($arr = shift(@arr_of_arrs))
@@ -452,8 +458,17 @@ sub processCss ($$)
     $initscript->delete;
     #use a browser to execute the JavaScript on the temporary HTML file and save to another temporary HTML file
     chdir $dir;
-    my $cmd = '"'.$browserPath.'" '.$browserOptions.' '.$dirURL.'/temp.html > temp2.html';
-
+    
+    my $cmd = "";
+    if ($browserPath eq '')
+    {
+	print "Open temp.html in a browser and save it to temp2.html, then hit Enter.\n";
+	$cmd = 'pause';
+    }
+    else
+    {
+	$cmd = '"'.$browserPath.'" '.$browserOptions.' '.$dirURL.'/temp.html > temp2.html';
+    }
     print STDERR $cmd;
     system($cmd);
     

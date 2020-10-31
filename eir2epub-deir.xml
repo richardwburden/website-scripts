@@ -2,7 +2,10 @@
 <option id="backup_prefix" value="eir2epub_" />
 
 <!-- the following paths are is always taken as-is -->
-<option id="browserPath" value="C:\Program Files (x86)\Google\Chrome\Application\chrome.exe">
+<option id="browserPath" value="">
+<option id="browserOptions" value="">
+<!-- <option id="browserPath" value="C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"> -->
+<!-- <option id="browserPath" value="C:\Users\Richard\AppData\Local\Yandex\YandexBrowser\Application\browser.exe"> -->
 <!-- <option id="browserOptions" value="--headless --dump-dom --fart"> default value is "--headless --dump-dom" -->
 
 <!-- <option id="localHostURL" value="http://localhost:8000" > default value is "http://localhost:8000" -->
