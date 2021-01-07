@@ -1,3 +1,268 @@
+eiw/public/unlisted/2021/eirv48n02-20210108/lp08dGe5VaC1_7s
+
+perlo -w epub2html.pl  --ud 2021/eirv48n02-20210108/lp08dGe5VaC1_7s --pft other -i ../Images=graphics/2021/4802 --iu ../Images=graphics/2021/4802 eir /r/eiw/private/2021/02/OEBPS/Text/
+
+perlo -w epub2html.pl --po ^
+-b Section0001.xhtml=other/editorials/2021/4802-crush_malthusian_green_finance_scam.html ^
+-b 05-13_EIR02_section_a.xhtml=other/2021/4802-reconstituting_franklins_republic.html ^
+-b Section0005.xhtml=other/2021/4802-pathway_of_a_new_classical_renaissance.html ^
+-b Section0007.xhtml=other/2021/4802-stop_the_fraud_exonerate_larouche.html ^
+-i ../Images=graphics/2021/4802 eir /r/eiw/private/2021/02/OEBPS/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n02-20210108\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n02-20210108\index.html
+
+-b Section0001.xhtml=other/2021/4802-crush_the_malthusian_green_fin.html ^
+-b 05-13_EIR02_section_a.xhtml=other/2021/4802-reconstituting_ben_franklin_s.html ^
+-b 14-42_EIR02_section_2_copy.xhtml=other/2021/4802-boris_johnson_from_brexit_to_t.html ^
+-b Section0003.xhtml=other/2021/4802-20_how_a_mass_famine_helped_sp.html ^
+-b Section0004.xhtml=other/2021/4802-john_locke_and_the_introductio.html ^
+-b 43-58_EIR02_section_c.xhtml=other/2021/4802-break_with_illusion_to_stop_th.html ^
+-b Section0005.xhtml=other/2021/4802-the_necessity_and_pathway_of_a.html ^
+-b Section0006.xhtml=other/2021/4802-russians_and_americans_honor_t.html ^
+-b Section0007.xhtml=other/2021/4802-stop_the_fraud_exonerate_larou.html ^
+
+eiw/public/unlisted/2021/eirv48n01-20210101/Mu9_lf8vHsrcNqA
+
+perlo -w epub2html.pl  --ud 2021/eirv48n01-20210101/Mu9_lf8vHsrcNqA --pft other -i ../Images=graphics/2021/4801 --iu ../Images=graphics/2021/4801 eir /r/eiw/private/2021/01/OEBPS/Text/
+
+perlo -w epub2html.pl --po --gha ^
+-b 03-13_EIR01_section_a.xhtml=other/2021/4801-who_we_are.html ^
+-b Section0002.xhtml=other/2021/4801-stmt_of_dr_joycelyn_elders.html ^
+-b Section0003.xhtml=other/2021/4801-act_in_the_spirit_of_fdr.html ^
+-b Section0004.xhtml=lar/2021/4801-providing_the_leadership-lar.html ^
+-b 32-42_EIR01_section_c.xhtml=other/2021/4801-exon_larouche_assange_snowden.html ^
+-b Section0009.xhtml=other/2021/4801-trump_stmt_on_election_fraud.html ^
+-i ../Images=graphics/2021/4801 eir /r/eiw/private/2021/01/OEBPS/Text/
+
+-b 03-13_EIR01_section_a.xhtml=other/2021/4801-who_we_are.html ^
+-b Section0002.xhtml=other/2021/4801-statement_of_dr_joycelyn_elder.html ^
+-b Section0003.xhtml=other/2021/4801-act_in_the_spirit_of_fdr_or_fa.html ^
+-b Section0004.xhtml=other/2021/4801-providing_the_leadership_the_a.html ^
+-b 14-31_EIR01_section_b.xhtml=other/2021/4801-the_chinese_economic_model.html ^
+-b Section0005.xhtml=other/2021/4801-science_driver_and_culture_not.html ^
+-b Section0006.xhtml=other/2021/4801-planning_without_numbers_but_w.html ^
+-b Section0007.xhtml=other/2021/4801-china_and_the_united_states_ri.html ^
+-b Section0008.xhtml=other/2021/4801-on_china_s_meritocracy_based_d.html ^
+-b 32-42_EIR01_section_c.xhtml=other/2021/4801-exonerate_larouche_assange_sno.html ^
+-b Section0009.xhtml=other/2021/4801-statement_on_massive_election.html ^
+-b Section0010.xhtml=other/2021/4801-the_british_empire_s_digital_d.html ^
+-b 43-53_EIR01_section_d.xhtml=other/2021/4801-the_truth_behind_the_start_of.html ^
+
+
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n01-20210101\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n01-20210101\index.html
+
+
+
+eiw/public/unlisted/2020/eirv47n51-20201218/_ju89VgsLutZqmN
+
+perlo -w epub2html.pl  --ud 2020/eirv47n51-20201218/_ju89VgsLutZqmN --pft other -i ../Images=graphics/2020/4751 --iu ../Images=graphics/2021/4751 eir /r/eiw/private/2020/51/OEBPS/Text/
+
+perlo -w epub2html.pl --po --gha ^
+-b Section0002.xhtml=other/2020/4751-crucifixion_of_julian_assange.html ^
+-b Section0006.xhtml=hzl/2020/4751-cusa_and_the_immortal_species-hzl.html ^
+-b Section0008.xhtml=other/2020/4751-thinking_level_of_coinc_opp.html ^
+-b Section0009.xhtml=hzl/2020/4751-committee_for_the_coinc_opp-hzl.html ^
+-b Section0011.xhtml=other/2020/4751-si_conf_program.html ^
+-b 34-43_EIR51_section_C.xhtml=other/2020/4751-war_on_china_destroys_us.html ^
+-i ../Images=graphics/2020/4751 eir /r/eiw/private/2020/51/OEBPS/Text/
+
+
+-b 03-28_EIR51_section_A.xhtml=other/2020/4751-hang_together_or_hang_separate.html ^
+-b Section0002.xhtml=other/2020/4751-the_crucifixion_of_julian_assa.html ^
+-b Section0003.xhtml=other/2020/4751-hidden_scandals_are_emerging_n.html ^
+-b Section0004.xhtml=other/2020/4751-fraud_and_cover_up.html ^
+-b Section0005.xhtml=other/2020/4751-great_power_strategic_relation.html ^
+-b Section0006.xhtml=other/2020/4751-cusa_and_mankind_the_immortal.html ^
+-b Section0007.xhtml=other/2020/4751-nato_poses_a_grave_threat_to_w.html ^
+-b Section0008.xhtml=other/2020/4751-thinking_on_the_level_of_the_c.html ^
+-b Section0009.xhtml=other/2020/4751-the_committee_for_the_coincide.html ^
+-b Section0010.xhtml=other/2020/4751-carve_a_stone_of_hope_out_of_a.html ^
+-b Section0011.xhtml=other/2020/4751-schiller_institute_conference.html ^
+-b 29-33_India_EIR51_section_B.xhtml=other/2020/4751-mass_farmer_protest_in_india_i.html ^
+-b 34-43_EIR51_section_C.xhtml=other/2020/4751-how_pompeo_s_war_on_china_has.html ^
+-b Section0012.xhtml=other/2020/4751-the_trump_xi_big_deals_of_2017.html ^
+-b Section0013.xhtml=other/2020/4751-a_tale_of_two_think_tanks_canb.html ^
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2020\eirv47n51-20201218\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2020\eirv47n51-20201218\index.html
+
+
+
+eiw/public/unlisted/2020/eirv47n50-20201211/plsd7hv5tdmn9az
+
+perlo -w epub2html.pl  --ud 2020/eirv47n50-20201211/plsd7hv5tdmn9az --pft other -i ../Images=graphics/2020/4750 --iu ../Images=graphics/2021/4750 eir /r/eiw/private/2020/50/OEBPS/Text/
+
+perlo -w epub2html.pl --po --gha ^
+-b 07-21_EIR50_section_a.xhtml=other/2020/4750-statement-truth_in_elections.html ^
+-b 22-27_EIR50_section_b.xhtml=hzl/2020/4750-assassination_of_fakhrizadeh-hzl.html ^
+-b Section0007.xhtml=other/2020/4750-behind_the_assassination.html ^
+-i ../Images=graphics/2020/4750 eir /r/eiw/private/2020/50/OEBPS/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2020\eirv47n50-20201211\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2020\eirv47n50-20201211\index.html
+
+
+-b Section0001.xhtml=other/2020/4750-don_t_give_in_to_the_psywar_th.html ^
+-b Section0002.xhtml=other/2020/4750-urgent_appeal_for_aid_in_fight.html ^
+-b 07-21_EIR50_section_a.xhtml=other/2020/4750-statement_of_the_international.html ^
+-b Section0004.xhtml=other/2020/4750-a_turning_point_fraud_evidence.html ^
+-b Section0005.xhtml=other/2020/4750-after_25_years_release_of_fren.html ^
+-b Section0006.xhtml=other/2020/4750-what_the_rejection_of_my_1995.html ^
+-b 22-27_EIR50_section_b.xhtml=other/2020/4750-assassination_of_mohsen_fakhri.html ^
+-b Section0007.xhtml=other/2020/4750-behind_the_assassination_of_an.html ^
+-b 28-51_EIR50_section_c.xhtml=other/2020/4750-listen_to_hjalmar_schacht_and.html ^
+-b Section0008.xhtml=other/2020/4750-covid_19_impact_exposes_the_co.html ^
+-b Section0009.xhtml=other/2020/4750-there_are_no_limits_to_growth.html ^
+-b 52-57_EIR50_section_d.xhtml=other/2020/4750-chang_e_5_bringing_a_bit_of_th.html ^
+-b Section0010.xhtml=other/2020/4750-a_fight_for_culture_during_the.html ^
+
+
+eiw/public/unlisted/2020/eirv47n49-20201204/gpc_w34M8v6c35z8
+
+perlo -w epub2html.pl  --ud 2020/eirv47n49-20201204/gpc_w34M8v6c35z8 --pft other -i ../Images=graphics/2020/4749 --iu ../Images=graphics/2021/4749 eir /r/eiw/private/2020/49/OEBPS/Text/
+
+-b Section0001.xhtml=other/2020/4749-the_post_pandemic_world_order.html ^
+-b 05-19_EIR49_section_a.xhtml=other/2020/4749-commission_hearing_on_massive.html ^
+-b Section0003.xhtml=other/2020/4749-harley_schlanger.html ^
+-b Section0004.xhtml=other/2020/4749-leah_hoopes.html ^
+-b Section0005.xhtml=other/2020/4749-sen_mario_scavello.html ^
+-b Section0006.xhtml=other/2020/4749-william_binney.html ^
+-b Section0007.xhtml=other/2020/4749-prof_marino_elsevyf_and_col_ri.html ^
+-b Section0008.xhtml=other/2020/4749-daniel_marmolejo_and_harley_sc.html ^
+-b Section0009.xhtml=other/2020/4749-0.html ^
+-b Section0010.xhtml=other/2020/4749-bennie_smith.html ^
+-b Section0011.xhtml=other/2020/4749-david_meiswinkle.html ^
+-b Section0012.xhtml=other/2020/4749-juan_francisco_soto.html ^
+-b Section0013.xhtml=other/2020/4749-dr_sim_n_levy.html ^
+-b Section0014.xhtml=other/2020/4749-prof_marino_elsevyf.html ^
+-b 20-27_EIR49_section_b.xhtml=other/2020/4749-italy_s_prodi_puts_transaqua_b.html ^
+-b Section0015.xhtml=other/2020/4749-discourse_on_the_debt_33_years.html ^
+-b 28-40_EIR49_section_c.xhtml=other/2020/4749-think_like_beethoven_fidelio_l.html ^
+-b 41-51_EIR49_section_d.xhtml=other/2020/4749-new_green_fascism_or_new_parad.html ^
+-b Section0016.xhtml=other/2020/4749-a_four_power_agreement_can_cre.html ^
+
+perlo -w epub2html.pl --po --gha ^
+-b 05-19_EIR49_section_a.xhtml=other/2020/4749-commission_hearing_on_massive.html ^
+-b Section0003.xhtml=other/2020/4749-harley_schlanger.html ^
+-b Section0004.xhtml=other/2020/4749-leah_hoopes.html ^
+-b Section0005.xhtml=other/2020/4749-sen_mario_scavello.html ^
+-b Section0006.xhtml=other/2020/4749-william_binney.html ^
+-b Section0007.xhtml=other/2020/4749-prof_marino_elsevyf_and_col_ri.html ^
+-b Section0008.xhtml=other/2020/4749-daniel_marmolejo_and_harley_sc.html ^
+-b Section0009.xhtml=other/2020/4749-leah_hoopes_closing.html ^
+-b Section0010.xhtml=other/2020/4749-bennie_smith.html ^
+-b Section0011.xhtml=other/2020/4749-david_meiswinkle.html ^
+-b Section0012.xhtml=other/2020/4749-juan_francisco_soto.html ^
+-b Section0013.xhtml=other/2020/4749-dr_simon_levy.html ^
+-b Section0014.xhtml=other/2020/4749-prof_marino_elsevyf.html ^
+-i ../Images=graphics/2020/4749 eir /r/eiw/private/2020/49/OEBPS/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2020\eirv47n49-20201204\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2020\eirv47n49-20201204\index.html
+
+
+eiw/public/unlisted/2020/eirv47n48-20201127/Avj9k8f_dek3zsJq
+
+perlo -w epub2html.pl  --ud 2020/eirv47n48-20201127/Avj9k8f_dek3zsJq --pft other -i ../Images=graphics/2020/4748 --iu ../Images=graphics/2021/4748 eir /r/eiw/private/2020/48/OEBPS/Text/
+
+perlo -w epub2html.pl --po --gha ^
+-b Section0001.xhtml=other/2020/4748-stop_central_bank_takeover.html ^
+-b 05-29_EIR48_section_a.xhtml=other/2020/4748-cusas_coincidence_of_opposites.html ^
+-b Section0004.xhtml=hzl/2020/4748-committee_for_coincid_oppos-hzl.html ^
+-b Section0007.xhtml=hzl/2020/4748-gandhis_new_paradigm-hzl.html ^
+-i ../Images=graphics/2020/4748 eir /r/eiw/private/2020/48/OEBPS/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2020\eirv47n48-20201127\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2020\eirv47n48-20201127\index.html
+
+-b Section0001.xhtml=other/2020/4748-for_a_worldwide_resistance_to.html ^
+-b 05-29_EIR48_section_a.xhtml=other/2020/4748-cusa_s_coincidence_of_opposite.html ^
+-b Section0003.xhtml=other/2020/4748-ike_s_food_for_peace_the_parad.html ^
+-b Section0004.xhtml=other/2020/4748-the_committee_for_the_coincide.html ^
+-b Section0005.xhtml=other/2020/4748-what_action_is_the_committee_t.html ^
+-b Section0006.xhtml=other/2020/4748-now_the_u_s_and_europe_must_jo.html ^
+-b Section0007.xhtml=other/2020/4748-gandhi_s_vision_for_a_new_para.html ^
+-b 30-54_EIR48_section_b.xhtml=other/2020/4748-lord_malloch_brown_another_bri.html ^
+-b Section0008.xhtml=other/2020/4748-pulling_mankind_onward_and_upw.html ^
+-b Section0009.xhtml=other/2020/4748-the_deeper_grounds_for_philoso.html ^
+-b Section0010.xhtml=other/2020/4748-the_fed_would_rather_reign_in.html ^
+
+
+eiw/public/unlisted/2020/eirv47n47-20201120/jksigy7_0bjWsdU4ClGb8-ZxhjfDl
+
+perlo -w epub2html.pl  --ud 2020/eirv47n47-20201120/jksigy7_0bjWsdU4ClGb8-ZxhjfDl --pft other -i ../Images=graphics/2020/4747 --iu ../Images=graphics/2021/4747 eir /r/eiw/private/2020/47/OEBPS/Text/
+
+perlo -w epub2html.pl --po --gha ^
+-b Section0001.xhtml=other/editorials/2020/4747-joe_biden_has_a_transfusion_team.html ^
+-b 05-7_EIR47_section_a.xhtml=other/2020/4747-city_of_londons_regime_change.html ^
+-b 08-26_EIR47_section_b.xhtml=other/2020/4747-2020_election_an_intelligence_war.html ^
+-b Section0003.xhtml=other/2020/4747-trump_moves_forcefully_vs_mic.html ^
+-b Section0004.xhtml=other/2020/4747-mexicos_president_stops_stampede.html ^
+-b Section0005.xhtml=other/2020/4747-bolivians_reverse_coup.html ^
+-b Section0006.xhtml=other/2020/4747-trump_crash_program_vaccine.html ^
+-b 27-36_EIR47_section_c.xhtml=lar/2020/4747-doubts_existence_of_biden-lar.html ^
+-b 37-48_EIR47_section_d.xhtml=other/2020/4747-can_iraq_be_center_of_development.html ^
+-i ../Images=graphics/2020/4747 --iu ../Images=graphics/2021/4747 eir /r/eiw/private/2020/47/OEBPS/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2020\eirv47n47-20201120\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2020\eirv47n47-20201120\index.html
+
+-b Section0001.xhtml=other/2020/4747-joe_biden_has_a_transfusion_te.html ^
+-b 05-7_EIR47_section_a.xhtml=other/2020/4747-city_of_london_s_regime_change.html ^
+-b 08-26_EIR47_section_b.xhtml=other/2020/4747-the_2020_election_an_intellige.html ^
+-b Section0003.xhtml=other/2020/4747-trump_moves_forcefully_against.html ^
+-b Section0004.xhtml=other/2020/4747-mexico_s_president_stops_stamp.html ^
+-b Section0005.xhtml=other/2020/4747-bolivians_reverse_ukraine_styl.html ^
+-b Section0006.xhtml=other/2020/4747-trump_crash_program_brings_cov.html ^
+-b 27-36_EIR47_section_c.xhtml=other/2020/4747-the_deeper_grounds_for_philoso.html ^
+-b 37-48_EIR47_section_d.xhtml=other/2020/4747-can_iraq_be_a_center_of_develo.html ^
+
+
+
+
+eiw/public/unlisted/2020/eirv47n46-20201113/cmsP0k4M27Hgs8ngq0vLasZZpeuUc
+
+perlo -w epub2html.pl  --ud 2020/eirv47n46-20201113/cmsP0k4M27Hgs8ngq0vLasZZpeuUc --pft other -i ../Images=graphics/2020/4746 --iu ../Images=graphics/2021/4746 eir /r/eiw/private/2020/46/OEBPS/Text/
+
+perlo -w epub2html.pl --po --gha ^
+-b Section0001.xhtml=other/editorials/2020/4746-a_declaration_of_independence.html ^
+-b 05-22_EIR45_section_a.xhtml=other/2020/4746-hammer_scorecard_and_truth.html ^
+-b Section0003.xhtml=other/2020/4746-election_2020_if_you_defend.html ^
+-b Section0004.xhtml=hzl/2020/4746-trump_can_prove-webcast-hzl.html ^
+-b Section0005.xhtml=other/2020/4746-his_royal_highness_great_reset.html ^
+-b 23-44_EIR45_section_b.xhtml=lar/2020/4746-worse_than_weimar-lar.html ^
+-b Section0006.xhtml=other/2020/4746-fidelio_lafayette_larouche.html ^
+-i ../Images=graphics/2020/4746 eir /r/eiw/private/2020/46/OEBPS/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2020\eirv47n46-20201113\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2020\eirv47n46-20201113\index.html
+
+eiw/public/unlisted/2020/eirv47n45-20201106/clpo9jN3dH7_djBxqJadGeLkdP_O0
+
+perlo -w epub2html.pl  --ud 2020/eirv47n45-20201106/clpo9jN3dH7_djBxqJadGeLkdP_O0 --pft other -i ../Images=graphics/2020/4745 --iu ../Images=graphics/2021/4745 eir /r/eiw/private/2020/45/OEBPS/Text/
+
+perlo -w epub2html.pl --po --gha ^
+-b 03-18_EIR45_section_a.xhtml=other/2020/4745-biden_laptop_from_hell.html ^
+-b Section0002.xhtml=other/2020/4745-at_this_nations_most_dangerous.html ^
+-b Section0004.xhtml=lar/2020/4745-victory_or_hell-lar.html ^
+-b 26-40_EIR45_section_c.xhtml=other/2020/4745-videoconference_draws_250.html ^
+-b Section0005.xhtml=other/2020/4745-china_and_the_west_two_worlds.html ^
+-b Section0006.xhtml=hzl/2020/4745-the_urgently_required_aesthetical-hzl.html ^
+-b Section0009.xhtml=hzl/2020/4745-joint_action_to_stop_starvation-hzl.html ^
+-i ../Images=graphics/2020/4745 eir /r/eiw/private/2020/45/OEBPS/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2020\eirv47n45-20201106\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2020\eirv47n45-20201106\index.html
+
+
+-b 03-18_EIR45_section_a.xhtml=other/2020/4745-some_pertinent_reflections_on.html ^
+-b Section0002.xhtml=other/2020/4745-at_this_nation_s_most_dangerou.html ^
+-b Section0003.xhtml=other/2020/4745-how_the_president_can_win_the.html ^
+-b Section0004.xhtml=other/2020/4745-victory_or_hell.html ^
+-b 19-25_EIR45_section_b.xhtml=other/2020/4745-ethiopia_s_china_built_railway.html ^
+-b 26-40_EIR45_section_c.xhtml=other/2020/4745-videoconference_draws_250_to_d.html ^
+-b Section0005.xhtml=other/2020/4745-china_and_the_west_two_worlds.html ^
+-b Section0006.xhtml=other/2020/4745-the_urgently_required_aestheti.html ^
+-b Section0007.xhtml=other/2020/4745-a_view_of_relations_between_ch.html ^
+-b Section0008.xhtml=other/2020/4745-economic_coexistence_to_counte.html ^
+-b Section0009.xhtml=other/2020/4745-zepp_larouche_call_for_joint_a.html ^
+-b Section0010.xhtml=other/2020/4745-jacques_cheminade_presents_his.html ^
+
+
 eiw/public/unlisted/2020/eirv47n44-20201030/vhu8cg37vjr9ZkasPjdfeC09_cbDw
 
 perlo -w epub2html.pl  --ud 2020/eirv47n44-20201030/vhu8cg37vjr9ZkasPjdfeC09_cbDw --pft other -i ../Images=graphics/2020/4744 --iu ../Images=graphics/2021/4744 eir /r/eiw/private/2020/44/OEBPS/Text/

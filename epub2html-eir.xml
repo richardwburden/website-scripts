@@ -1,7 +1,7 @@
 <domain name="http://larouchepub.com" docroot="C:\Users\Richard\Documents\websites\EIR" remoteDocRoot="/www" login="josi" pwd="">
 
 <!-- each of the following paths contains only the part of the path that does not change from issue to issue; the remainder of the path is calculated from the volume number, issue number and date contained in the "PDF edition" table of contents in the epub, or a relative path supplied on the command-line.  The first of these, pdfIndexPath, contains the complete path if it ends with ']]]', e.g. "/eiw/]]]", in which case the ']]]' is NOT included in the path. -->
-<option id="pdfIndexPath" value="/eiw/]]]">
+<option id="pdfIndexPath" value="/eiw/public/">
 <option id="publicArticlesRootPath" value="/">
 <option id="unlistedArticlesRootPath" value="/eiw/public/unlisted/">
 <option id="publicIssueIndexRootPath" value="/eiw/public/">

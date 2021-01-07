@@ -351,7 +351,7 @@ foreach $infilepath (@noncmInfiles)
 	if ($pdfIndexPath =~ m%\]\]\]$%)
 	{$pdfIndexPath =~ s%\]\]\]$%%}
 	else
-	{$pdfIndexPath .= "public/$year/$tenissueGroup/$yearIssue/"}
+	{$pdfIndexPath .= "$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/pdf_links.txt"}
 	my $mech = WWW::Mechanize->new();
 	$mech->get($domainName.$pdfIndexPath);
 	my $pdfIndexTree = HTML::TreeBuilder->new();
@@ -373,9 +373,8 @@ foreach $infilepath (@noncmInfiles)
 #	my $pathFromIndex2ArchivePDFIndex = findRelPath($outfilepath,$full_arch_outfilepath);
 
 #Get the URLs of single article PDFs.  Assumed to be in the correct order in 
-#the index at $pdfIndexPath.  URLs assumed to end in /filename.pdf where 
-#filename begins with a page number.
-	my @pdfLinks = $pdfIndexTree->look_down('_tag','a','href',qr/\/[0-9][^\/]*\.pdf$/);
+#the index at $pdfIndexPath. 
+	my @pdfLinks = $pdfIndexTree->find_by_tag_name('a');
 	my @singleArticleURLs = ();
 
 	my $phpRootPath = $options{'phpRootPath'};
@@ -463,8 +462,8 @@ foreach $infilepath (@noncmInfiles)
 	my $coverLink = $ttree->look_down('id','coverLink');
 	$coverLink->attr('href',"/eiw/private/$year/$tenissueGroup/$yearIssue/eirv$zvol"."n$zissue-$year$zmonth$zmday.pdf");
 
-	my $archCoverLink = $arch_ttree->look_down('id','archCoverLink');
-	$archCoverLink->attr('href',"/eiw/public/$year/$tenissueGroup/$yearIssue/index.html");
+#	my $archCoverLink = $arch_ttree->look_down('id','archCoverLink');
+#	$archCoverLink->attr('href',"/eiw/public/$year/$tenissueGroup/$yearIssue/index.html");
 
 	my $coverImg = $ttree->look_down('id','coverImg');
 	$coverImg->attr('src',"/eiw/public/$year/$tenissueGroup/$yearIssue/eirv$zvol"."n$zissue".'lg.jpg');
