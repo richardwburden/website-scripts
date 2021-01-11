@@ -26,7 +26,6 @@ Options whose name(s) are followed by '=' require an argument.  The letter follo
  appendBrowserScript|abs
  publicsOnly|po
  archiveIndexOnly|aio
- ghArchive|gha
  volume|vol=s
  issue|iss=s
  volumeIssue|vi=s
@@ -56,8 +55,6 @@ appendBrowserScript|abs causes the browser script to be appended instead of over
 publicsOnly|po  causes only public pages and the archive issue index page to be generated
 
 archiveIndexOnly|aio  causes only the archive issue index page to be generated
-
-ghArchive|gha  get full issue files from George Hollis's back issue directory for this issue (/eiw/private/YYYY/YYYY_N0-NN/YYYY-NN/ instead of John Sigerson's EIR archive directory (/eiw/public/YYYY/eirvVVnNN-YYYYMMDD/)
 
 volume|vol=s, issue|iss=s  specifies the volume and issue numbers (one or two digits each)
 volumeIssue|vi=s  four digit combination volume and issue number.  Volume and issue numbers specified on the command-line must match those specified in the issue index page in the unzipped EPUB.  It is necessary to use these options only if filenamesFromTitles|fft is used and the pathname of the Text directory in the unzipped EPUB (where the .xhtml files are located) does not contain the correct year and issue or volume and issue in one of the following formats: /YYYY/NN/, /VV/NN/, or vVVnNN, where YYYY is a four-digit year, VV the volume number, NN the issue number, and VV or NN may be 1 or 2 digits, and the slashes separating directory names may be forward or backward.
@@ -134,7 +131,7 @@ my $zvol = undef; #two digit with leading 0 for value < 10
 my $zissue = undef; #two digit with leading 0 for value < 10
 my $help = 0;
 
-GetOptions ('help|?' => \$help, 'public|b=s%' => \%publics, 'unlisted|u=s%' => \%unlisteds, 'imageDirs|i=s%' => \%imageDirs, 'unlistedImageDirs|iu=s%' => \%unlistedImageDirs, 'privateImageDirs|ip=s%' => \%privateImageDirs, 'unlistedIssueIndexPath|xu=s' => \$uiip, 'publicIssueIndexPath|xp=s' => \$piip, 'appendBrowserScript|abs' => \$appendBrowserScript, 'publicsOnly|po' => \$publicsOnly, 'unlistedDirname|ud=s' => \$ud, 'filenamesFromTitles|fft' => \$fft, 'pathnamesFromTitles|pft=s' => \$pft,'archiveIndexOnly|aio' => \$aio,'ghArchive|gha' => \$gha,'volume|vol=s' => \$vol, 'issue|iss=s' => \$issue, 'volumeIssue|vi=s' => \$vi, 'coverRegex|cr=s' => \$coverRegex, 'mastheadRegex|mr=s' => \$mastheadRegex, 'coverExists|ce!' => \$coverExists, 'mastheadExists|me!' => \$mastheadExists);
+GetOptions ('help|?' => \$help, 'public|b=s%' => \%publics, 'unlisted|u=s%' => \%unlisteds, 'imageDirs|i=s%' => \%imageDirs, 'unlistedImageDirs|iu=s%' => \%unlistedImageDirs, 'privateImageDirs|ip=s%' => \%privateImageDirs, 'unlistedIssueIndexPath|xu=s' => \$uiip, 'publicIssueIndexPath|xp=s' => \$piip, 'appendBrowserScript|abs' => \$appendBrowserScript, 'publicsOnly|po' => \$publicsOnly, 'unlistedDirname|ud=s' => \$ud, 'filenamesFromTitles|fft' => \$fft, 'pathnamesFromTitles|pft=s' => \$pft,'archiveIndexOnly|aio' => \$aio,'volume|vol=s' => \$vol, 'issue|iss=s' => \$issue, 'volumeIssue|vi=s' => \$vi, 'coverRegex|cr=s' => \$coverRegex, 'mastheadRegex|mr=s' => \$mastheadRegex, 'coverExists|ce!' => \$coverExists, 'mastheadExists|me!' => \$mastheadExists);
 pod2usage(1) if $help;
 
 my $program_basename = $0;
@@ -336,12 +333,12 @@ foreach $infilepath (@noncmInfiles)
 	}
 	else {$zissue = $toc_zissue}
 
-	my $issueMod10 = $toc_issue % 10;
-        $tenissueGroup = $toc_issue - $issueMod10;
-	my $tenissueGroupEnd = $tenissueGroup + 9;
-	if ($tenissueGroup == 50) {$tenissueGroupEnd = $yearEndIssueNumber}
-	if ($tenissueGroup == 0){$tenissueGroup = $year.'_01-09'}
-	else {$tenissueGroup = $year.'_'.$tenissueGroup.'-'.$tenissueGroupEnd}
+#	my $issueMod10 = $toc_issue % 10;
+#        $tenissueGroup = $toc_issue - $issueMod10;
+#	my $tenissueGroupEnd = $tenissueGroup + 9;
+#	if ($tenissueGroup == 50) {$tenissueGroupEnd = $yearEndIssueNumber}
+#	if ($tenissueGroup == 0){$tenissueGroup = $year.'_01-09'}
+#	else {$tenissueGroup = $year.'_'.$tenissueGroup.'-'.$tenissueGroupEnd}
 	$yearIssue = $year.'-'.$zissue;
 	($volIssueText,$DateText) = split /_/,$volIssueDateText;
 
@@ -425,29 +422,17 @@ foreach $infilepath (@noncmInfiles)
 	my $tocIssueTitle = $arch_ttree->look_down('id','tocIssueTitle');
 	$tocIssueTitle->push_content($tocIssueTitleText);
 
-	
-	my $intPDF = $ttree->look_down('id','intPDF');
-	$intPDF->attr('href',"/eiw/private/$year/$tenissueGroup/$yearIssue/eirv$zvol"."n$zissue-$year$zmonth$zmday.pdf");
-
 	my $fullIssueLinks = $arch_ttree->look_down('id','fullIssueLinks');
 	
-	#if this archive index is still private, the class will remain as it is in the template, serveIssueHidden
-	if ($isPublicArchiveIndex or $gha)
-	{$fullIssueLinks->attr('class','serveIssue')}
+#	$fullIssueLinks->attr('class','serveIssue');
 
 	my $fullPDFview = $arch_ttree->look_down('id','fullPDFview');
 
-	#In John Sigerson's archive index pages, links to serve the whole issue are hidden until they are public.  Only if we want a John Sigerson-style archive index page for an issue that is not yet public with visible subscriber-only links to serve the whole issue would we use the path to George Hollis's "back issue"
-	if ($isPublicArchiveIndex or not $gha)
-	{$fullPDFview->attr('href',"eirv$zvol"."n$zissue-$year$zmonth$zmday.pdf")}
-	else
-	{$fullPDFview->attr('href',"/eiw/private/$year/$tenissueGroup/$yearIssue/eirv$zvol"."n$zissue-$year$zmonth$zmday.pdf")}
+	#In John Sigerson's archive index pages, links to serve the whole issue are private until they are made public 6 weeks after publication.
+	$fullPDFview->attr('href',"../../../private/$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday.pdf");
 
 	my $phpPath = "";
-	if ($isPublicArchiveIndex or not $gha)
-	{$phpPath = "eirv$zvol"."n$zissue-$year$zmonth$zmday.php"}
-	else
-	{$phpPath = "$phpRootPath$year/$tenissueGroup/$yearIssue/eirv$zvol"."n$zissue-$year$zmonth$zmday.php"}
+	$phpPath = "../../../private/$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday.php";
 
 	my $fullPDFdownload = $arch_ttree->look_down('id','fullPDFdownload');
 	$fullPDFdownload->attr('href',"$phpPath?ext=pdf");
@@ -460,13 +445,10 @@ foreach $infilepath (@noncmInfiles)
 
 
 	my $coverLink = $ttree->look_down('id','coverLink');
-	$coverLink->attr('href',"/eiw/private/$year/$tenissueGroup/$yearIssue/eirv$zvol"."n$zissue-$year$zmonth$zmday.pdf");
-
-#	my $archCoverLink = $arch_ttree->look_down('id','archCoverLink');
-#	$archCoverLink->attr('href',"/eiw/public/$year/$tenissueGroup/$yearIssue/index.html");
+	$coverLink->attr('href',"/eiw/private/$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday.pdf");
 
 	my $coverImg = $ttree->look_down('id','coverImg');
-	$coverImg->attr('src',"/eiw/public/$year/$tenissueGroup/$yearIssue/eirv$zvol"."n$zissue".'lg.jpg');
+	$coverImg->attr('src',"/eiw/public/$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue".'lg.jpg');
 
 	my $cover = $arch_ttree->look_down('id','cover');
 	$cover->attr('src',"eirv$zvol"."n$zissue-$year$zmonth$zmday-cover.jpg");
@@ -476,11 +458,11 @@ foreach $infilepath (@noncmInfiles)
 	$cover->attr('height',undef);
 
 	my $pqPDF = $ttree->look_down('id','pqPDF');
-	$pqPDF->attr('href',"/eiw/private/$year/$tenissueGroup/$yearIssue/eirv$zvol"."n$zissue-$year$zmonth$zmday".'-hi-res.pdf');
+	$pqPDF->attr('href',"/eiw/private/$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday".'.pdf');
 	my $mobi = $ttree->look_down('id','mobi');
-	$mobi->attr('href',"/eiw/private/$year/$tenissueGroup/$yearIssue/eirv$zvol"."n$zissue-$year$zmonth$zmday.mobi");
+	$mobi->attr('href',"/eiw/private/$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday.mobi");
 	my $epub = $ttree->look_down('id','epub');
-	$epub->attr('href',"/eiw/private/$year/$tenissueGroup/$yearIssue/eirv$zvol"."n$zissue-$year$zmonth$zmday.epub");
+	$epub->attr('href',"/eiw/private/$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday.epub");
 	my $archive = $ttree->look_down('id','archive');
 	$archive->attr('href',"/eiw/public/$year/index.html");
 	

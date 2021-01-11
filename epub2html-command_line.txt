@@ -1,15 +1,15 @@
 eiw/public/unlisted/2021/eirv48n02-20210108/lp08dGe5VaC1_7s
 
-perlo -w epub2html.pl  --ud 2021/eirv48n02-20210108/lp08dGe5VaC1_7s --pft other -i ../Images=graphics/2021/4802 --iu ../Images=graphics/2021/4802 eir /r/eiw/private/2021/02/OEBPS/Text/
+perlo -w epub2html.pl  --ud 2021/eirv48n02-20210108/lp08dGe5VaC1_7sTest --pft other -i ../Images=graphics/2021/4802 --iu ../Images=graphics/2021/4802 eir /r/eiw/private/2021/02/OEBPS/Text/
 
 perlo -w epub2html.pl --po ^
--b Section0001.xhtml=other/editorials/2021/4802-crush_malthusian_green_finance_scam.html ^
--b 05-13_EIR02_section_a.xhtml=other/2021/4802-reconstituting_franklins_republic.html ^
--b Section0005.xhtml=other/2021/4802-pathway_of_a_new_classical_renaissance.html ^
--b Section0007.xhtml=other/2021/4802-stop_the_fraud_exonerate_larouche.html ^
+-b Section0001.xhtml=other/editorials/2021/x4802-crush_malthusian_green_finance_scam.html ^
+-b 05-13_EIR02_section_a.xhtml=other/2021/x4802-reconstituting_franklins_republic.html ^
+-b Section0005.xhtml=other/2021/x4802-pathway_of_a_new_classical_renaissance.html ^
+-b Section0007.xhtml=other/2021/x4802-stop_the_fraud_exonerate_larouche.html ^
 -i ../Images=graphics/2021/4802 eir /r/eiw/private/2021/02/OEBPS/Text/
 
-java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n02-20210108\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n02-20210108\index.html
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n02-20210108\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n02-20210108\xindex.html
 
 -b Section0001.xhtml=other/2021/4802-crush_the_malthusian_green_fin.html ^
 -b 05-13_EIR02_section_a.xhtml=other/2021/4802-reconstituting_ben_franklin_s.html ^
