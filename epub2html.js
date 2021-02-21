@@ -266,13 +266,13 @@ function epub2html()
 	    {
 		var imgclone = imgs.eq(j).clone();
 		//alert ("layout " + i + " , image " + j + ": " + imgs.eq(j).attr('src') + "width: " + imgs.eq(j).prop('width'));
-		    var src = imgclone.attr('src');
-		    var srcbase = src.replace('/[^\/]*$','');
+		    var src = imgs.eq(j).attr('src');
+		    var srcbase = src.replace(/\/[^\/]*$/,'/');
 		    var filename = src.substr(srcbase.length);
-		    src = srcbase + 'sm/' + filename;
+		    src = srcbase + 'lg/' + filename;
 
-		    console.log('small image src: ' + src);
-		    imgclone.attr('src',src);
+		    console.log('large image src: ' + src);
+		    imgs.eq(j).attr('src',src);
 
 
 		console.log("processing img " + imgs.eq(j).outerHTML());
@@ -282,28 +282,28 @@ function epub2html()
 		    {
 		    var vfs = 'View full size<br />';
 		    var thisimg = imgs.eq(j);
-		     var dims = getImageDimensions(thisimg);
-		     var dimssm = getImageDimensions(imgclone);
+		     //var dimslg = getImageDimensions(thisimg);
+		     var dims = getImageDimensions(imgclone);
 
 		     console.log ("naturalWidth: " + dims.width);
-		     console.log ("sm naturalWidth: " + dimssm.width);
+		     //console.log ("lg naturalWidth: " + dimslg.width);
 	
-		    if (dims.width <= dimssm.width) {vfs = '';}
+		    //if (dims.width >= dimslg.width) {vfs = '';}
 		    var fslink = $('<a href="' + imgs.eq(j).attr('src') + '" class="body_text">' + vfs + '</a>');
 		    fslink.append(imgclone);
 	 
 	
 	
-		    var imgwrapper = $('<div class="wide_image_c" style="max-width:' + dimssm.width + 'px"></div>');
+		    var imgwrapper = $('<div class="wide_image_c" style="max-width:' + dims.width + 'px"></div>');
 		    var imgwrapper2 = $('<div class="wide_image_c"></div>');
 				
 		    imgwrapper.append(fslink);
-		    var imgwrapperMaxWidth = imgwrapper.css('max-width').slice(0,-2);
+		    //var imgwrapperMaxWidth = imgwrapper.css('max-width').slice(0,-2);
 
-		    console.log("imgwrapper: " + imgwrapper.outerHTML() + " imgwrapper max-width: " + imgwrapperMaxWidth);
+		    console.log("imgwrapper: " + imgwrapper.outerHTML() + " imgwrapper max-width: " + dims.width /*imgwrapperMaxWidth */);
 		    /* if text is more than 3 times the width of the image wrapper	then put the text outside the wrapper so it does not become a tall and narrow column
 		     */
-		    var maxTextWidth = 3 * imgwrapperMaxWidth;
+		    var maxTextWidth = 3 * dims.width; // imgwrapperMaxWidth;
 		    
 		    imgs.eq(j).replaceWith(imgwrapper);
 		    console.log("imgs.eq(j).outerHTML: " + imgs.eq(j).outerHTML());
