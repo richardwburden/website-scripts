@@ -1,3 +1,169 @@
+eiw/public/unlisted/2021/eirv48n08-20210219/l0mfGeVcX4TaSHx_
+
+perlo -w epub2html.pl  --ud 2021/eirv48n08-20210219/l0mfGeVcX4TaSHx_ --pft other -i ../Images=graphics/2021/4808 --iu ../Images=graphics/2021/4808 eir /r/eiw/private/2021/08/OEBPS/Text/
+
+perlo -w epub2html.pl --po ^
+-b Section0002.xhtml=other/2021/4808-we_shall_grow_a_forest_on_mars.html ^
+-b Section0003.xhtml=other/2021/4808-livestream_memorial_2nd_anniv_lyns_death.html ^
+-b Section0004.xhtml=lar/2021/4808-middle_east_as_a_strategic_crossroad-lyn.html ^
+-b 15-27_EIR08_Section_b.xhtml=hzl/2021/4808-message_from_the_biden_administr-hzl.html ^
+-i ../Images=graphics/2021/4808 eir /r/eiw/private/2021/08/OEBPS/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n08-20210219\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n08-20210219\index.html
+
+-b Section0002.xhtml=other/2021/4808-for_that_reason_we_shall_grow.html ^
+-b Section0003.xhtml=other/2021/4808-livestream_memorial_on_the_sec.html ^
+-b 07-14_EIR08_Section_a.xhtml=other/2021/4808-larouche_s_2002_abu_dhabi_spee.html ^
+-b Section0004.xhtml=other/2021/4808-the_middle_east_as_a_strategic.html ^
+-b 15-27_EIR08_Section_b.xhtml=other/2021/4808-nuclear_war_is_a_real_possibil.html ^
+-b Section0005.xhtml=other/2021/4808-george_shultz_architect_of_the.html ^
+-b Section0006.xhtml=other/2021/4808-how_economic_hitman_george_shu.html ^
+-b Section0007.xhtml=other/2021/4808-who_created_the_nuclear_war_po.html ^
+-b Section0008.xhtml=other/2021/4808-the_geopolitical_context_of_th.html ^
+-b 28-33_EIR08_Section_c.xhtml=other/2021/4808-new_prime_minister_mario_dragh.html ^
+-b 34-35_EIR08_Africa_Briefs.xhtml=other/2021/4808-africa_briefs.html ^
+
+eirv48n07-20210212
+
+eiw/public/unlisted/2021/eirv48n07-20210212/dic9_0f56BveLs_qDs
+
+perlo -w epub2html.pl  --ud 2021/eirv48n07-20210212/dic9_0f56BveLs_qDs --pft other -i ../Images=graphics/2021/4807 --iu ../Images=graphics/2021/4807 eir /r/eiw/private/2021/07/OEBPS/Text/
+
+perlo -w epub2html.pl --po ^
+-b 03-08_EIR07_section_1-ntro.xhtml=hzl/2021/4807-new_deal_for_humanity_not_green-hzl.html ^
+-b 09-26_EIR07_Section_2.xhtml=other/2021/4807-prince_charles_invented_green_nd.html ^
+-b Section0005.xhtml=other/2021/4807-british_crown_think_tank.html ^
+-b Section0015.xhtml=lar/2021/4807-no_to_the_green_policy-lar.html ^
+-i ../Images=graphics/2021/4807 eir /r/eiw/private/2021/07/OEBPS/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n07-20210212\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n07-20210212\index.html
+
+
+-b 03-08_EIR07_section_1-ntro.xhtml=other/2021/4807-the_new_deal_for_humanity_is_n.html ^
+-b Section0002.xhtml=other/2021/4807-larouche_calls_for_a_new_brett.html ^
+-b 09-26_EIR07_Section_2.xhtml=other/2021/4807-prince_charles_invented_and_ru.html ^
+-b Section0003.xhtml=other/2021/4807-lyndon_larouche_on_who_invente.html ^
+-b Section0004.xhtml=other/2021/4807-how_the_pandemic_delivered_a_r.html ^
+-b Section0005.xhtml=other/2021/4807-british_crown_think_tank_we_in.html ^
+-b Section0006.xhtml=other/2021/4807-wef_s_mission_possible_targets.html ^
+-b 27-37_EIR07_section_3.xhtml=other/2021/4807-blackrock_inc_how_green_financ.html ^
+-b Section0007.xhtml=other/2021/4807-blackrock_s_march_to_world_pow.html ^
+-b Section0008.xhtml=other/2021/4807-in_defense_of_treasury_secreta.html ^
+-b 38-67_EIR07_Section_4.xhtml=other/2021/4807-a_disaster_for_the_united_stat.html ^
+-b Section0009.xhtml=other/2021/4807-not_an_option_an_immediate_nec.html ^
+-b Section0010.xhtml=other/2021/4807-a_green_way_of_development_wit.html ^
+-b Section0011.xhtml=other/2021/4807-march_into_renewables_threaten.html ^
+-b Section0012.xhtml=other/2021/4807-uk_goes_back_to_wood_burning.html ^
+-b Section0012.xhtml=other/2021/4807-japan_needs_its_reactors_back.html ^
+-b Section0013.xhtml=other/2021/4807-usda_analysis_shows_green_deal.html ^
+-b Section0014.xhtml=other/2021/4807-electric_vehicles_but_no_elect.html ^
+-b Section0015.xhtml=other/2021/4807-no_to_the_green_policy_revive.html ^
+
+perlo -w epub2html.pl  --ud 2021/eirv48n06-20210205/pkl8HgEr6QwSVc7 --pft other -i ../Images=graphics/2021/4806 --iu ../Images=graphics/2021/4806 eir /r/eiw/private/2021/06/OEBPS/Text/
+
+
+eiw/public/unlisted/2021/eirv48n06-20210205/pkl8HgEr6QwSVc7
+perlo -w epub2html.pl  --ud 2021/eirv48n06-20210205/pkl8HgEr6QwSVc7 --pft other -i ../Images=graphics/2021/4806 --iu ../Images=graphics/2021/4806 eir /r/eiw/private/2021/06/OEBPS/Text/
+
+perlo -w epub2html.pl --po ^
+-b Section0002.xhtml=other/editorials/2021/4806-opposition_to_great_reset.html ^
+-b Section0004.xhtml=lar/2021/4806-agreement_among_four_powers-lyn.html ^
+-b 35-45_EIR06_section_d.xhtml=other/2021/4806-vaccinations_in_service_of_humanity.html ^
+-i ../Images=graphics/2021/4806 eir /r/eiw/private/2021/06/OEBPS/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n06-20210205\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n06-20210205\index.html
+
+
+-b Section0002.xhtml=other/2021/4806-opposition_threatens_to_derail.html ^
+-b 06-18_EIR06_section_a.xhtml=other/2021/4806-let_the_torch_of_multilaterali.html ^
+-b Section0003.xhtml=other/2021/4806-what_should_be_done_to_ensure.html ^
+-b Section0004.xhtml=other/2021/4806-agreement_among_four_powers_ca.html ^
+-b 19-32_EIR06_section_b.xhtml=other/2021/4806-why_the_green_deal_the_great_r.html ^
+-b Section0005.xhtml=other/2021/4806-electric_vehicles_but_no_elect.html ^
+-b 33-34_EIR06_International_Briefs.xhtml=other/2021/4806-international_briefs.html ^
+-b 35-45_EIR06_section_d.xhtml=other/2021/4806-vaccinations_science_in_servic.html ^
+
+
+eiw/public/unlisted/2021/eirv48n05-20210129/fpo09mcdyU7_qGD_test
+perlo -w epub2html.pl  --ud 2021/eirv48n05-20210129/fpo09mcdyU7_qGD_test --pft other -i ../Images=graphics/2021/4805t --iu ../Images=graphics/2021/4805t eir /r/eiw/private/2021/05/OEBPS/Text/
+
+eiw/public/unlisted/2021/eirv48n05-20210129/fpo09mcdyU7_qGD
+
+perlo -w epub2html.pl  --ud 2021/eirv48n05-20210129/fpo09mcdyU7_qGD --pft other -i ../Images=graphics/2021/4805 --iu ../Images=graphics/2021/4805 eir /r/eiw/private/2021/05/OEBPS/Text/
+
+perlo -w epub2html.pl --po ^
+-b 25-31_EIR05_section_b.xhtml=other/2021/4805-artemis_program_has_unexpected_support.html ^
+-b Section0005.xhtml=other/2021/4805-africa_briefs.html ^
+-b 32-42_EIR05_section_c.xhtml=other/book_reviews/2021/4805-covid-19_the_great_reset.html ^
+-i ../Images=graphics/2021/4805 eir /r/eiw/private/2021/05/OEBPS/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n05-20210129\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n05-20210129\index.html
+
+-b Section0002.xhtml=other/2021/4805-would_you_have_been_optimistic.html ^
+-b 04-24_EIR05_a_section.xhtml=other/2021/4805-only_classical_beauty_can_guid.html ^
+-b Section0003.xhtml=other/2021/4805-what_is_cusa_s_coincidentia_op.html ^
+-b Section0004.xhtml=other/2021/4805-the_florestan_principle_in_art.html ^
+-b 25-31_EIR05_section_b.xhtml=other/2021/4805-the_artemis_program_a_global_s.html ^
+-b Section0005.xhtml=other/2021/4805-africa_briefs.html ^
+-b 32-42_EIR05_section_c.xhtml=other/2021/4805-how_the_pandemic_delivered_a_r.html ^
+-b Section0006.xhtml=other/2021/4805-foreign_interference_in_the_20.html ^
+
+
+eiw/public/unlisted/2021/eirv48n04-20210122/uiM7v8c_sw-Mawx
+perlo -w epub2html.pl  --ud 2021/eirv48n04-20210122/uiM7v8c_sw-Mawx --pft other -i ../Images=graphics/2021/4804 --iu ../Images=graphics/2021/4804 eir /r/eiw/private/2021/04/OEBPS/Text/
+
+perlo -w epub2html.pl --po ^
+-b 03-22_EIR04_Section_a.xhtml=other/2021/4804-what_is_to_become_of_our_republic.html ^
+-b Section0002.xhtml=lar/2021/4804-the_immortal_talent_of_mlk.html ^
+-b 37-49_EIR04_Section_c_.xhtml=hzl/2021/4804-worst_situations_can_be_turned-hzl.html ^
+-b Section0007.xhtml=other/2021/4804-lafayette_and_the_sublime.html ^
+-i ../Images=graphics/2021/4804 eir /r/eiw/private/2021/04/OEBPS/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n04-20210122\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n04-20210122\index.html
+
+-b 03-22_EIR04_Section_a.xhtml=other/2021/4804-what_is_to_become_of_our_repub.html ^
+-b Section0002.xhtml=other/2021/4804-the_immortal_talent_of_martin.html ^
+-b Section0003.xhtml=other/2021/4804-putin_brokers_agreement_for_pe.html ^
+-b Section0004.xhtml=other/2021/4804-larouche_on_the_required_econo.html ^
+-b 23-36_EIR04_Section_b.xhtml=other/2021/4804-march_into_renewables_threaten.html ^
+-b Section0005.xhtml=other/2021/4804-china_lays_out_the_science_dri.html ^
+-b Section0006.xhtml=other/2021/4804-fusion_energy_and_china_an_int.html ^
+-b 37-49_EIR04_Section_c_.xhtml=other/2021/4804-the_very_worst_situations_can.html ^
+-b Section0007.xhtml=other/2021/4804-the_marquis_de_lafayette_and_t.html ^
+-b Section0008.xhtml=other/2021/4804-romeo_and_juliet_4_real.html ^
+-b Section0009.xhtml=other/2021/4804-mark_carney_s_digital_net_zero.html ^
+-b Section0010.xhtml=other/2021/4804-schiller_and_the_living_larouc.html ^
+
+eiw/public/unlisted/2021/eirv48n03-20210115/pd8f7_IdEbDHad0
+perlo -w epub2html.pl  --ud 2021/eirv48n03-20210115/pd8f7_IdEbDHad0 --pft other -i ../Images=graphics/2021/4803 --iu ../Images=graphics/2021/4803 eir /r/eiw/private/2021/03/OEBPS/Text/
+
+perlo -w epub2html.pl --po ^
+-b 03-09_EIR51_section_a.xhtml=hzl/2021/4803-invasion_of_us_capitol_color_rev_or_911-hzl.html ^
+-b Section0002.xhtml=other/editorials/2021/4803-truth_in_american_elections_is_for_the_world.html ^
+-b Section0003.xhtml=other/2021/4803-us_constitutional_electoral_system_is_best.html ^
+-b Section0006.xhtml=other/2021/4803-beethoven_living_experience_of_creativity.html ^
+-b Section0008.xhtml=other/2021/4803-why_2021_again_year_of_beethoven.html ^
+-i ../Images=graphics/2021/4803 --iu ../Images=graphics/2021/4803 eir /r/eiw/private/2021/03/OEBPS/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n03-20210115\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n03-20210115\index.html
+
+
+
+-b 03-09_EIR51_section_a.xhtml=other/2021/4803-the_invasion_of_the_u_s_capito.html ^
+-b Section0002.xhtml=other/2021/4803-the_fight_for_truth_in_the_ame.html ^
+-b Section0003.xhtml=other/2021/4803-u_s_constitutional_electoral_s.html ^
+-b 10-24_EIR03_Section_b.xhtml=other/2021/4803-green_deal_farming_cuts_food_c.html ^
+-b Section0004.xhtml=other/2021/4803-who_was_behind_thomas_malthus.html ^
+-b 25-44_EIR03_Section_c.xhtml=other/2021/4803-the_sweetness_of_creativity.html ^
+-b Section0005.xhtml=other/2021/4803-beethoven_s_work_is_the_art_of.html ^
+-b Section0006.xhtml=other/2021/4803-beethoven_the_living_experienc.html ^
+-b Section0007.xhtml=other/2021/4803-namenlose_freude.html ^
+-b Section0008.xhtml=other/2021/4803-why_2021_is_again_the_year_of.html ^
+-b 45-51_EIR03_Section_d.xhtml=other/2021/4803-the_1776_commission_that_trump.html ^
+-b 52-59_EIR03_Section_e.xhtml=other/2021/4803-the_capitol_assault_was_anothe.html ^
+-b Section0009.xhtml=other/2021/4803-all_new_ideas_have_no_names.html ^
+
+
 eiw/public/unlisted/2021/eirv48n02-20210108/lp08dGe5VaC1_7s
 
 perlo -w epub2html.pl  --ud 2021/eirv48n02-20210108/lp08dGe5VaC1_7sTest --pft other -i ../Images=graphics/2021/4802 --iu ../Images=graphics/2021/4802 eir /r/eiw/private/2021/02/OEBPS/Text/

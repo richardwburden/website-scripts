@@ -190,6 +190,7 @@ foreach $infilepath (@infiles)
     push(@MajorLightSubheads,'','light_subhead','class','h3','no more wrappers');
 
     my @MajorSubheads = $content->look_down('_tag','p','class',qr/Major[\-\s]*Subhead/i);
+
     push(@MajorSubheads,'','majorsubhead','class','h3','no more wrappers');
 
     my @Subheads = $content->look_down('_tag','p','class',qr/^Subhead|Minor[\-\s]*section/i);
@@ -250,6 +251,15 @@ foreach $infilepath (@infiles)
     my @layouts = ();
     push (@layouts, $content->look_down ('_tag','div','class',qr/_idGenObjectLayout/));
     push (@layouts,'','|','+','div','|||','---------------------------------------------','text','~text');
+
+
+    my @ShortsHeads = $content->look_down('_tag','p','class',qr/ShortsH.*/i);
+    push (@ShortsHeads,'','shorts_head','class','h4');
+    
+    my @ShortsTexts = $content->look_down('_tag','p','class',qr/ShortsT.*/i);
+    push (@ShortsTexts,'','Text','class','p');
+
+
     my @h1s = ();
     if (defined $h1_class)
     {
@@ -329,9 +339,7 @@ foreach $infilepath (@infiles)
     my $tag = undef;
     my %attribs = ();
     my $arritem = undef;
-    my @arr_of_arrs = (\@footnote_links,\@footnote_anchors,\@MajorSubheads,\@MajorLightSubheads,\@LightSubheads,\@Subheads,\@kickers,\@dkickers,\@editorials,\@bylines,
-		  \@Heads,\@italics,\@bolds,\@superscripts,\@subscripts,\@ucase,\@normals,\@normal_weights,\@layouts,\@h1s,\@extracts,\@extractbs,\@extractms,\@extractes,\@spaceAbove,\@departments,
-		       \@ArticleTitles,\@ArticleTitleNoKickers,\@ArticleBlurbs,\@ArticleBylines,\@cmt,\@sharpflats);
+    my @arr_of_arrs = (\@footnote_links,\@footnote_anchors,\@MajorSubheads,\@MajorLightSubheads,\@LightSubheads,\@Subheads,\@kickers,\@dkickers,\@editorials,\@bylines,\@Heads,\@ShortsHeads,\@ShortsTexts,\@italics,\@bolds,\@superscripts,\@subscripts,\@ucase,\@normals,\@normal_weights,\@layouts,\@h1s,\@extracts,\@extractbs,\@extractms,\@extractes,\@spaceAbove,\@departments,\@ArticleTitles,\@ArticleTitleNoKickers,\@ArticleBlurbs,\@ArticleBylines,\@cmt,\@sharpflats);
     while ($arr = shift(@arr_of_arrs))
     {
 	my @wrappers = ();

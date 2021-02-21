@@ -266,6 +266,13 @@ function epub2html()
 	    {
 		var imgclone = imgs.eq(j).clone();
 		//alert ("layout " + i + " , image " + j + ": " + imgs.eq(j).attr('src') + "width: " + imgs.eq(j).prop('width'));
+		    var src = imgclone.attr('src');
+		    var srcbase = src.replace('/[^\/]*$','');
+		    var filename = src.substr(srcbase.length);
+		    src = srcbase + 'sm/' + filename;
+
+		    console.log('small image src: ' + src);
+		    imgclone.attr('src',src);
 
 
 		console.log("processing img " + imgs.eq(j).outerHTML());
@@ -274,69 +281,71 @@ function epub2html()
 		if (!imgs.eq(j).parent().is('a'))
 		    {
 		    var vfs = 'View full size<br />';
-			var thisimg = imgs.eq(j);
-			var dims = getImageDimensions(thisimg);
+		    var thisimg = imgs.eq(j);
+		     var dims = getImageDimensions(thisimg);
+		     var dimssm = getImageDimensions(imgclone);
 
-			console.log ("naturalWidth: " + dims.width);
-			
-			if (dims.width < 586) {vfs = '';}
-			var fslink = $('<a href="' + imgs.eq(j).attr('src') + '" class="body_text">' + vfs + '</a>');
-			fslink.append(imgclone);
+		     console.log ("naturalWidth: " + dims.width);
+		     console.log ("sm naturalWidth: " + dimssm.width);
+	
+		    if (dims.width <= dimssm.width) {vfs = '';}
+		    var fslink = $('<a href="' + imgs.eq(j).attr('src') + '" class="body_text">' + vfs + '</a>');
+		    fslink.append(imgclone);
 	 
 	
 	
-					var imgwrapper = $('<div class="wide_image_c" style="max-width:' + imgs.eq(j).prop('width') + 'px"></div>');
-				var imgwrapper2 = $('<div class="wide_image_c"></div>');
+		    var imgwrapper = $('<div class="wide_image_c" style="max-width:' + dimssm.width + 'px"></div>');
+		    var imgwrapper2 = $('<div class="wide_image_c"></div>');
 				
-				imgwrapper.append(fslink);
-				var imgwrapperMaxWidth = imgwrapper.css('max-width').slice(0,-2);
+		    imgwrapper.append(fslink);
+		    var imgwrapperMaxWidth = imgwrapper.css('max-width').slice(0,-2);
 
-				console.log("imgwrapper: " + imgwrapper.outerHTML() + " imgwrapper max-width: " + imgwrapperMaxWidth);
-				/* if text is more than 3 times the width of the image wrapper	then put the text outside the wrapper so it does not become a tall and narrow column
-				*/
-				var maxTextWidth = 3 * imgwrapperMaxWidth;
-
-				imgs.eq(j).replaceWith(imgwrapper);
-				console.log("imgs.eq(j).outerHTML: " + imgs.eq(j).outerHTML());
-
+		    console.log("imgwrapper: " + imgwrapper.outerHTML() + " imgwrapper max-width: " + imgwrapperMaxWidth);
+		    /* if text is more than 3 times the width of the image wrapper	then put the text outside the wrapper so it does not become a tall and narrow column
+		     */
+		    var maxTextWidth = 3 * imgwrapperMaxWidth;
+		    
+		    imgs.eq(j).replaceWith(imgwrapper);
+		    console.log("imgs.eq(j).outerHTML: " + imgs.eq(j).outerHTML());
+		    
 	 
 	
-			if (imgs.length > 1)
-			    {
-				for (var k=0; k<credits.length; k++)
-				    {
-					var cpimg = credits.eq(k).closestPrior('img');
-					console.log ("comparing with " + cpimg.outerHTML());
-					if (imgclone.attr('src') == cpimg.attr('src'))
-					    {
-						imgwrapper = checkTextWidth(credits.eq(k),maxTextWidth,imgwrapper,imgwrapper2);
-						imgwrapper.append(credits.eq(k));
-						break;
-					    }
-				    }
-				for (var k=0; k<ccapts.length; k++)
-				    {
-					// console.log("looking for closest img prior to " + ccapts.eq(k).outerHTML() + " whose parent is " + ccapts.eq(k).parent().outerHTML() + " and whose previous sibling is " + ccapts.eq(k).prev().outerHTML());
-					var cpimg = ccapts.eq(k).closestPrior('img');
-					console.log ("comparing with " + cpimg.outerHTML());
-					if (imgclone.attr('src') == cpimg.attr('src'))
-					    {
-							imgwrapper = checkTextWidth(ccapts.eq(k),maxTextWidth,imgwrapper,imgwrapper2);
-						imgwrapper.append(ccapts.eq(k));
-						break;
-					    }
-				    }
-				for (var k=0; k<capts.length; k++)
-				    {
-					var cpimg = capts.eq(k).closestPrior('img');
-					console.log ("comparing with " + cpimg.outerHTML());
-					if (imgclone.attr('src') == cpimg.attr('src'))
-					    {
-							imgwrapper = checkTextWidth(capts.eq(k),maxTextWidth,imgwrapper,imgwrapper2);
-						imgwrapper.append(capts.eq(k));
-						break;
-					    }
-				    }
+		    if (imgs.length > 1)
+			{
+			    for (var k=0; k<credits.length; k++)
+				{
+				    var cpimg = credits.eq(k).closestPrior('img');
+				    console.log ("comparing with " + cpimg.outerHTML());
+				    if (imgclone.attr('src') == cpimg.attr('src'))
+					{
+					    imgwrapper = checkTextWidth(credits.eq(k),maxTextWidth,imgwrapper,imgwrapper2);
+					    imgwrapper.append(credits.eq(k));
+					    break;
+					}
+				}
+			    for (var k=0; k<ccapts.length; k++)
+				{
+				    // console.log("looking for closest img prior to " + ccapts.eq(k).outerHTML() + " whose parent is " + ccapts.eq(k).parent().outerHTML() + " and whose previous sibling is " + ccapts.eq(k).prev().outerHTML());
+				    var cpimg = ccapts.eq(k).closestPrior('img');
+				    console.log ("comparing with " + cpimg.outerHTML());
+				    if (imgclone.attr('src') == cpimg.attr('src'))
+					{
+					    imgwrapper = checkTextWidth(ccapts.eq(k),maxTextWidth,imgwrapper,imgwrapper2);
+					    imgwrapper.append(ccapts.eq(k));
+					    break;
+					}
+				}
+			    for (var k=0; k<capts.length; k++)
+				{
+				    var cpimg = capts.eq(k).closestPrior('img');
+				    console.log ("comparing with " + cpimg.outerHTML());
+				    if (imgclone.attr('src') == cpimg.attr('src'))
+					{
+					    imgwrapper = checkTextWidth(capts.eq(k),maxTextWidth,imgwrapper,imgwrapper2);
+					    imgwrapper.append(capts.eq(k));
+					    break;
+					}
+				}
 					
 /* items to be prepended (placed above the image) are processed in reverse order, so that they end up in the original order */
 
