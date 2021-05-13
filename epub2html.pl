@@ -438,10 +438,16 @@ foreach $infilepath (@noncmInfiles)
 	$fullPDFdownload->attr('href',"$phpPath?ext=pdf");
 
 	my $epubDownload = $arch_ttree->look_down('id','epubDownload');
-	$epubDownload->attr('href',"$phpPath?ext=epub");
+	if (defined $epubDownload)
+	{
+	    $epubDownload->attr('href',"$phpPath?ext=epub");
+	}
 
 	my $mobiDownload = $arch_ttree->look_down('id','mobiDownload');
-	$mobiDownload->attr('href',"$phpPath?ext=mobi");
+	if (defined $mobiDownload)
+	{
+	    $mobiDownload->attr('href',"$phpPath?ext=mobi");
+	}
 
 
 	my $coverLink = $ttree->look_down('id','coverLink');
@@ -460,9 +466,15 @@ foreach $infilepath (@noncmInfiles)
 	my $pqPDF = $ttree->look_down('id','pqPDF');
 	$pqPDF->attr('href',"/eiw/private/$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday".'.pdf');
 	my $mobi = $ttree->look_down('id','mobi');
-	$mobi->attr('href',"/eiw/private/$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday.mobi");
+	if (defined $mobi)
+	{
+	    $mobi->attr('href',"/eiw/private/$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday.mobi");
+	}
 	my $epub = $ttree->look_down('id','epub');
-	$epub->attr('href',"/eiw/private/$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday.epub");
+	if (defined $epub)
+	{
+	    $epub->attr('href',"/eiw/private/$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday.epub");
+	}
 	my $archive = $ttree->look_down('id','archive');
 	$archive->attr('href',"/eiw/public/$year/index.html");
 	
@@ -1257,9 +1269,10 @@ sub prepareFiles($$$$$$;$)
     {
 	print STDERR "computing outfilepath for $infile[2]\n";
 	$outfilepath = $outfiledir.$outfilename;
+	my $debugfilepath = $outfiledir.'zzzz'.$outfilename.'.debug.log'; 
 	make_path($outfiledir);
 	open(OUTFILE,"+>$outfilepath") || die "can't open $outfilepath for writing: $!"; 
-	open(DEBUG,">$outfilepath.debug.log") || die "can't open $outfilepath.debug.log for writing: $!"; 
+	open(DEBUG,">$debugfilepath") || die "can't open $debugfilepath for writing: $!"; 
 
 	#find document-relative path to $docRoot
 #	$root = findRelPath($outfilepath,$docRoot.'/');
