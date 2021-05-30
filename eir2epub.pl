@@ -253,10 +253,10 @@ foreach $infilepath (@infiles)
     push (@layouts,'','|','+','div','|||','---------------------------------------------','text','~text');
 
 
-    my @ShortsHeads = $content->look_down('_tag','p','class',qr/ShortsH.*/i);
+    my @ShortsHeads = $content->look_down('_tag','p','class',qr/Short.*Head.*/i);
     push (@ShortsHeads,'','shorts_head','class','h4');
     
-    my @ShortsTexts = $content->look_down('_tag','p','class',qr/ShortsT.*/i);
+    my @ShortsTexts = $content->look_down('_tag','p','class',qr/Short.*Text.*/i);
     push (@ShortsTexts,'','Text','class','p');
 
 

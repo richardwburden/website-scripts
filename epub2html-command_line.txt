@@ -1,3 +1,76 @@
+https://larouchepub.com/eiw/public/unlisted/2021/eirv48n22-20210528/hupv9xrtdY2bxAs_test
+
+perlo -w epub2html.pl  --ud 2021/eirv48n22-20210528/hupv9xrtdY2bxAs_test --pft other -i ../Images=graphics/2021/4822 --iu ../Images=graphics/2021/4822 eir /r/eiw/private/2021/22/OEBPS/Text/
+
+
+
+
+https://larouchepub.com/eiw/public/unlisted/2021/eirv48n22-20210528/hupv9xrtdY2bxAs_
+
+perlo -w epub2html.pl  --ud 2021/eirv48n22-20210528/hupv9xrtdY2bxAs_ --pft other -i ../Images=graphics/2021/4822 --iu ../Images=graphics/2021/4822 eir /r/eiw/private/2021/22/OEBPS/Text/
+
+perlo -w epub2html.pl --po ^
+-b Section0002.xhtml=other/editorials/2021/4822-crush_malthusianism.html ^
+-b 05-23_EIR22_section_1.xhtml=hzl/2021/4822-a_different_approach_from_russia-hzl.html ^
+-b Section0003.xhtml=other/2021/4822-palestine_and_israel_a_desperate.html ^
+-b 50-53_section_3.xhtml=other/2021/4822-in_memoriam_theodore_katsanevas.html ^
+-i ../Images=graphics/2021/4822 eir /r/eiw/private/2021/22/OEBPS/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n22-20210528\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n22-20210528\index.html
+
+
+
+-b Section0002.xhtml=other/2021/4822-crush_malthusianism_in_all_its.html ^
+-b 05-23_EIR22_section_1.xhtml=other/2021/4822-a_different_approach_from_russ.html ^
+-b Section0003.xhtml=other/2021/4822-a_desperate_case_cries_out_for.html ^
+-b Section0004.xhtml=other/2021/4822-mark_carney_barks_at_africa_de.html ^
+-b Section0005.xhtml=other/2021/4822-to_develop_africa_we_must_reje.html ^
+-b 24-49_EIR22_section_2.xhtml=other/2021/4822-construction_of_china_s_space.html ^
+-b Section0006.xhtml=other/2021/4822-china_russia_in_nuclear_power.html ^
+-b Section0007.xhtml=other/2021/4822-we_may_have_stable_fusion_powe.html ^
+-b Section0008.xhtml=other/2021/4822-concerning_the_coming_report_o.html ^
+-b Section0009.xhtml=other/2021/4822-the_fast_neutron_breeder_can_b.html ^
+-b Section0010.xhtml=other/2021/4822-president_putin_our_coal_key_p.html ^
+-b Section0011.xhtml=other/2021/4822-anti_malthusian_resistance_lar.html ^
+-b 50-53_section_3.xhtml=other/2021/4822-theodore_katsanevas_1947_2021.html ^
+-b Section0012.xhtml=other/2021/4822-china_briefs.html ^
+
+
+https://larouchepub.com/eiw/public/unlisted/2021/eirv48n21-20210521/zi8uf9BdeYsLk6_1
+
+perlo -w epub2html.pl  --ud 2021/eirv48n21-20210521/zi8uf9BdeYsLk6_1 --pft other -i ../Images=graphics/2021/4821 --iu ../Images=graphics/2021/4821 eir /r/eiw/private/2021/21/OEBPS/Text/
+
+perlo -w epub2html.pl --po ^
+-b Section0002.xhtml=other/editorials/2021/4821-your_life_and_mankinds_existence.html ^
+-b 05-40_EIR21_section_1.xhtml=other/2021/4821-conference_program.html ^
+-b Section0004.xhtml=hzl/2021/4821-ending_the_crisis_today_through-hzl.html ^
+-b 41-49_EIR21_section_2.xhtml=other/2021/4821-global_health_security_requires.html ^
+-b Section0014.xhtml=other/interviews/2021/4821-building_the_12_day_hospital_in.html ^
+-b 50-66_EIR21_section_3.xhtml=lar/2021/4821-what_does_culture_do-lar.html ^
+-b Section0015.xhtml=other/2021/4821-farrakhans_agapic_birthday_gift.html ^
+-i ../Images=graphics/2021/4821 eir /r/eiw/private/2021/21/OEBPS/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n21-20210521\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n21-20210521\index-rwb.html
+
+
+-b Section0002.xhtml=other/2021/4821-your_life_and_mankind_s_existe.html ^
+-b 05-40_EIR21_section_1.xhtml=other/2021/4821-conference_program.html ^
+-b Section0003.xhtml=other/2021/4821-moderator_s_opening_remarks.html ^
+-b Section0004.xhtml=other/2021/4821-ending_the_crisis_today_throug.html ^
+-b Section0005.xhtml=other/2021/4821-join_or_die_why_a_world_health.html ^
+-b Section0006.xhtml=other/2021/4821-report_on_mozambique_pilot_aid.html ^
+-b Section0007.xhtml=other/2021/4821-the_global_concentration_camp.html ^
+-b Section0008.xhtml=other/2021/4821-report_the_coincidence_of_oppo.html ^
+-b Section0009.xhtml=other/2021/4821-german_farm_protest_leaders_th.html ^
+-b Section0010.xhtml=other/2021/4821-physician_heal_thyself_saving.html ^
+-b Section0011.xhtml=other/2021/4821-they_knew_or_should_have_known.html ^
+-b Section0012.xhtml=other/2021/4821-discussion_session.html ^
+-b Section0013.xhtml=other/2021/4821-greetings.html ^
+-b 41-49_EIR21_section_2.xhtml=other/2021/4821-global_health_security_require.html ^
+-b Section0014.xhtml=other/2021/4821-building_the_12_day_hospital_i.html ^
+-b 50-66_EIR21_section_3.xhtml=other/2021/4821-what_does_culture_do.html ^
+-b Section0015.xhtml=other/2021/4821-farrakhan_s_agapic_birthday_gi.html ^
+
 https://larouchepub.com/eiw/public/unlisted/2021/eirv48n20-20210514/i9cH2sd5ambdZQwo
 
 perlo -w epub2html.pl  --ud 2021/eirv48n20-20210514/i9cH2sd5ambdZQwo --pft other -i ../Images=graphics/2021/4820 --iu ../Images=graphics/2021/4820 eir /r/eiw/private/2021/20/OEBPS/Text/
