@@ -1,3 +1,35 @@
+https://larouchepub.com/eiw/public/unlisted/2021/eirv48n23-20210604/ejc_Pld_wNb-Qal
+
+perlo -w epub2html.pl  --ud 2021/eirv48n23-20210604/ejc_Pld_wNb-Qal --pft other -i ../Images=graphics/2021/4823 --iu ../Images=graphics/2021/4823 eir /r/eiw/private/2021/23/OEBPS/Text/
+
+perlo -w epub2html.pl  --vi 4823 --ud 2021/eirv48n23-20210604/ejc_Pld_wNb-Qaltest --pft other -i ../Images=graphics/2021/4823 --iu ../Images=graphics/2021/4823 eir /r/eiw/private/2021/23test/Text/
+
+
+perlo -w epub2html.pl --po ^
+-b Section0002.xhtml=other/editorials/2021/4823-will_the_right_to_develop_be_d.html ^
+-b 04-25_EIR23_Section_a.xhtml=other/2021/4823-team_biden_works_to_reignite_p.html ^
+-b 26-48_EIR23_Section_b.xhtml=hzl/2021/4823-energy_flux_density_as_the_cri-hzl.html ^
+-b Section0007.xhtml=other/2021/4823-next_schiller_institute_confer.html ^
+-b Section0010.xhtml=other/editorials/2021/4823-the_meaning_of_memorial_day.html ^
+-i ../Images=graphics/2021/4823 eir /r/eiw/private/2021/23/OEBPS/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n23-20210604\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n23-20210604\index.html
+
+
+-b Section0002.xhtml=other/2021/4823-will_the_right_to_develop_be_d.html ^
+-b 04-25_EIR23_Section_a.xhtml=other/2021/4823-team_biden_works_to_reignite_p.html ^
+-b Section0003.xhtml=other/2021/4823-honduran_mayors_successful_app.html ^
+-b Section0004.xhtml=other/2021/4823-malthusians_target_el_salvador.html ^
+-b Section0005.xhtml=other/2021/4823-malthusian_genocide_and_nuclea.html ^
+-b 26-48_EIR23_Section_b.xhtml=other/2021/4823-energy_flux_density_as_the_cri.html ^
+-b Section0006.xhtml=other/2021/4823-building_global_and_national_h.html ^
+-b Section0007.xhtml=other/2021/4823-next_schiller_institute_confer.html ^
+-b Section0008.xhtml=other/2021/4823-putin_biden_summit_potential_s.html ^
+-b 49-52_EIR23_Africa_Report.xhtml=other/2021/4823-economics_briefs.html ^
+-b Section0009.xhtml=other/2021/4823-africa_report.html ^
+-b Section0010.xhtml=other/2021/4823-the_meaning_of_memorial_day.html ^
+
+
 https://larouchepub.com/eiw/public/unlisted/2021/eirv48n22-20210528/hupv9xrtdY2bxAs_test
 
 perlo -w epub2html.pl  --ud 2021/eirv48n22-20210528/hupv9xrtdY2bxAs_test --pft other -i ../Images=graphics/2021/4822 --iu ../Images=graphics/2021/4822 eir /r/eiw/private/2021/22/OEBPS/Text/

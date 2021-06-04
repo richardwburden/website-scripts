@@ -623,10 +623,15 @@ foreach $infilepath (@noncmInfiles)
 	{
 	    $tocbyline->attr('class','tocAuthor');
 	}
-	my @tocblurbs = $atoc->look_down('_tag','p','class',qr/.*blurb/i);
+	my @atocblurbs = $atoc->look_down('_tag','p','class',qr/.*blurb/i);
+	foreach $atocblurb (@atocblurbs)
+	{
+	    $atocblurb->attr('class','tocBlurb');
+	}
+	my @tocblurbs = $toc->look_down('_tag','p','class',qr/.*blurb/i);
 	foreach $tocblurb (@tocblurbs)
 	{
-	    $tocblurb->attr('class','tocBlurb');
+	    $tocblurb->attr('class','articleblurb');
 	}
 
 	my @atnks = $atoc->look_down('_tag','p','class',qr/articletitlenokicker/i);

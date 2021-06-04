@@ -20,6 +20,7 @@ git diff --cached
 
 Note that git diff displays the diffs with something like the less reader utility.  Navigate through the listing with PageUp and PageDown keys.  Type q to exit.
 
+
 for a dry run, use the --dry-run parameter
 
 
