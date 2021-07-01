@@ -1,3 +1,102 @@
+https://larouchepub.com/eiw/public/unlisted/2021/eirv48n27-20210702/Atis0vB2CLieSP_A
+
+perlo -w epub2html.pl  --ud 2021/eirv48n27-20210702/Atis0vB2CLieSP_A --pft other -i ../Images=graphics/2021/4827 --iu ../Images=graphics/2021/4827 eir /r/eiw/private/2021/27/Text/
+
+perlo -w epub2html1.pl --muai --ud 2021/eirv48n27-20210702/Atis0vB2CLieSP_A --pft other -i ../Images=graphics/2021/4827 --iu ../Images=graphics/2021/4827 eir /r/eiw/private/2021/27/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n27-20210702\Atis0vB2CLieSP_A\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n27-20210702\Atis0vB2CLieSP_A\index.html
+
+
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n27-20210702\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n27-20210702\index.html
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n27-20210702\Atis0vB2CLieSP_Atest\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n27-20210702\Atis0vB2CLieSP_Atest\index1.html
+
+
+
+
+https://larouchepub.com/eiw/public/unlisted/2021/eirv48n26-20210625/ocu8xNaMM2_qzate
+
+perlo -w epub2html.pl  --ud 2021/eirv48n26-20210625/ocu8xNaMM2_qzate --pft other -i ../Images=graphics/2021/4826 --iu ../Images=graphics/2021/4826 eir /r/eiw/private/2021/26/Text/
+
+perlo -w epub2html.pl --po ^
+-b Section0002.xhtml=other/editorials/2021/4826-to_secure_durable_peace_schill.html ^
+-b 05-16_EIR26_section_a.xhtml=other/2021/4826-putin_biden_step_back_from_the.html ^
+-b 17-31_EIR26_section_b.xhtml=hzl/2021/4826-gandhis_vision_for_a_new_para-hzl.html ^
+-b 45-56_EIR26_section_d.xhtml=other/2021/4826-independent_candidate_confront.html ^
+-i ../Images=graphics/2021/4826 eir /r/eiw/private/2021/26/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n26-20210625\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n26-20210625\index.html
+
+
+
+-b Section0002.xhtml=other/2021/4826-to_secure_durable_peace_schill.html ^
+-b 05-16_EIR26_section_a.xhtml=other/2021/4826-putin_biden_step_back_from_the.html ^
+-b Section0003.xhtml=other/2021/4826-swiss_vote_no_to_climate_suici.html ^
+-b Section0004.xhtml=other/2021/4826-international_briefs.html ^
+-b Section0005.xhtml=other/2021/4826-china_briefs.html ^
+-b 17-31_EIR26_section_b.xhtml=other/2021/4826-gandhi_s_vision_for_a_new_para.html ^
+-b Section0006.xhtml=other/2021/4826-the_spirit_of_bandung.html ^
+-b 32-44_EIR26_section_c.xhtml=other/2021/4826-the_fbi_s_russia_gating_of_mar.html ^
+-b Section0007.xhtml=other/2021/4826-why_americans_should_investiga.html ^
+-b 45-56_EIR26_section_d.xhtml=other/2021/4826-independent_candidate_confront.html ^
+
+https://larouchepub.com/eiw/public/unlisted/2021/eirv48n25-20210618/uBdy7Lkw_IsWz-M
+
+perlo -w epub2html.pl  --ud 2021/eirv48n25-20210618/uBdy7Lkw_IsWz-M --pft other -i ../Images=graphics/2021/4825 --iu ../Images=graphics/2021/4825 eir /r/eiw/private/2021/25/Text/
+
+perlo -w epub2html.pl --po ^
+-b Section0002.xhtml=other/editorials/2021/4825-creating_a_climate_for_courage.html ^
+-b 15-62_EIR25_International_Briefs.xhtml=other/2021/4825-u_s_western_farm_states_revolt.html ^
+-b Section0005.xhtml=other/2021/4825-why_trump_failed_and_why_many.html ^
+-b Section0008.xhtml=lar/2021/4825-that_doomed_brutish_empire-lar.html ^
+-b Section0009.xhtml=other/editorials/2021/4825-why_the_wuhan_lab_hysteria.html ^
+-i ../Images=graphics/2021/4825 eir /r/eiw/private/2021/25/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n25-20210618\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n25-20210618\index.html
+
+
+-b Section0002.xhtml=other/2021/4825-creating_a_climate_for_courage.html ^
+-b 04-14_EIR25_Section_a.xhtml=other/2021/4825-nato_the_global_enforcer_and_b.html ^
+-b Section0003.xhtml=other/2021/4825-the_uk_is_the_world_s_internet.html ^
+-b Section0004.xhtml=other/2021/4825-who_is_taking_over_the_interne.html ^
+-b 15-62_EIR25_International_Briefs.xhtml=other/2021/4825-u_s_western_farm_states_revolt.html ^
+-b Section0005.xhtml=other/2021/4825-why_trump_failed_and_why_many.html ^
+-b Section0006.xhtml=other/2021/4825-economics_briefs.html ^
+-b Section0007.xhtml=other/2021/4825-africa_briefs.html ^
+-b Section0008.xhtml=other/2021/4825-that_doomed_brutish_empire.html ^
+-b Section0009.xhtml=other/2021/4825-why_the_wuhan_lab_hysteria.html ^
+
+
+https://larouchepub.com/eiw/public/unlisted/2021/eirv48n24-20210611/pvh7d8S2BDQID_K
+
+perlo -w epub2html.pl  --ud 2021/eirv48n24-20210611/pvh7d8S2BDQID_K --pft other -i ../Images=graphics/2021/4824 --iu ../Images=graphics/2021/4824 eir /r/eiw/private/2021/24/OEBPS/Text/
+
+perlo -w epub2html.pl --po ^
+-b Section0002.xhtml=other/editorials/2021/4824-no_party_will_touch_the_city_a.html ^
+-b 05-10_EIR24_Section_a.xhtml=other/2021/4824-fdr_founded_the_united_nations.html ^
+-b 11-41_EIR24_Section_b.xhtml=hzl/2021/4824-war_party_amplifies_its_false-hzl.html ^
+-b Section0007.xhtml=lar/2021/4824-miniver_cheevy_on_nato-lar.html ^
+-b Section0010.xhtml=other/2021/4824-international_briefs.html ^
+-i ../Images=graphics/2021/4824 eir /r/eiw/private/2021/24/OEBPS/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n24-20210611\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n24-20210611\index.html
+
+
+
+-b Section0002.xhtml=other/2021/4824-no_party_will_touch_the_city_a.html ^
+-b Section0003.xhtml=other/2021/4824-when_arthur_burns_burned_throu.html ^
+-b 05-10_EIR24_Section_a.xhtml=other/2021/4824-fdr_founded_the_united_nations.html ^
+-b 11-41_EIR24_Section_b.xhtml=other/2021/4824-war_party_amplifies_its_false.html ^
+-b Section0004.xhtml=other/2021/4824-chatham_house_lies_about_aggre.html ^
+-b Section0005.xhtml=other/2021/4824-roman_protasevich_tool_of_angl.html ^
+-b Section0006.xhtml=other/2021/4824-new_chapter_in_nsa_danish_inte.html ^
+-b Section0007.xhtml=other/2021/4824-miniver_cheevy_on_nato.html ^
+-b 42-54_EIR24_Section_c__Briefs.xhtml=other/2021/4824-who_s_behind_the_anti_china_ca.html ^
+-b Section0008.xhtml=other/2021/4824-several_european_countries_def.html ^
+-b Section0009.xhtml=other/2021/4824-china_briefs.html ^
+-b Section0010.xhtml=other/2021/4824-international_briefs.html ^
+
 https://larouchepub.com/eiw/public/unlisted/2021/eirv48n23-20210604/ejc_Pld_wNb-Qal
 
 perlo -w epub2html.pl  --ud 2021/eirv48n23-20210604/ejc_Pld_wNb-Qal --pft other -i ../Images=graphics/2021/4823 --iu ../Images=graphics/2021/4823 eir /r/eiw/private/2021/23/OEBPS/Text/

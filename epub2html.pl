@@ -33,6 +33,7 @@ Options whose name(s) are followed by '=' require an argument.  The letter follo
  mastheadRegex|mr=s
  coverExists|ce! (no cover by default, omitting this option is equivalent to --noce or --no-ce)
  mastheadExists|me! (masthead exists by default; omitting this option is equivalent to --me)
+ makeUnlistedArchiveIndex|muai! (no unlisted archive index by default; omitting this option is equiv to --nomuai or --no-muai)
 
 All paths must contain only forward slashes, and no slash at the beginning or end. 
 
@@ -130,8 +131,9 @@ my $vi = undef; #four digit $zvol.$zissue
 my $zvol = undef; #two digit with leading 0 for value < 10
 my $zissue = undef; #two digit with leading 0 for value < 10
 my $help = 0;
+my $makeUnlistedArchiveIndex = 0;
 
-GetOptions ('help|?' => \$help, 'public|b=s%' => \%publics, 'unlisted|u=s%' => \%unlisteds, 'imageDirs|i=s%' => \%imageDirs, 'unlistedImageDirs|iu=s%' => \%unlistedImageDirs, 'privateImageDirs|ip=s%' => \%privateImageDirs, 'unlistedIssueIndexPath|xu=s' => \$uiip, 'publicIssueIndexPath|xp=s' => \$piip, 'appendBrowserScript|abs' => \$appendBrowserScript, 'publicsOnly|po' => \$publicsOnly, 'unlistedDirname|ud=s' => \$ud, 'filenamesFromTitles|fft' => \$fft, 'pathnamesFromTitles|pft=s' => \$pft,'archiveIndexOnly|aio' => \$aio,'volume|vol=s' => \$vol, 'issue|iss=s' => \$issue, 'volumeIssue|vi=s' => \$vi, 'coverRegex|cr=s' => \$coverRegex, 'mastheadRegex|mr=s' => \$mastheadRegex, 'coverExists|ce!' => \$coverExists, 'mastheadExists|me!' => \$mastheadExists);
+GetOptions ('help|?' => \$help, 'public|b=s%' => \%publics, 'unlisted|u=s%' => \%unlisteds, 'imageDirs|i=s%' => \%imageDirs, 'unlistedImageDirs|iu=s%' => \%unlistedImageDirs, 'privateImageDirs|ip=s%' => \%privateImageDirs, 'unlistedIssueIndexPath|xu=s' => \$uiip, 'publicIssueIndexPath|xp=s' => \$piip, 'appendBrowserScript|abs' => \$appendBrowserScript, 'publicsOnly|po' => \$publicsOnly, 'unlistedDirname|ud=s' => \$ud, 'filenamesFromTitles|fft' => \$fft, 'pathnamesFromTitles|pft=s' => \$pft,'archiveIndexOnly|aio' => \$aio,'volume|vol=s' => \$vol, 'issue|iss=s' => \$issue, 'volumeIssue|vi=s' => \$vi, 'coverRegex|cr=s' => \$coverRegex, 'mastheadRegex|mr=s' => \$mastheadRegex, 'coverExists|ce!' => \$coverExists, 'mastheadExists|me!' => \$mastheadExists, 'makeUnlistedArchiveIndex|muai!' => \$makeUnlistedArchiveIndex);
 pod2usage(1) if $help;
 
 my $program_basename = $0;
@@ -155,6 +157,12 @@ else {$configPath = "$program_basename-$configPath.xml"}
 my $domain;
 my %options = ();
 get_config ($configPath, \$domain, \%options);
+
+if ($makeUnlistedArchiveIndex)
+# make an index page in the archive style, but put it in the unlisted directory
+{
+    $options{'publicIssueIndexArchiveRootPath'} = $options{'unlistedIssueIndexRootPath'};
+}
 
 my $docRoot = $domain->attr('docroot');
 my $domainName = $domain->attr('name');
@@ -358,7 +366,16 @@ foreach $infilepath (@noncmInfiles)
 
 	#archive index page filename is index-nc.html because it is not fully HTML5 compliant.
 	#a XSL transform will be applied using java net.sf.saxon.Transform to make it compliant.
-	my $arch_outfilepath = $piiarp."$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/index-nc.html";
+
+	my $arch_outfilepath = "";
+	if ($makeUnlistedArchiveIndex and defined $ud and $ud ne "")
+	{
+	    $arch_outfilepath = $piiarp.$ud.'/index-nc.html';
+	}
+	else
+	{
+	    $arch_outfilepath = $piiarp."$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/index-nc.html";
+	}
 	my $full_arch_outfilepath = $docRoot.$arch_outfilepath;
 	$full_arch_outfilepath =~ s%/%\\%g;
 
@@ -575,7 +592,7 @@ foreach $infilepath (@noncmInfiles)
 	    # @singleArticleURLs contains two relative URLs for each single Article PDF: first, the relative URLs for the subscriber's issue index page, in their order of appearance in the table of contents, then those for the archive issue index page, in the same order, in that order.
 	    my $saurl = shift @singleArticleURLs;
 	    my $pinsert = HTML::Element->new('a');
-	    if ($saurl =~ m%/private/%)
+	    if (! $makeUnlistedArchiveIndex && $saurl =~ m%/private/%)
 	    {	
 		#replace the unlisted HTML link with the subscribers-only PDF link and a hidden placeholder for the future public HTML link
 		$htmlLink->attr('href',$saurl);
@@ -588,7 +605,7 @@ foreach $infilepath (@noncmInfiles)
 		#replace the unlisted HTML link with the public HTML link if available (in updateLinksToArticles), otherwise, link it to the archive issue index page, in both cases followed by a public PDF link.
 		$htmlLink->attr('href',$saurl);
 		$htmlLink->attr('class','tocLinkPDF');
-		if (not defined $publics{$htmlHref})
+		if (! $makeUnlistedArchiveIndex && not defined $publics{$htmlHref})
 		{
 		    $pinsert->attr('href','#');
 		    $pinsert->attr('class','tocLinkHiddenHTML');

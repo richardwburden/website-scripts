@@ -253,12 +253,14 @@ foreach $infilepath (@infiles)
     push (@layouts,'','|','+','div','|||','---------------------------------------------','text','~text');
 
 
-    my @ShortsHeads = $content->look_down('_tag','p','class',qr/Short.*Head.*/i);
+    my @ShortsHeads = $content->look_down('_tag','p','class',qr/Short.*Hea?d.*/i);
     push (@ShortsHeads,'','shorts_head','class','h4');
     
     my @ShortsTexts = $content->look_down('_tag','p','class',qr/Short.*Text.*/i);
     push (@ShortsTexts,'','Text','class','p');
 
+    my @FootnoteTexts = $content->look_down('_tag','p','class',qr/Footnote.*Text.*/i);
+    push (@FootnoteTexts,'','FootnoteText','class','p');
 
     my @h1s = ();
     if (defined $h1_class)
@@ -339,7 +341,7 @@ foreach $infilepath (@infiles)
     my $tag = undef;
     my %attribs = ();
     my $arritem = undef;
-    my @arr_of_arrs = (\@footnote_links,\@footnote_anchors,\@MajorSubheads,\@MajorLightSubheads,\@LightSubheads,\@Subheads,\@kickers,\@dkickers,\@editorials,\@bylines,\@Heads,\@ShortsHeads,\@ShortsTexts,\@italics,\@bolds,\@superscripts,\@subscripts,\@ucase,\@normals,\@normal_weights,\@layouts,\@h1s,\@extracts,\@extractbs,\@extractms,\@extractes,\@spaceAbove,\@departments,\@ArticleTitles,\@ArticleTitleNoKickers,\@ArticleBlurbs,\@ArticleBylines,\@cmt,\@sharpflats);
+    my @arr_of_arrs = (\@footnote_links,\@footnote_anchors,\@FootnoteTexts,\@MajorSubheads,\@MajorLightSubheads,\@LightSubheads,\@Subheads,\@kickers,\@dkickers,\@editorials,\@bylines,\@Heads,\@ShortsHeads,\@ShortsTexts,\@italics,\@bolds,\@superscripts,\@subscripts,\@ucase,\@normals,\@normal_weights,\@layouts,\@h1s,\@extracts,\@extractbs,\@extractms,\@extractes,\@spaceAbove,\@departments,\@ArticleTitles,\@ArticleTitleNoKickers,\@ArticleBlurbs,\@ArticleBylines,\@cmt,\@sharpflats);
     while ($arr = shift(@arr_of_arrs))
     {
 	my @wrappers = ();
