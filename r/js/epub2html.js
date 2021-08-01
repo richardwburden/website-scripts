@@ -206,8 +206,8 @@ function epub2html()
 	var pixcredits = layouts.eq(i).find("p").filter(':regex(class,pixcredit.*)');
 	var titles = layouts.eq(i).find(':regex(class,figure-t.*)');
 	var numbers = layouts.eq(i).find(':regex(class,figure-n.*)');
+	var ccaptions = layouts.eq(i).find(':regex(class,ccaptions.*|cCaptions.*)');
 	var captions = layouts.eq(i).find(':regex(class,captions.*)');
-	var ccaptions = layouts.eq(i).find(':regex(class,ccaptions.*)');
 	// overviews go below the title, but above the first picture.
 	var overviews = layouts.eq(i).find(':regex(class,.*overview.*|figure-units|basic-paragraph)');
 	var sources = layouts.eq(i).find(':regex(class,figure-source.*)');
@@ -228,17 +228,17 @@ function epub2html()
 		newdiv.append(contents);
 		pixcredits.eq(k).replaceWith(newdiv);
 	    }
+	for (var k=0; k<ccaptions.length; k++)
+	    {var contents = ccaptions.eq(k).contents();
+		var newdiv = $("<div class='centered_caption'></div>");
+		newdiv.append(contents);
+		ccaptions.eq(k).replaceWith(newdiv);}
 	for (var k=0; k<captions.length; k++)
 	    {var contents = captions.eq(k).contents();
 		var newdiv = $("<div class='caption'></div>");
 		newdiv.append(contents);
 		captions.eq(k).replaceWith(newdiv);
 		}
-	for (var k=0; k<ccaptions.length; k++)
-	    {var contents = ccaptions.eq(k).contents();
-		var newdiv = $("<div class='centered_caption'></div>");
-		newdiv.append(contents);
-		ccaptions.eq(k).replaceWith(newdiv);}
 	for (var k=0; k<overviews.length; k++)
 	    {var contents = overviews.eq(k).contents();
 		var c = overviews.eq(k).attr("class");
@@ -425,6 +425,12 @@ for (var k=numbers.length-1; k>=0; k--)
 				    {
 						imgwrapper = checkTextWidth(capts.eq(k),maxTextWidth,imgwrapper,imgwrapper2);
 						imgwrapper.append(capts.eq(k));
+						break;
+				    }
+				for (var k=0; k<sources.length; k++)
+				    {
+						imgwrapper = checkTextWidth(capts.eq(k),maxTextWidth,imgwrapper,imgwrapper2);
+						imgwrapper.append(sources.eq(k));
 						break;
 				    }
 
