@@ -1,3 +1,81 @@
+https://larouchepub.com/eiw/public/unlisted/2021/eirv48n32-20210813/vk9s_pLaWB32-NcUt
+
+perlo -w epub2html.pl  --muai --ud 2021/eirv48n32-20210813/vk9s_pLaWB32-NcUt --pft other -i ../Images=graphics/2021/4832 --iu ../Images=graphics/2021/4832 eir /r/eiw/private/2021/32/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n32-20210813\vk9s_pLaWB32-NcUt\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n32-20210813\vk9s_pLaWB32-NcUt\index.html
+
+https://larouchepub.com/eiw/public/unlisted/2021/eirv48n32-20210813/vk9s_pLaWB32-NcU
+
+perlo -w epub2html.pl  --muai --ud 2021/eirv48n32-20210813/vk9s_pLaWB32-NcU --pft other -i ../Images=graphics/2021/4832 --iu ../Images=graphics/2021/4832 eir /r/eiw/private/2021/32/Text/
+
+-b Section0002.xhtml=other/2021/4832-to_be_able_to_understand_the_f.html ^
+-b 05-25_EIR32_Section_a.xhtml=other/2021/4832-conference_program.html ^
+-b Section0003.xhtml=other/2021/4832-a_common_interest_development.html ^
+-b Section0004.xhtml=other/2021/4832-opening_remarks_a_mobilization.html ^
+-b Section0005.xhtml=other/2021/4832-the_coming_cooperation_of_the.html ^
+-b Section0006.xhtml=other/2021/4832-the_way_forward_for_afghanista.html ^
+-b Section0007.xhtml=other/2021/4832-russia_s_outlook_for_afghanist.html ^
+-b Section0008.xhtml=other/2021/4832-afghanistan_and_the_belt_and_r.html ^
+-b Section0009.xhtml=other/2021/4832-discussion_seizing_the_afghani.html ^
+-b 26-29_EIR32_Section_b.xhtml=other/2021/4832-ipcc_faces_trashing_of_its_cli.html ^
+-b Section0010.xhtml=other/2021/4832-the_good_the_beautiful_and_the.html ^
+-b 30-36_EIR32_Section_c.xhtml=other/2021/4832-so_are_you_finally_willing_to.html ^
+-b Section0011.xhtml=other/2021/4832-china_briefs.html ^
+-b Section0012.xhtml=other/2021/4832-economics_briefs.html ^
+-b Section0013.xhtml=other/2021/4832-ipcc_report_release_drives_un.html ^
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n32-20210813\vk9s_pLaWB32-NcU\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n32-20210813\vk9s_pLaWB32-NcU\index.html
+
+perlo -w epub2html.pl --po ^
+-b Section0002.xhtml=other/editorials/2021/4832-to_be_able_to_understand_the_fut.html ^
+-b Section0013.xhtml=other/editorials/2021/4832-ipcc_report_release_drives_un_se.html ^
+-b 05-25_EIR32_Section_a.xhtml=other/2021/4832-conference_program.html ^
+-b Section0003.xhtml=other/2021/4832-a_common_interest_development_pr.html ^
+-b Section0004.xhtml=other/2021/4832-opening_remarks_a_mobilization_n.html ^
+-b Section0005.xhtml=hzl/2021/4832-the_coming_cooperation_of_the_gr-hzl.html ^
+-i ../Images=graphics/2021/4832 eir /r/eiw/private/2021/32/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n32-20210813\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n32-20210813\index.html
+
+
+
+
+https://larouchepub.com/eiw/public/unlisted/2021/eirv48n31-20210806/iPwucN8Ms51-HsIO
+
+perlo -w epub2html.pl  --muai --ud 2021/eirv48n31-20210806/iPwucN8Ms51-HsIO --pft other -i ../Images=graphics/2021/4831 --iu ../Images=graphics/2021/4831 eir /r/eiw/private/2021/31/Text/
+
+perlo -w epub2html.pl --po ^
+-b Section0002.xhtml=other/editorials/2021/4831-schiller_institute_afghanistan_c.html ^
+-b 05-37_EIR31_Section_a.xhtml=lar/2021/4831-what_is_the_good-lar.html ^
+-b Section0003.xhtml=other/2021/4831-stop_blaming_climate_change_for.html ^
+-b Section0004.xhtml=other/2021/4831-reverse_course_on_wind_and_solar.html ^
+-b 52-64_EIR31_Section_c.xhtml=other/2021/4831-us_dialogue_with_both_china_and.html ^
+-b Section0012.xhtml=hzl/2021/4831-behind_the_green_new_deal_hjalma-hzl.html ^
+-i ../Images=graphics/2021/4831 eir /r/eiw/private/2021/31/Text/
+
+
+-b Section0002.xhtml=other/2021/4831-schiller_institute_afghanistan.html ^
+-b 05-37_EIR31_Section_a.xhtml=other/2021/4831-what_is_the_good.html ^
+-b Section0003.xhtml=other/2021/4831-stop_blaming_climate_change_fo.html ^
+-b Section0004.xhtml=other/2021/4831-reverse_course_on_wind_and_sol.html ^
+-b Section0005.xhtml=other/2021/4831-stop_the_green_land_grab_prote.html ^
+-b Section0006.xhtml=other/2021/4831-panel_1_discussion.html ^
+-b Section0007.xhtml=other/2021/4831-a_military_perspective.html ^
+-b Section0008.xhtml=other/2021/4831-binational_drought_and_the_bin.html ^
+-b Section0009.xhtml=other/2021/4831-the_truth_about_nuclear_power.html ^
+-b Section0010.xhtml=other/2021/4831-panel_2_discussion.html ^
+-b 38-51_EIR31_Section_b.xhtml=other/2021/4831-clean_coal_can_electrify_the_w.html ^
+-b Section0011.xhtml=other/2021/4831-science_technology.html ^
+-b 52-64_EIR31_Section_c.xhtml=other/2021/4831-u_s_dialogue_with_both_china_a.html ^
+-b Section0012.xhtml=other/2021/4831-behind_the_green_new_deal_hjal.html ^
+-b Section0013.xhtml=other/2021/4831-africa_report.html ^
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n31-20210806\iPwucN8Ms51-HsIO\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n31-20210806\iPwucN8Ms51-HsIO\index.html
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n31-20210806\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n31-20210806\index.html
+
+
+
 https://larouchepub.com/eiw/public/unlisted/2021/eirv48n30-20210730/dob8cVwPdlgA_2n4
 https://larouchepub.com/eiw/public/2021/eirv48n30-20210730/
 

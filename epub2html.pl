@@ -95,11 +95,6 @@ sub correctNSClassNames($);
 %articlesTitleCaseDict = (qw/A a AN an THE the/); 
 %empty = (); #use as 3rd parameter for HTML::Element->as_HTML() to specify that the HTML generated shall close all open tags
 
-open(INDEXTEMPLATE, "issue_index_template.html") || die "can't open issue_index_template.html for reading: $!";
-open(ARCHIVEINDEXTEMPLATE, "archive_issue_index_template.html") || die "can't open archive_issue_index_template.html for reading: $!";
-open(ARCHIVEINDEXTEMPLATEDOCTYPE, "archive_issue_index_template_doctype.txt") || die "can't open archive_issue_index_doctype.txt for reading: $!";
-open(ARTICLETEMPLATE, "article_template.html") || die "can't open article_template.html for reading: $!";
-
 #get command-line options other than the config file selector and the input file/directory/glob pattern.  These must appear first on the command line, and all paths must contain only forward slashes, and no slash at the beginning or end. Only one option (-xu or -xp) to relocate the index page can be used. The final component of $piip (the argument for -xp) and $uiip (the argument for -xu) is assumed to be a filename; it will be appended to the configuration file option 'publicIssueIndexRootPath' or 'unlistedIssueIndexRootPath'.  If $piip and $uiip is left empty, the configuration file option '[public/unlisted]IssueIndexRootPath' will be ignored and the issue index page will be generated in the same directory, with the same file basename, as its .xhtml source
 my %publics = ();
 my %unlisteds = ();
@@ -157,6 +152,21 @@ else {$configPath = "$program_basename-$configPath.xml"}
 my $domain;
 my %options = ();
 get_config ($configPath, \$domain, \%options);
+
+
+open(INDEXTEMPLATE, "issue_index_template.html") || die "can't open issue_index_template.html for reading: $!";
+
+if ($makeUnlistedArchiveIndex)
+{
+    open(ARCHIVEINDEXTEMPLATE, "unlisted_archive_issue_index_template.html") || die "can't open unlisted_archive_issue_index_template.html for reading: $!";
+}
+else
+{
+    open(ARCHIVEINDEXTEMPLATE, "archive_issue_index_template.html") || die "can't open archive_issue_index_template.html for reading: $!";
+}
+open(ARCHIVEINDEXTEMPLATEDOCTYPE, "archive_issue_index_template_doctype.txt") || die "can't open archive_issue_index_doctype.txt for reading: $!";
+open(ARTICLETEMPLATE, "article_template.html") || die "can't open article_template.html for reading: $!";
+
 
 if ($makeUnlistedArchiveIndex)
 # make an index page in the archive style, but put it in the unlisted directory
@@ -446,10 +456,10 @@ foreach $infilepath (@noncmInfiles)
 	my $fullPDFview = $arch_ttree->look_down('id','fullPDFview');
 
 	#In John Sigerson's archive index pages, links to serve the whole issue are private until they are made public 6 weeks after publication.
-	$fullPDFview->attr('href',"../../../private/$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday.pdf");
+	$fullPDFview->attr('href',"/eiw/private/$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday.pdf");
 
 	my $phpPath = "";
-	$phpPath = "../../../private/$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday.php";
+	$phpPath = "/eiw/private/$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday.php";
 
 	my $fullPDFdownload = $arch_ttree->look_down('id','fullPDFdownload');
 	$fullPDFdownload->attr('href',"$phpPath?ext=pdf");
@@ -474,7 +484,7 @@ foreach $infilepath (@noncmInfiles)
 	$coverImg->attr('src',"/eiw/public/$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue".'lg.jpg');
 
 	my $cover = $arch_ttree->look_down('id','cover');
-	$cover->attr('src',"eirv$zvol"."n$zissue-$year$zmonth$zmday-cover.jpg");
+	$cover->attr('src',"/eiw/public/$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday-cover.jpg");
 	$coverImg->attr('width',undef);
 	$coverImg->attr('height',undef);
 	$cover->attr('width',undef);
@@ -746,6 +756,9 @@ foreach $infilepath (@noncmInfiles)
 	$output = $aitdoctype;
 	$output .= $arch_ttree->as_HTML("","\t",\%empty);
 	$arch_ttree->delete;
+#FOR HTML5 compliance:
+	$output =~ s/&(\s)/&amp;$1/gs;
+
 	print ARCH_OUTFILE $output;
 	close ARCH_OUTFILE;
 
