@@ -367,11 +367,16 @@ foreach $infilepath (@noncmInfiles)
 	{$pdfIndexPath =~ s%\]\]\]$%%}
 	else
 	{$pdfIndexPath .= "$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/pdf_links.txt"}
-	my $mech = WWW::Mechanize->new();
+	my $mech = WWW::Mechanize->new(autocheck => 0, 'ssl_opts' => { 'verify_hostname' => 0 });
 	$mech->get($domainName.$pdfIndexPath);
-	my $pdfIndexTree = HTML::TreeBuilder->new();
-	$pdfIndexTree->parse($mech->content());
+	$PDFLinksExist = 0;
+	if ($mech->success) {$PDFLinksExist = 1}
 
+	my $pdfIndexTree = HTML::TreeBuilder->new();
+	if ($PDFLinksExist)
+	{
+	    $pdfIndexTree->parse($mech->content());
+	}
 	my $piiarp = $options{'publicIssueIndexArchiveRootPath'};
 
 	#archive index page filename is index-nc.html because it is not fully HTML5 compliant.
@@ -398,7 +403,11 @@ foreach $infilepath (@noncmInfiles)
 
 #Get the URLs of single article PDFs.  Assumed to be in the correct order in 
 #the index at $pdfIndexPath. 
-	my @pdfLinks = $pdfIndexTree->find_by_tag_name('a');
+	my @pdfLinks = ();
+	if ($PDFLinksExist)
+	{
+	    @pdfLinks = $pdfIndexTree->find_by_tag_name('a');
+	}
 	my @singleArticleURLs = ();
 
 	my $phpRootPath = $options{'phpRootPath'};
@@ -551,7 +560,11 @@ foreach $infilepath (@noncmInfiles)
 	    if ($htmlHref =~ m%/%) {next}
 	    #get the next PDF link
 	    # @singleArticleURLs contains two relative URLs for each single Article PDF: first, the relative URLs for the subscriber's issue index page, in their order of appearance in the table of contents, then those for the archive issue index page, in the same order, in that order.
-	    my $saurl = shift @singleArticleURLs;
+	    my $saurl = "";
+	    if ($PDFLinksExist)
+	    {
+		$saurl = shift @singleArticleURLs;
+	    }
 	    #save this $saurl in a hash to use when inserting a link to the PDF
 	    #into the subscriber's HTML article page, which will be placed in the same directory as the subscriber's issue index page.  We will not repeat this step when generating the archive issue index page, because that would cause the first hash for each $htmlHref to be overwritten by a value appropriate for a page in the directory of the archive issue index page.
 	    $saurlList{$htmlHref} = $saurl;

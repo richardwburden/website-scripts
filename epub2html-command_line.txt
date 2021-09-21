@@ -1,4 +1,174 @@
+https://larouchepub.com/eiw/public/unlisted/2021/eirv48n37-20210917/dpb9GYSEcmx7_0xs
+
+perlo -w epub2html.pl  --muai --ud 2021/eirv48n37-20210917/dpb9GYSEcmx7_0xs --pft other -i ../Images=graphics/2021/4837 --iu ../Images=graphics/2021/4837 eir /r/eiw/private/2021/37/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n37-20210917\dpb9GYSEcmx7_0xs\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n37-20210917\dpb9GYSEcmx7_0xs\index.html
+
+perlo -w epub2html.pl --po ^
+-b 05-25_EIR37_Section_a.xhtml=other/2021/4837-the_pathway_forward.html ^
+-b Section0003.xhtml=hzl/2021/4837-peaceful_coexistence_no_other.html ^
+-b Section0004.xhtml=other/2021/4837-still_seeking_the_truth_about.html ^
+-b Section0005.xhtml=other/2021/4837-beethoven_s_agnus_dei_peace_fo.html ^
+-b Section0006.xhtml=other/2021/4837-9_11_memorial_concert_messages.html ^
+-b Section0007.xhtml=other/2021/4837-concert_program.html ^
+-b Section0008.xhtml=other/2021/4837-u_s_russian_officials_show_fri.html ^
+-i ../Images=graphics/2021/4837 eir /r/eiw/private/2021/37/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n37-20210917\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n37-20210917\index.html
+
+
+-b Section0002.xhtml=other/2021/4837-september_11_declassification.html ^
+-b 05-25_EIR37_Section_a.xhtml=other/2021/4837-the_pathway_forward.html ^
+-b Section0003.xhtml=other/2021/4837-peaceful_coexistence_no_other.html ^
+-b Section0004.xhtml=other/2021/4837-still_seeking_the_truth_about.html ^
+-b Section0005.xhtml=other/2021/4837-beethoven_s_agnus_dei_peace_fo.html ^
+-b Section0006.xhtml=other/2021/4837-9_11_memorial_concert_messages.html ^
+-b Section0007.xhtml=other/2021/4837-concert_program.html ^
+-b Section0008.xhtml=other/2021/4837-u_s_russian_officials_show_fri.html ^
+-b 26-30_EIR37_Section_b.xhtml=other/2021/4837-time_for_the_truth_about_9_11.html ^
+-b Section0009.xhtml=other/2021/4837-september_11_and_the_united_st.html ^
+-b 31-39_EIR37_Section_c.xhtml=other/2021/4837-real_reasons_to_cancel_the_bri.html ^
+-b Section0010.xhtml=other/2021/4837-in_tribute_to_mikis_theodoraki.html ^
+-b Section0011.xhtml=other/2021/4837-why_greeks_love_mikis_theodora.html ^
+-b 40-47_EIR37_Section_d.xhtml=other/2021/4837-20_years_nato_wars_vs_8_years.html ^
+-b Section0012.xhtml=other/2021/4837-science_technology_briefs.html ^
+-b 48-53_EIR37_Section_e.xhtml=other/2021/4837-ed_asner_actor_and_defiant_opp.html ^
+-b Section0013.xhtml=other/2021/4837-ed_asner_robert_beltran_and_ly.html ^
+-b Section0014.xhtml=other/2021/4837-lyndon_larouche_on_politics_th.html ^
+
+https://larouchepub.com/eiw/public/unlisted/2021/eirv48n36-20210910/DU8EmOX2_ALK-zCp
+
+perlo -w epub2html.pl  --muai --ud 2021/eirv48n36-20210910/DU8EmOX2_ALK-zCp --pft other -i ../Images=graphics/2021/4836 --iu ../Images=graphics/2021/4836 eir /r/eiw/private/2021/36/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n36-20210910\DU8EmOX2_ALK-zCp\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n36-20210910\DU8EmOX2_ALK-zCp\index.html
+
+perlo -w epub2html.pl --po ^
+-b Section0002.xhtml=other/editorials/2021/4836-the_british_empire_senses_its.html ^
+-b 05-14_EIR36_Section_a.xhtml=hzl/2021/4836-what_afghanistan_needs_now-hzl.html ^
+-b Section0003.xhtml=other/2021/4836-end_of_an_era_the_futility_of.html ^
+-b 15-48_EIR36_Section_b.xhtml=other/interviews/2021/4836-larouche_discusses_the_septemb.html ^
+-i ../Images=graphics/2021/4836 eir /r/eiw/private/2021/36/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n36-20210910\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n36-20210910\index.html
+
+
+-b Section0002.xhtml=other/2021/4836-the_british_empire_senses_its.html ^
+-b 05-14_EIR36_Section_a.xhtml=other/2021/4836-what_afghanistan_needs_now.html ^
+-b Section0003.xhtml=other/2021/4836-end_of_an_era_the_futility_of.html ^
+-b Section0004.xhtml=other/2021/4836-africa_briefs.html ^
+-b Section0005.xhtml=other/2021/4836-china_briefs.html ^
+-b 15-48_EIR36_Section_b.xhtml=other/2021/4836-larouche_discusses_the_septemb.html ^
+-b Section0006.xhtml=other/2021/4836-only_facing_the_truth_will_sec.html ^
+-b Section0007.xhtml=other/2021/4836-fdr_and_mao_gung_ho_in_world_w.html ^
+-b 49-54_EIR36_Section_c.xhtml=other/2021/4836-the_rise_and_fall_of_the_golde.html ^
+
+
+https://larouchepub.com/eiw/public/unlisted/2021/eirv48n35-20210903/vody7cJ93Sao01_m
+
+perlo -w epub2html.pl  --muai --ud 2021/eirv48n35-20210903/vody7cJ93Sao01_m --pft other -i ../Images=graphics/2021/4835 --iu ../Images=graphics/2021/4835 eir /r/eiw/private/2021/35/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n35-20210903\vody7cJ93Sao01_m\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n35-20210903\vody7cJ93Sao01_m\index.html
+
+perlo -w epub2html.pl --po ^
+-b Section0002.xhtml=other/editorials/2021/eirv48n35-20210903_003-a_renaissance_for_mankind_or_a_d.html ^
+-b 05-55_EIR35_Section_a.xhtml=hzl/2021/eirv48n35-20210903_005-afghanistan_failure_proves_the_n-hzl.html ^
+-b Section0003.xhtml=other/2021/eirv48n35-20210903_013-from_blair_to_farage_british_imp.html ^
+-b Section0006.xhtml=lar/2021/eirv48n35-20210903_022-storm_over_asia_take_two_i_told-lar.html ^
+-b 68-69_EIR52_section_c.xhtml=other/2021/eirv48n35-20210903_068-in_memoriam_a_most_certain_note.html ^
+-i ../Images=graphics/2021/4835 eir /r/eiw/private/2021/35/Text/
+
+-b Section0002.xhtml=other/2021/4835-a_renaissance_for_mankind_or_a.html ^
+-b 05-55_EIR35_Section_a.xhtml=other/2021/4835-afghanistan_failure_proves_the.html ^
+-b Section0003.xhtml=other/2021/4835-from_blair_to_farage_british_i.html ^
+-b Section0004.xhtml=other/2021/4835-pino_arlacchi_eradicate_opium.html ^
+-b Section0005.xhtml=other/2021/4835-dope_inc_trafficking_of_afghan.html ^
+-b Section0006.xhtml=other/2021/4835-storm_over_asia_take_two_i_tol.html ^
+-b Section0007.xhtml=other/2021/4835-international_briefs.html ^
+-b 56-67_EIR35_Section_b.xhtml=other/2021/4835-new_scientific_review_challeng.html ^
+-b Section0008.xhtml=other/2021/4835-beyond_pandemic_biological_hol.html ^
+-b Section0009.xhtml=other/2021/4835-science_technology_briefs.html ^
+-b 68-69_EIR52_section_c.xhtml=other/2021/4835-a_most_certain_note_reginald_b.html ^
+
+https://larouchepub.com/eiw/public/unlisted/2021/eirv48n34-20210827/fpb9x63eOs7acG1m
+
+perlo -w epub2html.pl  --muai --ud 2021/eirv48n34-20210827/fpb9x63eOs7acG1m --pft other -i ../Images=graphics/2021/4834 --iu ../Images=graphics/2021/4834 eir /r/eiw/private/2021/34/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n34-20210827\fpb9x63eOs7acG1m\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n34-20210827\fpb9x63eOs7acG1m\index.html
+
+perlo -w epub2html.pl --po ^
+-b Section0002.xhtml=other/editorials/2021/eirv48n34-20210827_003-rush_afghan_economic_projects_ta.html ^
+-b 05-09_EIR34_section_a.xhtml=other/2021/eirv48n34-20210827_005-extending_the_belt_and_road_to_a.html ^
+-b 10-19_EIR34_Section_b.xhtml=other/2021/eirv48n34-20210827_010-build_haitis_infrastructure_now.html ^
+-b Section0007.xhtml=other/2021/eirv48n34-20210827_022-moderators_opening_remarks.html ^
+-b Section0009.xhtml=other/2021/eirv48n34-20210827_029-lyndon_larouches_method_of_physi.html ^
+-i ../Images=graphics/2021/4834 eir /r/eiw/private/2021/34/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n34-20210827\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n34-20210827\index.html
+
+-b Section0002.xhtml=other/2021/4834-rush_afghan_economic_projects.html ^
+-b 05-09_EIR34_section_a.xhtml=other/2021/4834-extending_the_belt_and_road_to.html ^
+-b Section0003.xhtml=other/2021/4834-economics_briefs.html ^
+-b 10-19_EIR34_Section_b.xhtml=other/2021/4834-build_haiti_s_infrastructure_n.html ^
+-b Section0004.xhtml=other/2021/4834-africa_briefs.html ^
+-b Section0005.xhtml=other/2021/4834-iberoamerica_briefs.html ^
+-b Section0006.xhtml=other/2021/4834-china_briefs.html ^
+-b 20-64_EIR34_Section_c.xhtml=other/2021/4834-program.html ^
+-b Section0007.xhtml=other/2021/4834-moderator_s_opening_remarks.html ^
+-b Section0008.xhtml=other/2021/4834-lyndon_larouche_on_the_world_s.html ^
+-b Section0009.xhtml=other/2021/4834-lyndon_larouche_s_method_of_ph.html ^
+-b Section0010.xhtml=other/2021/4834-the_early_economic_forecasts_o.html ^
+-b Section0011.xhtml=other/2021/4834-nixon_s_august_1971_announceme.html ^
+-b Section0012.xhtml=other/2021/4834-larouche_s_education_of_the_yo.html ^
+-b Section0013.xhtml=other/2021/4834-larouche_in_the_libraries.html ^
+-b Section0014.xhtml=other/2021/4834-notes_on_potential_relative_po.html ^
+-b Section0015.xhtml=other/2021/4834-larouche_s_idea_of_physical_ec.html ^
+-b Section0016.xhtml=other/2021/4834-greeting.html ^
+-b Section0017.xhtml=other/2021/4834-0.html ^
+-b Section0018.xhtml=other/2021/4834-1.html ^
+-b Section0019.xhtml=other/2021/4834-what_makes_a_society_successfu.html ^
+-b Section0020.xhtml=other/2021/4834-fruitful_dialogue.html ^
+
+https://larouchepub.com/eiw/public/unlisted/2021/eirv48n33-20210820/sp0nG36VlAx-eUqi4
+
+perlo -w epub2html.pl  --muai --ud 2021/eirv48n33-20210820/sp0nG36VlAx-eUqi4 --pft other -i ../Images=graphics/2021/4833 --iu ../Images=graphics/2021/4833 eir /r/eiw/private/2021/33/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n33-20210820\sp0nG36VlAx-eUqi4\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n33-20210820\sp0nG36VlAx-eUqi4\index.html
+
+perlo -w epub2html.pl --po ^
+-b Section0002.xhtml=other/editorials/2021/4833-the_world_must_listen_to_the_wis.html ^
+-b 09-33_EIR33_Section_a.xhtml=other/2021/4833-moderators_opening_remarks.html ^
+-b Section0003.xhtml=hzl/2021/4833-the_larouche_method-hzl.html ^
+-b Section0006.xhtml=other/2021/4833-saving_mankind_is_a_mission_poss.html ^
+-b Section0008.xhtml=other/2021/4833-lyndon_larouche_development_for.html ^
+-b Section0013.xhtml=other/2021/4833-put_afghanistan_on_the_belt_and.html ^
+-i ../Images=graphics/2021/4833 eir /r/eiw/private/2021/33/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n33-20210820\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n33-20210820\index.html
+
+
+-b Section0002.xhtml=other/2021/4833-the_world_must_listen_to_the_w.html ^
+-b 09-33_EIR33_Section_a.xhtml=other/2021/4833-moderator_s_opening_remarks.html ^
+-b Section0003.xhtml=other/2021/4833-the_larouche_method.html ^
+-b Section0004.xhtml=other/2021/4833-the_importance_of_physical_eco.html ^
+-b Section0005.xhtml=other/2021/4833-design_and_management_of_susta.html ^
+-b Section0006.xhtml=other/2021/4833-saving_mankind_is_a_mission_po.html ^
+-b Section0007.xhtml=other/2021/4833-the_world_is_waiting_for_the_i.html ^
+-b Section0008.xhtml=other/2021/4833-lyndon_larouche_development_fo.html ^
+-b Section0009.xhtml=other/2021/4833-larouche_in_the_universities.html ^
+-b Section0010.xhtml=other/2021/4833-seminar_program.html ^
+-b 34-52_EIR33_Section_b.xhtml=other/2021/4833-eradicate_opium_in_afghanistan.html ^
+-b Section0011.xhtml=other/2021/4833-the_real_interest_of_the_unite.html ^
+-b Section0012.xhtml=other/2021/4833-the_perspective_from_pakistan.html ^
+-b Section0013.xhtml=other/2021/4833-put_afghanistan_on_the_belt_an.html ^
+-b 53-60_EIR33_Section_c.xhtml=other/2021/4833-helmand_valley_authority_the_t.html ^
+-b Section0014.xhtml=other/2021/4833-international_briefs.html ^
+
+
+
 https://larouchepub.com/eiw/public/unlisted/2021/eirv48n32-20210813/vk9s_pLaWB32-NcUt
+
+
+
 
 perlo -w epub2html.pl  --muai --ud 2021/eirv48n32-20210813/vk9s_pLaWB32-NcUt --pft other -i ../Images=graphics/2021/4832 --iu ../Images=graphics/2021/4832 eir /r/eiw/private/2021/32/Text/
 
