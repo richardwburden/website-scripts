@@ -1,3 +1,150 @@
+https://larouchepub.com/eiw/public/unlisted/2021/eirv48n42-20211022/do0c3mjUsPaw82Nc
+
+perlo -w epub2html.pl  --muai --ud 2021/eirv48n42-20211022/do0c3mjUsPaw82Nc --pft other -i ../Images=graphics/2021/4842 --iu ../Images=graphics/2021/4842 eir /r/eiw/private/2021/42/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n42-20211022\do0c3mjUsPaw82Nc\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n42-20211022\do0c3mjUsPaw82Nc\index.html
+
+perlo -w epub2html.pl --po ^
+-b 05-29_EIR42_Section_a.xhtml=other/2021/4842-an_enhanced_opportunity_for_af.html ^
+-i ../Images=graphics/2021/4842 eir /r/eiw/private/2021/42/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n42-20211022\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n42-20211022\index.html
+
+
+-b Section0002.xhtml=other/2021/4842-schiller_institute_a_call_to_r.html ^
+-b 05-29_EIR42_Section_a.xhtml=other/2021/4842-an_enhanced_opportunity_for_af.html ^
+-b Section0003.xhtml=other/2021/4842-end_the_cynicism_the_cruel_gre.html ^
+-b Section0004.xhtml=other/2021/4842-strategy_for_eliminating_opium.html ^
+-b Section0005.xhtml=other/2021/4842-a_perspective_on_moving_afghan.html ^
+-b Section0006.xhtml=other/2021/4842-statements_received_from_china.html ^
+-b Section0007.xhtml=other/2021/4842-selections_from_the_discussion.html ^
+-b 30-50_EIR42_Section_b.xhtml=other/2021/4842-schachtian_fascism_was_behind.html ^
+-b Section0008.xhtml=other/2021/4842-stakeholder_capitalism_what_is.html ^
+-b Section0009.xhtml=other/2021/4842-why_ignorant_bankers_believe_s.html ^
+-b Section0010.xhtml=other/2021/4842-economics_briefs.html ^
+-b Section0011.xhtml=other/2021/4842-africa_briefs.html ^
+-b 51-54_EIR42_Section_c.xhtml=other/2021/4842-russia_china_plan_internationa.html ^
+-b Section0012.xhtml=other/2021/4842-science_technology.html ^
+-b 55-56_EIR42_Section_d_e.xhtml=other/2021/4842-age_of_reason_to_end_depraved.html ^
+-b Section0013.xhtml=other/2021/4842-ursula_s_green_christmas.html ^
+
+https://larouchepub.com/eiw/public/unlisted/2021/eirv48n41-20211015/pg7bN3sE0xaLzq2v
+
+perlo -w epub2html.pl  --muai --ud 2021/eirv48n41-20211015/pg7bN3sE0xaLzq2v --pft other -i ../Images=graphics/2021/4841 --iu ../Images=graphics/2021/4841 eir /r/eiw/private/2021/41/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n41-20211015\pg7bN3sE0xaLzq2v\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n41-20211015\pg7bN3sE0xaLzq2v\index.html
+
+-b Section0002.xhtml=other/2021/4841-a_wake_up_call_the_danger_for.html ^
+-b Section0003.xhtml=other/2021/4841-when_larouche_s_triple_curve_f.html ^
+-b 07-21_EIR41_Section_a.xhtml=other/2021/4841-what_is_unleashing_hyperinflat.html ^
+-b Section0004.xhtml=other/2021/4841-green_fascists_speak_the_plane.html ^
+-b Section0005.xhtml=other/2021/4841-larouche_points_to_his_1995_tr.html ^
+-b Section0006.xhtml=other/2021/4841-how_to_quench_the_anti_infrast.html ^
+-b 22-27_EIR41_Section_b.xhtml=other/2021/4841-putin_on_europe_s_energy_crisi.html ^
+-b Section0007.xhtml=other/2021/4841-don_t_waste_time_or_money_on_s.html ^
+-b 28-37_EIR41_Section_c.xhtml=other/2021/4841-global_britain_the_fusion_of_m.html ^
+-b Section0008.xhtml=other/2021/4841-international_briefs.html ^
+-b 38-46_EIR41_Section_d.xhtml=other/2021/4841-the_forgotten_roots_of_the_uni.html ^
+
+perlo -w epub2html.pl --po ^
+-b Section0002.xhtml=other/editorials/2021/4841-a_wake_up_call_the_danger_for.html ^
+-b Section0003.xhtml=other/editorials/2021/4841-when_larouche_s_triple_curve_f.html ^
+-b 07-21_EIR41_Section_a.xhtml=hzl/2021/4841-what_is_unleashing_hyperinflat-hzl.html ^
+-b Section0004.xhtml=other/2021/4841-green_fascists_speak_the_plane.html ^
+-b Section0005.xhtml=lar/2021/4841-larouche_points_to_his_1995_tr-lar.html ^
+-i ../Images=graphics/2021/4841 eir /r/eiw/private/2021/41/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n41-20211015\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n41-20211015\index.html
+
+https://larouchepub.com/eiw/public/unlisted/2021/eirv48n40-20211008/zi9v3GdMLscE_0x2
+
+perlo -w epub2html.pl  --muai --ud 2021/eirv48n40-20211008/zi9v3GdMLscE_0x2 --pft other -i ../Images=graphics/2021/4840 --iu ../Images=graphics/2021/4840 eir /r/eiw/private/2021/40/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n40-20211008\zi9v3GdMLscE_0x2\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n40-20211008\zi9v3GdMLscE_0x2\index.html
+
+perlo -w epub2html.pl --po ^
+-b Section0002.xhtml=other/editorials/2021/4840-the_dope_inc_banks_or_the_new.html ^
+-b Section0003.xhtml=other/editorials/2021/4840-rising_energy_prices_it_s_hype.html ^
+-b Section0006.xhtml=lar/2021/4840-bring_oil_inflation_under_cont-lar.html ^
+-b 26-40_EIR40_Section_c.xhtml=other/2021/4840-reconstructing_haiti_as_americ.html ^
+-b Section0009.xhtml=other/2021/4840-schiller_institute_provides_hi.html ^
+-i ../Images=graphics/2021/4840 eir /r/eiw/private/2021/40/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n40-20211008\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n40-20211008\index.html
+
+-b Section0002.xhtml=other/2021/4840-the_dope_inc_banks_or_the_new.html ^
+-b Section0003.xhtml=other/2021/4840-rising_energy_prices_it_s_hype.html ^
+-b 07-16_EIR40_Section_a.xhtml=other/2021/4840-illinois_nuclear_plants_rescue.html ^
+-b Section0004.xhtml=other/2021/4840-measuring_power_sources_energy.html ^
+-b Section0005.xhtml=other/2021/4840-economics_briefs.html ^
+-b Section0006.xhtml=other/2021/4840-bring_oil_inflation_under_cont.html ^
+-b 17-25_EIR40_Section_b.xhtml=other/2021/4840-xi_proposes_to_world_leaders_l.html ^
+-b Section0007.xhtml=other/2021/4840-two_paradigms_depraved_indiffe.html ^
+-b Section0007a.xhtml=other/2021/4840-party_conference_in_paris_and.html ^
+-b Section0008.xhtml=other/2021/4840-china_briefs.html ^
+-b 26-40_EIR40_Section_c.xhtml=other/2021/4840-reconstructing_haiti_as_americ.html ^
+-b Section0009.xhtml=other/2021/4840-schiller_institute_provides_hi.html ^
+-b Section0010.xhtml=other/2021/4840-the_land_of_a_thousand_cities.html ^
+-b Section0011.xhtml=other/2021/4840-unite_the_world_for_the_develo.html ^
+-b Section0012.xhtml=other/2021/4840-two_former_u_s_surgeons_genera.html ^
+-b 41-43_EIR40_Section_d.xhtml=other/2021/4840-journalists_report_pompeo_plot.html ^
+
+https://larouchepub.com/eiw/public/unlisted/2021/eirv48n39-20211001/9v6s2BaL_2wk-deM
+
+perlo -w epub2html.pl  --muai --ud 2021/eirv48n39-20211001/9v6s2BaL_2wk-deM --pft other -i ../Images=graphics/2021/4839 --iu ../Images=graphics/2021/4839 eir /r/eiw/private/2021/39/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n39-20211001\9v6s2BaL_2wk-deM\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n39-20211001\9v6s2BaL_2wk-deM\index.html
+
+perlo -w epub2html.pl --po ^
+-b Section0002.xhtml=other/editorials/2021/4839-malthusian_genocide_escalates.html ^
+-b 05-28_EIR39_Section_a_indd.xhtml=other/2021/4839-the_schiller_institute_plan_to.html ^
+-b Section0004.xhtml=other/2021/4839-is_global_depopulation_what_s.html ^
+-b 29-30_EIR39_Section_b.xhtml=other/2021/4839-the_aukus_submarines_an_affron.html ^
+-b Section0008.xhtml=lar/2021/4839-zbigniew_brzezinski_and_septem-lar.html ^
+-b Section0009.xhtml=other/editorials/2021/4839-make_america_good_again.html ^
+-i ../Images=graphics/2021/4839 --iu ../Images=graphics/2021/4839 eir /r/eiw/private/2021/39/Text/
+
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n39-20211001\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n39-20211001\index.html
+
+-b Section0002.xhtml=other/2021/4839-malthusian_genocide_escalates.html ^
+-b 05-28_EIR39_Section_a_indd.xhtml=other/2021/4839-the_schiller_institute_plan_to.html ^
+-b Section0003.xhtml=other/2021/4839-the_history_that_binds_haiti_a.html ^
+-b Section0004.xhtml=other/2021/4839-is_global_depopulation_what_s.html ^
+-b Section0005.xhtml=other/2021/4839-ibero_america_briefs.html ^
+-b Section0006.xhtml=other/2021/4839-science_technology.html ^
+-b 29-30_EIR39_Section_b.xhtml=other/2021/4839-the_aukus_submarines_an_affron.html ^
+-b 31-56_EIR39_Section_c.xhtml=other/2021/4839-stop_the_genocidal_murder_of_a.html ^
+-b Section0007.xhtml=other/2021/4839-the_extended_troika_u_s_cooper.html ^
+-b Section0008.xhtml=other/2021/4839-zbigniew_brzezinski_and_septem.html ^
+-b Section0009.xhtml=other/2021/4839-make_america_good_again.html ^
+
+https://larouchepub.com/eiw/public/unlisted/2021/eirv48n38-20210924/g0sEv7hgOw32Z_mi
+
+perlo -w epub2html.pl  --muai --ud 2021/eirv48n38-20210924/g0sEv7hgOw32Z_mi --pft other -i ../Images=graphics/2021/4838 --iu ../Images=graphics/2021/4838 eir /r/eiw/private/2021/38/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n38-20210924\g0sEv7hgOw32Z_mi\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n38-20210924\g0sEv7hgOw32Z_mi\index.html
+
+perlo -w epub2html.pl --po ^
+-b Section0002.xhtml=other/editorials/2021/4838-aukus_is_twenty_years_of_war_not.html ^
+-b 20-27_EIR38_Section_b.xhtml=hzl/2021/4838-join_hands_for_aid_and_developme-hzl.html ^
+-b 28-49_EIR38_Section_c.xhtml=lar/2021/4838-zbigniew_brzezinski_and_septembe-lar.html ^
+-b Section0007.xhtml=other/editorials/2021/4838-if_true_gen_milleys_actions_were.html ^
+-i ../Images=graphics/2021/4838 eir /r/eiw/private/2021/38/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n38-20210924\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n38-20210924\index.html
+
+-b Section0002.xhtml=other/2021/4838-aukus_is_twenty_years_of_war_n.html ^
+-b 05-19_EIR38_Section_a.xhtml=other/2021/4838-u_s_and_russian_officials_proc.html ^
+-b Section0003.xhtml=other/2021/4838-remarks_of_ambassador_antonov.html ^
+-b Section0004.xhtml=other/2021/4838-tear_of_sorrow_memorial_ceremo.html ^
+-b 20-27_EIR38_Section_b.xhtml=other/2021/4838-helga_zepp_larouche_join_hands.html ^
+-b Section0005.xhtml=other/2021/4838-what_the_u_s_elites_don_t_know.html ^
+-b 28-49_EIR38_Section_c.xhtml=other/2021/4838-zbigniew_brzezinski_and_septem.html ^
+-b 50-56_EIR38_Section_d.xhtml=other/2021/4838-a_terrible_process_nevertheles.html ^
+-b Section0006.xhtml=other/2021/4838-china_briefs.html ^
+-b Section0007.xhtml=other/2021/4838-if_true_gen_milley_s_actions_w.html ^
+
 https://larouchepub.com/eiw/public/unlisted/2021/eirv48n37-20210917/dpb9GYSEcmx7_0xs
 
 perlo -w epub2html.pl  --muai --ud 2021/eirv48n37-20210917/dpb9GYSEcmx7_0xs --pft other -i ../Images=graphics/2021/4837 --iu ../Images=graphics/2021/4837 eir /r/eiw/private/2021/37/Text/

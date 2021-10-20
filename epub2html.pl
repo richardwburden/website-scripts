@@ -463,15 +463,23 @@ foreach $infilepath (@noncmInfiles)
 #	$fullIssueLinks->attr('class','serveIssue');
 
 	my $fullPDFview = $arch_ttree->look_down('id','fullPDFview');
+	my $fullPDFviewH = $arch_ttree->look_down('id','fullPDFviewH');
 
 	#In John Sigerson's archive index pages, links to serve the whole issue are private until they are made public 6 weeks after publication.
 	$fullPDFview->attr('href',"/eiw/private/$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday.pdf");
+	$fullPDFviewH->attr('href',"/eiw/private/$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday"."lg.pdf");
 
 	my $phpPath = "";
 	$phpPath = "/eiw/private/$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday.php";
 
 	my $fullPDFdownload = $arch_ttree->look_down('id','fullPDFdownload');
 	$fullPDFdownload->attr('href',"$phpPath?ext=pdf");
+
+	$phpPath = "/eiw/private/$year/eirv$zvol"."n$zissue-$year$zmonth$zmday/eirv$zvol"."n$zissue-$year$zmonth$zmday"."lg.php";
+
+	my $fullPDFdownloadH = $arch_ttree->look_down('id','fullPDFdownloadH');
+	$fullPDFdownloadH->attr('href',"$phpPath?ext=pdf");
+
 
 	my $epubDownload = $arch_ttree->look_down('id','epubDownload');
 	if (defined $epubDownload)
