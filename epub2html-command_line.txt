@@ -1,3 +1,38 @@
+TODO LIST:
+epub2html.pl:
+public versions of article pages should have id="adbarh" changed to id="adbar"
+
+Create a class for smaller article titles (or use Major Subhead)
+
+https://larouchepub.com/eiw/public/unlisted/2021/eirv48n43-20211029/pfiMcG3s_7c6Zqdm
+
+perlo -w epub2html.pl  --muai --ud 2021/eirv48n43-20211029/pfiMcG3s_7c6Zqdm --pft other -i ../Images=graphics/2021/4843 --iu ../Images=graphics/2021/4843 eir /r/eiw/private/2021/43/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n43-20211029\pfiMcG3s_7c6Zqdm\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n43-20211029\pfiMcG3s_7c6Zqdm\index.html
+
+perlo -w epub2html.pl --po ^
+-b Section0002.xhtml=other/editorials/2021/4843-origins_of_cop26_the_hallowe_e.html ^
+-b Section0004.xhtml=other/2021/4843-climate_change_ebb_and_flow_of.html ^
+-b 43-48_EIR43_Section_c.xhtml=hzl/2021/4843-a_chinese_contribution_to_univ.html ^
+-b Section0008.xhtml=other/2021/4843-all_moral_resources_of_humanit.html ^
+-b Section0009.xhtml=other/editorials/2021/4843-central_banks_tens_of_printed.html ^
+-i ../Images=graphics/2021/4843 --iu ../Images=graphics/2021/4843 eir /r/eiw/private/2021/43/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n43-20211029\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n43-20211029\index.html
+
+-b Section0002.xhtml=other/2021/4843-origins_of_cop26_the_hallowe_e.html ^
+-b 04-29_EIR43_Section_a.xhtml=other/2021/4843-hyperinflation_and_depression.html ^
+-b Section0003.xhtml=other/2021/4843-germany_s_supply_chain_law_exa.html ^
+-b Section0004.xhtml=other/2021/4843-climate_change_ebb_and_flow_of.html ^
+-b 30-42_EIR43_Section_b.xhtml=other/2021/4843-human_life_is_the_universal_va.html ^
+-b Section0005.xhtml=other/2021/4843-china_s_epic_journey_from_pove.html ^
+-b Section0006.xhtml=other/2021/4843-international_briefs.html ^
+-b Section0007.xhtml=other/2021/4843-china_briefs.html ^
+-b 43-48_EIR43_Section_c.xhtml=other/2021/4843-a_chinese_contribution_to_univ.html ^
+-b Section0008.xhtml=other/2021/4843-all_moral_resources_of_humanit.html ^
+-b 49-56_EIR43_Section_d.xhtml=other/2021/4843-james_webb_space_telescope_the.html ^
+-b Section0009.xhtml=other/2021/4843-central_banks_tens_of_printed.html ^
+
 https://larouchepub.com/eiw/public/unlisted/2021/eirv48n42-20211022/do0c3mjUsPaw82Nc
 
 perlo -w epub2html.pl  --muai --ud 2021/eirv48n42-20211022/do0c3mjUsPaw82Nc --pft other -i ../Images=graphics/2021/4842 --iu ../Images=graphics/2021/4842 eir /r/eiw/private/2021/42/Text/
@@ -5,7 +40,12 @@ perlo -w epub2html.pl  --muai --ud 2021/eirv48n42-20211022/do0c3mjUsPaw82Nc --pf
 java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n42-20211022\do0c3mjUsPaw82Nc\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n42-20211022\do0c3mjUsPaw82Nc\index.html
 
 perlo -w epub2html.pl --po ^
+-b Section0002.xhtml=other/editorials/2021/4842-schiller_institute_a_call_to_r.html ^
 -b 05-29_EIR42_Section_a.xhtml=other/2021/4842-an_enhanced_opportunity_for_af.html ^
+-b 30-50_EIR42_Section_b.xhtml=other/2021/4842-schachtian_fascism_was_behind.html ^
+-b Section0009.xhtml=lar/2021/4842-why_ignorant_bankers_believe_s-lar.html ^
+-b 55-56_EIR42_Section_d_e.xhtml=other/2021/4842-age_of_reason_to_end_depraved.html ^
+-b Section0013.xhtml=other/editorials/2021/4842-ursula_s_green_christmas.html ^
 -i ../Images=graphics/2021/4842 eir /r/eiw/private/2021/42/Text/
 
 java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n42-20211022\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n42-20211022\index.html

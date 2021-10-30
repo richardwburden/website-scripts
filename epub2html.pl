@@ -814,6 +814,14 @@ foreach $infilepath (@noncmInfiles)
 
 	seek ARTICLETEMPLATE,0,SEEK_SET;
 	$ttree->parse_file(\*ARTICLETEMPLATE);
+	
+	# if this article is public, show the "SUBSCRIBE TO EIR" banner link
+	if (defined $publics{$saurl})
+	{
+	    my $adbar = $ttree->look_down('id','adbarh');
+	    $adbar->id('adbar');
+	}
+
 	my $issueIndexLink = $ttree->look_down('id','issueIndexLink');
 
 	#insert a link to the issue index page
