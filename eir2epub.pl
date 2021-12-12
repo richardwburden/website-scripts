@@ -221,6 +221,10 @@ foreach $infilepath (@infiles)
 
     my @extractes = $content->look_down('_tag','p','class',qr/extract[\-\s]*end/i);
     push(@extractes,'','extractend','class','p');
+
+    my @display_quotes = $content->look_down('_tag','p','class',qr/display.*quote.*/i);
+    push(@display_quotes,'','^','hr','|','hr','|','<','Display-Quote','class','p','+','strong');
+
    
     my @spaceAbove = $content->look_down('_tag','p','class',qr/space[\-\s]*above\b/i);
     push (@spaceAbove,'','spaceabove','class','p');
@@ -341,7 +345,7 @@ foreach $infilepath (@infiles)
     my $tag = undef;
     my %attribs = ();
     my $arritem = undef;
-    my @arr_of_arrs = (\@footnote_links,\@footnote_anchors,\@FootnoteTexts,\@MajorSubheads,\@MajorLightSubheads,\@LightSubheads,\@Subheads,\@kickers,\@dkickers,\@editorials,\@bylines,\@Heads,\@ShortsHeads,\@ShortsTexts,\@italics,\@bolds,\@superscripts,\@subscripts,\@ucase,\@normals,\@normal_weights,\@layouts,\@h1s,\@extracts,\@extractbs,\@extractms,\@extractes,\@spaceAbove,\@departments,\@ArticleTitles,\@ArticleTitleNoKickers,\@ArticleBlurbs,\@ArticleBylines,\@cmt,\@sharpflats);
+    my @arr_of_arrs = (\@footnote_links,\@footnote_anchors,\@FootnoteTexts,\@MajorSubheads,\@MajorLightSubheads,\@LightSubheads,\@Subheads,\@kickers,\@dkickers,\@editorials,\@bylines,\@Heads,\@ShortsHeads,\@ShortsTexts,\@italics,\@bolds,\@superscripts,\@subscripts,\@ucase,\@normals,\@normal_weights,\@layouts,\@h1s,\@extracts,\@extractbs,\@extractms,\@extractes,\@display_quotes,\@spaceAbove,\@departments,\@ArticleTitles,\@ArticleTitleNoKickers,\@ArticleBlurbs,\@ArticleBylines,\@cmt,\@sharpflats);
     while ($arr = shift(@arr_of_arrs))
     {
 	my @wrappers = ();
@@ -520,7 +524,7 @@ be passed on to the next eligible wrapper.
 
 ||| unconditionally append previous element to content list of the original element.
 
-^ indicates that the previous element will be prepended to the replacement list.  If there is an element following '|', it will not wrap the previous element, but will be appended to the replacement list after the previous element.
+^ indicates that the previous element will be prepended to the replacement list.  If there is an element following '^', it will not wrap the previous element, but will be prepended to the replacement list after the previous element.
 
 ^^ prepend previous element to content list of element before it (or the original element, if none before it)
 

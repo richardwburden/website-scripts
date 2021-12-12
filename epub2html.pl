@@ -772,7 +772,8 @@ foreach $infilepath (@noncmInfiles)
 	    close OUTFILE;
 	}
 	close INFILE;
-	if (not $publicsOnly) {writeBrowserScript($outfilepath)}
+	#the unlisted archive index, like the public archive index, does not need to have its JavaScript executed and removed, so we don't add its path to the browser script.
+	if (not $publicsOnly and not $makeUnlistedArchiveIndex) {writeBrowserScript($outfilepath)}
 	
 	$output = $aitdoctype;
 	$output .= $arch_ttree->as_HTML("","\t",\%empty);
