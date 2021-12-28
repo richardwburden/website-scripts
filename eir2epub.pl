@@ -266,6 +266,9 @@ foreach $infilepath (@infiles)
     my @FootnoteTexts = $content->look_down('_tag','p','class',qr/Footnote.*Text.*/i);
     push (@FootnoteTexts,'','FootnoteText','class','p');
 
+    my @emphases = $content->look_down('_tag','span','class',qr/emphasis.*/i);
+    push (@emphases,'','em');
+
     my @h1s = ();
     if (defined $h1_class)
     {
@@ -345,7 +348,7 @@ foreach $infilepath (@infiles)
     my $tag = undef;
     my %attribs = ();
     my $arritem = undef;
-    my @arr_of_arrs = (\@footnote_links,\@footnote_anchors,\@FootnoteTexts,\@MajorSubheads,\@MajorLightSubheads,\@LightSubheads,\@Subheads,\@kickers,\@dkickers,\@editorials,\@bylines,\@Heads,\@ShortsHeads,\@ShortsTexts,\@italics,\@bolds,\@superscripts,\@subscripts,\@ucase,\@normals,\@normal_weights,\@layouts,\@h1s,\@extracts,\@extractbs,\@extractms,\@extractes,\@display_quotes,\@spaceAbove,\@departments,\@ArticleTitles,\@ArticleTitleNoKickers,\@ArticleBlurbs,\@ArticleBylines,\@cmt,\@sharpflats);
+    my @arr_of_arrs = (\@footnote_links,\@footnote_anchors,\@FootnoteTexts,\@MajorSubheads,\@MajorLightSubheads,\@LightSubheads,\@Subheads,\@kickers,\@dkickers,\@editorials,\@bylines,\@Heads,\@ShortsHeads,\@ShortsTexts,\@italics,\@bolds,\@superscripts,\@subscripts,\@ucase,\@normals,\@normal_weights,\@layouts,\@h1s,\@extracts,\@extractbs,\@extractms,\@extractes,\@display_quotes,\@spaceAbove,\@departments,\@ArticleTitles,\@ArticleTitleNoKickers,\@ArticleBlurbs,\@ArticleBylines,\@cmt,\@sharpflats,\@emphases);
     while ($arr = shift(@arr_of_arrs))
     {
 	my @wrappers = ();
@@ -729,7 +732,8 @@ sub getMatchingContent
     foreach my $part (@it_classes)
     {
 	my $class = getFullClassName($part);
-	push (@$arRef, $content->look_down('_tag','span','class',$class))
+	#we look for qr/$class/ to find tags with multiple classes including $class, e.g. <span class="Hyperlink CharOverride-4">...</span>
+	push (@$arRef, $content->look_down('_tag','span','class',qr/$class/))
     }
 }
 

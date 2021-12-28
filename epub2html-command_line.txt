@@ -1,3 +1,69 @@
+https://larouchepub.com/eiw/public/unlisted/2021/eirv48n51-20211224/Uc9dPw7cXLsJ-QwM
+
+perlo -w epub2html.pl  --muai --ud 2021/eirv48n51-20211224/Uc9dPw7cXLsJ-QwM --pft other -i ../Images=graphics/2021/4851 --iu ../Images=graphics/2021/4851 eir /r/eiw/private/2021/51/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n51-20211224\Uc9dPw7cXLsJ-QwM\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n51-20211224\Uc9dPw7cXLsJ-QwM\index.html
+
+perlo -w epub2html.pl --po ^
+-b Section0002.xhtml=other/editorials/2021/4851-as_60_years_ago_the_threat_of.html ^
+-b Section0003.xhtml=other/editorials/2021/4851-the_fate_of_afghanistan_and_th.html ^
+-b 07-35_EIR51_section_a.xhtml=other/2021/4851-u_s_foreign_policy_is_dangerou.html ^
+-b Section0006.xhtml=other/2021/4851-why_the_russian_proposals_to_n.html ^
+-b 36-52_EIR51_b-section.xhtml=lar/2021/4851-moths_mice_and_men-lar.html ^
+-b Section0011.xhtml=other/2021/4851-a_second_larouche_independent.html ^
+-b Section0012.xhtml=other/editorials/2021/4851-you_should_know_the_mystery_of.html ^
+-i ../Images=graphics/2021/4851 eir /r/eiw/private/2021/51/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n51-20211224\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n51-20211224\index.html
+
+-b Section0002.xhtml=other/2021/4851-as_60_years_ago_the_threat_of.html ^
+-b Section0003.xhtml=other/2021/4851-the_fate_of_afghanistan_and_th.html ^
+-b 07-35_EIR51_section_a.xhtml=other/2021/4851-u_s_foreign_policy_is_dangerou.html ^
+-b Section0004.xhtml=other/2021/4851-u_s_policy_is_suffocating_the.html ^
+-b Section0005.xhtml=other/2021/4851-on_the_eve_of_the_oic_emergenc.html ^
+-b Section0006.xhtml=other/2021/4851-why_the_russian_proposals_to_n.html ^
+-b 36-52_EIR51_b-section.xhtml=other/2021/4851-moths_mice_and_men.html ^
+-b Section0007.xhtml=other/2021/4851-kissinger_s_1974_plan_for_food.html ^
+-b Section0008.xhtml=other/2021/4851-afghanistan_the_dimensions_of.html ^
+-b Section0009.xhtml=other/2021/4851-relief_shipment_sent_to_mozamb.html ^
+-b Section0010.xhtml=other/2021/4851-economics_briefs.html ^
+-b 53-60_EIR51_c-section.xhtml=other/2021/4851-summit_for_democracy_cover_for.html ^
+-b Section0011.xhtml=other/2021/4851-a_second_larouche_independent.html ^
+-b Section0012.xhtml=other/2021/4851-you_should_know_the_mystery_of.html ^
+
+
+https://larouchepub.com/eiw/public/unlisted/2021/eirv48n50-20211217/BDZmd8c_c3Nskc7_
+
+perlo -w epub2html.pl  --muai --ud 2021/eirv48n50-20211217/BDZmd8c_c3Nskc7_ --pft other -i ../Images=graphics/2021/4850 --iu ../Images=graphics/2021/4850 eir /r/eiw/private/2021/50/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n50-20211217\BDZmd8c_c3Nskc7_\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n50-20211217\BDZmd8c_c3Nskc7_\index.html
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n50-20211217\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n50-20211217\index.html
+
+perlo -w epub2html.pl --po ^
+-b Section0002.xhtml=lar/2021/4850-the_four_new_laws_to_save_the-lar.html ^
+-b Section0003.xhtml=hzl/2021/4850-psychopaths_are_threatening_ou.html ^
+-b Section0004.xhtml=other/2021/4850-afghanistan_threatened_with_st.html ^
+-b Section0010.xhtml=other/2021/4850-on_aesthetic_education_in_chin.html ^
+-i ../Images=graphics/2021/4850 eir /r/eiw/private/2021/50/Text/
+
+-b Section0002.xhtml=other/2021/4850-the_four_new_laws_to_save_the.html ^
+-b 06-14_EIR50_section_a.xhtml=other/2021/4850-the_green_new_deal_spear_point.html ^
+-b Section0003.xhtml=other/2021/4850-psychopaths_are_threatening_ou.html ^
+-b Section0004.xhtml=other/2021/4850-afghanistan_threatened_with_st.html ^
+-b 15-23_EIR50_b-section.xhtml=other/2021/4850-focac_china_s_massive_role_in.html ^
+-b Section0005.xhtml=other/2021/4850-international_briefs.html ^
+-b Section0006.xhtml=other/2021/4850-ibero_america_briefs.html ^
+-b 24-55_EIR50_section_c.xhtml=other/2021/4850-conference_program.html ^
+-b Section0007.xhtml=other/2021/4850-the_squid_game_and_other_thing.html ^
+-b Section0008.xhtml=other/2021/4850-education_race_against_time.html ^
+-b Section0009.xhtml=other/2021/4850-the_chinese_commitment_to_educ.html ^
+-b Section0010.xhtml=other/2021/4850-on_aesthetic_education_in_chin.html ^
+-b Section0011.xhtml=other/2021/4850-on_education.html ^
+-b Section0012.xhtml=other/2021/4850-how_the_world_health_platform.html ^
+-b Section0013.xhtml=other/2021/4850-the_ontological_beauty_of_our.html ^
+-b Section0014.xhtml=other/2021/4850-panel_4_discussion_session.html ^
+
 https://larouchepub.com/eiw/public/unlisted/2021/eirv48n49-20211210/Dluv83cFs0Mc-Qsx
 
 perlo -w epub2html.pl  --muai --ud 2021/eirv48n49-20211210/Dluv83cFs0Mc-Qsx --pft other -i ../Images=graphics/2021/4849 --iu ../Images=graphics/2021/4849 eir /r/eiw/private/2021/49/Text/
