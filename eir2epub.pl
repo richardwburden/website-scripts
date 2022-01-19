@@ -732,8 +732,8 @@ sub getMatchingContent
     foreach my $part (@it_classes)
     {
 	my $class = getFullClassName($part);
-	#we look for qr/$class/ to find tags with multiple classes including $class, e.g. <span class="Hyperlink CharOverride-4">...</span>
-	push (@$arRef, $content->look_down('_tag','span','class',qr/$class/))
+	#we look for qr/\b$class\b/ to find tags with multiple classes including $class, e.g. <span class="Hyperlink CharOverride-4">...</span>  The word boundary assertions (\b) prevent matching, e.g. <span class="CharOverride-11">...</span> with $class eq 'CharOverride-1'
+	push (@$arRef, $content->look_down('_tag','span','class',qr/\b$class\b/))
     }
 }
 
