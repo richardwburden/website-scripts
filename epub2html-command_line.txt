@@ -1,3 +1,62 @@
+https://larouchepub.com/eiw/public/unlisted/2022/eirv49n04-20220128/pvb3sUaIxGaQ0c_3
+
+perlo -w epub2html.pl  --muai --ud 2022/eirv49n04-20220128/pvb3sUaIxGaQ0c_3 --pft other -i ../Images=graphics/2022/4904 --iu ../Images=graphics/2022/4904 eir /r/eiw/private/2022/04/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2022\eirv49n04-20220128\pvb3sUaIxGaQ0c_3\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2022\eirv49n04-20220128\pvb3sUaIxGaQ0c_3\index.html
+
+perlo -w epub2html.pl --po ^
+-b Section0002.xhtml=other/editorials/2022/4904-world_peace_is_hanging_by_a_th.html ^
+-b 06-24_EIR04_section_a.xhtml=other/2022/4904-focus_on_what_unites_us_rather.html ^
+-b Section0005.xhtml=lar/2022/4904-world_system_on_weimar_collaps-lar.html ^
+-b 25-45_EIR04_section_b.xhtml=hzl/2022/4904-operation_ibn_sina_toward_a_wo-hzl.html ^
+-b 46-59_EIR04_section_c.xhtml=other/interviews/2022/4904-only_a_systemic_change_can_sav.html ^
+-i ../Images=graphics/2022/4904 eir /r/eiw/private/2022/04/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2022\eirv49n04-20220128\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2022\eirv49n04-20220128\index.html
+
+-b Section0002.xhtml=other/2022/4904-world_peace_is_hanging_by_a_th.html ^
+-b 06-24_EIR04_section_a.xhtml=other/2022/4904-focus_on_what_unites_us_rather.html ^
+-b Section0003.xhtml=other/2022/4904-the_u_s_nato_hidden_war_threat.html ^
+-b Section0004.xhtml=other/2022/4904-sacrificing_growth_to_protect.html ^
+-b Section0005.xhtml=other/2022/4904-world_system_on_weimar_collaps.html ^
+-b Section0005a.xhtml=other/2022/4904-china_briefs.html ^
+-b 25-45_EIR04_section_b.xhtml=other/2022/4904-operation_ibn_sina_toward_a_wo.html ^
+-b Section0006.xhtml=other/2022/4904-evolution_of_dangerous_new_cov.html ^
+-b 46-59_EIR04_section_c.xhtml=other/2022/4904-only_a_systemic_change_can_sav.html ^
+-b Section0007.xhtml=other/2022/4904-international_briefs.html ^
+
+
+https://larouchepub.com/eiw/public/unlisted/2022/eirv49n03-20220121/iPsUeM8Nw3_cHaM-
+
+perlo -w epub2html.pl  --muai --ud 2022/eirv49n03-20220121/iPsUeM8Nw3_cHaM- --pft other -i ../Images=graphics/2022/4903 --iu ../Images=graphics/2022/4903 eir /r/eiw/private/2022/03/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2022\eirv49n03-20220121\iPsUeM8Nw3_cHaM-\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2022\eirv49n03-20220121\iPsUeM8Nw3_cHaM-\index.html
+
+perlo -w epub2html.pl --po ^
+-b Section0002.xhtml=other/editorials/2022/4903-building_order_out_of_chaos.html ^
+-b 04-38_EIR03_a_section.xhtml=hzl/2022/4903-the_westphalian_principle_afte-hzl.html ^
+-b Section0004.xhtml=other/interviews/2022/4903-will_the_u_s_russian_strategic.html ^
+-b Section0005.xhtml=lar/2022/4903-now_rid_nato_of_the_entente_co-lar.html ^
+-b 39-48_EIR03_section_b.xhtml=other/2022/4903-a_truly_evil_golem_billionaire.html ^
+-i ../Images=graphics/2022/4903 eir /r/eiw/private/2022/03/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2022\eirv49n03-20220121\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2022\eirv49n03-20220121\index.html
+
+-b Section0002.xhtml=other/2022/4903-building_order_out_of_chaos.html ^
+-b 04-38_EIR03_a_section.xhtml=other/2022/4903-the_westphalian_principle_afte.html ^
+-b Section0003.xhtml=other/2022/4903-new_strategic_architecture_nee.html ^
+-b Section0004.xhtml=other/2022/4903-will_the_u_s_russian_strategic.html ^
+-b Section0005.xhtml=other/2022/4903-now_rid_nato_of_the_entente_co.html ^
+-b Section0006.xhtml=other/2022/4903-ray_mcgovern_putin_is_being_he.html ^
+-b Section0007.xhtml=other/2022/4903-un_direct_appeal_to_u_s_state.html ^
+-b Section0007box.xhtml=other/2022/4903-stop_the_murder_of_afghanistan.html ^
+-b Section0008.xhtml=other/2022/4903-end_u_s_addiction_to_never_end.html ^
+-b 39-48_EIR03_section_b.xhtml=other/2022/4903-a_truly_evil_golem_billionaire.html ^
+-b 49-55_EIR03_section_c.xhtml=other/2022/4903-u_s_stock_market_valuation_is.html ^
+-b Section0009.xhtml=other/2022/4903-ibero_america_briefs.html ^
+-b Section0010.xhtml=other/2022/4903-africa_briefs.html ^
+-b Section0011.xhtml=other/2022/4903-science_technology_briefs.html ^
+
 https://larouchepub.com/eiw/public/unlisted/2022/eirv49n02-20220114/sovpe7c8Bw2Ms_aX
 
 perlo -w epub2html.pl  --muai --ud 2022/eirv49n02-20220114/sovpe7c8Bw2Ms_aX --pft other -i ../Images=graphics/2022/4902 --iu ../Images=graphics/2022/4902 eir /r/eiw/private/2022/02/Text/
