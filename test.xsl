@@ -5,21 +5,20 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions">
 
 <!-- This stylesheet transforms the unlisted EIR issue index page for subscribers into a listed EIR issue index page for the archive -->
 
+<xsl:variable name="newdirs" select="'oe oe o o h o l o o o o o o oe'" />
 
-<xsl:variable name="sourcedir" select="'/eiw/public/unlisted/2021/eirv48n51-20211224/Uc9dPw7cXLsJ-QwM/'"  />
-<xsl:variable name="newdirs" select="'- - - o o - - o o o o o - -'" />
+ <xsl:variable name="issuedir" select="'eirv48n51-20211224/'" />
+ <xsl:variable name="year" select="substring(substring-after($issuedir,'-'),0,4)" />
+ <xsl:variable name="yeardir" select="concat($year,'/')" />
 
-
-<xsl:variable name="year" select="substring($sourcedir,string-length('/eiw/public/unlisted/') + 1,4)" />
-
-<xsl:variable name="destdir" select="'../../../../../../'" />
+<xsl:variable name="relativeRootDir" select="'../../../../'" />
 
 
 <xsl:variable name="newdirseq" as="xs:string*" >
 <xsl:sequence select="fn:tokenize($newdirs,' ')" />
 </xsl:variable>
 
-
+<!-- <xsl:variable name="unlistedIndexPage" -->
 
 <xsl:output method="html" omit-xml-declaration="yes" indent="no"/>
 
@@ -42,7 +41,7 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions">
  	</xsl:element>
 </xsl:template>
 
-<!-- Reconstruct link element, correcting "text" attribute to "type" -->
+<!-- Reconstruct link element, correcting "text" attribute to "type", and relocate hrefs -->
 <xsl:template match="link" priority="2">
 	<xsl:element name="link">
 		<xsl:attribute name="rel">
@@ -52,9 +51,41 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions">
 			<xsl:text>text/css</xsl:text>
 		</xsl:attribute>
 		<xsl:attribute name="href">
-			<xsl:value-of select="@href" />
+			<xsl:value-of select="concat($relativeRootDir,'/eiw/public/css/',substring-after(@href,'css/'))" />
 		</xsl:attribute>
 	</xsl:element>
+</xsl:template>
+
+<!-- adjust srcs in script elements -->
+<xsl:template match="script" priority="2">
+	<xsl:element name="script">
+		<xsl:attribute name="src">
+			<xsl:value-of select="concat($relativeRootDir,'/eiw/public/css/',substring-after(@src,'css/'))" />
+		</xsl:attribute>
+	</xsl:element>
+</xsl:template>
+
+<!-- adjust srcs in img elements -->
+<xsl:template match="img" priority="2">
+	<xsl:copy>
+	<xsl:attribute name="src">
+<xsl:choose>
+<xsl:when test="starts-with(@src,'../../../../../../graphics/')">
+<xsl:value-of select="fn:concat($relativeRootDir,'graphics/',substring-after(@src,'graphics/'))" />
+</xsl:when>
+<xsl:when test="starts-with(@src,concat('/eiw/public/',$year,$issuedir))">
+<xsl:value-of select="substring-after(@src,$issuedir)" />
+</xsl:when>
+<xsl:when test="starts-with(@src,concat($relativeRootDir,$yeardir,$issuedir))">
+<xsl:value-of select="substring-after(@src,$issuedir)" />
+</xsl:when>
+<xsl:otherwise>
+<xsl:value-of select="@src" />
+</xsl:otherwise>
+</xsl:choose>
+	</xsl:attribute>
+	<xsl:apply-templates select="@* except @src" />
+	</xsl:copy>
 </xsl:template>
  
 <!-- Reconstruct full issue download links -->
@@ -68,7 +99,7 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions">
 		</xsl:attribute>
 		<xsl:attribute name="onclick">
 			<xsl:text>window.location='</xsl:text>
-			<xsl:value-of select="a/@href" />
+		<xsl:value-of select="substring-after(a/button/@onclick,$issuedir)" />
 			<xsl:text>';</xsl:text>
 		</xsl:attribute>
 		<xsl:value-of select="a/button/text()" />
@@ -152,7 +183,31 @@ use value of "id" if available; otherwise set it to "clear" -->
 		<xsl:attribute name="href">
  <xsl:choose>
 <xsl:when test="fn:subsequence($newdirseq,$pos,1) eq 'o'">
-<xsl:value-of select="fn:concat($destdir,'other/',$year,'/',@href)" />
+<xsl:value-of select="fn:concat($relativeRootDir,'other/',$yeardir,@href)" />
+</xsl:when>
+<xsl:when test="fn:subsequence($newdirseq,$pos,1) eq 'oe'">
+<xsl:value-of select="fn:concat($relativeRootDir,'other/editorials/',$yeardir,@href)" />
+</xsl:when>
+<xsl:when test="fn:subsequence($newdirseq,$pos,1) eq 'oi'">
+<xsl:value-of select="fn:concat($relativeRootDir,'other/interviews/',$yeardir,@href)" />
+</xsl:when>
+<xsl:when test="fn:subsequence($newdirseq,$pos,1) eq 'ob'">
+<xsl:value-of select="fn:concat($relativeRootDir,'other/book_reviews/',$yeardir,@href)" />
+</xsl:when>
+<xsl:when test="fn:subsequence($newdirseq,$pos,1) eq 'og'">
+<xsl:value-of select="fn:concat($relativeRootDir,'other/govt_docs/',$yeardir,@href)" />
+</xsl:when>
+<xsl:when test="fn:subsequence($newdirseq,$pos,1) eq 'h'">
+<xsl:value-of select="fn:concat($relativeRootDir,'hzl/',$yeardir,@href)" />
+</xsl:when>
+<xsl:when test="fn:subsequence($newdirseq,$pos,1) eq 'l'">
+<xsl:value-of select="fn:concat($relativeRootDir,'lar/',$yeardir,@href)" />
+</xsl:when>
+<xsl:when test="fn:subsequence($newdirseq,$pos,1) eq 'o'">
+<xsl:value-of select="fn:concat($relativeRootDir,'other/',$yeardir,@href)" />
+</xsl:when>
+<xsl:when test="fn:subsequence($newdirseq,$pos,1) eq 'p'">
+<xsl:value-of select="fn:concat($relativeRootDir,'pr/',$yeardir,@href)" />
 </xsl:when>
 <xsl:otherwise>
 <xsl:value-of select="@href" />
