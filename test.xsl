@@ -8,7 +8,7 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions">
 <xsl:variable name="newdirs" select="'oe oe o o h o l o o o o o o oe'" />
 
  <xsl:variable name="issuedir" select="'eirv48n51-20211224/'" />
- <xsl:variable name="year" select="substring(substring-after($issuedir,'-'),0,4)" />
+ <xsl:variable name="year" select="substring(substring-after($issuedir,'-'),1,4)" />
  <xsl:variable name="yeardir" select="concat($year,'/')" />
 
 <xsl:variable name="relativeRootDir" select="'../../../../'" />
@@ -51,16 +51,27 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions">
 			<xsl:text>text/css</xsl:text>
 		</xsl:attribute>
 		<xsl:attribute name="href">
-			<xsl:value-of select="concat($relativeRootDir,'/eiw/public/css/',substring-after(@href,'css/'))" />
+			<xsl:value-of select="concat('../../css/',substring-after(@href,'css/'))" />
 		</xsl:attribute>
 	</xsl:element>
+</xsl:template>
+
+<!-- relocate href of large cover picture link -->
+<xsl:template match="p[@class='tocThumbnail']/a" priority="2">
+<xsl:copy>
+		<xsl:attribute name="href">
+			<xsl:value-of select="substring-after(@href,$issuedir)" />
+		</xsl:attribute>
+<xsl:apply-templates select="node()|@* except @href" />
+</xsl:copy>
+	
 </xsl:template>
 
 <!-- adjust srcs in script elements -->
 <xsl:template match="script" priority="2">
 	<xsl:element name="script">
 		<xsl:attribute name="src">
-			<xsl:value-of select="concat($relativeRootDir,'/eiw/public/css/',substring-after(@src,'css/'))" />
+			<xsl:value-of select="concat('../../css/',substring-after(@src,'css/'))" />
 		</xsl:attribute>
 	</xsl:element>
 </xsl:template>
@@ -73,7 +84,7 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions">
 <xsl:when test="starts-with(@src,'../../../../../../graphics/')">
 <xsl:value-of select="fn:concat($relativeRootDir,'graphics/',substring-after(@src,'graphics/'))" />
 </xsl:when>
-<xsl:when test="starts-with(@src,concat('/eiw/public/',$year,$issuedir))">
+<xsl:when test="starts-with(@src,concat('/eiw/public/',$yeardir,$issuedir))">
 <xsl:value-of select="substring-after(@src,$issuedir)" />
 </xsl:when>
 <xsl:when test="starts-with(@src,concat($relativeRootDir,$yeardir,$issuedir))">
@@ -89,7 +100,7 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions">
 </xsl:template>
  
 <!-- Reconstruct full issue download links -->
-<xsl:template match="h3[starts-with(@class,'tocFullIssue')][a]" priority="2">
+<xsl:template match="div[@id='fullIssueLinks']/button" priority="2">
 	<xsl:element name="button">
 		<xsl:attribute name="type">
 			<xsl:text>button</xsl:text>
@@ -99,12 +110,9 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions">
 		</xsl:attribute>
 		<xsl:attribute name="onclick">
 			<xsl:text>window.location='</xsl:text>
-		<xsl:value-of select="substring-after(a/button/@onclick,$issuedir)" />
-			<xsl:text>';</xsl:text>
+		<xsl:value-of select="substring-after(@onclick,$issuedir)" />
 		</xsl:attribute>
-		<xsl:value-of select="a/button/text()" />
-	</xsl:element>
-	<xsl:element name="br">
+		<xsl:value-of select="text()" />
 	</xsl:element>
 </xsl:template>
 
@@ -143,7 +151,7 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions">
 <!-- Make path to SSI callout relative -->
 <xsl:template match="comment()" priority="2">
 	<xsl:comment>
-		<xsl:value-of select="replace(., '/eiw/public/css', '../../css')" />
+		<xsl:value-of select="replace(.,'/eiw/public/unlisted','../../css')" />
 	</xsl:comment>
 </xsl:template>
 

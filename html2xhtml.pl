@@ -35,6 +35,7 @@ while (<INFILE>)
 close INFILE;
 
 my $tree = HTML::TreeBuilder->new;
+$tree->store_comments(1);
 $tree->parse($infile);
 
 my @nbsp = $tree->look_down('class','nbsp');
