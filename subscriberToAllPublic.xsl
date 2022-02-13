@@ -5,7 +5,7 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions">
 
 <!-- This stylesheet transforms the unlisted EIR issue index page for subscribers into a listed EIR issue index page for the archive -->
 
-<xsl:variable name="newdirs" select="'oe oe o o h o l o o o o o o oe'" />
+<xsl:variable name="newdirs" select="'oe oe o o h o l- o o o o o o oe'" />
 
  <xsl:variable name="issuedir" select="'eirv48n51-20211224/'" />
  <xsl:variable name="year" select="substring(substring-after($issuedir,'-'),1,4)" />
@@ -177,8 +177,14 @@ use value of "id" if available; otherwise set it to "clear" -->
 
 
 <!-- Reconstruct full issue download links -->
-
- 
+<xsl:template match="a[@class='tocLinkPDF']"  priority="2">
+	<xsl:copy>
+	<xsl:attribute name="href">
+<xsl:value-of select="substring-after(@href,$issuedir)" />
+	</xsl:attribute>
+	  <xsl:apply-templates select="text()|@* except @href" />
+	</xsl:copy>
+</xsl:template>
 
 
 <xsl:template match="a[@class='tocLinkAltHTML']"  priority="2">
@@ -208,8 +214,14 @@ use value of "id" if available; otherwise set it to "clear" -->
 <xsl:when test="fn:subsequence($newdirseq,$pos,1) eq 'h'">
 <xsl:value-of select="fn:concat($relativeRootDir,'hzl/',$yeardir,@href)" />
 </xsl:when>
+<xsl:when test="fn:subsequence($newdirseq,$pos,1) eq 'h-'">
+<xsl:value-of select="fn:concat($relativeRootDir,'hzl/',$yeardir,substring-before(@href,'.html'),'-hzl.html')" />
+</xsl:when>
 <xsl:when test="fn:subsequence($newdirseq,$pos,1) eq 'l'">
 <xsl:value-of select="fn:concat($relativeRootDir,'lar/',$yeardir,@href)" />
+</xsl:when>
+<xsl:when test="fn:subsequence($newdirseq,$pos,1) eq 'l-'">
+<xsl:value-of select="fn:concat($relativeRootDir,'lar/',$yeardir,substring-before(@href,'.html'),'-lar.html')" />
 </xsl:when>
 <xsl:when test="fn:subsequence($newdirseq,$pos,1) eq 'o'">
 <xsl:value-of select="fn:concat($relativeRootDir,'other/',$yeardir,@href)" />
@@ -224,7 +236,7 @@ use value of "id" if available; otherwise set it to "clear" -->
 		   <!-- <xsl:text>clear</xsl:text> -->
 			
 		</xsl:attribute>
-	<xsl:apply-templates select="@* except @href" />
+	<xsl:apply-templates select="text()|@* except @href" />
 
 
 </xsl:copy>
