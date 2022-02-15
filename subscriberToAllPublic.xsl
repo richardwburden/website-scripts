@@ -3,11 +3,9 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
  xmlns:xs="http://www.w3.org/2001/XMLSchema"  
 xmlns:fn="http://www.w3.org/2005/xpath-functions">
 
-<!-- This stylesheet transforms the unlisted EIR issue index page for subscribers into a listed EIR issue index page for the archive -->
+<!-- This stylesheet transforms the unlisted EIR issue index page for subscribers into a listed EIR issue index page for the archive 6 weeks after publication, when all articles are made public and listed -->
+<xsl:include href="subscriberToAllPublicVars.xsl" />
 
-<xsl:variable name="newdirs" select="'oe oe o o h o l- o o o o o o oe'" />
-
- <xsl:variable name="issuedir" select="'eirv48n51-20211224/'" />
  <xsl:variable name="year" select="substring(substring-after($issuedir,'-'),1,4)" />
  <xsl:variable name="yeardir" select="concat($year,'/')" />
 

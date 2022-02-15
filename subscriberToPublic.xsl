@@ -3,12 +3,11 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
  xmlns:xs="http://www.w3.org/2001/XMLSchema"  
 xmlns:fn="http://www.w3.org/2005/xpath-functions">
 
-<!-- This stylesheet transforms the unlisted EIR issue index page for subscribers into a listed EIR issue index page for non-subscribers -->
+<!-- This stylesheet transforms the unlisted EIR issue index page for subscribers into a listed EIR issue index page for non-subscribers. Some article PDFs and all full issue PDFs remain private, and the HTML versions of the same articles remain unlisted. -->
 
-<xsl:variable name="newdirs" select="'oe oe o - - o l- - - - - - o oe'" />
+<xsl:include href="subscriberToPublicVars.xsl" />
 
- <xsl:variable name="issuedir" select="'eirv48n51-20211224/'" />
- <xsl:variable name="year" select="substring(substring-after($issuedir,'-'),1,4)" />
+<xsl:variable name="year" select="substring(substring-after($issuedir,'-'),1,4)" />
  <xsl:variable name="yeardir" select="concat($year,'/')" />
 
 <xsl:variable name="relativeRootDir" select="'../../../../'" />
@@ -219,7 +218,9 @@ use value of "id" if available; otherwise set it to "clear" -->
 </xsl:otherwise>
 </xsl:choose>
 	</xsl:attribute>
-	  <xsl:apply-templates select="text()|@* except (@href,@class)" />
+	  <xsl:apply-templates select="@* except (@href,@class)" />
+<!-- trim the text, so that the text wraps before the PDF (SUBSCRIBERS ONLY) pdf_icon_sub.gif -->
+<xsl:value-of select="replace(replace(text(),' +$',''),'^ +','')" />
 	</xsl:copy>
 </xsl:template>
 
