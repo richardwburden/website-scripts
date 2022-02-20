@@ -1,0 +1,14 @@
+java net.sf.saxon.Transform -s:sendInBlueEmail-minimal.xhtml -xsl:sendInBlue3.xsl -o:junk.html
+
+
+java net.sf.saxon.Transform -s:sendInBlueEmail-noArticleLinks-nohead.xhtml -xsl:sendInBlue3.xsl -o:junk.html
+
+
+#rem The Saxon transform engine may fail to insert nodes if the <head> is included in the main input file
+
+
+java net.sf.saxon.Transform -s:sendInBlueEmail-noArticleLinks.xhtml -xsl:sendInBlue3.xsl -o:junk.html
+
+
+#rem also note that sendInBlue3.xsl looks for index.xhtml in the issue directory specified in SendInBlueVars.xsl   index.xhtml should be produced from index.html using html2xhtml.pl
+
