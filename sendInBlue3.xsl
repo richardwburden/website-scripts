@@ -52,22 +52,36 @@ except @href to avoid obliterating the new value for href -->
 <xsl:if test="self::span[@class='author']">
 <xsl:value-of select="$author" />
 <xsl:choose>
-<xsl:when test="count ($author) &lt; 1" />
-<xsl:when test="count ($blurb) &lt; 1" />
-<xsl:when test="count ($author) > 1">
+<xsl:when test="count ($author) lt 1">
+<xsl:comment>author count: 0</xsl:comment>
+</xsl:when>
+<xsl:when test="count ($blurb) lt 1">
+<xsl:comment>blurb count: 0</xsl:comment>
+</xsl:when>
+<xsl:when test="count ($author) gt 1">
+<xsl:comment>author count: <xsl:value-of select="count($author)" /></xsl:comment>
 <xsl:element name="br" />
 </xsl:when>
-<xsl:when test="count($blurb) > 1">
+<xsl:when test="count($blurb) gt 1">
+<xsl:comment>blurb count: <xsl:value-of select="count($blurb)" /></xsl:comment>
 <xsl:element name="br" />
 </xsl:when>
-<xsl:when test="string-length($author) + string-length($blurb) &gt; 60">
+<xsl:when test="count($blurb/*) gt 1">
+<xsl:comment>blurb child count: <xsl:value-of select="count($blurb/*)" /></xsl:comment>
 <xsl:element name="br" />
 </xsl:when>
-<xsl:when test="matches($author,'\S+') and matches($blurb,'\S+')">
+<xsl:when test="string-length($author) + string-length($blurb/text()) gt 60">
+<xsl:comment>author strlen: <xsl:value-of select="string-length($author)" /></xsl:comment>
+<xsl:comment>blurb text strlen: <xsl:value-of select="string-length($blurb/text())" /></xsl:comment>
+<xsl:element name="br" />
+</xsl:when>
+<xsl:when test="matches($author,'\S+') and matches($blurb/text(),'\S+')">
+<xsl:comment>author has non-blank text: <xsl:value-of select="matches($author,'\S+')" /></xsl:comment>
+<xsl:comment>blurb has non-blank text: <xsl:value-of select="matches($blurb/text(),'\S+')" /></xsl:comment>
 <xsl:value-of select="' &#x000A0; '" />
 </xsl:when>
 </xsl:choose> 
-<xsl:value-of select="$blurb" />
+<xsl:sequence select="$blurb/*" />
 </xsl:if>
 
 <xsl:apply-templates select="node()" mode="row" />
@@ -92,10 +106,19 @@ except @href to avoid obliterating the new value for href -->
 <xsl:variable name="newtitle" select="a[@class='tocLinkPDF']/text()" />
 <!-- select the first following sibling, and only if it is of tocAuthor class -->
 <xsl:variable name="newauthor" select="following-sibling::*[1][@class='tocAuthor']/text()" />
-<!-- to calculate how many following siblings before the next article 
-<xsl:variable name="nextarticle" select="following-sibling::h3[1]" />
--->
-<xsl:variable name="newblurb" select="following-sibling::*[position() &lt; 3][@class='tocBlurb']/text()" />
+<!-- to calculate how many following siblings before the next article -->
+<!-- is there a next article in this section? -->
+<xsl:variable name="beforenexth3" select="count(following-sibling::*[local-name() = 'h3'][1]/preceding-sibling::p[@class='tocBlurb'])" />
+<xsl:variable name="nexth3Exists" select="count(following-sibling::*[local-name() = 'h3'])" />
+
+<!-- <xsl:variable name="beforenexth2" select="count(following-sibling::*[local-name() = 'h2'][1]/preceding-sibling::p[@class='tocBlurb'])" /> -->
+<xsl:variable name="blurbExists" select="count(following-sibling::p[@class='tocBlurb'])" />
+
+<!-- <xsl:variable name="nextAnswerListItemPos" select="count(following-sibling::*[local-name() = 'AnswerListItem'][1]/preceding-sibling::*) + 1" /> -->
+<xsl:variable name="newblurb" select="if ($blurbExists and $beforenexth3 or not ($nexth3Exists)) then following-sibling::p[@class='tocBlurb'][1] else ()" />
+
+<!--
+<xsl:variable name="newblurb" select="following-sibling::*[position() &lt; 3][@class='tocBlurb']/text()" /> -->
 <xsl:for-each select="$row">
 <xsl:comment>call row</xsl:comment>
 <xsl:apply-templates select="." mode="row">
