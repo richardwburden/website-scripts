@@ -23,6 +23,11 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions">
 <xsl:variable name="srowdoc" select="if (doc-available($srowuri)) then doc($srowuri) else ($srowuri)" />
 <xsl:variable name="srow" select="doc($srowuri)/descendant::tr[@class='srow']" />
 
+<xsl:variable name="headuri" select="concat($wspath,'sendInBlueEmail-head.html')" />
+<xsl:variable name="headdoc" select="if (unparsed-text-available($headuri)) then unparsed-text($headuri) else ($headuri)" />
+<xsl:variable name="head" select="unparsed-text($headuri)" />
+
+
 <xsl:variable name="sidoc" select="if (doc-available($sipath)) then doc($sipath) else ($sipath)" />
 
 <xsl:variable name="si" select="doc($sipath)/descendant::div[@id='toc']" as="node()" />
@@ -144,7 +149,7 @@ except @href to avoid obliterating the new value for href -->
 
 
 
-<!-- Add doctype and add language to html element   -->
+<!-- Add doctype and add language to html element, then insert head from unparsed input file   -->
 <xsl:template match="html" priority="2">
  	<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;
 </xsl:text>
@@ -152,6 +157,7 @@ except @href to avoid obliterating the new value for href -->
  		<xsl:attribute name="lang">
  			<xsl:text>en</xsl:text>
  		</xsl:attribute>
+<xsl:value-of select="$head" disable-output-escaping="yes" />
  <xsl:apply-templates />
  	</xsl:element>
 </xsl:template> 
