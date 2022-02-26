@@ -1,14 +1,22 @@
-java net.sf.saxon.Transform -s:sendInBlueEmail-minimal.xhtml -xsl:sendInBlue3.xsl -o:junk.html
+rem run all these script, and find all these files, unless otherwise specified, in this, the "ws directory": C:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts
 
+rem also note that sendInBlue.xsl looks for index.xhtml in the issue directory specified in SendInBlueVars.xsl   rem index.xhtml should be produced from index.html using html2xhtml.pl
 
-java net.sf.saxon.Transform -s:sendInBlueEmail-noArticleLinks-nohead.xhtml -xsl:sendInBlue3.xsl -o:junk.html
+rem prepare the subscriber's index page as input to Saxon for generating the email with placeholders for teasers, etc.
 
+perl -w html2xhtml.pl \Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2022\eirv49n08-20220225\Pzpb9V0s122N_sHL\index.html \Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2022\eirv49n08-20220225\Pzpb9V0s122N_sHL\index.xhtml
 
-#rem The Saxon transform engine may fail to insert nodes if the <head> is included in the main input file
+rem generate the email with placeholders for teasers, etc.
+rem The Saxon transform engine may fail to insert nodes if the <head> is included in the main input file
+rem Saxon will import the <head> unparsed from sendInBlueEmail-head.html
+rem other input files: 
+rem the section title template: sendInBlueEmail-section-row-template-notext-noanchor.xhtml 
+rem the article link template: sendInBlueEmail-row-template-notext-noanchor.xhtml
 
+java net.sf.saxon.Transform -s:sendInBlueEmail-noArticleLinks-nohead.xhtml -xsl:sendInBlue.xsl -o:junk.html
 
-java net.sf.saxon.Transform -s:sendInBlueEmail-noArticleLinks.xhtml -xsl:sendInBlue3.xsl -o:junk.html
+rem after adding teasers, etc. in Dreamweaver,
 
+perl -w minify.pl junk.html junkm.html
 
-#rem also note that sendInBlue3.xsl looks for index.xhtml in the issue directory specified in SendInBlueVars.xsl   index.xhtml should be produced from index.html using html2xhtml.pl
-
+rem paste code from junkm.html into SendInBlue

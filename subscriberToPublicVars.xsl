@@ -17,7 +17,7 @@ p = pr/
 - = HTML article remains unlisted, PDF remains private
 -->
 
-<xsl:variable name="newdirs" select="'oe oe o - - o l- - - - - - o oe'" />
+<xsl:variable name="newdirs" select="'h- oe o l- o o - - o - - - - -'" />
 
- <xsl:variable name="issuedir" select="'eirv48n51-20211224/'" />
+ <xsl:variable name="issuedir" select="'eirv49n08-20220225/'" />
 </xsl:stylesheet>

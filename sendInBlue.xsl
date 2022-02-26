@@ -13,13 +13,13 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions">
 
 <xsl:variable name="wspath" select="'http://localhost:8000/Users/Richard/Dropbox_insecure/Dropbox/software/website-scripts/website-scripts/'" />
 <xsl:variable name="sipath" select="concat('http://localhost:8000/Users/Richard/Documents/websites/EIR/eiw/public/unlisted/',$yeardir,$issuedir,$hashdir,'index.xhtml')" />
-<xsl:variable name="wwwsipath" select="concat('http://larouchepub.com/eiw/public/unlisted/',$yeardir,$issuedir,$hashdir)" />
+<xsl:variable name="wwwsipath" select="concat('https://larouchepub.com/eiw/public/unlisted/',$yeardir,$issuedir,$hashdir)" />
 
-<xsl:variable name="rowuri" select="concat($wspath,'sendInBlueEmail-row-template-notext.xhtml')" />
-<xsl:variable name="rowdoc" select="if (doc-available($rowuri)) then doc($rowuri) else ($rowuri)" />
+<xsl:variable name="rowuri" select="concat($wspath,'sendInBlueEmail-row-template-notext-noanchor.xhtml')" />
+<xsl:variable name="rowdoc" select="if (doc-available($rowuri)) then doc($rowuri) else ()" />
 <xsl:variable name="row" select="doc($rowuri)/descendant::tr[@class='row']" as="node()" />
 
-<xsl:variable name="srowuri" select="concat($wspath,'sendInBlueEmail-section-row-template-notext.xhtml')" />
+<xsl:variable name="srowuri" select="concat($wspath,'sendInBlueEmail-section-row-template-notext-noanchor.xhtml')" />
 <xsl:variable name="srowdoc" select="if (doc-available($srowuri)) then doc($srowuri) else ($srowuri)" />
 <xsl:variable name="srow" select="doc($srowuri)/descendant::tr[@class='srow']" />
 
@@ -36,8 +36,8 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions">
 <xsl:variable name="issue_basename" select="substring($issuedir,1,string-length($issuedir)-1)" />
 
 
-<xsl:variable name="pdf_url" select="concat('http://larouchepub.com/eiw/private/',$yeardir,$issuedir,$issue_basename,'.pdf')" />
-<xsl:variable name="hires_pdf_url" select="concat('http://larouchepub.com/eiw/private/',$yeardir,$issuedir,$issue_basename,'lg.pdf')" />
+<xsl:variable name="pdf_url" select="concat('https://larouchepub.com/eiw/private/',$yeardir,$issuedir,$issue_basename,'.pdf')" />
+<xsl:variable name="hires_pdf_url" select="concat('https://larouchepub.com/eiw/private/',$yeardir,$issuedir,$issue_basename,'lg.pdf')" />
 
 
 <xsl:output method="html" omit-xml-declaration="yes" indent="no"/>
@@ -139,7 +139,8 @@ except @href to avoid obliterating the new value for href -->
 
 <xsl:template match="tr[@id='about_larouche']" priority="2">
 <xsl:for-each select="$si/h3[@class='tocArticle'] union $si/h2[@class='tocSection']">
-<xsl:variable name="articleNumber" select="5 + count(preceding-sibling::h3[@class='tocArticle']) + count(preceding-sibling::h2[@class='tocSection'])" />
+<!-- <xsl:variable name="articleNumber" select="5 + count(preceding-sibling::h3[@class='tocArticle']) + count(preceding-sibling::h2[@class='tocSection'])" /> -->
+<xsl:variable name="articleNumber" select="4 + position()" />
 <xsl:variable name="LayoutID" select="concat('Layout_',$articleNumber)" />
 <xsl:choose>
 <xsl:when test="self::h3[@class='tocArticle']">

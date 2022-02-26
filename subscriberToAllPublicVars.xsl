@@ -16,7 +16,7 @@ oi = other/interviews/
 p = pr/
 -->
 
-<xsl:variable name="newdirs" select="'oe oe o o h o l- o o o o o o oe'" />
+<xsl:variable name="newdirs" select="'oe o oi oi o l- o o o'" />
 
-<xsl:variable name="issuedir" select="'eirv48n51-20211224/'" />
+<xsl:variable name="issuedir" select="'eirv49n02-20220114/'" />
 </xsl:stylesheet>
