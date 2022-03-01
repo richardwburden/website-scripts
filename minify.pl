@@ -42,7 +42,7 @@ open (OUTFILE, "+>$ARGV[1]") || die "can't open $ARGV[1] for writing: $!";
 my $output = $tree->as_HTML("","",\%empty);
 #restore the original &amp;
 $output =~ s%__#_#__amp;%&amp;%gs;
-$output =~ s%\n%%gs;
+$output =~ s%\n+% %gs;
 binmode(OUTFILE, ":utf8");
 print OUTFILE $output;
 close OUTFILE;
