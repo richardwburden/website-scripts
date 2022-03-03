@@ -1222,13 +1222,14 @@ sub prepareFiles($$$$$$;$)
     $tree->parse_file(\*INFILE);
     $content = $tree->find_by_tag_name('body');
     $body_text = $content->as_text();
+    my $cmt = $content->look_down('class','cmt');
 
     my $outfilename = $infile[2];
     my $outfiledir =  File::Spec->join($infile[0],$infile[1]);
     $outfiledir.='\\';
     my $toc = 0;
 
-    if ($body_text =~ /Cover\s*This\s*Week/si)
+    if ($cmt or $body_text =~ /Cover\s*This\s*Week/si)
     {
 	$toc = 1;
 	#relocate this issue's index page to public directory and filename

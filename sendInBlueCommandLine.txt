@@ -6,6 +6,9 @@ rem prepare the subscriber's index page as input to Saxon for generating the ema
 
 perl -w html2xhtml.pl \Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2022\eirv49n08-20220225\Pzpb9V0s122N_sHL\index.html \Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2022\eirv49n08-20220225\Pzpb9V0s122N_sHL\index.xhtml
 
+rem start a webserver with document root the c drive
+start_local_webserver-c_drive.bat
+
 rem generate the email with placeholders for teasers, etc.
 rem The Saxon transform engine may fail to insert nodes if the <head> is included in the main input file
 rem Saxon will import the <head> unparsed from sendInBlueEmail-head.html

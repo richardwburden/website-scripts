@@ -14,6 +14,26 @@ oe = other/editorials/
 og = other/govt_docs/
 oi = other/interviews/
 p = pr/
+
+
+Use html2xhtml.pl to generate the XHTML version of the subscriber's issue index page:
+
+cd C:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts
+
+set i=eirv49n02-20220114
+set h=sovpe7c8Bw2Ms_aX
+set u=\Users\Richard\Documents\websites\EIR\eiw\public\unlisted
+set p=\Users\Richard\Documents\websites\EIR\eiw\public
+
+perl -w html2xhtml.pl %u%\2022\%i%\%h%\index.html %u%\2022\%i%\%h%\index.xhtml
+
+Set the variable newdirs, then
+
+use a command line like the following to run subscriberToAllPublic.xsl to generate the public issue index page for the more than 6 week old issue:
+
+java net.sf.saxon.Transform -s:%u%\2022\%i%\%h%\index.xhtml -xsl:subscriberToAllPublic.xsl -o:%p%\2022\%i%\indexp.html
+
+Upload indexp.html and verify that it is correct, then copy over to index.html and upload.
 -->
 
 <xsl:variable name="newdirs" select="'oe o oi oi o l- o o o'" />

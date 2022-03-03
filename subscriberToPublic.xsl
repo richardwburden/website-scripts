@@ -9,9 +9,6 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions">
   <xsl:variable name="year" select="substring(substring-after($issuedir,'-'),1,4)" />
   <xsl:variable name="yeardir" select="concat($year,'/')" />
   <xsl:variable name="relativeRootDir" select="'../../../../'" />
-  <xsl:variable name="newdirseq" as="xs:string*" >
-  <xsl:sequence select="fn:tokenize($newdirstr,' ')" />
-  </xsl:variable>
   
   <!-- <xsl:variable name="unlistedIndexPage" -->
   
