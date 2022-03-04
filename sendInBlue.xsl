@@ -150,17 +150,18 @@ except @href to avoid obliterating the new value for href -->
 <xsl:variable name="newauthor" select="following-sibling::*[1][@class='tocAuthor']" />
 <!-- to calculate how many following siblings before the next article -->
 <!-- is there a next article? -->
-<xsl:variable name="beforenexth3" select="count(following-sibling::*[local-name() = 'h3'][1]/preceding-sibling::p[@class='tocBlurb'])" />
-<xsl:variable name="nexth3Exists" select="count(following-sibling::*[local-name() = 'h3'])" />
+<xsl:variable name="beforenexth3" select="following-sibling::h3[1]/preceding-sibling::p[@class='tocBlurb'][1]/preceding-sibling::h3[1] is ." />
+<!-- *[local-name() = 'h3'] -->
+<xsl:variable name="nexth3Exists" select="exists(following-sibling::h3)" />
 
-<xsl:variable name="blurbExists" select="count(following-sibling::p[@class='tocBlurb'])" />
+<xsl:variable name="blurbExists" select="exists(following-sibling::p[@class='tocBlurb'])" />
 
 <xsl:variable name="newblurb" select="if ($blurbExists and $beforenexth3 or not ($nexth3Exists)) then following-sibling::p[@class='tocBlurb'][1] else ()" />
 
 <!--
 <xsl:variable name="newblurb" select="following-sibling::*[position() &lt; 3][@class='tocBlurb']/text()" /> -->
 <xsl:for-each select="$row">
-<xsl:comment>call row</xsl:comment>
+<xsl:comment>call row, beforenexth3:<xsl:value-of select="$beforenexth3" />, nexth3Exists:<xsl:value-of select="$nexth3Exists" />, blurbExists:<xsl:value-of select="$blurbExists" /></xsl:comment>
 <xsl:apply-templates select="." mode="row">
 <xsl:with-param name="href" tunnel="yes" select="$newhref" />
 <xsl:with-param name="title" tunnel="yes" select="$newtitle" />
