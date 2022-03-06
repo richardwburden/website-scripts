@@ -20,14 +20,14 @@ Use html2xhtml.pl to generate the XHTML version of the subscriber's issue index 
 
 cd C:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts
 
-set i=eirv49n02-20220114
-set h=sovpe7c8Bw2Ms_aX
+set i=eirv49n03-20220121
+set h=iPsUeM8Nw3_cHaM-
 set u=\Users\Richard\Documents\websites\EIR\eiw\public\unlisted
 set p=\Users\Richard\Documents\websites\EIR\eiw\public
 
 perl -w html2xhtml.pl %u%\2022\%i%\%h%\index.html %u%\2022\%i%\%h%\index.xhtml
 
-Set the variable newdirs, then
+Set the variables newdirs and issuedir, then
 
 use a command line like the following to run subscriberToAllPublic.xsl to generate the public issue index page for the more than 6 week old issue:
 
@@ -36,7 +36,7 @@ java net.sf.saxon.Transform -s:%u%\2022\%i%\%h%\index.xhtml -xsl:subscriberToAll
 Upload indexp.html and verify that it is correct, then copy over to index.html and upload.
 -->
 
-<xsl:variable name="newdirs" select="'oe o oi oi o l- o o o'" />
+<xsl:variable name="newdirs" select="'oe h- o oi l- o o o oi o o o o o'" />
 
-<xsl:variable name="issuedir" select="'eirv49n02-20220114/'" />
+<xsl:variable name="issuedir" select="'eirv49n03-20220121/'" />
 </xsl:stylesheet>

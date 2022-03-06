@@ -9,6 +9,9 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions">
 <xsl:variable name="year" select="substring(substring-after($issuedir,'-'),1,4)" />
  <xsl:variable name="yeardir" select="concat($year,'/')" />
 
+<xsl:variable name="vol" select="substring(substring-after($issuedir,'eirv'),1,2)" />
+<xsl:variable name="num" select="substring(substring-after($issuedir,'eirv'),4,2)" />
+
 <!-- local webserver document root should be the C drive root directory -->
 
 <xsl:variable name="wspath" select="'http://localhost:8000/Users/Richard/Dropbox_insecure/Dropbox/software/website-scripts/website-scripts/'" />
@@ -73,7 +76,7 @@ except @href to avoid obliterating the new value for href -->
 </xsl:if>
 <xsl:if test="self::span[@class='title']">
 <xsl:element name="br" />
-<xsl:value-of select="$title" />
+<xsl:sequence select="$title" />
 </xsl:if>
 <xsl:if test="self::span[@class='author']">
 <xsl:sequence select="$author/node()" />
@@ -136,37 +139,29 @@ except @href to avoid obliterating the new value for href -->
 </xsl:template>
 
 
+  <xsl:key name="article" match="$si/*[not(self::h3[@class='tocArticle'] or self::h2[@class='tocSection'])]" 
+           use="generate-id(preceding-sibling::*[self::h3[@class='tocArticle'] or self::h2[@class='tocSection']][1])"/>
 
 <xsl:template match="tr[@id='about_larouche']" priority="2">
 <xsl:for-each select="$si/h3[@class='tocArticle'] union $si/h2[@class='tocSection']">
-<!-- <xsl:variable name="articleNumber" select="5 + count(preceding-sibling::h3[@class='tocArticle']) + count(preceding-sibling::h2[@class='tocSection'])" /> -->
+<xsl:variable name="this" select="." />
+<xsl:variable name="group" select=". | key('article',generate-id($this))" />
 <xsl:variable name="articleNumber" select="4 + position()" />
 <xsl:variable name="LayoutID" select="concat('Layout_',$articleNumber)" />
 <xsl:choose>
 <xsl:when test="self::h3[@class='tocArticle']">
 <xsl:variable name="newhref" select="a[@class='tocLinkAltHTML']/@href" />
-<xsl:variable name="newtitle" select="a[@class='tocLinkPDF']/text()" />
+<xsl:variable name="newtitle" select="a[@class='tocLinkPDF']/node()" />
 <!-- select the first following sibling, and only if it is of tocAuthor class -->
 <xsl:variable name="newauthor" select="following-sibling::*[1][@class='tocAuthor']" />
-<!-- to calculate how many following siblings before the next article -->
-<!-- is there a next article? -->
-<xsl:variable name="beforenexth3" select="following-sibling::h3[1]/preceding-sibling::p[@class='tocBlurb'][1]/preceding-sibling::h3[1] is ." />
-<!-- *[local-name() = 'h3'] -->
-<xsl:variable name="nexth3Exists" select="exists(following-sibling::h3)" />
+<xsl:variable name="newblurbs" select="$group[self::p[@class='tocBlurb']]" />
 
-<xsl:variable name="blurbExists" select="exists(following-sibling::p[@class='tocBlurb'])" />
-
-<xsl:variable name="newblurb" select="if ($blurbExists and $beforenexth3 or not ($nexth3Exists)) then following-sibling::p[@class='tocBlurb'][1] else ()" />
-
-<!--
-<xsl:variable name="newblurb" select="following-sibling::*[position() &lt; 3][@class='tocBlurb']/text()" /> -->
 <xsl:for-each select="$row">
-<xsl:comment>call row, beforenexth3:<xsl:value-of select="$beforenexth3" />, nexth3Exists:<xsl:value-of select="$nexth3Exists" />, blurbExists:<xsl:value-of select="$blurbExists" /></xsl:comment>
 <xsl:apply-templates select="." mode="row">
 <xsl:with-param name="href" tunnel="yes" select="$newhref" />
 <xsl:with-param name="title" tunnel="yes" select="$newtitle" />
 <xsl:with-param name="author" tunnel="yes" select="$newauthor" />
-<xsl:with-param name="blurb" tunnel="yes" select="$newblurb" />
+<xsl:with-param name="blurb" tunnel="yes" select="$newblurbs" />
 <xsl:with-param name="LayoutID" tunnel="yes" select="$LayoutID" />
 </xsl:apply-templates>
 </xsl:for-each>
@@ -263,7 +258,16 @@ except @href to avoid obliterating the new value for href -->
 		<xsl:attribute name="href">
 		<xsl:value-of select="concat($wwwsipath,@href,$query_string)" />
 		</xsl:attribute>
-		<xsl:apply-templates select="node()|@* except @href" />
+		<xsl:apply-templates select="node()|@* except (@href)" />
+	</xsl:copy>
+</xsl:template>
+
+<xsl:template match="div[@id='cover']/a/img" priority="2">
+	<xsl:copy>
+		<xsl:attribute name="alt">
+		<xsl:value-of select="concat('EIR Vol. ',$vol,' No. ',$num,' cover')" />
+		</xsl:attribute>
+		<xsl:apply-templates select="@* except @alt" />
 	</xsl:copy>
 </xsl:template>
 
