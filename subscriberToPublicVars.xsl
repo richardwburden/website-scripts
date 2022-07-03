@@ -4,19 +4,19 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 xmlns:fn="http://www.w3.org/2005/xpath-functions">
 
 <!-- edit this variable to point to the new issue's public index page -->
-<xsl:variable name="issuedir" select="'eirv49n09-20220304/'" />
+<xsl:variable name="issuedir" select="'eirv49n26-20220701/'" />
 
 <!-- abbreviated form for the directories for the public HTML article pages.
 Use html2xhtml.pl to generate the XHTML version of the subscriber's issue index page:
 
 cd C:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts
 
-set i=eirv49n09-20220304
-set h=m8gy_eFcAKQd24Mx
+set j=2022\eirv49n20-20220520
+set h=miBc7dUw25RL-aKx
 set u=\Users\Richard\Documents\websites\EIR\eiw\public\unlisted
-set p=\Users\Richard\Documents\websites\EIR\eiw\public
+set p=\Users\Richard\Documents\websites\EIR\eiw\public\
 
-perl -w html2xhtml.pl %u%\2022\%i%\%h%\index.html %u%\2022\%i%\%h%\index.xhtml
+perl -w html2xhtml.pl %u%\%j%\%h%\index.html %u%\%j%\%h%\index.xhtml
 
 Open index.xhtml in Dreamweaver.
 Prefix the title of each public article in the XHTML version of the subscriber's issue index page with one of the following abbreviations followed by ##
@@ -35,7 +35,7 @@ p = pr/
 
 Then use a command line like the following to run subscriberToPublic.xsl to generate the public issue index page for the new issue:
 
-java net.sf.saxon.Transform -s:%u%\2022\%i%\%h%\index.xhtml -xsl:subscriberToPublic.xsl -o:%p%\2022\%i%\indexp.html
+java net.sf.saxon.Transform -s:%u%\%j%\%h%\index.xhtml -xsl:subscriberToPublic.xsl -o:%p%%j%\indexp.html
 
 Upload indexp.html and verify that it is correct, then copy over to index.html and upload.
 

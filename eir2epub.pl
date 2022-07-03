@@ -188,7 +188,8 @@ foreach $infilepath (@infiles)
 
     my @MajorLightSubheads = $content->look_down('_tag','p','class',qr/MajorLightSubhead/i);
     push(@MajorLightSubheads,'','light_subhead','class','h3','no more wrappers');
-
+ my @CenteredHeads = $content->look_down('_tag','p','class',qr/CenteredHead/i);
+    push(@CenteredHeads,'','light_subhead','class','h2','no more wrappers');
     my @MajorSubheads = $content->look_down('_tag','p','class',qr/Major[\-\s]*Subhead/i);
 
     push(@MajorSubheads,'','majorsubhead','class','h3','no more wrappers');
@@ -348,7 +349,7 @@ foreach $infilepath (@infiles)
     my $tag = undef;
     my %attribs = ();
     my $arritem = undef;
-    my @arr_of_arrs = (\@footnote_links,\@footnote_anchors,\@FootnoteTexts,\@MajorSubheads,\@MajorLightSubheads,\@LightSubheads,\@Subheads,\@kickers,\@dkickers,\@editorials,\@bylines,\@Heads,\@ShortsHeads,\@ShortsTexts,\@italics,\@bolds,\@superscripts,\@subscripts,\@ucase,\@normals,\@normal_weights,\@layouts,\@h1s,\@extracts,\@extractbs,\@extractms,\@extractes,\@display_quotes,\@spaceAbove,\@departments,\@ArticleTitles,\@ArticleTitleNoKickers,\@ArticleBlurbs,\@ArticleBylines,\@cmt,\@sharpflats,\@emphases);
+    my @arr_of_arrs = (\@footnote_links,\@footnote_anchors,\@FootnoteTexts,\@MajorSubheads,\@MajorLightSubheads,\@CenteredHeads,\@LightSubheads,\@Subheads,\@kickers,\@dkickers,\@editorials,\@bylines,\@Heads,\@ShortsHeads,\@ShortsTexts,\@italics,\@bolds,\@superscripts,\@subscripts,\@ucase,\@normals,\@normal_weights,\@layouts,\@h1s,\@extracts,\@extractbs,\@extractms,\@extractes,\@display_quotes,\@spaceAbove,\@departments,\@ArticleTitles,\@ArticleTitleNoKickers,\@ArticleBlurbs,\@ArticleBylines,\@cmt,\@sharpflats,\@emphases);
     while ($arr = shift(@arr_of_arrs))
     {
 	my @wrappers = ();

@@ -15,8 +15,11 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions">
 <!-- local webserver document root should be the C drive root directory -->
 
 <xsl:variable name="wspath" select="'http://localhost:8000/Users/Richard/Dropbox_insecure/Dropbox/software/website-scripts/website-scripts/'" />
-<xsl:variable name="sipath" select="concat('http://localhost:8000/Users/Richard/Documents/websites/EIR/eiw/public/unlisted/',$yeardir,$issuedir,$hashdir,'index.xhtml')" />
-<xsl:variable name="wwwsipath" select="concat('https://larouchepub.com/eiw/public/unlisted/',$yeardir,$issuedir,$hashdir)" />
+
+<xsl:variable name="unlisted" select="if ($hashdir eq '') then '' else 'unlisted/'" />
+
+<xsl:variable name="sipath" select="concat('http://localhost:8000/Users/Richard/Documents/websites/EIR/eiw/public/',$unlisted,$yeardir,$issuedir,$hashdir,'index.xhtml')" />
+<xsl:variable name="wwwsipath" select="concat('https://larouchepub.com/eiw/public/',$unlisted,$yeardir,$issuedir,$hashdir)" />
 
 <xsl:variable name="rowuri" select="concat($wspath,'sendInBlueEmail-row-template-notext-noanchor.xhtml')" />
 <xsl:variable name="rowdoc" select="if (doc-available($rowuri)) then doc($rowuri) else ()" />
@@ -81,26 +84,15 @@ except @href to avoid obliterating the new value for href -->
 <xsl:if test="self::span[@class='author']">
 <xsl:sequence select="$author/node()" />
 <xsl:choose>
-<xsl:when test="(count($author) + count($blurb)) lt 1">
-<xsl:comment>No author or blurb</xsl:comment>
-</xsl:when>
-<xsl:when test="count ($blurb) lt 1">
-<xsl:comment>blurb count: 0</xsl:comment>
-</xsl:when>
 <xsl:when test="(count($blurb/node()) gt 1) and (count ($author) gt 0)">
-<xsl:comment>blurb child count: <xsl:value-of select="count($blurb/node())" /></xsl:comment>
 <xsl:element name="br" />
 <xsl:sequence select="$blurb/node()" />
 </xsl:when>
 <xsl:when test="(count ($author) gt 0) and (string-length($author) + string-length($blurb/text()) gt 60)">
-<xsl:comment>author strlen: <xsl:value-of select="string-length($author)" /></xsl:comment>
-<xsl:comment>blurb text strlen: <xsl:value-of select="string-length($blurb/text())" /></xsl:comment>
 <xsl:element name="br" />
 <xsl:sequence select="$blurb/node()" />
 </xsl:when>
 <xsl:when test="matches($author,'\S+') and matches($blurb/text(),'\S+')">
-<xsl:comment>author has non-blank text: <xsl:value-of select="matches($author,'\S+')" /></xsl:comment>
-<xsl:comment>blurb has non-blank text: <xsl:value-of select="matches($blurb/text(),'\S+')" /></xsl:comment>
 <xsl:value-of select="' &#x000A0; '" />
 <xsl:sequence select="$blurb/node()" />
 </xsl:when>
@@ -170,7 +162,6 @@ except @href to avoid obliterating the new value for href -->
 <xsl:otherwise> <!-- it's a section head -->
 <xsl:variable name="newstitle" select="text()" />
 <xsl:for-each select="$srow">
-<xsl:comment>call srow</xsl:comment>
 <xsl:apply-templates select="." mode="srow">
 <xsl:with-param name="stitle" tunnel="yes" select="$newstitle" />
 <xsl:with-param name="LayoutID" tunnel="yes" select="$LayoutID" />
@@ -208,7 +199,6 @@ except @href to avoid obliterating the new value for href -->
 		<xsl:copy>
 					<xsl:apply-templates select="@*" />
 
-		<xsl:comment>I saw: <xsl:value-of select="$uery_string" /></xsl:comment>
 		<xsl:apply-templates select="node()" />
 			</xsl:copy>
 	</xsl:template>
@@ -216,7 +206,6 @@ except @href to avoid obliterating the new value for href -->
 						 
 	
 <xsl:template match="tr[@id='subscriber_services']//a" priority="2">
-	<xsl:comment>I saw it: href=<xsl:value-of select="@href"/></xsl:comment>
 	<xsl:copy>
 				<xsl:apply-templates select="@*" />
 
@@ -247,7 +236,6 @@ except @href to avoid obliterating the new value for href -->
 		</xsl:otherwise>	
 		</xsl:choose>
 			</xsl:attribute>
-				<xsl:comment>I saw it</xsl:comment>
 	
 		<xsl:apply-templates select="node()" />
 </xsl:copy>

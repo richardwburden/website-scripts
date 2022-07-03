@@ -4,9 +4,18 @@ rem also note that sendInBlue.xsl looks for index.xhtml in the issue directory s
 
 rem prepare the subscriber's index page as input to Saxon for generating the email with placeholders for teasers, etc.
 
-perl -w html2xhtml.pl \Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2022\eirv49n08-20220225\Pzpb9V0s122N_sHL\index.html \Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2022\eirv49n08-20220225\Pzpb9V0s122N_sHL\index.xhtml
+rem %u% is \Users\Richard\Documents\websites\EIR\eiw\public\unlisted
+rem %p% is \Users\Richard\Documents\websites\EIR\eiw\public\
+rem %j% is year and issue directory e.g. 2022\eirv49n11-20220318
+rem %h% is hash, e.g. Gobe9cJ3xVa_pF2X
 
-rem start a webserver with document root the c drive
+perl -w html2xhtml.pl %u%\%j%\%h%\index.html %u%\%j%\%h%\index.xhtml
+
+rem or, if the issue is all public
+
+perl -w html2xhtml.pl %p%%j%\index.html %p%%j%\index.xhtml
+
+rem start a webserver with document root the c drive. Run this script in a different command prompt window than the one you use for the other commands!
 start_local_webserver-c_drive.bat
 
 rem generate the email with placeholders for teasers, etc.
