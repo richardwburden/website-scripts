@@ -10,8 +10,14 @@ use HTML::Entities;
 
 %empty = (); #use as 3rd parameter for HTML::Element->as_HTML() to specify that the HTML generated shall close all open tags
 
+open (INFILE, $ARGV[0]) || die "can't open $ARGV[0] for reading: $!";
 
-open(ARCHIVEINDEXTEMPLATEDOCTYPE, "archive_issue_index_template_doctype-utf8.txt") || die "can't open archive_issue_index_doctype-utf8.txt for reading: $!";
+my $doctypefnsuffix = "";
+if (@ARGV > 2)
+{
+    $doctypefnsuffix = $ARGV[2];
+}
+open(ARCHIVEINDEXTEMPLATEDOCTYPE, "archive_issue_index_template_doctype-utf8$doctypefnsuffix.txt") || die "can't open archive_issue_index_doctype-utf8$doctypefnsuffix.txt for reading: $!";
 
 
 #include the server side include, which is inside a comment
@@ -23,7 +29,6 @@ while(<ARCHIVEINDEXTEMPLATEDOCTYPE>)
 }
 close ARCHIVEINDEXTEMPLATEDOCTYPE;
 
-open (INFILE, $ARGV[0]) || die "can't open $ARGV[0] for reading: $!";
 
 my $infile = "";
 while (<INFILE>)

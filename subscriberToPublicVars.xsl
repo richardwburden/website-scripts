@@ -4,15 +4,15 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 xmlns:fn="http://www.w3.org/2005/xpath-functions">
 
 <!-- edit this variable to point to the new issue's public index page -->
-<xsl:variable name="issuedir" select="'eirv49n26-20220701/'" />
+<xsl:variable name="issuedir" select="'eirv49n46-20221125/'" />
 
 <!-- abbreviated form for the directories for the public HTML article pages.
 Use html2xhtml.pl to generate the XHTML version of the subscriber's issue index page:
 
 cd C:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts
 
-set j=2022\eirv49n20-20220520
-set h=miBc7dUw25RL-aKx
+set j=2022\eirv49n28-20220722
+set h=pdb3Lq1Mvixtdeu4CEA_si
 set u=\Users\Richard\Documents\websites\EIR\eiw\public\unlisted
 set p=\Users\Richard\Documents\websites\EIR\eiw\public\
 

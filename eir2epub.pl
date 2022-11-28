@@ -67,7 +67,8 @@ my $processCssScriptURL = $options{'processCssScriptURL'};
 my $jqueryURL = $options{'jqueryURL'};
 if (not defined $processCssScriptURL) {$processCssScriptURL = 'processCss.js'}
 if (not defined $jqueryURL) {$jqueryURL = 'jquery-1.11.3.min.js'}
-
+my $sourceFilesRoot = $options{'sourceFilesRoot'};
+if (not defined $sourceFilesRoot) {$sourceFilesRoot = ""}
 #debug output is off by default.  It is turned on by using 'debug' as the first command-line argument OR by defining debug with any value in the configuration file.
 if (defined $options{'debug'}){$debug = 1}
 
@@ -81,7 +82,7 @@ if (defined $ARGV[1]) {$inpath = $ARGV[1]}
 
 $inpath =~ s%/%\\%g;
 
-$inpath = File::Spec->join($docRoot,$inpath);
+$inpath = File::Spec->join($docRoot,$sourceFilesRoot,$inpath);
 
 @inpath = File::Spec->splitpath($inpath);
 @infiles = ();
