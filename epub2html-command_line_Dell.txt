@@ -1,40 +1,38 @@
-https://larouchepub.com/eiw/public/unlisted/2022/eirv49n36-20220916/fj8fgjnx_33dkapVdbw/
-set y=2022
-set n=46
-set v=49
-set md=1125
+cd C:\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts
+
+set y=2023
+set n=37
+set v=50
+set md=0922
 set vn=%v%%n%
 set i=%y%/eirv%v%n%n%-%y%%md%
 set j=%y%\eirv%v%n%n%-%y%%md%
-set h=jywvxgQsdLgnMxD-2A1F
+set h=v8d03ksUo_cqKdgw5V-Smgq
 set u=\Users\rburden\data\websites\EIR\eiw\public\unlisted
 set p=\Users\rburden\data\websites\EIR\eiw\public\
 set d=https://larouchepub.com/eiw/public/unlisted/
 echo %d%%i%/%h%/
 mkdir %p%%j%
-perlo -w epub2html.pl  --muai --ud %i%/%h% --pft other -i ../Images=graphics/%y%/%vn% --iu ../Images=graphics/2022/%vn% eir /r/eiw/private/%y%/%n%/Text/
-
+perlo -w epub2html.pl  --muai --ud %i%/%h% --pft other -i ../Images=graphics/%y%/%vn% --iu ../Images=graphics/2023/%vn% eir /r/eiw/private/%y%/%n%/Text/
 
 java net.sf.saxon.Transform -s:%u%\%j%\%h%\index-nc.html -xsl:comply2.xsl -o:%u%\%j%\%h%\index.html
 
 
-RPRK7-736TY-3TCKQ-VCT32-PDJCZ
-
-set y=2022
-set n=39
-set v=49
-set md=1007
+set y=2023
+set n=31
+set v=50
+set md=0811
 set vn=%v%%n%
 set i=%y%/eirv%v%n%n%-%y%%md%
 set j=%y%\eirv%v%n%n%-%y%%md%
-set h=u8c02jaYwBcM-18Zaq
 set u=\Users\rburden\data\websites\EIR\eiw\public\unlisted
 set p=\Users\rburden\data\websites\EIR\eiw\public\
 set d=https://larouchepub.com/eiw/public/unlisted/
-echo %d%%i%/%h%/
-perlo -w epub2html.pl  --muai --ud %i%/%h% --pft other -i ../Images=graphics/%y%/%vn% --iu ../Images=graphics/2022/%vn% eir /r/eiw/private/%y%/%n%/Text/
+dir %u%\%j%\
 
-java net.sf.saxon.Transform -s:%u%\%j%\%h%\index-nc.html -xsl:comply2.xsl -o:%u%\%j%\%h%\index.html
+rem perlo -w epub2html.pl  --muai --ud %i%/%h% --pft other -i ../Images=graphics/%y%/%vn% --iu ../Images=graphics/2022/%vn% eir /r/eiw/private/%y%/%n%/Text/
+
+rem java net.sf.saxon.Transform -s:%u%\%j%\%h%\index-nc.html -xsl:comply2.xsl -o:%u%\%j%\%h%\index.html
 
 
 

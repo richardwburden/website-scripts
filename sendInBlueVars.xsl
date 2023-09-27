@@ -29,10 +29,14 @@ set u=\Users\Richard\Documents\websites\EIR\eiw\public\unlisted
 set p=\Users\Richard\Documents\websites\EIR\eiw\public\
 
 perl -w html2xhtml.pl %u%\%j%\%h%\index.html %u%\%j%\%h%\index.xhtml
+# for the Dell computer,
+perl -w html2xhtml.pl %u%\%j%\%h%\index.html %u%\%j%\%h%\index.xhtml -Dell
 
 # or, if the issue is all public
 
 perl -w html2xhtml.pl %p%%j%\index.html %p%%j%\index.xhtml
+# for the Dell computer,
+perl -w html2xhtml.pl %p%%j%\index.html %p%%j%\index.xhtml -Dell
 
 start a webserver with document root the c drive. Run this script in a different command prompt window than the one you use for the other commands!
 start_local_webserver-c_drive.bat
@@ -58,10 +62,10 @@ paste code from junkm.html into SendInBlue
 
 -->
 
-<xsl:variable name="issuedir" select="'eirv49n46-20221125/'" />
+<xsl:variable name="issuedir" select="'eirv50n37-20230922/'" />
 
 <!-- if the index page is public, set hashdir to '', otherwise, hashdir's value should end with a forward slash just like issuedir  -->
-<xsl:variable name="hashdir" select="'jywvxgQsdLgnMxD-2A1F/'" />
+<xsl:variable name="hashdir" select="'v8d03ksUo_cqKdgw5V-Smgq/'" />
 
 
 <!-- <xsl:variable name="query_string" select="'?utm_source=sendinblue&amp;utm_campaign=EIR_-_February_25_2022&amp;utm_medium=email'" /> -->

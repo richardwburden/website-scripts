@@ -1,0 +1,146 @@
+=head1 SYNOPSIS
+
+perl makeEIRpagesResponsive.pl {-|<config pathname>} [options] <pathname>
+
+=head1 OPTIONS
+
+Each option must be preceded by a double hyphen '--' to indicate that it is an option, except:
+options with single character names may be preceded by a single hyphen '-'.
+
+Alternative names for an option are separated by '|'.
+
+Options whose name(s) are followed by '=' require an argument.  The letter following the '=' specifies the argument type (s for string). If the argument type is folllowed by '%', the option  may be used multiple times in the same command line with an argument for each instance.
+
+ appendBrowserScript|abs
+
+appendBrowserScript|abs causes the browser script to be appended instead of overwritten. Regardless of options, this script generates a browser script that can be used to invoke a browser to download  all the non-responsive EIR pages that are linked from the EIR home page, insert JavaScript in those pages, execute the JavaScript, then write the result.  The browser script is written to the value of 'browserScriptPath' in the config file.  Each line of the browser script will contain bp bo URL > lpp, where 'bp' is the value of 'browserPath' in the config file, 'bo' the value of 'browserOptions', 'URL' the absolute URL of the page on the site, and 'lpp' is the local page path, the absolute path of the location in the local file system corresponding to the URL to which the new responsive page will be uploaded. The 'docroot' attribute of the 'domain' tag in the config file is prepended to the path portion of the URL to calculate the lpp.  If the config. file lacks 'browserOptions', '--headless --dump-dom', the options appropriate for Chrome and other Chromium-based browsers such as Yandex, are inserted by default.
+
+=cut
+
+use HTML::TreeBuilder;
+use HTML::Element;
+use File::Spec;
+use File::Find;
+use Fcntl ':mode';
+use File::Copy;
+use HTML::Entities;
+use URI;
+use WWW::Mechanize;
+use Getopt::Long qw(:config no_ignore_case);
+use Pod::Usage;
+
+my $help = 0;
+
+GetOptions ('help|?' => \$help);
+pod2usage(1) if $help;
+
+my $program_basename = $0;
+$program_basename =~ s/\.[^\.]*$//;
+close STDERR;
+open (STDERR, ">$program_basename"."_err.txt") || die "can't open $program_basename"."_err.txt for writing: $!";
+
+print "\nError messages will written to $program_basename"."_err.txt in the current working directory\n\n";
+
+#process the config file selector
+if (@ARGV < 2) {usage()}
+my $configPath = $ARGV[0];
+
+if ($configPath eq '-') {$configPath = "$program_basename.xml"}
+else {$configPath = "$program_basename-$configPath.xml"}
+
+my $domain;
+my %options = ();
+get_config ($configPath, \$domain, \%options);
+
+my $docRoot = $domain->attr('docroot');
+my $domainName = $domain->attr('name');
+
+my $bsp = $options{'browserScriptPath'};
+if (not defined $bsp) {$bsp = 'epub2htmlRunJS.bat'}
+my $browserPath = $options{'browserPath'};
+my $browserOptions = $options{'browserOptions'};
+if (not defined $browserOptions) {$browserOptions = '--headless --dump-dom'}
+if (not defined $browserPath) {$browserPath = '%BROWSER_PATH%'}
+my $processNRpageURL = $options{'processNRpageURL'};
+my $jqueryURL = $options{'jqueryURL'};
+if (not defined $processNRpageURL) {$processNRpageURL = 'processNRpageURL.js'}
+if (not defined $jqueryURL) {$jqueryURL = 'jquery-1.11.3.min.js'}
+
+
+if ($appendBrowserScript)
+{
+    open (BROWSERSCRIPT, ">>$bsp") || die "can't open $bsp for appending: $!";
+}
+else
+{
+    open (BROWSERSCRIPT, "+>$bsp") || die "can't open $bsp for writing: $!";
+}
+
+open(ARTICLETEMPLATE, "article_template.html") || die "can't open article_template.html for reading: $!";
+
+#process the input file/directory/glob pattern.
+my $inpath = "";
+$inpath = $ARGV[1];
+#Extract filenames from $inpath
+
+$inpath =~ s%/%\\%g;
+
+$inpath = File::Spec->join($docRoot,$inpath);
+
+@inpath = File::Spec->splitpath($inpath);
+@infiles = ();
+
+my $is_directory = 0;
+my $mode = undef;
+$mode = (stat($inpath))[2];
+if (defined $mode)
+{$is_directory = S_ISDIR($mode)}
+
+if ($is_directory)
+{
+    find (\&wanted, $inpath);
+}
+elsif ($inpath[2] =~ /[\?\*]/)
+{
+    print "globpath: $inpath\n";
+    @infiles = glob ($inpath);
+}
+
+else
+{@infiles = ($inpath)}
+
+
+foreach $infilepath (@infiles)
+{
+
+}
+
+sub wanted
+{
+    if (not -f $_) {next}
+    if ($_ !~ /\.(html?)$/i) {next}
+    push (@infiles,$_);
+}
+
+
+sub usage
+{
+    my $dcf = $program_basename.'.xml';
+    my $options_doc = "";
+	
+    print <<EOF;
+perl $0 {-|<config pathname>} [options] <pathname>
+<config pathname> is the pathname of the configuration file, relative to $0
+- uses the default configuration file, $dcf
+<pathname> is the pathname of the input file, relative to the website
+document root as specified in the configuration file, however:
+It should begin with a forward slash, use only forward slashes, and
+should be quoted if it contains spaces.  The spaces and other non-web-safe
+characters should not be converted to web-safe entities like '%20'
+
+For a list of options, use perl $0 - -help
+
+EOF
+
+exit
+}

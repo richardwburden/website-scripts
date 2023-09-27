@@ -1,0 +1,28 @@
+Processing C:\Users\rburden\data\websites\EIR\r\eiw\private\2023\37\Text\05-27_EIR37_section_a__converted__converted.xhtml
+Processing C:\Users\rburden\data\websites\EIR\r\eiw\private\2023\37\Text\28_EIR38_section_b__converted__converted.xhtml
+Processing C:\Users\rburden\data\websites\EIR\r\eiw\private\2023\37\Text\29-32_EIR37_section_c_copy__converted.xhtml
+Processing C:\Users\rburden\data\websites\EIR\r\eiw\private\2023\37\Text\33-41_EIR37_section__d_converted_converted.xhtml
+Processing C:\Users\rburden\data\websites\EIR\r\eiw\private\2023\37\Text\Section0001.xhtml
+Parsing of undecoded UTF-8 will give garbage when decoding entities at C:/Perl/lib/HTML/Parser.pm line 102, <INFILE> line 5.
+assigning filename 'index.html' to Section0001.xhtml
+computing outfilepath for Section0001.xhtml
+Unrecognized LWP::UserAgent options: ssl_opts at epub2html.pl line 375
+Processing C:\Users\rburden\data\websites\EIR\r\eiw\private\2023\37\Text\05-27_EIR37_section_a__converted__converted.xhtml
+computing outfilepath for 05-27_EIR37_section_a__converted__converted.xhtml
+Argument "SEEK_SET" isn't numeric in seek at epub2html.pl line 821, <INFILE> line 1.
+Processing C:\Users\rburden\data\websites\EIR\r\eiw\private\2023\37\Text\28_EIR38_section_b__converted__converted.xhtml
+computing outfilepath for 28_EIR38_section_b__converted__converted.xhtml
+Processing C:\Users\rburden\data\websites\EIR\r\eiw\private\2023\37\Text\29-32_EIR37_section_c_copy__converted.xhtml
+computing outfilepath for 29-32_EIR37_section_c_copy__converted.xhtml
+Processing C:\Users\rburden\data\websites\EIR\r\eiw\private\2023\37\Text\33-41_EIR37_section__d_converted_converted.xhtml
+computing outfilepath for 33-41_EIR37_section__d_converted_converted.xhtml
+Processing C:\Users\rburden\data\websites\EIR\r\eiw\private\2023\37\Text\Section0002.xhtml
+computing outfilepath for Section0002.xhtml
+Processing C:\Users\rburden\data\websites\EIR\r\eiw\private\2023\37\Text\Section0003.xhtml
+computing outfilepath for Section0003.xhtml
+Processing C:\Users\rburden\data\websites\EIR\r\eiw\private\2023\37\Text\Section0004.xhtml
+computing outfilepath for Section0004.xhtml
+Processing C:\Users\rburden\data\websites\EIR\r\eiw\private\2023\37\Text\Section0005.xhtml
+computing outfilepath for Section0005.xhtml
+Processing C:\Users\rburden\data\websites\EIR\r\eiw\private\2023\37\Text\Section0006.xhtml
+computing outfilepath for Section0006.xhtml

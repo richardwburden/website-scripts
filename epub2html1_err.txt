@@ -1,0 +1,30 @@
+Processing C:\Users\Richard\Documents\websites\EIR\r\eiw\private\2021\27\Text\07-47_EIR27_section_a.xhtml
+Parsing of undecoded UTF-8 will give garbage when decoding entities at C:/ProgramFiles/Perl-5.16.3-64bit/lib/HTML/Parser.pm line 102, <INFILE> line 1.
+Processing C:\Users\Richard\Documents\websites\EIR\r\eiw\private\2021\27\Text\48-51_EIR27_section_c.xhtml
+Processing C:\Users\Richard\Documents\websites\EIR\r\eiw\private\2021\27\Text\Section0001.xhtml
+assigning filename 'index.html' to Section0001.xhtml
+computing outfilepath for Section0001.xhtml
+Processing C:\Users\Richard\Documents\websites\EIR\r\eiw\private\2021\27\Text\07-47_EIR27_section_a.xhtml
+Parsing of undecoded UTF-8 will give garbage when decoding entities at C:/ProgramFiles/Perl-5.16.3-64bit/lib/HTML/Parser.pm line 102, <INFILE> line 1.
+computing outfilepath for 07-47_EIR27_section_a.xhtml
+Argument "SEEK_SET" isn't numeric in seek at epub2html1.pl line 781, <INFILE> line 1.
+Processing C:\Users\Richard\Documents\websites\EIR\r\eiw\private\2021\27\Text\48-51_EIR27_section_c.xhtml
+computing outfilepath for 48-51_EIR27_section_c.xhtml
+Processing C:\Users\Richard\Documents\websites\EIR\r\eiw\private\2021\27\Text\Section0002.xhtml
+computing outfilepath for Section0002.xhtml
+Processing C:\Users\Richard\Documents\websites\EIR\r\eiw\private\2021\27\Text\Section0003.xhtml
+computing outfilepath for Section0003.xhtml
+Processing C:\Users\Richard\Documents\websites\EIR\r\eiw\private\2021\27\Text\Section0004.xhtml
+computing outfilepath for Section0004.xhtml
+Processing C:\Users\Richard\Documents\websites\EIR\r\eiw\private\2021\27\Text\Section0005.xhtml
+computing outfilepath for Section0005.xhtml
+Processing C:\Users\Richard\Documents\websites\EIR\r\eiw\private\2021\27\Text\Section0006.xhtml
+computing outfilepath for Section0006.xhtml
+Processing C:\Users\Richard\Documents\websites\EIR\r\eiw\private\2021\27\Text\Section0007.xhtml
+computing outfilepath for Section0007.xhtml
+Processing C:\Users\Richard\Documents\websites\EIR\r\eiw\private\2021\27\Text\Section0008.xhtml
+computing outfilepath for Section0008.xhtml
+Processing C:\Users\Richard\Documents\websites\EIR\r\eiw\private\2021\27\Text\Section0009.xhtml
+computing outfilepath for Section0009.xhtml
+Processing C:\Users\Richard\Documents\websites\EIR\r\eiw\private\2021\27\Text\Section0010.xhtml
+computing outfilepath for Section0010.xhtml

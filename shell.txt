@@ -1,0 +1,353 @@
+Microsoft Windows [Version 10.0.17134.345]
+(c) 2018 Microsoft Corporation. All rights reserved.
+
+c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts>java net.sf.saxon.Transform
+java net.sf.saxon.Transform
+No source file name
+Saxon-HE 9.9.0.1J from Saxonica
+Usage: see http://www.saxonica.com/documentation/index.html#!using-xsl/commandline
+Format: net.sf.saxon.Transform options params
+Options available: -? -a -catalog -config -cr -diag -dtd -ea -expand -explain -export -ext -im -init -it -jit -l -lib -license -m -nogo -now -o -opt -or -outval -p -quit -r -relocate -repeat -s -sa -scmin -strip -t -T -target -TB -threads -TJ -Tlevel -Tout -TP -traceout -tree -u -val -versionmsg -warnings -x -xi -xmlversion -xsd -xsdversion -xsiloc -xsl -y
+Use -XYZ:? for details of option XYZ
+Params: 
+  param=value           Set stylesheet string parameter
+  +param=filename       Set stylesheet document parameter
+  ?param=expression     Set stylesheet parameter using XPath
+  !param=value          Set serialization parameter
+
+c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts>java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant.html
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant.html
+Error on line 35 column 551 of index.html:
+  SXXP0003: Error reported by XML parser: The entity "nbsp" was referenced, but not declared.
+org.xml.sax.SAXParseException; systemId: file:/c:/Users/Richard/Documents/websites/EIR/eiw/public/2018/eirv45n42-20181019/index.html; lineNumber: 35; columnNumber: 551; The entity "nbsp" was referenced, but not declared.
+
+c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts>java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant.html
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant.html
+Error on line 35 column 162 of index.html:
+  SXXP0003: Error reported by XML parser: The entity "oacute" was referenced, but not declared.
+org.xml.sax.SAXParseException; systemId: file:/c:/Users/Richard/Documents/websites/EIR/eiw/public/2018/eirv45n42-20181019/index.html; lineNumber: 35; columnNumber: 162; The entity "oacute" was referenced, but not declared.
+
+c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts>java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant.html
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant.html
+Error on line 1 column 80 of comply2.xsl:
+  SXXP0003: Error reported by XML parser: Element type "xsl:stylesheet" must be followed by
+  either attribute specifications, ">" or "/>".
+org.xml.sax.SAXParseException; systemId: file:/c:/Users/Richard/Dropbox_insecure/Dropbox/software/website-scripts/comply2.xsl; lineNumber: 1; columnNumber: 80; Element type "xsl:stylesheet" must be followed by either attribute specifications, ">" or "/>".
+
+c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts>cd website-scripts/
+cd website-scripts/
+
+c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts>java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant.html
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant.html
+Error on line 1 column 26 of comply2.xsl:
+  SXXP0003: Error reported by XML parser: The document type declaration for root element
+  type "xsl:stylesheet" must end with '>'.
+org.xml.sax.SAXParseException; systemId: file:/c:/Users/Richard/Dropbox_insecure/Dropbox/software/website-scripts/website-scripts/comply2.xsl; lineNumber: 1; columnNumber: 26; The document type declaration for root element type "xsl:stylesheet" must end with '>'.
+
+c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts>java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant.html
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant.html
+Error on line 5 column 4 of comply2.xsl:
+  SXXP0003: Error reported by XML parser: The document type declaration for root element
+  type "mydoctype" must end with '>'.
+org.xml.sax.SAXParseException; systemId: file:/c:/Users/Richard/Dropbox_insecure/Dropbox/software/website-scripts/website-scripts/comply2.xsl; lineNumber: 5; columnNumber: 4; The document type declaration for root element type "mydoctype" must end with '>'.
+
+c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts>java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant.html
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant.html
+Error on line 35 column 162 of index.html:
+  SXXP0003: Error reported by XML parser: The entity "oacute" was referenced, but not declared.
+org.xml.sax.SAXParseException; systemId: file:/c:/Users/Richard/Documents/websites/EIR/eiw/public/2018/eirv45n42-20181019/index.html; lineNumber: 35; columnNumber: 162; The entity "oacute" was referenced, but not declared.
+
+c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts>java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant.html
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant.html
+Error on line 5 column 3 of comply2.xsl:
+  SXXP0003: Error reported by XML parser: The document type declaration for root element
+  type "mydoctype" must end with '>'.
+org.xml.sax.SAXParseException; systemId: file:/c:/Users/Richard/Dropbox_insecure/Dropbox/software/website-scripts/website-scripts/comply2.xsl; lineNumber: 5; columnNumber: 3; The document type declaration for root element type "mydoctype" must end with '>'.
+
+c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts>java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant.html
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant.html
+Error on line 1 column 22 of comply2.xsl:
+  SXXP0003: Error reported by XML parser: The document type declaration for root element
+  type "mydoctype" must end with '>'.
+org.xml.sax.SAXParseException; systemId: file:/c:/Users/Richard/Dropbox_insecure/Dropbox/software/website-scripts/website-scripts/comply2.xsl; lineNumber: 1; columnNumber: 22; The document type declaration for root element type "mydoctype" must end with '>'.
+
+c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts>java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant.html
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant.html
+Error on line 35 column 162 of index.html:
+  SXXP0003: Error reported by XML parser: The entity "oacute" was referenced, but not declared.
+org.xml.sax.SAXParseException; systemId: file:/c:/Users/Richard/Documents/websites/EIR/eiw/public/2018/eirv45n42-20181019/index.html; lineNumber: 35; columnNumber: 162; The entity "oacute" was referenced, but not declared.
+
+c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts>java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant.html
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant.html
+Error on line 35 column 162 of index.html:
+  SXXP0003: Error reported by XML parser: The entity "oacute" was referenced, but not declared.
+org.xml.sax.SAXParseException; systemId: file:/c:/Users/Richard/Documents/websites/EIR/eiw/public/2018/eirv45n42-20181019/index.html; lineNumber: 35; columnNumber: 162; The entity "oacute" was referenced, but not declared.
+
+c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts>java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant.html
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant.html
+Error 
+  I/O error reported by XML parser processing
+  file:/c:/Users/Richard/Dropbox_insecure/Dropbox/software/website-scripts/website-scripts/comply2.xsl: c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts\w3centities-f.ent (The system cannot find the file specified)
+I/O error reported by XML parser processing file:/c:/Users/Richard/Dropbox_insecure/Dropbox/software/website-scripts/website-scripts/comply2.xsl: c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts\w3centities-f.ent (The system cannot find the file specified)
+
+c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts>java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant.html
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant.html
+Error on line 35 column 162 of index.html:
+  SXXP0003: Error reported by XML parser: The entity "oacute" was referenced, but not declared.
+org.xml.sax.SAXParseException; systemId: file:/c:/Users/Richard/Documents/websites/EIR/eiw/public/2018/eirv45n42-20181019/index.html; lineNumber: 35; columnNumber: 162; The entity "oacute" was referenced, but not declared.
+
+c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts>java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant.html
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant.html
+Error on line 35 column 162 of index.html:
+  SXXP0003: Error reported by XML parser: The entity "oacute" was referenced, but not declared.
+org.xml.sax.SAXParseException; systemId: file:/c:/Users/Richard/Documents/websites/EIR/eiw/public/2018/eirv45n42-20181019/index.html; lineNumber: 35; columnNumber: 162; The entity "oacute" was referenced, but not declared.
+
+c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts>java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant.html
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant.html
+
+c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts>perl -w epub2html.pl  --ud 2018/eirv45n42-20181019/nuJi9803mwsp1 --pft other -i ../Images=graphics/2018/4542 --iu ../Images=graphics/2018/4542 eir /r/eiw/private/2018/42/OEBPS/Text/
+perl -w epub2html.pl  --ud 2018/eirv45n42-20181019/nuJi9803mwsp1 --pft other -i ../Images=graphics/2018/4542 --iu ../Images=graphics/2018/4542 eir /r/eiw/private/2018/42/OEBPS/Text/
+
+Error messages will written to epub2html_err.txt in the current working directory
+
+globpath: C:\Users\Richard\Documents\websites\EIR\r\eiw\private\2018\42\OEBPS\Text\*.?htm?
+The unlisted HTML files will be written to the filename right of the '=' in the lines below, under the directory
+/eiw/public/unlisted/2018/eirv45n42-20181019/nuJi9803mwsp1
+, which is the value of 'unlistedArticlesRootPath' in the configuration file follwed by the value of the 'unlistedDirectory' or 'ud' parameter in the command-line. Using the lines below in the command-line will write the files to the filename or path right of the '=' under the directory '/' ('publicArticlesRootPath' in the config. file).  The '^' is used to indicate continuation of the command line in the Windows shell. Any valid path where this script has permission to write may follow the '='.
+-b 05-24_EIR42_a_section.xhtml=other/2018/4542-public_credit_cutting_the_gord.html ^
+-b 25-39_EIR42_b_section.xhtml=other/2018/4542-zepp_larouche_webcast_the_stak.html ^
+-b 40-50_EIR42_c_section.xhtml=other/2018/4542-riemann_refutes_euler_behind_a.html ^
+-b Section0001.xhtml=other/2018/4542-as_election_day_approaches_the.html ^
+-b Section0002.xhtml=other/2018/index.html ^
+-b Section0003.xhtml=other/2018/4542-national_sovereignty_and_a_new.html ^
+-b Section0004.xhtml=other/2018/4542-south_dakota_congressional_can.html ^
+-b Section0005.xhtml=other/2018/4542-mike_pence_s_dumb_ass_speech_o.html ^
+
+c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts>perl -w epub2html.pl --abs --po ^
+-b 05-24_EIR42_a_section.xhtml=other/2018/4542-public_credit_cutting_the_gord.html ^
+-b Section0001.xhtml=other/editorials/2018/4542-as_election_day_approaches_the.html ^
+-b Section0004.xhtml=other/2018/4542-south_dakota_congressional_can.html ^
+-i ../Images=graphics/2018/4542  eir /r/eiw/private/2018/42/OEBPS/Text
+perl -w epub2html.pl --abs --po ^
+More? -b 05-24_EIR42_a_section.xhtml=other/2018/4542-public_credit_cutting_the_gord.html ^
+More? -b Section0001.xhtml=other/editorials/2018/4542-as_election_day_approaches_the.html ^
+More? -b Section0004.xhtml=other/2018/4542-south_dakota_congressional_can.html ^
+More? -i ../Images=graphics/2018/4542  eir /r/eiw/private/2018/42/OEBPS/Text
+
+Error messages will written to epub2html_err.txt in the current working directory
+
+globpath: C:\Users\Richard\Documents\websites\EIR\r\eiw\private\2018\42\OEBPS\Text\*.?htm?
+
+c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts>perl -w epub2html.pl  --ud 2018/eirv45n42-20181019/nuJi9803mwsp1 --pft other -i ../Images=graphics/2018/4542 --iu ../Images=graphics/2018/4542 eir /r/eiw/private/2018/42/OEBPS/Text/
+perl -w epub2html.pl  --ud 2018/eirv45n42-20181019/nuJi9803mwsp1 --pft other -i ../Images=graphics/2018/4542 --iu ../Images=graphics/2018/4542 eir /r/eiw/private/2018/42/OEBPS/Text/
+
+Error messages will written to epub2html_err.txt in the current working directory
+
+globpath: C:\Users\Richard\Documents\websites\EIR\r\eiw\private\2018\42\OEBPS\Text\*.?htm?
+The unlisted HTML files will be written to the filename right of the '=' in the lines below, under the directory
+/eiw/public/unlisted/2018/eirv45n42-20181019/nuJi9803mwsp1
+, which is the value of 'unlistedArticlesRootPath' in the configuration file follwed by the value of the 'unlistedDirectory' or 'ud' parameter in the command-line. Using the lines below in the command-line will write the files to the filename or path right of the '=' under the directory '/' ('publicArticlesRootPath' in the config. file).  The '^' is used to indicate continuation of the command line in the Windows shell. Any valid path where this script has permission to write may follow the '='.
+-b 05-24_EIR42_a_section.xhtml=other/2018/4542-public_credit_cutting_the_gord.html ^
+-b 25-39_EIR42_b_section.xhtml=other/2018/4542-zepp_larouche_webcast_the_stak.html ^
+-b 40-50_EIR42_c_section.xhtml=other/2018/4542-riemann_refutes_euler_behind_a.html ^
+-b Section0001.xhtml=other/2018/4542-as_election_day_approaches_the.html ^
+-b Section0002.xhtml=other/2018/index.html ^
+-b Section0003.xhtml=other/2018/4542-national_sovereignty_and_a_new.html ^
+-b Section0004.xhtml=other/2018/4542-south_dakota_congressional_can.html ^
+-b Section0005.xhtml=other/2018/4542-mike_pence_s_dumb_ass_speech_o.html ^
+
+c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts>perl -w epub2html.pl --abs --po ^
+-b 05-24_EIR42_a_section.xhtml=other/2018/4542-public_credit_cutting_the_gord.html ^
+-b Section0001.xhtml=other/editorials/2018/4542-as_election_day_approaches_the.html ^
+-b Section0004.xhtml=other/2018/4542-south_dakota_congressional_can.html ^
+-i ../Images=graphics/2018/4542  eir /r/eiw/private/2018/42/OEBPS/Text
+perl -w epub2html.pl --abs --po ^
+More? -b 05-24_EIR42_a_section.xhtml=other/2018/4542-public_credit_cutting_the_gord.html ^
+More? -b Section0001.xhtml=other/editorials/2018/4542-as_election_day_approaches_the.html ^
+More? -b Section0004.xhtml=other/2018/4542-south_dakota_congressional_can.html ^
+More? -i ../Images=graphics/2018/4542  eir /r/eiw/private/2018/42/OEBPS/Text
+
+Error messages will written to epub2html_err.txt in the current working directory
+
+globpath: C:\Users\Richard\Documents\websites\EIR\r\eiw\private\2018\42\OEBPS\Text\*.?htm?
+
+c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts>java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant.html
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant.html
+Error on line 6 column 2 of index.html:
+  SXXP0003: Error reported by XML parser: The markup declarations contained or pointed to by
+  the document type declaration must be well-formed.
+org.xml.sax.SAXParseException; systemId: file:/c:/Users/Richard/Documents/websites/EIR/eiw/public/2018/eirv45n42-20181019/index.html; lineNumber: 6; columnNumber: 2; The markup declarations contained or pointed to by the document type declaration must be well-formed.
+
+c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts>perl -w epub2html.pl  --ud 2018/eirv45n42-20181019/nuJi9803mwsp1 --pft other -i ../Images=graphics/2018/4542 --iu ../Images=graphics/2018/4542 eir /r/eiw/private/2018/42/OEBPS/Text/
+perl -w epub2html.pl  --ud 2018/eirv45n42-20181019/nuJi9803mwsp1 --pft other -i ../Images=graphics/2018/4542 --iu ../Images=graphics/2018/4542 eir /r/eiw/private/2018/42/OEBPS/Text/
+
+Error messages will written to epub2html_err.txt in the current working directory
+
+globpath: C:\Users\Richard\Documents\websites\EIR\r\eiw\private\2018\42\OEBPS\Text\*.?htm?
+The unlisted HTML files will be written to the filename right of the '=' in the lines below, under the directory
+/eiw/public/unlisted/2018/eirv45n42-20181019/nuJi9803mwsp1
+, which is the value of 'unlistedArticlesRootPath' in the configuration file follwed by the value of the 'unlistedDirectory' or 'ud' parameter in the command-line. Using the lines below in the command-line will write the files to the filename or path right of the '=' under the directory '/' ('publicArticlesRootPath' in the config. file).  The '^' is used to indicate continuation of the command line in the Windows shell. Any valid path where this script has permission to write may follow the '='.
+-b 05-24_EIR42_a_section.xhtml=other/2018/4542-public_credit_cutting_the_gord.html ^
+-b 25-39_EIR42_b_section.xhtml=other/2018/4542-zepp_larouche_webcast_the_stak.html ^
+-b 40-50_EIR42_c_section.xhtml=other/2018/4542-riemann_refutes_euler_behind_a.html ^
+-b Section0001.xhtml=other/2018/4542-as_election_day_approaches_the.html ^
+-b Section0002.xhtml=other/2018/index.html ^
+-b Section0003.xhtml=other/2018/4542-national_sovereignty_and_a_new.html ^
+-b Section0004.xhtml=other/2018/4542-south_dakota_congressional_can.html ^
+-b Section0005.xhtml=other/2018/4542-mike_pence_s_dumb_ass_speech_o.html ^
+
+c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts>perl -w epub2html.pl --abs --po ^
+-b 05-24_EIR42_a_section.xhtml=other/2018/4542-public_credit_cutting_the_gord.html ^
+-b Section0001.xhtml=other/editorials/2018/4542-as_election_day_approaches_the.html ^
+-b Section0004.xhtml=other/2018/4542-south_dakota_congressional_can.html ^
+-i ../Images=graphics/2018/4542  eir /r/eiw/private/2018/42/OEBPS/Text
+perl -w epub2html.pl --abs --po ^
+More? -b 05-24_EIR42_a_section.xhtml=other/2018/4542-public_credit_cutting_the_gord.html ^
+More? -b Section0001.xhtml=other/editorials/2018/4542-as_election_day_approaches_the.html ^
+More? -b Section0004.xhtml=other/2018/4542-south_dakota_congressional_can.html ^
+More? -i ../Images=graphics/2018/4542  eir /r/eiw/private/2018/42/OEBPS/Text
+
+Error messages will written to epub2html_err.txt in the current working directory
+
+globpath: C:\Users\Richard\Documents\websites\EIR\r\eiw\private\2018\42\OEBPS\Text\*.?htm?
+
+c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts>java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant.html
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant.html
+
+c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts>perl -w epub2html.pl  --ud 2018/eirv45n42-20181019/nuJi9803mwsp1 --pft other -i ../Images=graphics/2018/4542 --iu ../Images=graphics/2018/4542 eir /r/eiw/private/2018/42/OEBPS/Text/
+perl -w epub2html.pl  --ud 2018/eirv45n42-20181019/nuJi9803mwsp1 --pft other -i ../Images=graphics/2018/4542 --iu ../Images=graphics/2018/4542 eir /r/eiw/private/2018/42/OEBPS/Text/
+
+Error messages will written to epub2html_err.txt in the current working directory
+
+globpath: C:\Users\Richard\Documents\websites\EIR\r\eiw\private\2018\42\OEBPS\Text\*.?htm?
+The unlisted HTML files will be written to the filename right of the '=' in the lines below, under the directory
+/eiw/public/unlisted/2018/eirv45n42-20181019/nuJi9803mwsp1
+, which is the value of 'unlistedArticlesRootPath' in the configuration file follwed by the value of the 'unlistedDirectory' or 'ud' parameter in the command-line. Using the lines below in the command-line will write the files to the filename or path right of the '=' under the directory '/' ('publicArticlesRootPath' in the config. file).  The '^' is used to indicate continuation of the command line in the Windows shell. Any valid path where this script has permission to write may follow the '='.
+-b 05-24_EIR42_a_section.xhtml=other/2018/4542-public_credit_cutting_the_gord.html ^
+-b 25-39_EIR42_b_section.xhtml=other/2018/4542-zepp_larouche_webcast_the_stak.html ^
+-b 40-50_EIR42_c_section.xhtml=other/2018/4542-riemann_refutes_euler_behind_a.html ^
+-b Section0001.xhtml=other/2018/4542-as_election_day_approaches_the.html ^
+-b Section0002.xhtml=other/2018/index.html ^
+-b Section0003.xhtml=other/2018/4542-national_sovereignty_and_a_new.html ^
+-b Section0004.xhtml=other/2018/4542-south_dakota_congressional_can.html ^
+-b Section0005.xhtml=other/2018/4542-mike_pence_s_dumb_ass_speech_o.html ^
+
+c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts>perl -w epub2html.pl --abs --po ^
+-b 05-24_EIR42_a_section.xhtml=other/2018/4542-public_credit_cutting_the_gord.html ^
+-b Section0001.xhtml=other/editorials/2018/4542-as_election_day_approaches_the.html ^
+-b Section0004.xhtml=other/2018/4542-south_dakota_congressional_can.html ^
+-i ../Images=graphics/2018/4542  eir /r/eiw/private/2018/42/OEBPS/Text
+perl -w epub2html.pl --abs --po ^
+More? -b 05-24_EIR42_a_section.xhtml=other/2018/4542-public_credit_cutting_the_gord.html ^
+More? -b Section0001.xhtml=other/editorials/2018/4542-as_election_day_approaches_the.html ^
+More? -b Section0004.xhtml=other/2018/4542-south_dakota_congressional_can.html ^
+More? -i ../Images=graphics/2018/4542  eir /r/eiw/private/2018/42/OEBPS/Text
+
+Error messages will written to epub2html_err.txt in the current working directory
+
+globpath: C:\Users\Richard\Documents\websites\EIR\r\eiw\private\2018\42\OEBPS\Text\*.?htm?
+
+c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts>java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant.html
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant.html
+
+c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts>perl -w epub2html.pl  --ud 2018/eirv45n42-20181019/nuJi9803mwsp1 --pft other -i ../Images=graphics/2018/4542 --iu ../Images=graphics/2018/4542 eir /r/eiw/private/2018/42/OEBPS/Text/
+perl -w epub2html.pl  --ud 2018/eirv45n42-20181019/nuJi9803mwsp1 --pft other -i ../Images=graphics/2018/4542 --iu ../Images=graphics/2018/4542 eir /r/eiw/private/2018/42/OEBPS/Text/
+
+Error messages will written to epub2html_err.txt in the current working directory
+
+globpath: C:\Users\Richard\Documents\websites\EIR\r\eiw\private\2018\42\OEBPS\Text\*.?htm?
+The unlisted HTML files will be written to the filename right of the '=' in the lines below, under the directory
+/eiw/public/unlisted/2018/eirv45n42-20181019/nuJi9803mwsp1
+, which is the value of 'unlistedArticlesRootPath' in the configuration file follwed by the value of the 'unlistedDirectory' or 'ud' parameter in the command-line. Using the lines below in the command-line will write the files to the filename or path right of the '=' under the directory '/' ('publicArticlesRootPath' in the config. file).  The '^' is used to indicate continuation of the command line in the Windows shell. Any valid path where this script has permission to write may follow the '='.
+-b 05-24_EIR42_a_section.xhtml=other/2018/4542-public_credit_cutting_the_gord.html ^
+-b 25-39_EIR42_b_section.xhtml=other/2018/4542-zepp_larouche_webcast_the_stak.html ^
+-b 40-50_EIR42_c_section.xhtml=other/2018/4542-riemann_refutes_euler_behind_a.html ^
+-b Section0001.xhtml=other/2018/4542-as_election_day_approaches_the.html ^
+-b Section0002.xhtml=other/2018/index.html ^
+-b Section0003.xhtml=other/2018/4542-national_sovereignty_and_a_new.html ^
+-b Section0004.xhtml=other/2018/4542-south_dakota_congressional_can.html ^
+-b Section0005.xhtml=other/2018/4542-mike_pence_s_dumb_ass_speech_o.html ^
+
+c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts>perl -w epub2html.pl --abs --po ^
+-b 05-24_EIR42_a_section.xhtml=other/2018/4542-public_credit_cutting_the_gord.html ^
+-b Section0001.xhtml=other/editorials/2018/4542-as_election_day_approaches_the.html ^
+-b Section0004.xhtml=other/2018/4542-south_dakota_congressional_can.html ^
+-i ../Images=graphics/2018/4542  eir /r/eiw/private/2018/42/OEBPS/Text
+perl -w epub2html.pl --abs --po ^
+More? -b 05-24_EIR42_a_section.xhtml=other/2018/4542-public_credit_cutting_the_gord.html ^
+More? -b Section0001.xhtml=other/editorials/2018/4542-as_election_day_approaches_the.html ^
+More? -b Section0004.xhtml=other/2018/4542-south_dakota_congressional_can.html ^
+More? -i ../Images=graphics/2018/4542  eir /r/eiw/private/2018/42/OEBPS/Text
+
+Error messages will written to epub2html_err.txt in the current working directory
+
+globpath: C:\Users\Richard\Documents\websites\EIR\r\eiw\private\2018\42\OEBPS\Text\*.?htm?
+
+c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts>java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant.html
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant.html
+
+c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts>perl -w epub2html.pl  --ud 2018/eirv45n42-20181019/nuJi9803mwsp1 --pft other -i ../Images=graphics/2018/4542 --iu ../Images=graphics/2018/4542 eir /r/eiw/private/2018/42/OEBPS/Text/
+perl -w epub2html.pl  --ud 2018/eirv45n42-20181019/nuJi9803mwsp1 --pft other -i ../Images=graphics/2018/4542 --iu ../Images=graphics/2018/4542 eir /r/eiw/private/2018/42/OEBPS/Text/
+
+Error messages will written to epub2html_err.txt in the current working directory
+
+globpath: C:\Users\Richard\Documents\websites\EIR\r\eiw\private\2018\42\OEBPS\Text\*.?htm?
+The unlisted HTML files will be written to the filename right of the '=' in the lines below, under the directory
+/eiw/public/unlisted/2018/eirv45n42-20181019/nuJi9803mwsp1
+, which is the value of 'unlistedArticlesRootPath' in the configuration file follwed by the value of the 'unlistedDirectory' or 'ud' parameter in the command-line. Using the lines below in the command-line will write the files to the filename or path right of the '=' under the directory '/' ('publicArticlesRootPath' in the config. file).  The '^' is used to indicate continuation of the command line in the Windows shell. Any valid path where this script has permission to write may follow the '='.
+-b 05-24_EIR42_a_section.xhtml=other/2018/4542-public_credit_cutting_the_gord.html ^
+-b 25-39_EIR42_b_section.xhtml=other/2018/4542-zepp_larouche_webcast_the_stak.html ^
+-b 40-50_EIR42_c_section.xhtml=other/2018/4542-riemann_refutes_euler_behind_a.html ^
+-b Section0001.xhtml=other/2018/4542-as_election_day_approaches_the.html ^
+-b Section0002.xhtml=other/2018/index.html ^
+-b Section0003.xhtml=other/2018/4542-national_sovereignty_and_a_new.html ^
+-b Section0004.xhtml=other/2018/4542-south_dakota_congressional_can.html ^
+-b Section0005.xhtml=other/2018/4542-mike_pence_s_dumb_ass_speech_o.html ^
+
+c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts>perl -w epub2html.pl --abs --po ^
+-b 05-24_EIR42_a_section.xhtml=other/2018/4542-public_credit_cutting_the_gord.html ^
+-b Section0001.xhtml=other/editorials/2018/4542-as_election_day_approaches_the.html ^
+-b Section0004.xhtml=other/2018/4542-south_dakota_congressional_can.html ^
+-i ../Images=graphics/2018/4542  eir /r/eiw/private/2018/42/OEBPS/Text
+perl -w epub2html.pl --abs --po ^
+More? -b 05-24_EIR42_a_section.xhtml=other/2018/4542-public_credit_cutting_the_gord.html ^
+More? -b Section0001.xhtml=other/editorials/2018/4542-as_election_day_approaches_the.html ^
+More? -b Section0004.xhtml=other/2018/4542-south_dakota_congressional_can.html ^
+More? -i ../Images=graphics/2018/4542  eir /r/eiw/private/2018/42/OEBPS/Text
+
+Error messages will written to epub2html_err.txt in the current working directory
+
+globpath: C:\Users\Richard\Documents\websites\EIR\r\eiw\private\2018\42\OEBPS\Text\*.?htm?
+
+c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts>java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant.html
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant.html
+
+c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts>java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\indexcopy.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant2.html
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\indexcopy.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant2.html
+Error on line 12 column 4 of indexcopy.html:
+  SXXP0003: Error reported by XML parser: The element type "link" must be terminated by the
+  matching end-tag "</link>".
+org.xml.sax.SAXParseException; systemId: file:/c:/Users/Richard/Documents/websites/EIR/eiw/public/2018/eirv45n42-20181019/indexcopy.html; lineNumber: 12; columnNumber: 4; The element type "link" must be terminated by the matching end-tag "</link>".
+
+c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts>java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\indexcopy.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant2.html
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\indexcopy.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant2.html
+Error on line 12 column 4 of indexcopy.html:
+  SXXP0003: Error reported by XML parser: The element type "meta" must be terminated by the
+  matching end-tag "</meta>".
+org.xml.sax.SAXParseException; systemId: file:/c:/Users/Richard/Documents/websites/EIR/eiw/public/2018/eirv45n42-20181019/indexcopy.html; lineNumber: 12; columnNumber: 4; The element type "meta" must be terminated by the matching end-tag "</meta>".
+
+c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts>java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\indexcopy.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant2.html
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\indexcopy.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant2.html
+Error on line 12 column 4 of indexcopy.html:
+  SXXP0003: Error reported by XML parser: The element type "meta" must be terminated by the
+  matching end-tag "</meta>".
+org.xml.sax.SAXParseException; systemId: file:/c:/Users/Richard/Documents/websites/EIR/eiw/public/2018/eirv45n42-20181019/indexcopy.html; lineNumber: 12; columnNumber: 4; The element type "meta" must be terminated by the matching end-tag "</meta>".
+
+c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts>java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\indexcopy.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant2.html
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\indexcopy.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2018\eirv45n42-20181019\index-compliant2.html
+Error on line 16 column 154 of indexcopy.html:
+  SXXP0003: Error reported by XML parser: The element type "img" must be terminated by the
+  matching end-tag "</img>".
+org.xml.sax.SAXParseException; systemId: file:/c:/Users/Richard/Documents/websites/EIR/eiw/public/2018/eirv45n42-20181019/indexcopy.html; lineNumber: 16; columnNumber: 154; The element type "img" must be terminated by the matching end-tag "</img>".
+
+c:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts>

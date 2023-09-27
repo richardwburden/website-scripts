@@ -1,0 +1,76 @@
+<!DOCTYPE html       [
+ <!ENTITY % w3centities-f PUBLIC
+         "-//W3C//ENTITIES Combined Set//EN//XML"
+         "file:///C:/Users/Richard/Dropbox_insecure/Dropbox/software/website-scripts/website-scripts/w3centities-f.ent"
+       >
+       %w3centities-f;
+]>
+<html lang="en">
+	<head>
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+		<meta content="width=device-width" name="viewport" />
+		<title>EIR Volume 48, Number 51, December 24, 2021</title>
+		<script src="../../../../css/jquery-3.3.1.min.js"></script>
+		<script src="../../../../css/menu_script.js"></script>
+		<script src="../../../../css/window_prefs.js"></script>
+		<link href="../../../../css/r-eir_arch.css" rel="stylesheet" type="text/css" />
+		<link href="../../../../css/menu_styles.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<div id="container">
+			<div id="container_margin">
+				<div id="header"><a href="/" title="Back to home page"><img alt="Executive Intelligence Review" src="../../../../../../graphics/display/r-eirbanner.jpg" /></a></div>
+				<div id="nbanner"><a href="/" title="Back to home page"><img alt="Executive Intelligence Review" src="../../../../../../graphics/display/r-eirbanner-narrow.jpg" /></a></div>
+				<div id="content">
+					<div class="tocIssueTitleVolYear">
+						<div class="tocIssueTitle" id="tocIssueTitle">Volume 48, Number 51, December 24, 2021</div>
+					</div>
+					<div class="tocThumbnailServeIssue">
+						<p class="tocThumbnail"><a href="../../../../2021/eirv48n51-20211224/eirv48n51lg.jpg"><img alt="cover" id="cover" src="/eiw/public/2021/eirv48n51-20211224/eirv48n51-20211224-cover.jpg" /></a></p>
+						<div class="serveIssue" id="fullIssueLinks">
+							<h3 class="tocFullIssueView"> Full Issue: </h3>
+							<button class="buttonA" onclick="window.location='../../../../../private/2021/eirv48n51-20211224/eirv48n51-20211224.pdf';" type="button">View</button>
+							<br />
+							<button class="buttonA" onclick="window.location='../../../../../private/2021/eirv48n51-20211224/eirv48n51-20211224.php?ext=pdf';" type="button">Download PDF</button>
+							<br />
+							<button class="buttonA" onclick="window.location='../../../../../private/2021/eirv48n51-20211224/eirv48n51-20211224lg.pdf';" type="button">View High-Res</button>
+							<br />
+							<button class="buttonA" onclick="window.location='../../../../../private/2021/eirv48n51-20211224/eirv48n51-20211224lg.php?ext=pdf';" type="button">Download High-Res PDF</button>
+							<br />
+						</div>
+					</div>
+				</div>
+				<div id="toc">
+					<h2 class="tocSection">Editorials</h2>
+					<h3 class="tocArticle"><a class="tocLinkPDF" href="../../../../2021/eirv48n51-20211224/eirv48n51-20211224_003-as_60_years_ago_the_threat_of_nu.pdf" title=" Editorials: As 60 Years Ago, the Threat of Nuclear War Is Steadily Growing"> As 60 Years Ago, the Threat of Nuclear War Is Steadily Growing</a><a class="tocLinkAltHTML" href="4851-as_60_years_ago_the_threat_of.html" title=" Editorials: As 60 Years Ago, the Threat of Nuclear War Is Steadily Growing"> </a></h3>
+					<h3 class="tocArticle"><a class="tocLinkPDF" href="../../../../2021/eirv48n51-20211224/eirv48n51-20211224_005-the_fate_of_afghanistan_and_the.pdf" title="â€˜The Fate of Afghanistan and the Fate of Humanity Are Much More Closely Connected Than Most People Can Imagineâ€™">â€˜The Fate of Afghanistan and the Fate of Humanity Are Much More Closely Connected Than Most People Can Imagineâ€™</a><a class="tocLinkAltHTML" href="4851-the_fate_of_afghanistan_and_th.html" title="â€˜The Fate of Afghanistan and the Fate of Humanity Are Much More Closely Connected Than Most People Can Imagineâ€™"> </a></h3>
+					<p class="tocAuthor">by Katherine Notley</p>
+					<h2 class="tocSection">I. Strategic Policy Interviews</h2>
+					<h3 class="tocArticle"><a class="tocLinkPDF" href="../../../../2021/eirv48n51-20211224/eirv48n51-20211224_007-ambassador_chas_freeman_us_forei.pdf" title=" Interview/Ambassador Chas Freeman: U.S. Foreign Policy Is Dangerous and Reprehensible"> Ambassador Chas Freeman: U.S. Foreign Policy Is Dangerous and Reprehensible</a><a class="tocLinkAltHTML" href="4851-u_s_foreign_policy_is_dangerou.html" title=" Interview/Ambassador Chas Freeman: U.S. Foreign Policy Is Dangerous and Reprehensible"> </a></h3>
+					<h3 class="tocArticle"><a class="tocLinkPDF" href="../../../../../private/2021/eirv48n51-20211224/eirv48n51-20211224_019-dr_shah_mehrabi_us_policy_is_suf.pdf" title=" Interview/Dr. Shah Mehrabi: U.S. Policy Is â€˜Suffocating the Afghan Peopleâ€™"> Dr. Shah Mehrabi: U.S. Policy Is â€˜Suffocating the Afghan Peopleâ€™</a><a class="tocLinkAltHTML" href="4851-u_s_policy_is_suffocating_the.html" title=" Interview/Dr. Shah Mehrabi: U.S. Policy Is â€˜Suffocating the Afghan Peopleâ€™"> </a></h3>
+					<h3 class="tocArticle"><a class="tocLinkPDF" href="../../../../../private/2021/eirv48n51-20211224/eirv48n51-20211224_027-pakistan_television_on_the_eve_o.pdf" title=" Pakistan Television: On the Eve of the OIC Emergency Summit on Afghanistan: Helga Zepp-LaRouche and Hussein Askary"> Pakistan Television: On the Eve of the OIC Emergency Summit on Afghanistan: Helga Zepp-LaRouche and Hussein Askary</a><a class="tocLinkAltHTML" href="4851-on_the_eve_of_the_oic_emergenc.html" title=" Pakistan Television: On the Eve of the OIC Emergency Summit on Afghanistan: Helga Zepp-LaRouche and Hussein Askary"> </a></h3>
+					<h3 class="tocArticle"><a class="tocLinkPDF" href="../../../../2021/eirv48n51-20211224/eirv48n51-20211224_035-why_the_russian_proposals_to_nat.pdf" title="Why the Russian Proposals to NATO and the U.S. Should Not Be Rejected">Why the Russian Proposals to NATO and the U.S. Should Not Be Rejected</a><a class="tocLinkAltHTML" href="4851-why_the_russian_proposals_to_n.html" title="Why the Russian Proposals to NATO and the U.S. Should Not Be Rejected"> </a></h3>
+					<p class="tocAuthor">by Ambassador Leonidas Chrysanthopoulos</p>
+					<h2 class="tocSection">II. International</h2>
+					<h3 class="tocArticle"><a class="tocLinkPDF" href="../../../../2021/eirv48n51-20211224/eirv48n51-20211224_036-on_strategic_thinking_moths_mice-lar.pdf" title=" On Strategic Thinking: Moths, Mice, and Men"> On Strategic Thinking: Moths, Mice, and Men</a><a class="tocLinkAltHTML" href="4851-moths_mice_and_men.html" title=" On Strategic Thinking: Moths, Mice, and Men"> </a></h3>
+					<p class="tocAuthor">by Lyndon H. LaRouche, Jr.</p>
+					<p class="tocBlurb">October 13, 2004</p>
+					<h3 class="tocArticle"><a class="tocLinkPDF" href="../../../../../private/2021/eirv48n51-20211224/eirv48n51-20211224_043-kissingers_1974_plan_for_food_co.pdf" title="Kissingerâ€™s 1974 Plan for Food Control Genocide">Kissingerâ€™s 1974 Plan for Food Control Genocide</a><a class="tocLinkAltHTML" href="4851-kissinger_s_1974_plan_for_food.html" title="Kissingerâ€™s 1974 Plan for Food Control Genocide"> </a></h3>
+					<p class="tocAuthor">by Joseph Brewda</p>
+					<h3 class="tocArticle"><a class="tocLinkPDF" href="../../../../../private/2021/eirv48n51-20211224/eirv48n51-20211224_045-situation_report_afghanistan_the.pdf" title=" Situation Report: Afghanistan: The Dimensions of Hell on Earth"> Situation Report: Afghanistan: The Dimensions of Hell on Earth</a><a class="tocLinkAltHTML" href="4851-afghanistan_the_dimensions_of.html" title=" Situation Report: Afghanistan: The Dimensions of Hell on Earth"> </a></h3>
+					<p class="tocAuthor">by Marcia Merry Baker</p>
+					<h3 class="tocArticle"><a class="tocLinkPDF" href="../../../../../private/2021/eirv48n51-20211224/eirv48n51-20211224_048-committee_for_the_coincidence_of.pdf" title=" Committee For the Coincidence Of Opposites: Relief Shipment Sent to Mozambique The World Needs a Modern Health Care System in Every Nation"> Committee For the Coincidence Of Opposites: Relief Shipment Sent to Mozambique <em class="CharOverride-9"><br /> The World Needs a Modern Health Care System in Every Nation</em></a><a class="tocLinkAltHTML" href="4851-relief_shipment_sent_to_mozamb.html" title=" Committee For the Coincidence Of Opposites: Relief Shipment Sent to Mozambique The World Needs a Modern Health Care System in Every Nation"> </a></h3>
+					<p class="tocAuthor">by Lynne Speed</p>
+					<h3 class="tocArticle"><a class="tocLinkPDF" href="../../../../../private/2021/eirv48n51-20211224/eirv48n51-20211224_051-economics_briefs.pdf" title="Economics Briefs">Economics Briefs</a><a class="tocLinkAltHTML" href="4851-economics_briefs.html" title="Economics Briefs"> </a></h3>
+					<h2 class="tocSection">III. United States</h2>
+					<h3 class="tocArticle"><a class="tocLinkPDF" href="../../../../../private/2021/eirv48n51-20211224/eirv48n51-20211224_053-summit_for_democracy_cover_for_i.pdf" title="â€˜Summit for Democracyâ€™: Cover for Imperial Geopolitics and War">â€˜Summit for Democracyâ€™: Cover for Imperial Geopolitics and War</a><a class="tocLinkAltHTML" href="4851-summit_for_democracy_cover_for.html" title="â€˜Summit for Democracyâ€™: Cover for Imperial Geopolitics and War"> </a></h3>
+					<p class="tocAuthor">by Harley Schlanger</p>
+					<h3 class="tocArticle"><a class="tocLinkPDF" href="../../../../2021/eirv48n51-20211224/eirv48n51-20211224_058-a_second_larouche_independent_ca.pdf" title="A Second LaRouche Independent Candidate for Federal Office">A Second LaRouche Independent Candidate for Federal Office</a><a class="tocLinkAltHTML" href="4851-a_second_larouche_independent.html" title="A Second LaRouche Independent Candidate for Federal Office"> </a></h3>
+					<p class="tocAuthor">by Charles Notley</p>
+					<h2 class="tocSection">Editorial</h2>
+					<h3 class="tocArticle"><a class="tocLinkPDF" href="../../../../2021/eirv48n51-20211224/eirv48n51-20211224_060-you_should_know_the_mystery_of_w.pdf" title=" Editorial: You Should Know: The â€˜Mystery of Who Killed JFKâ€™ Is No Mystery"> You Should Know: The â€˜Mystery of Who Killed JFKâ€™ Is No Mystery</a><a class="tocLinkAltHTML" href="4851-you_should_know_the_mystery_of.html" title=" Editorial: You Should Know: The â€˜Mystery of Who Killed JFKâ€™ Is No Mystery"> </a></h3>
+					<p class="tocAuthor">by Paul Gallagher</p>
+				</div>
+			</div><img alt="clear" class="clear" src="../../../../../../graphics/display/r-1x16000-clear.gif" /></div>
+	</body>
+</html>

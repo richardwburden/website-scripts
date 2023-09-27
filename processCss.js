@@ -160,7 +160,7 @@ function getCharOverrides() {
 					var override = rule.selectorText.match(/span\.CharOverride\-\d+/g);
 					if (override !== null)
 					{
-						override[0] = override[0].substr(5);
+					    override[0] = override[0].substr(5);
 					}
 					else
 					{return;}
@@ -187,7 +187,7 @@ function processCss()
 //	console.log(stylevals);
 	var CharOverrideText = '';
 	var CharOverrides = getCharOverrides();
-//	console.log(CharOverrides);
+	console.log(CharOverrides);
  	for (var i=0; i<CharOverrides.length;i++)
 	{
 		if (typeof CharOverrides[i] === "undefined") {continue;}
@@ -208,8 +208,12 @@ function processCss()
 //		console.log(fv);
 		var va = span.css('vertical-align');
 //		console.log(va);
-		var ns = true;
-		var nw = true;
+		var ns = false;
+		var nw = false;
+		if (fw == 'normal')
+			{nw = true;}
+		if (fs == 'normal')
+			{ns = true;}
 		if (fw == 'bold' || fw > 500 || ff.match(/demi|bold/i))
 		{
 			nw = false;

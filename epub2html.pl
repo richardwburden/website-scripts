@@ -164,7 +164,6 @@ else
 {
     open(ARCHIVEINDEXTEMPLATE, "archive_issue_index_template.html") || die "can't open archive_issue_index_template.html for reading: $!";
 }
-open(ARCHIVEINDEXTEMPLATEDOCTYPE, "archive_issue_index_template_doctype.txt") || die "can't open archive_issue_index_doctype.txt for reading: $!";
 open(ARTICLETEMPLATE, "article_template.html") || die "can't open article_template.html for reading: $!";
 
 
@@ -179,6 +178,12 @@ my $domainName = $domain->attr('name');
 #default year end issue number is 52.  This can be overridden in the config file.
 my $yein = $options{'yearEndIssueNumber'};
 if (defined $yein and $yein > 0) {$yearEndIssueNumber = $yein}
+
+my $aitdtp = $options{'archiveIndexTemplateDoctypePath'};
+if (not defined $aitdtp) {$aitdtp = "archive_issue_index_template_doctype.txt"}
+
+open(ARCHIVEINDEXTEMPLATEDOCTYPE, $aitdtp) || die "can't open $aitdtp for reading: $!";
+
 
 my $bsp = $options{'browserScriptPath'};
 if (not defined $bsp) {$bsp = 'epub2htmlRunJS.bat'}

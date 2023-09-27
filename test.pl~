@@ -1,0 +1,12 @@
+print <<FOO
+
+what the hell
+
+am I going 
+
+to do
+
+?
+
+FOO
+;

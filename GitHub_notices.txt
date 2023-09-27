@@ -1,0 +1,12 @@
+[GitHub] A new public key was added to your account
+GitHub <noreply@github.com>	Thu, May 13, 2021 at 4:55 PM
+To: richardwburden <richard.w.burden@gmail.com>
+The following SSH key was added to your account:
+
+GitHub Desktop - 62U-WI10-RWB
+SHA256:Z8aYs38glGfCXE7niWxkjDUVwd/cpHufeQP/NY6SNYU
+
+If you believe this key was added in error, you can remove the key and disable
+access at the following location:
+
+https://github.com/settings/keys

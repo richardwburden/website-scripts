@@ -1,0 +1,5 @@
+
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n51-20211224\Uc9dPw7cXLsJ-QwM\index-nc.html -xsl:relocate.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n51-20211224\Uc9dPw7cXLsJ-QwM\index1.html
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n51-20211224\Uc9dPw7cXLsJ-QwM\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n51-20211224\Uc9dPw7cXLsJ-QwM\index0.html
