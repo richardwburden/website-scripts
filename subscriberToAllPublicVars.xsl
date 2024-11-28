@@ -38,7 +38,7 @@ java net.sf.saxon.Transform -s:index.xhtml -xsl:subscriberToAllPublic.xsl -o:%p%
 Upload indexp.html and verify that it is correct, then copy over to index.html and upload.
 -->
 
-<xsl:variable name="newdirs" select="'oe o h- o o o o l- o o o o o'" />
+<xsl:variable name="newdirs" select="'oe o h- o o o o l-'" />
 
-<xsl:variable name="issuedir" select="'eirv49n39-20221007/'" />
+<xsl:variable name="issuedir" select="'eirv51n39-20241004/'" />
 </xsl:stylesheet>

@@ -111,7 +111,7 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions">
   <!-- Make sure title has issue info -->
   <xsl:template match="title" priority="2">
     <xsl:copy>
-      <xsl:text>EIR</xsl:text><xsl:value-of select="normalize-space(//div[@class='tocIssueTitle'])" />
+      <xsl:text>EIR </xsl:text><xsl:value-of select="normalize-space(//div[@class='tocIssueTitle'])" />
     </xsl:copy>
   </xsl:template>
   

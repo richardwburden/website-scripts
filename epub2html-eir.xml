@@ -11,8 +11,9 @@
 
 
 <!-- the following paths are always taken as-is -->
-<option id="browserPath" value="C:\Users\rburden\AppData\Local\Yandex\YandexBrowser\Application\browser.exe">
-<!-- <option id="browserPath" value="C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"> -->
+<option id="browserPath" value="C:\Program Files (x86)\Google\Chrome\Application\new_chrome.exe">
+<!-- <option id="browserPath" value="C:\Program Files (x86)\Google\Chrome\Application\new_chrome.exe"> -->
 <option id="browserOptions" value="--headless --dump-dom --enable-logging  --disable-gpu"> <!-- default value is "--headless --dump-dom" -->
-<option id="browserScriptPath" value="C:\Dropbox_insecure\Dropbox\software\website-scripts\epub2htmlRunJS.bat">
+  <option id="browserScriptPath" value="C:\Dropbox_insecure\Dropbox\software\website-scripts\epub2htmlRunJS.bat">
+<option id="archiveIndexTemplateDoctypePath" value="archive_issue_index_template_doctype-utf8-Dell.txt">
 

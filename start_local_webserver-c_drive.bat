@@ -1,4 +1,4 @@
 C:
 cd \
-python -m http.server
+C:\emacs-26.3\bin\python.exe -m SimpleHTTPServer
 pause

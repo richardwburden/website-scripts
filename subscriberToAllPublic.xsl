@@ -128,7 +128,7 @@ xmlns:fn="http://www.w3.org/2005/xpath-functions">
 <xsl:template match="script/@type" priority="2"/>
 
 <!-- Remove all border and charoverride attributes -->
-<xsl:template match="@border|@class[starts-with(.,'charoverride')]" priority="2"/>
+<xsl:template match="@border|@class[starts-with(.,'charoverride')]" priority="2"/> 
 
 <!-- Remove all height and width attributes -->
 <xsl:template match="@height|@width" priority="2" />

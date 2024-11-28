@@ -195,6 +195,9 @@ foreach $infilepath (@infiles)
 
     push(@MajorSubheads,'','majorsubhead','class','h3','no more wrappers');
 
+    my @LynSubheads = $content->look_down('_tag','p','class',qr/^Subhead\-Lyn/i);
+    push(@LynSubheads,'','|','<','subhead','class','h4','+','em','no more wrappers');
+
     my @Subheads = $content->look_down('_tag','p','class',qr/^Subhead|Minor[\-\s]*section/i);
     push(@Subheads,'','subhead','class','h4');
 
@@ -350,7 +353,7 @@ foreach $infilepath (@infiles)
     my $tag = undef;
     my %attribs = ();
     my $arritem = undef;
-    my @arr_of_arrs = (\@footnote_links,\@footnote_anchors,\@FootnoteTexts,\@MajorSubheads,\@MajorLightSubheads,\@CenteredHeads,\@LightSubheads,\@Subheads,\@kickers,\@dkickers,\@editorials,\@bylines,\@Heads,\@ShortsHeads,\@ShortsTexts,\@italics,\@bolds,\@superscripts,\@subscripts,\@ucase,\@normals,\@normal_weights,\@layouts,\@h1s,\@extracts,\@extractbs,\@extractms,\@extractes,\@display_quotes,\@spaceAbove,\@departments,\@ArticleTitles,\@ArticleTitleNoKickers,\@ArticleBlurbs,\@ArticleBylines,\@cmt,\@sharpflats,\@emphases);
+    my @arr_of_arrs = (\@footnote_links,\@footnote_anchors,\@FootnoteTexts,\@MajorSubheads,\@MajorLightSubheads,\@CenteredHeads,\@LightSubheads,\@LynSubheads,\@Subheads,\@kickers,\@dkickers,\@editorials,\@bylines,\@Heads,\@ShortsHeads,\@ShortsTexts,\@italics,\@bolds,\@superscripts,\@subscripts,\@ucase,\@normals,\@normal_weights,\@layouts,\@h1s,\@extracts,\@extractbs,\@extractms,\@extractes,\@display_quotes,\@spaceAbove,\@departments,\@ArticleTitles,\@ArticleTitleNoKickers,\@ArticleBlurbs,\@ArticleBylines,\@cmt,\@sharpflats,\@emphases);
     while ($arr = shift(@arr_of_arrs))
     {
 	my @wrappers = ();
@@ -481,7 +484,7 @@ sub processCss ($$)
     my $cmd = "";
     if ($browserPath eq '')
     {
-	print "Open temp.html in a browser and save it to temp2.html, then hit Enter.\n";
+	print "Open $dirURL/temp.html in a browser and save it to $dir\\temp2.html, then hit Enter.\n";
 	$cmd = 'pause';
     }
     else

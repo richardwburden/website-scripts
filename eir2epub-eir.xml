@@ -4,9 +4,9 @@
 
   <option id="backup_prefix" value="eir2epub_" />
 
-<!-- the following paths are is always taken as-is -->
-<option id="browserPath" value="C:\Users\rburden\AppData\Local\Yandex\YandexBrowser\Application\browser.exe">
-<option id="browserOptions" value="--headless --dump-dom --enable-logging  --disable-gpu"> <!--  default value is "--headless --dump-dom" -->
+<!-- the following paths are is always taken as-is --> <!-- old values: "C:\Users\rburden\AppData\Local\Yandex\YandexBrowser\Application\browser.exe" "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" "C:\Program Files\Mozilla Firefox\firefox.exe" "C:\Program Files (x86)\Google\Chrome\Application\new_chrome.exe" -->
+<option id="browserPath" value="">
+<option id="browserOptions" value=""> <!--  default value is "--headless --dump-dom"; old values: "--headless --dump-dom --enable-logging  --disable-gpu" "--headless --dump-dom --disable-gpu --remote-debugging-port=9222" "-headless" "--headless --dump-dom --disable-gpu" -->
 
 <option id="localHostURL" value="http://localhost"> <!-- default value is "http://localhost:8000" -->
 <!-- the following paths assume a local webserver is running with document root URL defined as the value of localHostURL, above, and with the local file system pathname of the document root same as docroot defined above in the domain tag  -->
