@@ -1,0 +1,8 @@
+use HTML::TreeBuilder;
+use HTML::Element;
+
+%empty = (); #use as 3rd parameter for HTML::Element->as_HTML() to specify that the HTML generated shall close all open tags
+
+my $tree = HTML::TreeBuilder->new;
+$tree->parse(*STDIN);
+print $tree->as_HTML("","\t",%empty);

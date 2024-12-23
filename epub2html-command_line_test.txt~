@@ -1,0 +1,468 @@
+https://larouchepub.com/eiw/public/unlisted/2022/eirv49n05-20220204/odc9f_23xMa_cmev
+
+perlo -w epub2html.pl  --muai --ud 2022/eirv49n05-20220204/odc9f_23xMa_cmev --pft other -i ../Images=graphics/2022/4905 --iu ../Images=graphics/2022/4905 eir /r/eiw/private/2022/05/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2022\eirv49n05-20220204\odc9f_23xMa_cmev\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2022\eirv49n05-20220204\odc9f_23xMa_cmev\index.html
+
+perlo -w epub2html.pl --po ^
+-b Section0002.xhtml=other/editorials/2022/4905-war_with_russia_the_dignity_of.html ^
+-b 04-15_EIR05_section_a.xhtml=hzl/2022/4905-the_imminent_war_danger_still-hzl.html ^
+-b Section0003.xhtml=other/2022/4905-stop_supplying_weapons_and_usi.html ^
+-b 16-31_EIR05_section_b.xhtml=lar/2022/4905-a_u_s_national_strategy-lar.html ^
+-b Section0007.xhtml=hzl/2022/4905-address_to_the_national_assemb-hzl.html ^
+-b Section0008.xhtml=other/2022/4905-neither_left_nor_right_for_the.html ^
+-b Section0009.xhtml=lar/2022/4905-never_accept_the_idea_of_being-lar.html ^
+-i ../Images=graphics/2022/4905 eir /r/eiw/private/2022/05/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2022\eirv49n05-20220204\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2022\eirv49n05-20220204\index.html
+
+-b Section0002.xhtml=other/2022/4905-war_with_russia_the_dignity_of.html ^
+-b 04-15_EIR05_section_a.xhtml=other/2022/4905-the_imminent_war_danger_still.html ^
+-b Section0003.xhtml=other/2022/4905-stop_supplying_weapons_and_usi.html ^
+-b Section0004.xhtml=other/2022/4905-the_unipolar_world_is_dead.html ^
+-b 16-31_EIR05_section_b.xhtml=other/2022/4905-a_u_s_national_strategy.html ^
+-b Section0005.xhtml=other/2022/4905-norway_spurs_support_for_afgha.html ^
+-b Section0006.xhtml=other/2022/4905-africa_briefs.html ^
+-b 32-46_EIR05_section_c.xhtml=other/2022/4905-peru_s_christian_democratic_pa.html ^
+-b Section0007.xhtml=other/2022/4905-address_to_the_national_assemb.html ^
+-b Section0008.xhtml=other/2022/4905-neither_left_nor_right_for_the.html ^
+-b Section0009.xhtml=other/2022/4905-never_accept_the_idea_of_being.html ^
+-b Section0010.xhtml=other/2022/4905-economics_briefs.html ^
+-b Section0011.xhtml=other/2022/4905-science_and_technology.html ^
+-b 47-58_EIR05_section_d.xhtml=other/2022/4905-cooperate_with_china_it_is_not.html ^
+
+https://larouchepub.com/eiw/public/unlisted/2022/eirv49n04-20220128/pvb3sUaIxGaQ0c_3
+
+perlo -w epub2html.pl  --muai --ud 2022/eirv49n04-20220128/pvb3sUaIxGaQ0c_3 --pft other -i ../Images=graphics/2022/4904 --iu ../Images=graphics/2022/4904 eir /r/eiw/private/2022/04/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2022\eirv49n04-20220128\pvb3sUaIxGaQ0c_3\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2022\eirv49n04-20220128\pvb3sUaIxGaQ0c_3\index.html
+
+perlo -w epub2html.pl --po ^
+-b Section0002.xhtml=other/editorials/2022/4904-world_peace_is_hanging_by_a_th.html ^
+-b 06-24_EIR04_section_a.xhtml=other/2022/4904-focus_on_what_unites_us_rather.html ^
+-b Section0005.xhtml=lar/2022/4904-world_system_on_weimar_collaps-lar.html ^
+-b 25-45_EIR04_section_b.xhtml=hzl/2022/4904-operation_ibn_sina_toward_a_wo-hzl.html ^
+-b 46-59_EIR04_section_c.xhtml=other/interviews/2022/4904-only_a_systemic_change_can_sav.html ^
+-i ../Images=graphics/2022/4904 eir /r/eiw/private/2022/04/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2022\eirv49n04-20220128\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2022\eirv49n04-20220128\index.html
+
+-b Section0002.xhtml=other/2022/4904-world_peace_is_hanging_by_a_th.html ^
+-b 06-24_EIR04_section_a.xhtml=other/2022/4904-focus_on_what_unites_us_rather.html ^
+-b Section0003.xhtml=other/2022/4904-the_u_s_nato_hidden_war_threat.html ^
+-b Section0004.xhtml=other/2022/4904-sacrificing_growth_to_protect.html ^
+-b Section0005.xhtml=other/2022/4904-world_system_on_weimar_collaps.html ^
+-b Section0005a.xhtml=other/2022/4904-china_briefs.html ^
+-b 25-45_EIR04_section_b.xhtml=other/2022/4904-operation_ibn_sina_toward_a_wo.html ^
+-b Section0006.xhtml=other/2022/4904-evolution_of_dangerous_new_cov.html ^
+-b 46-59_EIR04_section_c.xhtml=other/2022/4904-only_a_systemic_change_can_sav.html ^
+-b Section0007.xhtml=other/2022/4904-international_briefs.html ^
+
+
+https://larouchepub.com/eiw/public/unlisted/2022/eirv49n03-20220121/iPsUeM8Nw3_cHaM-
+
+perlo -w epub2html.pl  --muai --ud 2022/eirv49n03-20220121/iPsUeM8Nw3_cHaM- --pft other -i ../Images=graphics/2022/4903 --iu ../Images=graphics/2022/4903 eir /r/eiw/private/2022/03/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2022\eirv49n03-20220121\iPsUeM8Nw3_cHaM-\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2022\eirv49n03-20220121\iPsUeM8Nw3_cHaM-\index.html
+
+perlo -w epub2html.pl --po ^
+-b Section0002.xhtml=other/editorials/2022/4903-building_order_out_of_chaos.html ^
+-b 04-38_EIR03_a_section.xhtml=hzl/2022/4903-the_westphalian_principle_afte-hzl.html ^
+-b Section0004.xhtml=other/interviews/2022/4903-will_the_u_s_russian_strategic.html ^
+-b Section0005.xhtml=lar/2022/4903-now_rid_nato_of_the_entente_co-lar.html ^
+-b 39-48_EIR03_section_b.xhtml=other/2022/4903-a_truly_evil_golem_billionaire.html ^
+-i ../Images=graphics/2022/4903 eir /r/eiw/private/2022/03/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2022\eirv49n03-20220121\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2022\eirv49n03-20220121\index.html
+
+-b Section0002.xhtml=other/2022/4903-building_order_out_of_chaos.html ^
+-b 04-38_EIR03_a_section.xhtml=other/2022/4903-the_westphalian_principle_afte.html ^
+-b Section0003.xhtml=other/2022/4903-new_strategic_architecture_nee.html ^
+-b Section0004.xhtml=other/2022/4903-will_the_u_s_russian_strategic.html ^
+-b Section0005.xhtml=other/2022/4903-now_rid_nato_of_the_entente_co.html ^
+-b Section0006.xhtml=other/2022/4903-ray_mcgovern_putin_is_being_he.html ^
+-b Section0007.xhtml=other/2022/4903-un_direct_appeal_to_u_s_state.html ^
+-b Section0007box.xhtml=other/2022/4903-stop_the_murder_of_afghanistan.html ^
+-b Section0008.xhtml=other/2022/4903-end_u_s_addiction_to_never_end.html ^
+-b 39-48_EIR03_section_b.xhtml=other/2022/4903-a_truly_evil_golem_billionaire.html ^
+-b 49-55_EIR03_section_c.xhtml=other/2022/4903-u_s_stock_market_valuation_is.html ^
+-b Section0009.xhtml=other/2022/4903-ibero_america_briefs.html ^
+-b Section0010.xhtml=other/2022/4903-africa_briefs.html ^
+-b Section0011.xhtml=other/2022/4903-science_technology_briefs.html ^
+
+https://larouchepub.com/eiw/public/unlisted/2022/eirv49n02-20220114/sovpe7c8Bw2Ms_aX
+
+perlo -w epub2html.pl  --muai --ud 2022/eirv49n02-20220114/sovpe7c8Bw2Ms_aX --pft other -i ../Images=graphics/2022/4902 --iu ../Images=graphics/2022/4902 eir /r/eiw/private/2022/02/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2022\eirv49n02-20220114\sovpe7c8Bw2Ms_aX\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2022\eirv49n02-20220114\sovpe7c8Bw2Ms_aX\index.html
+
+perlo -w epub2html.pl --po ^
+-b Section0002.xhtml=other/editorials/2022/4902-never_again.html ^
+-b 04-32_EIR_02_section_a.xhtml=other/2022/4902-u_s_russia_confrontation_is_a.html ^
+-b Section0002a.xhtml=other/interviews/2022/4902-why_the_u_s_and_nato_should_si.html ^
+-b 33-58_EIR01_section_b.xhtml=lar/2022/4902-the_american_system_of_politic-lar.html ^
+-b Section0005.xhtml=other/2022/4902-a_declaration_of_emergency_for.html ^
+-i ../Images=graphics/2022/4902 eir /r/eiw/private/2022/02/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2022\eirv49n02-20220114\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2022\eirv49n02-20220114\index.html
+
+
+-b Section0002.xhtml=other/2022/4902-never_again.html ^
+-b 04-32_EIR_02_section_a.xhtml=other/2022/4902-u_s_russia_confrontation_is_a.html ^
+-b Section0002a.xhtml=other/2022/4902-why_the_u_s_and_nato_should_si.html ^
+-b Section0003.xhtml=other/2022/4902-u_s_confrontation_with_china_i.html ^
+-b Section0004.xhtml=other/2022/4902-china_briefs.html ^
+-b 33-58_EIR01_section_b.xhtml=other/2022/4902-the_american_system_of_politic.html ^
+-b Section0005.xhtml=other/2022/4902-a_declaration_of_emergency_for.html ^
+-b Section0006.xhtml=other/2022/4902-failure_to_contain_the_pandemi.html ^
+-b Section0007.xhtml=other/2022/4902-omicron_s_message_for_the_year.html ^
+
+https://larouchepub.com/eiw/public/unlisted/2022/eirv49n01-20220107/pki9cyzM4jw1dcYs
+
+perlo -w epub2html.pl  --muai --ud 2022/eirv49n01-20220107/pki9cyzM4jw1dcYs --pft other -i ../Images=graphics/2022/4901 --iu ../Images=graphics/2022/4901 eir /r/eiw/private/2022/01/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2022\eirv49n01-20220107\pki9cyzM4jw1dcYs\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2022\eirv49n01-20220107\pki9cyzM4jw1dcYs\index.html
+
+perlo -w epub2html.pl --po ^
+-b Section0002.xhtml=other/editorials/2022/4901-message_for_the_new_year.html ^
+-b Section0003.xhtml=other/editorials/2022/4901-to_stop_thermonuclear_war_brin.html ^
+-b 06-43_EIR_section_a.xhtml=other/2022/4901-p5_nations_issue_joint_stateme.html ^
+-b Section0004.xhtml=other/2022/4901-are_we_sleepwalking_into_therm.html ^
+-b Section0008.xhtml=other/interviews/2022/4901-china_and_hamiltonian_economic.html ^
+-b Section0010.xhtml=hzl/2022/4901-we_need_to_correct_the_mistake-hzl.html ^
+-i ../Images=graphics/2022/4901 eir /r/eiw/private/2022/01/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2022\eirv49n01-20220107\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2022\eirv49n01-20220107\index.html
+
+
+-b Section0002.xhtml=other/2022/4901-message_for_the_new_year.html ^
+-b Section0003.xhtml=other/2022/4901-to_stop_thermonuclear_war_brin.html ^
+-b 06-43_EIR_section_a.xhtml=other/2022/4901-p5_nations_issue_joint_stateme.html ^
+-b Section0004.xhtml=other/2022/4901-are_we_sleepwalking_into_therm.html ^
+-b Section0005.xhtml=other/2022/4901-alexandrov_ensemble_commemorat.html ^
+-b Section0006.xhtml=other/2022/4901-amb_dmitry_chumakov_remarks_at.html ^
+-b Section0007.xhtml=other/2022/4901-helga_zepp_larouche_message_of.html ^
+-b Section0008.xhtml=other/2022/4901-china_and_hamiltonian_economic.html ^
+-b Section0009.xhtml=other/2022/4901-revive_the_spirit_of_fdr_to_br.html ^
+-b 44-57_EIR01_section_b.xhtml=other/2022/4901-afghanistan_crisis_humanity_co.html ^
+-b Section0010.xhtml=other/2022/4901-we_need_to_correct_the_mistake.html ^
+-b Section0011.xhtml=other/2022/4901-green_agenda_means_famine_stop.html ^
+-b Section0012.xhtml=other/2022/4901-africa_briefs.html ^
+-b 58-64_EIR01_section_cindd.xhtml=other/2022/4901-update_on_the_webb_telescope_a.html ^
+-b Section0013.xhtml=other/2022/4901-joel_dejean_kepler_and_the_jam.html ^
+-b Section0014.xhtml=other/2022/4901-science_technology_briefs.html ^
+
+
+https://larouchepub.com/eiw/public/unlisted/2021/eirv48n51-20211224/Uc9dPw7cXLsJ-QwM
+
+perlo -w epub2html.pl  --muai --ud 2021/eirv48n51-20211224/Uc9dPw7cXLsJ-QwM --pft other -i ../Images=graphics/2021/4851 --iu ../Images=graphics/2021/4851 eir /r/eiw/private/2021/51/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n51-20211224\Uc9dPw7cXLsJ-QwM\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n51-20211224\Uc9dPw7cXLsJ-QwM\index.html
+
+perlo -w epub2html.pl --po ^
+-b Section0002.xhtml=other/editorials/2021/4851-as_60_years_ago_the_threat_of.html ^
+-b Section0003.xhtml=other/editorials/2021/4851-the_fate_of_afghanistan_and_th.html ^
+-b 07-35_EIR51_section_a.xhtml=other/2021/4851-u_s_foreign_policy_is_dangerou.html ^
+-b Section0006.xhtml=other/2021/4851-why_the_russian_proposals_to_n.html ^
+-b 36-52_EIR51_b-section.xhtml=lar/2021/4851-moths_mice_and_men-lar.html ^
+-b Section0011.xhtml=other/2021/4851-a_second_larouche_independent.html ^
+-b Section0012.xhtml=other/editorials/2021/4851-you_should_know_the_mystery_of.html ^
+-i ../Images=graphics/2021/4851 eir /r/eiw/private/2021/51/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n51-20211224\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n51-20211224\index.html
+
+-b Section0002.xhtml=other/2021/4851-as_60_years_ago_the_threat_of.html ^
+-b Section0003.xhtml=other/2021/4851-the_fate_of_afghanistan_and_th.html ^
+-b 07-35_EIR51_section_a.xhtml=other/2021/4851-u_s_foreign_policy_is_dangerou.html ^
+-b Section0004.xhtml=other/2021/4851-u_s_policy_is_suffocating_the.html ^
+-b Section0005.xhtml=other/2021/4851-on_the_eve_of_the_oic_emergenc.html ^
+-b Section0006.xhtml=other/2021/4851-why_the_russian_proposals_to_n.html ^
+-b 36-52_EIR51_b-section.xhtml=other/2021/4851-moths_mice_and_men.html ^
+-b Section0007.xhtml=other/2021/4851-kissinger_s_1974_plan_for_food.html ^
+-b Section0008.xhtml=other/2021/4851-afghanistan_the_dimensions_of.html ^
+-b Section0009.xhtml=other/2021/4851-relief_shipment_sent_to_mozamb.html ^
+-b Section0010.xhtml=other/2021/4851-economics_briefs.html ^
+-b 53-60_EIR51_c-section.xhtml=other/2021/4851-summit_for_democracy_cover_for.html ^
+-b Section0011.xhtml=other/2021/4851-a_second_larouche_independent.html ^
+-b Section0012.xhtml=other/2021/4851-you_should_know_the_mystery_of.html ^
+
+
+https://larouchepub.com/eiw/public/unlisted/2021/eirv48n50-20211217/BDZmd8c_c3Nskc7_
+
+perlo -w epub2html.pl  --muai --ud 2021/eirv48n50-20211217/BDZmd8c_c3Nskc7_ --pft other -i ../Images=graphics/2021/4850 --iu ../Images=graphics/2021/4850 eir /r/eiw/private/2021/50/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n50-20211217\BDZmd8c_c3Nskc7_\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n50-20211217\BDZmd8c_c3Nskc7_\index.html
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n50-20211217\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n50-20211217\index.html
+
+perlo -w epub2html.pl --po ^
+-b Section0002.xhtml=lar/2021/4850-the_four_new_laws_to_save_the-lar.html ^
+-b Section0003.xhtml=hzl/2021/4850-psychopaths_are_threatening_ou.html ^
+-b Section0004.xhtml=other/2021/4850-afghanistan_threatened_with_st.html ^
+-b Section0010.xhtml=other/2021/4850-on_aesthetic_education_in_chin.html ^
+-i ../Images=graphics/2021/4850 eir /r/eiw/private/2021/50/Text/
+
+-b Section0002.xhtml=other/2021/4850-the_four_new_laws_to_save_the.html ^
+-b 06-14_EIR50_section_a.xhtml=other/2021/4850-the_green_new_deal_spear_point.html ^
+-b Section0003.xhtml=other/2021/4850-psychopaths_are_threatening_ou.html ^
+-b Section0004.xhtml=other/2021/4850-afghanistan_threatened_with_st.html ^
+-b 15-23_EIR50_b-section.xhtml=other/2021/4850-focac_china_s_massive_role_in.html ^
+-b Section0005.xhtml=other/2021/4850-international_briefs.html ^
+-b Section0006.xhtml=other/2021/4850-ibero_america_briefs.html ^
+-b 24-55_EIR50_section_c.xhtml=other/2021/4850-conference_program.html ^
+-b Section0007.xhtml=other/2021/4850-the_squid_game_and_other_thing.html ^
+-b Section0008.xhtml=other/2021/4850-education_race_against_time.html ^
+-b Section0009.xhtml=other/2021/4850-the_chinese_commitment_to_educ.html ^
+-b Section0010.xhtml=other/2021/4850-on_aesthetic_education_in_chin.html ^
+-b Section0011.xhtml=other/2021/4850-on_education.html ^
+-b Section0012.xhtml=other/2021/4850-how_the_world_health_platform.html ^
+-b Section0013.xhtml=other/2021/4850-the_ontological_beauty_of_our.html ^
+-b Section0014.xhtml=other/2021/4850-panel_4_discussion_session.html ^
+
+https://larouchepub.com/eiw/public/unlisted/2021/eirv48n49-20211210/Dluv83cFs0Mc-Qsx
+
+perlo -w epub2html.pl  --muai --ud 2021/eirv48n49-20211210/Dluv83cFs0Mc-Qsx --pft other -i ../Images=graphics/2021/4849 --iu ../Images=graphics/2021/4849 eir /r/eiw/private/2021/49/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n49-20211210\Dluv83cFs0Mc-Qsx\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n49-20211210\Dluv83cFs0Mc-Qsx\index.html
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n49-20211210\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n49-20211210\index.html
+
+perlo -w epub2html.pl --po ^
+-b Section0002.xhtml=other/editorials/2021/4849-pandemic_forces_rethinking_int.html ^
+-b 06-12_EIR49_a-section.xhtml=other/2021/4849-only_multi_nation_action_for_w.html ^
+-b Section0004.xhtml=other/2021/4849-avoiding_the_coming_catastroph.html ^
+-b Section0011.xhtml=hzl/2021/4849-what_to_expect_from_the_new_ge-hzl.html ^
+-b 46-53_EIR48_d-section_.xhtml=other/2021/4849-ugly_fraud_of_the_state_depart.html ^
+-b Section0014.xhtml=other/2021/4849-comment_on_the_summit_for_demo.html ^
+-i ../Images=graphics/2021/4849 eir /r/eiw/private/2021/49/Text/
+
+-b Section0002.xhtml=other/2021/4849-pandemic_forces_rethinking_int.html ^
+-b 06-12_EIR49_a-section.xhtml=other/2021/4849-only_multi_nation_action_for_w.html ^
+-b Section0003.xhtml=other/2021/4849-science_technology_briefs.html ^
+-b 13-32_EIR49_b-section.xhtml=other/2021/4849-conference_program.html ^
+-b Section0004.xhtml=other/2021/4849-avoiding_the_coming_catastroph.html ^
+-b Section0005.xhtml=other/2021/4849-socio_economic_conditions_in_a.html ^
+-b Section0006.xhtml=other/2021/4849-avoid_collapsing_economy_and_h.html ^
+-b Section0007.xhtml=other/2021/4849-the_great_game_must_finally_co.html ^
+-b Section0008.xhtml=other/2021/4849-panel_2_first_discussion_sessi.html ^
+-b Section0009.xhtml=other/2021/4849-comment_from_former_u_s_diplom.html ^
+-b Section0010.xhtml=other/2021/4849-leading_italian_union_leader_b.html ^
+-b 33-45_EIR49_c-section.xhtml=other/2021/4849-nato_threatens_to_cross_moscow.html ^
+-b Section0011.xhtml=other/2021/4849-what_to_expect_from_the_new_ge.html ^
+-b Section0012.xhtml=other/2021/4849-africa_briefs.html ^
+-b Section0013.xhtml=other/2021/4849-44_china_briefs.html ^
+-b 46-53_EIR48_d-section_.xhtml=other/2021/4849-ugly_fraud_of_the_state_depart.html ^
+-b Section0014.xhtml=other/2021/4849-comment_on_the_summit_for_demo.html ^
+-b Section0015.xhtml=other/2021/4849-not_wise_to_throw_stones_when.html ^
+-b Section0016.xhtml=other/2021/4849-our_own_democracy_is_in_bad_sh.html ^
+-b Section0017.xhtml=other/2021/4849-unfulfilled_fight_for_truth_be.html ^
+
+
+
+https://larouchepub.com/eiw/public/unlisted/2021/eirv48n48-20211203/xpob9fyDwLsq_3x
+
+perlo -w epub2html.pl  --muai --ud 2021/eirv48n48-20211203/xpob9fyDwLsq_3x --pft other -i ../Images=graphics/2021/4848 --iu ../Images=graphics/2021/4848 eir /r/eiw/private/2021/48/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n48-20211203\xpob9fyDwLsq_3x\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n48-20211203\xpob9fyDwLsq_3x\index.html
+
+perlo -w epub2html.pl --po ^
+-b Section0002.xhtml=other/2021/4848-open_letter_to_all_medical_exp.html ^
+-b Section0003.xhtml=other/editorials/2021/4848-the_spirit_of_operation_ibn_si.html ^
+-b 07-20_EIR48_a-section.xhtml=other/2021/4848-yemen_international_conference.html ^
+-b Section0004.xhtml=other/2021/4848-schiller_institute_messages_to.html ^
+-b Section0006.xhtml=other/2021/4848-the_larouche_movement_s_role_i.html ^
+-b Section0007.xhtml=other/2021/4848-a_message_to_the_young_people.html ^
+-i ../Images=graphics/2021/4848 eir /r/eiw/private/2021/48/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n48-20211203\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n48-20211203\index.html
+
+-b Section0002.xhtml=other/2021/4848-open_letter_to_all_medical_exp.html ^
+-b Section0003.xhtml=other/2021/4848-the_spirit_of_operation_ibn_si.html ^
+-b 07-20_EIR48_a-section.xhtml=other/2021/4848-yemen_international_conference.html ^
+-b Section0004.xhtml=other/2021/4848-schiller_institute_messages_to.html ^
+-b Section0005.xhtml=other/2021/4848-is_ecology_sick_from_fixism.html ^
+-b 21-54_EIR48_a-section.xhtml=other/2021/4848-conference_program.html ^
+-b Section0006.xhtml=other/2021/4848-the_larouche_movement_s_role_i.html ^
+-b Section0007.xhtml=other/2021/4848-a_message_to_the_young_people.html ^
+-b Section0008.xhtml=other/2021/4848-earthquake_forecasting_at_the.html ^
+-b Section0009.xhtml=other/2021/4848-on_sustainability.html ^
+-b Section0010.xhtml=other/2021/4848-cop26_post_mortem_end_eco_colo.html ^
+-b Section0011.xhtml=other/2021/4848-stop_the_weaponization_of_scie.html ^
+-b Section0012.xhtml=other/2021/4848-nobel_winners_climate_models_a.html ^
+-b Section0013.xhtml=other/2021/4848-panel_3_discussion_session.html ^
+
+https://larouchepub.com/eiw/public/unlisted/2021/eirv48n47-20211126/kpc0wM3LA_1N2zD
+
+perlo -w epub2html.pl  --muai --ud 2021/eirv48n47-20211126/kpc0wM3LA_1N2zD --pft other -i ../Images=graphics/2021/4847 --iu ../Images=graphics/2021/4847 eir /r/eiw/private/2021/47/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n47-20211126\kpc0wM3LA_1N2zD\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n47-20211126\kpc0wM3LA_1N2zD\index.html
+
+perlo -w epub2html.pl --po ^
+-b Section0002.xhtml=other/editorials/2021/4847-u_s_fusion_power_breakthrough.html ^
+-b 05-13_EIR47_a-section.xhtml=hzl/2021/4847-project_ibn_sina_restore_afgha-hzl.html ^
+-b Section0006.xhtml=other/2021/4847-the_strategy_for_destroying_do.html ^
+-b Section0010.xhtml=other/2021/4847-urgent_need_for_world_health_s.html ^
+-b Section0019.xhtml=lar/2021/4847-for_a_possible_second_edition-lar.html ^
+-i ../Images=graphics/2021/4847 eir /r/eiw/private/2021/47/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n47-20211126\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n47-20211126\index.html
+
+-b Section0002.xhtml=other/2021/4847-u_s_fusion_power_breakthrough.html ^
+-b 05-13_EIR47_a-section.xhtml=other/2021/4847-project_ibn_sina_restore_afgha.html ^
+-b Section0003.xhtml=other/2021/4847-biden_xi_meeting_china_asks_wi.html ^
+-b Section0004.xhtml=other/2021/4847-international_briefs.html ^
+-b Section0005.xhtml=other/2021/4847-china_briefs.html ^
+-b 14-56_EIR47_b-section.xhtml=other/2021/4847-conference_program.html ^
+-b Section0006.xhtml=other/2021/4847-the_strategy_for_destroying_do.html ^
+-b Section0007.xhtml=other/2021/4847-make_the_schiller_institute_pl.html ^
+-b Section0008.xhtml=other/2021/4847-haiti_and_afghanistan_needed_l.html ^
+-b Section0009.xhtml=other/2021/4847-greetings_to_the_schiller_inst.html ^
+-b Section0010.xhtml=other/2021/4847-urgent_need_for_world_health_s.html ^
+-b Section0011.xhtml=other/2021/4847-infrastructure_and_education_k.html ^
+-b Section0012.xhtml=other/2021/4847-u_s_reserve_army_to_aid_in_rec.html ^
+-b Section0013.xhtml=other/2021/4847-community_healthcare_workers_i.html ^
+-b Section0014.xhtml=other/2021/4847-healthcare_is_a_basic_human_ri.html ^
+-b Section0015.xhtml=other/2021/4847-greetings_from_the_christian_d.html ^
+-b Section0016.xhtml=other/2021/4847-second_discussion_session.html ^
+-b Section0017.xhtml=other/2021/4847-german_green_law_ranks_wolves.html ^
+-b Section0018.xhtml=other/2021/4847-greetings_from_kansas.html ^
+-b Section0019.xhtml=other/2021/4847-for_a_possible_second_edition.html ^
+-b Section0020.xhtml=other/2021/4847-windsors_carbon_footprint_is_o.html ^
+-b Section0021.xhtml=other/2021/4847-science_technology_briefs.html ^
+
+
+
+
+https://larouchepub.com/eiw/public/unlisted/2021/eirv48n46-20211119/spov9dEs_zmCw2La
+
+perlo -w epub2html.pl  --muai --ud 2021/eirv48n46-20211119/spov9dEs_zmCw2La --pft other -i ../Images=graphics/2021/4846 --iu ../Images=graphics/2021/4846 eir /r/eiw/private/2021/46/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n46-20211119\spov9dEs_zmCw2La\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n46-20211119\spov9dEs_zmCw2La\index.html
+
+perlo -w epub2html.pl --po ^
+-b Section0002.xhtml=other/editorials/2021/4846-stop_the_attempt_to_shut_down.html ^
+-b Section0002a.xhtml=other/editorials/2021/4846-someone_doesn_t_want_you_to_kn.html ^
+-b 05-49_EIR46_a-section.xhtml=hzl/2021/4846-new_dark_age_or_peace_through-hzl.html ^
+-b Section0003.xhtml=other/2021/4846-nov_13_14_schiller_conference.html ^
+-b Section0004.xhtml=lar/2021/4846-creativity_as_such-lar.html ^
+-b Section0005.xhtml=other/2021/4846-a_terrible_end_or_a_new_paradi.html ^
+-b Section0006.xhtml=other/2021/4846-major_country_relations_and_gl.html ^
+-b Section0008.xhtml=other/2021/4846-the_situation_in_afghanistan_a.html ^
+-b Section0009.xhtml=other/2021/4846-is_there_a_pathway_for_an_impr.html ^
+-b Section0010.xhtml=other/2021/4846-first_discussion_session.html ^
+-b Section0011.xhtml=other/2021/4846-u_s_china_relations_potential.html ^
+-b Section0012.xhtml=other/2021/4846-the_survival_of_our_world_depe.html ^
+-b Section0013.xhtml=other/2021/4846-brotherhood_is_the_best_wealth.html ^
+-b Section0014.xhtml=other/2021/4846-greeting_to_the_conference_fro.html ^
+-b Section0015.xhtml=other/2021/4846-second_discussion_session.html ^
+-i ../Images=graphics/2021/4846 eir /r/eiw/private/2021/46/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n46-20211119\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n46-20211119\index.html
+
+-b Section0002.xhtml=other/2021/4846-stop_the_attempt_to_shut_down.html ^
+-b Section0002a.xhtml=other/2021/4846-someone_doesn_t_want_you_to_kn.html ^
+-b 05-49_EIR46_a-section.xhtml=other/2021/4846-new_dark_age_or_peace_through.html ^
+-b Section0003.xhtml=other/2021/4846-nov_13_14_schiller_conference.html ^
+-b Section0004.xhtml=other/2021/4846-creativity_as_such.html ^
+-b Section0005.xhtml=other/2021/4846-a_terrible_end_or_a_new_paradi.html ^
+-b Section0006.xhtml=other/2021/4846-major_country_relations_and_gl.html ^
+-b Section0008.xhtml=other/2021/4846-the_situation_in_afghanistan_a.html ^
+-b Section0009.xhtml=other/2021/4846-is_there_a_pathway_for_an_impr.html ^
+-b Section0010.xhtml=other/2021/4846-first_discussion_session.html ^
+-b Section0011.xhtml=other/2021/4846-u_s_china_relations_potential.html ^
+-b Section0012.xhtml=other/2021/4846-the_survival_of_our_world_depe.html ^
+-b Section0013.xhtml=other/2021/4846-brotherhood_is_the_best_wealth.html ^
+-b Section0014.xhtml=other/2021/4846-greeting_to_the_conference_fro.html ^
+-b Section0015.xhtml=other/2021/4846-second_discussion_session.html ^
+-b Section0016.xhtml=other/2021/4846-economics_briefs.html ^
+-b Section0017.xhtml=other/2021/4846-africa_briefs.html ^
+
+https://larouchepub.com/eiw/public/unlisted/2021/eirv48n45-20211112/ous8cH2q_xnKscrN
+
+perlo -w epub2html.pl  --muai --ud 2021/eirv48n45-20211112/ous8cH2q_xnKscrN --pft other -i ../Images=graphics/2021/4845 --iu ../Images=graphics/2021/4845 eir /r/eiw/private/2021/45/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n45-20211112\ous8cH2q_xnKscrN\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n45-20211112\ous8cH2q_xnKscrN\index.html
+
+perlo -w epub2html.pl --po ^
+-b Section0002.xhtml=other/editorials/2021/4845-lights_out_at_cop26_lights_on.html ^
+-b 04-11_EIR45_a-section.xhtml=hzl/2021/4845-webcast_we_can_end_the_self_de-hzl.html ^
+-b Section0003.xhtml=other/2021/4845-all_moral_resources_of_humanit.html ^
+-b Section0005.xhtml=other/2021/4845-mounting_opposition_to_malthus.html ^
+-b Section0006.xhtml=other/2021/4845-clintel_message_to_national_po.html ^
+-i ../Images=graphics/2021/4845 eir /r/eiw/private/2021/45/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n45-20211112\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n45-20211112\index.html
+
+-b Section0002.xhtml=other/2021/4845-lights_out_at_cop26_lights_on.html ^
+-b 04-11_EIR45_a-section.xhtml=other/2021/4845-webcast_we_can_end_the_self_de.html ^
+-b Section0003.xhtml=other/2021/4845-all_moral_resources_of_humanit.html ^
+-b 12-44_EIR44_b-section.xhtml=other/2021/4845-only_action_by_governments_can.html ^
+-b Section0004.xhtml=other/2021/4845-british_demand_faster_green_ne.html ^
+-b Section0005.xhtml=other/2021/4845-mounting_opposition_to_malthus.html ^
+-b Section0006.xhtml=other/2021/4845-clintel_message_to_national_po.html ^
+-b Section0007.xhtml=other/2021/4845-economists_who_were_usually_st.html ^
+-b 45-52_EIR45_c-section.xhtml=other/2021/4845-a_western_perspective_on_china.html ^
+-b Section0008.xhtml=other/2021/4845-international_briefs.html ^
+-b Section0009.xhtml=other/2021/4845-china_briefs.html ^
+-b Section0010.xhtml=other/2021/4845-ibero_america_briefs.html ^
+-b 53-57_EIR45_d-section.xhtml=other/2021/4845-demagogues_manipulation_of_fea.html ^
+
+https://larouchepub.com/eiw/public/unlisted/2021/eirv48n44-20211105/jod9C3Ls-A3XAvr2
+
+perlo -w epub2html.pl  --muai --ud 2021/eirv48n44-20211105/jod9C3Ls-A3XAvr2 --pft other -i ../Images=graphics/2021/4844 --iu ../Images=graphics/2021/4844 eir /r/eiw/private/2021/44/Text/
+
+perlo -w epub2html.pl --po ^
+-b Section0002.xhtml=other/editorials/2021/4844-operation_ibn_sina_an_appeal_f.html ^
+-b Section0003.xhtml=lar/2021/4844-implications_of_the_gore_hoax-lar.html ^
+-b Section0005.xhtml=hzl/2021/4844-coming_fall_of_the_cult_of_gaia-hzl.html ^
+-b 43-55_EIR44_Section_d.xhtml=other/2021/4844-act_now_to_prevent_hunger_geno.html ^
+-b Section0008.xhtml=other/2021/4844-is_flop26_triggering_an_escala.html ^
+-i ../Images=graphics/2021/4844 --iu ../Images=graphics/2021/4844 eir /r/eiw/private/2021/44/Text/
+
+-b Section0002.xhtml=other/2021/4844-operation_ibn_sina_an_appeal_f.html ^
+-b 05-21_EIR44_Section_a.xhtml=other/2021/4844-larouche_s_triple_curve_explai.html ^
+-b Section0003.xhtml=other/2021/4844-implications_of_the_gore_hoax.html ^
+-b Section0004.xhtml=other/2021/4844-science_technology.html ^
+-b 22-40_EIR44_Section_b.xhtml=other/2021/4844-international_youth_dialogue_w.html ^
+-b Section0005.xhtml=other/2021/4844-the_coming_fall_of_the_cult_of.html ^
+-b Section0006.xhtml=other/2021/4844-china_cracks_down_on_big_tech.html ^
+-b 41-42_EIR44_Section_c.xhtml=other/2021/4844-all_moral_resources_of_humanit.html ^
+-b 43-55_EIR44_Section_d.xhtml=other/2021/4844-act_now_to_prevent_hunger_geno.html ^
+-b Section0007.xhtml=other/2021/4844-45_china_and_u_s_farmbelt_push.html ^
+-b Section0008.xhtml=other/2021/4844-is_flop26_triggering_an_escala.html ^
+-b Section0009.xhtml=other/2021/4844-africa_briefs.html ^
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n44-20211105\jod9C3Ls-A3XAvr2\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n44-20211105\jod9C3Ls-A3XAvr2\index.html
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n44-20211105\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n44-20211105\index.html
+
+
+
+https://larouchepub.com/eiw/public/unlisted/2021/eirv48n43-20211029/pfiMcG3s_7c6Zqdm
+
+perlo -w epub2html.pl  --muai --ud 2021/eirv48n43-20211029/pfiMcG3s_7c6Zqdm --pft other -i ../Images=graphics/2021/4843 --iu ../Images=graphics/2021/4843 eir /r/eiw/private/2021/43/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n43-20211029\pfiMcG3s_7c6Zqdm\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\unlisted\2021\eirv48n43-20211029\pfiMcG3s_7c6Zqdm\index.html
+
+perlo -w epub2html.pl --po ^
+-b Section0002.xhtml=other/editorials/2021/4843-origins_of_cop26_the_hallowe_e.html ^
+-b Section0004.xhtml=other/2021/4843-climate_change_ebb_and_flow_of.html ^
+-b 43-48_EIR43_Section_c.xhtml=hzl/2021/4843-a_chinese_contribution_to_univ.html ^
+-b Section0008.xhtml=other/2021/4843-all_moral_resources_of_humanit.html ^
+-b Section0009.xhtml=other/editorials/2021/4843-central_banks_tens_of_printed.html ^
+-i ../Images=graphics/2021/4843 --iu ../Images=graphics/2021/4843 eir /r/eiw/private/2021/43/Text/
+
+java net.sf.saxon.Transform -s:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n43-20211029\index-nc.html -xsl:comply2.xsl -o:\Users\Richard\Documents\websites\EIR\eiw\public\2021\eirv48n43-20211029\index.html
+
+-b Section0002.xhtml=other/2021/4843-origins_of_cop26_the_hallowe_e.html ^
+-b 04-29_EIR43_Section_a.xhtml=other/2021/4843-hyperinflation_and_depression.html ^
+-b Section0003.xhtml=other/2021/4843-germany_s_supply_chain_law_exa.html ^
+-b Section0004.xhtml=other/2021/4843-climate_change_ebb_and_flow_of.html ^
+-b 30-42_EIR43_Section_b.xhtml=other/2021/4843-human_life_is_the_universal_va.html ^
+-b Section0005.xhtml=other/2021/4843-china_s_epic_journey_from_pove.html ^
+-b Section0006.xhtml=other/2021/4843-international_briefs.html ^
+-b Section0007.xhtml=other/2021/4843-china_briefs.html ^
+-b 43-48_EIR43_Section_c.xhtml=other/2021/4843-a_chinese_contribution_to_univ.html ^
+-b Section0008.xhtml=other/2021/4843-all_moral_resources_of_humanit.html ^
+-b 49-56_EIR43_Section_d.xhtml=other/2021/4843-james_webb_space_telescope_the.html ^
+-b Section0009.xhtml=other/2021/4843-central_banks_tens_of_printed.html ^

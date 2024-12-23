@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="x-apple-disable-message-reformatting" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection" content="telephone=no" />
+<title></title>
+<style type="text/css">
+ .ReadMsgBody {
+	width: 100%;
+	background-color: #ebebeb;
+}
+.ExternalClass {
+	width: 100%;
+	background-color: #ebebeb;
+}
+.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {
+	line-height: 100%;
+}
+a[x-apple-data-detectors] {
+	color: inherit !important;
+	text-decoration: none !important;
+	font-size: inherit !important;
+	font-family: inherit !important;
+	font-weight: inherit !important;
+	line-height: inherit !important;
+}
+body {
+	-webkit-text-size-adjust: none;
+	-ms-text-size-adjust: none;
+}
+body {
+	margin: 0;
+	padding: 0;
+}
+.yshortcuts a {
+	border-bottom: none !important;
+}
+.rnb-del-min-width {
+	min-width: 0 !important;
+} 
+.templateContainer {
+	max-width: 590px !important;
+	width: auto !important;
+}  
+img[class="rnb-col-3-img"] {
+	max-width: 170px;
+} 
+img[class="rnb-col-2-img"] {
+	max-width: 264px;
+} 
+img[class="rnb-col-2-img-side-xs"] {
+	max-width: 180px;
+} 
+img[class="rnb-col-2-img-side-xl"] {
+	max-width: 350px;
+} 
+img[class="rnb-col-1-img"] {
+	max-width: 550px;
+} 
+img[class="rnb-header-img"] {
+	max-width: 590px;
+} 
+.rnb-force-col p, ul, ol {
+	margin: 0px!important;
+}
+.rnb-del-min-width p, ul, ol {
+	margin: 0px!important;
+} 
+.rnb-tmpl-width {
+	width: 100%!important;
+} 
+.rnb-social-width {
+	padding-right: 15px!important;
+} 
+.rnb-social-align {
+	float: right!important;
+} 
+li {
+	mso-margin-top-alt: 0;
+	mso-margin-bottom-alt: 0;
+} 
+table {
+	mso-table-lspace: 0pt;
+	mso-table-rspace: 0pt;
+} 
+table, tr, td {
+	border-collapse: collapse;
+} 
+p, a, li, blockquote {
+	mso-line-height-rule: exactly;
+} 
+.msib-right-img {
+	mso-padding-alt: 0 !important;
+}
+
+.rmbutton {font-size:12px; font-family:Arial,Helvetica,sans-serif; text-align:center; color:#ffffff; font-weight:normal; background-color:#2202f2; border-radius:4px;border-top:0px None #000;border-right:0px None #000;border-bottom:0px None #000;border-left:0px None #000}
+
+.rnbcontainerstyle {max-width: 100%; min-width: 100%; table-layout: fixed; background-color: rgb(255, 255, 255); border-bottom: 2px solid rgb(20, 18, 18); border-radius: 0px; border-collapse: separate; padding-left: 6px; padding-right: 6px}
+	
+@media only screen and (min-width:590px) { 
+.templateContainer {
+	width: 590px !important;
+}
+}
+
+@media screen and (max-width: 360px) { 
+.rnb-yahoo-width {
+	width: 360px !important;
+}
+}
+
+@media screen and (max-width: 380px) { 
+.element-img-text {
+	font-size: 24px !important;
+}
+.element-img-text2 {
+	width: 230px !important;
+}
+.content-img-text-tmpl-6 {
+	font-size: 24px !important;
+}
+.content-img-text2-tmpl-6 {
+	width: 220px !important;
+}
+}
+
+@media screen and (max-width: 480px) {
+td[class="rnb-container-padding"] {
+	padding-left: 10px !important;
+	padding-right: 10px !important;
+} 
+td.rnb-force-nav {
+	display: inherit;
+} 
+.rnb-social-text-left {
+	width: 100%;
+	text-align: center;
+	margin-bottom: 15px;
+}
+.rnb-social-text-right {
+	width: 100%;
+	text-align: center;
+}
+}
+
+@media only screen and (max-width: 600px) { 
+.rnb-text-center {
+	text-align: center !important;
+} 
+th.rnb-force-col {
+	display: block;
+	padding-right: 0 !important;
+	padding-left: 0 !important;
+	width: 100%;
+}
+table.rnb-container {
+	width: 100% !important;
+}
+table.rnb-btn-col-content {
+	width: 100% !important;
+}
+table.rnb-col-3 { 
+	float: none !important;
+	width: 100% !important; 
+	margin-bottom: 10px;
+	padding-bottom: 10px; 
+}
+table.rnb-last-col-3 { 
+	float: none !important;
+	width: 100% !important;
+}
+table.rnb-col-2 { 
+	float: none !important;
+	width: 100% !important; 
+	margin-bottom: 10px;
+	padding-bottom: 10px; 
+}
+table.rnb-col-2-noborder-onright { 
+	float: none !important;
+	width: 100% !important; 
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+}
+table.rnb-col-2-noborder-onleft { 
+	float: none !important;
+	width: 100% !important; 
+	margin-top: 10px;
+	padding-top: 10px;
+}
+table.rnb-last-col-2 { 
+	float: none !important;
+	width: 100% !important;
+}
+table.rnb-col-1 { 
+	float: none !important;
+	width: 100% !important;
+}
+img.rnb-col-3-img { 
+	width: 100% !important;
+}
+img.rnb-col-2-img { 
+	width: 100% !important;
+}
+img.rnb-col-2-img-side-xs { 
+	width: 100% !important;
+}
+img.rnb-col-2-img-side-xl { 
+	width: 100% !important;
+}
+img.rnb-col-1-img { 
+	width: 100% !important;
+}
+img.rnb-header-img { 
+	width: 100% !important;
+	margin: 0 auto;
+}
+img.rnb-logo-img { 
+	width: 100% !important;
+}
+td.rnb-mbl-float-none {
+	float: inherit !important;
+}
+.img-block-center {
+	text-align: center !important;
+}
+.logo-img-center {
+	float: inherit !important;
+} 
+.rnb-social-align {
+	margin: 0 auto !important;
+	float: inherit !important;
+} 
+.rnb-social-center {
+	display: inline-block;
+} 
+.social-text-spacing {
+	margin-bottom: 0px !important;
+	padding-bottom: 0px !important;
+} 
+.social-text-spacing2 {
+	padding-top: 15px !important;
+} 
+ul {
+	mso-special-format: bullet;
+}
+}
+</style>
+<!--[if gte mso 11]><style type="text/css">table{border-spacing: 0; }table td {border-collapse: separate;}</style><![endif]--><!--[if !mso]><!-->
+<style type="text/css"> 
+table{border-spacing: 0;} table td {border-collapse: collapse;} 
+</style>
+<!--<![endif]--><!--[if gte mso 15]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]--><!--[if gte mso 9]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
+</head>
+
+	
+	<body>
+		<table align="center" bgcolor="#fcfdff" border="0" cellpadding="0" cellspacing="0" class="main-template" style="background-color: rgb(252, 253, 255);" width="100%">
+			<tbody>
+				<tr>
+					<td align="center" valign="top">
+						<!--[if gte mso 9]> <table align="center" border="0" cellspacing="0" cellpadding="0" width="590" style="width:590px;"> <tr> <td align="center" valign="top" width="590" style="width:590px;"> <![endif]-->
+						<table border="0" cellpadding="0" cellspacing="0" class="templateContainer" style="max-width:590px!important; width: 590px;" width="590">
+							<tbody>
+								<tr id="cover_row">
+									<td align="center" valign="top">
+										<div style="background-color: rgb(255, 255, 255); border-radius: 0px;"> <!--[if mso]> <table align="center" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;"> <tr> <![endif]--> <!--[if mso]> <td valign="top" width="590" style="width:590px;"> <![endif]-->
+											<table border="0" cellpadding="0" cellspacing="0" class="rnb-del-min-width" id="Layout_2" name="Layout_2" style="min-width:100%;" width="100%">
+												<tbody>
+													<tr>
+														<td align="center" class="rnb-del-min-width" valign="top"><a href="#" name="Layout_2"></a><table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="rnb-container" style="max-width: 100%; min-width: 100%; table-layout: fixed; background-color: rgb(255, 255, 255); border-bottom: 2px solid rgb(20, 18, 18); border-radius: 0px; border-collapse: separate; padding-left: 6px; padding-right: 6px;" width="100%">
+																<tbody>
+																	<tr>
+																		<td height="14" style="font-size:1px; line-height:14px; mso-hide: all;">&nbsp;</td> </tr>
+																	<tr>
+																		<td align="left" class="rnb-container-padding" valign="top">
+																			<table border="0" cellpadding="0" cellspacing="0" class="rnb-columns-container" width="100%">
+																				<tbody>
+																					<tr>
+																						<th class="rnb-force-col" style="text-align: left; font-weight: normal; padding-right: 0px;" valign="top" width="578">
+																							<table align="left" border="0" cellpadding="0" cellspacing="0" class="rnb-col-1" valign="top" width="578">
+																								<tbody>
+																									<tr>
+																										<td align="center" class="img-block-center" valign="top" width="100%">
+																											<table border="0" cellpadding="0" cellspacing="0" width="100%">
+																												<tbody>
+																													<tr>
+																														<td align="center" class="img-block-center" valign="top" width="100%">
+																															<table border="0" cellpadding="0" cellspacing="0" style="display:inline-block;">
+																																<tbody>
+																																	<tr>
+																																		<td>
+																																			<div style="border-top:0px None #9c9c9c;border-right:0px None #9c9c9c;border-bottom:0px None #9c9c9c;border-left:0px None #9c9c9c;display:inline-block;">
+																																				<div id="cover"><a href="https://larouchepub.com/eiw/public/unlisted/2024/eirv51n50-20241220/SrThAmFViVaKAuEsEuCoGd3/index.html" target="_blank"> <img alt="EIR Vol. 51 No. 50 cover" border="0" class="rnb-col-1-img" hspace="0" ng-if="col.img.source != 'url'" src="https://img.mailinblue.com/1977586/images/content_library/original/6762eb5ee28372ad083622be.jpg" style="vertical-align: top; max-width: 510px; float: left;" vspace="0" width="510"></a></div>
+																																				<div style="clear:both;">
+																																				</div> </div>
+																																		</td> </tr> </tbody> </table>
+																														</td> </tr> </tbody> </table>
+																										</td> </tr>
+																									<tr>
+																										<td class="col_td_gap" height="10" style="font-size:1px; line-height:10px; mso-hide: all;">&nbsp;</td> </tr>
+																									<tr>
+																										<td style="font-size:13px; font-family:'Georgia',serif, sans-serif; color:#555;">
+																											<div>
+																												<div><span style="font-size:20px;"><strong>Click on the image of the magazine cover, above, to see a full table of contents with links to a PDF of the entire issue, and HTML and PDF versions of each article.</strong></span></div> </div>
+																										</td> </tr> </tbody> </table> </th> </tr> </tbody> </table>
+																		</td> </tr>
+																	<tr>
+																		<td height="14" style="font-size:1px; line-height:14px; mso-hide: all;">&nbsp;</td> </tr> </tbody> </table>
+														</td> </tr> </tbody> </table> <!--[if mso]> </td> <![endif]--> <!--[if mso]> </tr> </table> <![endif]--> </div>
+									</td> </tr>
+								<tr class="srow">
+				<td align="center" valign="top">
+					<div style="background-color: rgb(255, 255, 255); border-radius: 0px;"> <!--[if mso]> <table align="center" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;"> <tr> <![endif]--> <!--[if mso]> <td valign="top" width="590" style="width:590px;"> <![endif]-->
+						<table border="0" cellpadding="0" cellspacing="0" class="rnb-del-min-width" name="Layout_5" style="min-width:100%;" width="100%">
+							<tbody>
+								<tr>
+									<td align="center" class="rnb-del-min-width" valign="top"><table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="rnb-container" style="background-color: rgb(255, 255, 255); padding-left: 20px; padding-right: 20px; border-collapse: separate; border-radius: 0px; border-bottom: 2px solid rgb(0, 0, 0);" width="100%">
+											<tbody>
+												<tr>
+													<td height="10" style="font-size:1px; line-height:10px; mso-hide: all;">&nbsp;</td> </tr>
+												<tr>
+													<td align="left" class="rnb-container-padding" valign="top">
+														<table border="0" cellpadding="0" cellspacing="0" class="rnb-columns-container" width="100%">
+															<tbody>
+																<tr>
+																	<th class="rnb-force-col" style="text-align: left; font-weight: normal; padding-right: 0px;" valign="top">
+																		<table align="left" border="0" cellpadding="0" cellspacing="0" class="rnb-col-1" valign="top" width="100%">
+																			<tbody>
+																				<tr>
+																					<td style="font-size:18px; font-family:'Lucida Sans Unicode',Lucida Grande,sans-serif, sans-serif; color:#3c4858;">
+																						<div><strong><span class="sectionTitle" style="font-size:18px;">Editorial</span></strong></div>
+																					</td> </tr> </tbody> </table> </th> </tr> </tbody> </table>
+													</td> </tr>
+												<tr>
+													<td height="10" style="font-size:1px; line-height:10px; mso-hide: all;">&nbsp;</td> </tr> </tbody> </table>
+									</td> </tr> </tbody> </table> <!--[if mso]> </td> <![endif]--> <!--[if mso]> </tr> </table> <![endif]--> </div>
+				</td> </tr><tr class="row">
+				<td align="center" valign="top">
+					<div style="background-color: rgb(255, 255, 255); border-radius: 0px;"> <!--[if mso]> <table align="center" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;"> <tr> <![endif]--> <!--[if mso]> <td valign="top" width="590" style="width:590px;"> <![endif]-->
+						<table border="0" cellpadding="0" cellspacing="0" class="rnb-del-min-width" id="Layout_6" name="Layout_6" style="min-width:100%;" width="100%">
+							<tbody>
+								<tr>
+									<td align="center" class="rnb-del-min-width" valign="top"><table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="rnbcontainerstyle" width="100%">
+											<tbody>
+												<tr>
+													<td height="12" style="font-size:1px; line-height:12px; mso-hide: all;">&nbsp;</td> </tr>
+												<tr>
+													<td align="left" class="rnb-container-padding" valign="top">
+														<table border="0" cellpadding="0" cellspacing="0" class="rnb-columns-container" width="100%">
+															<tbody>
+																<tr>
+																	<th class="rnb-force-col" style="text-align: left; font-weight: normal; padding-right: 0px;" valign="top" width="578">
+																		<table align="left" border="0" cellpadding="0" cellspacing="0" class="rnb-col-1" valign="top" width="578">
+																			<tbody>
+																				<tr>
+																					<td style="font-family:'Lucida Sans Unicode',Lucida Grande,sans-serif; color:#3c4858; text-align:left;"><span style="color:#3c4858; ">
+																					<div style="line-height:20px;"><font color="#800000"><strong><span class="title" style="font-size:18px;"> STRATCOM’s Adm. Buchanan Spills the Beans: U.S. Preparing for Nuclear War!</span></strong></font><br><span class="author" style="font-size:14px;"></span></div> </span></td> </tr>
+																				<tr>
+																					<td class="col_td_gap" height="10" style="font-size:1px; line-height:10px; mso-hide: all;">&nbsp;</td> </tr>
+																				<tr>
+																					<td style="font-size:14px; font-family:'Trebuchet MS',Helvetica,sans-serif, sans-serif; color:#3c4858;">
+																						<div class="teaser"><em>The following is the text of a leaflet released on Dec. 10 by The LaRouche Organization ... calling on citizens to demand that their congressional representatives support House Resolution 10218. This bill would prohibit the transfer of ATACMS missile systems to Ukraine ...</em></div>
+																					</td> </tr>
+																				<tr>
+																					<td class="col_td_gap" height="10" style="font-size:1px; line-height:10px; mso-hide: all;">&nbsp;</td> </tr>
+																				<tr>
+																					<td valign="top">
+																						<table align="left" border="0" cellpadding="0" cellspacing="0" class="rnb-btn-col-content" style="border-collapse: separate;margin:0 auto;">
+																							<tbody>
+																								<tr>
+																									<td align="left" bgcolor="#2202f2" height="20" class="rmbutton" style="padding-left:18px; padding-right:18px" valign="middle" width="auto"><span style="color:#ffffff; font-weight:normal;"> <a href="https://larouchepub.com/eiw/public/unlisted/2024/eirv51n50-20241220/SrThAmFViVaKAuEsEuCoGd3/5150-stratcom_s_adm_buchanan_spills.html" style="text-decoration:none; color:#ffffff; font-weight:normal;" target="_blank">Read More</a> </span></td> </tr> </tbody> </table>
+																					</td> <!--[if gte mso 9]><span style="font-size:0px;line-height:0px; mso-hide: all;"> </span><![endif]--> </tr> </tbody> </table> </th> </tr> </tbody> </table>
+													</td> </tr>
+												<tr>
+													<td height="12" style="font-size:1px; line-height:12px; mso-hide: all;">&nbsp;</td> </tr> </tbody> </table>
+									</td> </tr> </tbody> </table> <!--[if mso]> </td> <![endif]--> <!--[if mso]> </tr> </table> <![endif]--> </div>
+				</td> </tr><tr class="srow">
+				<td align="center" valign="top">
+					<div style="background-color: rgb(255, 255, 255); border-radius: 0px;"> <!--[if mso]> <table align="center" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;"> <tr> <![endif]--> <!--[if mso]> <td valign="top" width="590" style="width:590px;"> <![endif]-->
+						<table border="0" cellpadding="0" cellspacing="0" class="rnb-del-min-width" name="Layout_7" style="min-width:100%;" width="100%">
+							<tbody>
+								<tr>
+									<td align="center" class="rnb-del-min-width" valign="top"><table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="rnb-container" style="background-color: rgb(255, 255, 255); padding-left: 20px; padding-right: 20px; border-collapse: separate; border-radius: 0px; border-bottom: 2px solid rgb(0, 0, 0);" width="100%">
+											<tbody>
+												<tr>
+													<td height="10" style="font-size:1px; line-height:10px; mso-hide: all;">&nbsp;</td> </tr>
+												<tr>
+													<td align="left" class="rnb-container-padding" valign="top">
+														<table border="0" cellpadding="0" cellspacing="0" class="rnb-columns-container" width="100%">
+															<tbody>
+																<tr>
+																	<th class="rnb-force-col" style="text-align: left; font-weight: normal; padding-right: 0px;" valign="top">
+																		<table align="left" border="0" cellpadding="0" cellspacing="0" class="rnb-col-1" valign="top" width="100%">
+																			<tbody>
+																				<tr>
+																					<td style="font-size:18px; font-family:'Lucida Sans Unicode',Lucida Grande,sans-serif, sans-serif; color:#3c4858;">
+																						<div><strong><span class="sectionTitle" style="font-size:18px;">I. Schiller Conference</span></strong></div>
+																					</td> </tr> </tbody> </table> </th> </tr> </tbody> </table>
+													</td> </tr>
+												<tr>
+													<td height="10" style="font-size:1px; line-height:10px; mso-hide: all;">&nbsp;</td> </tr> </tbody> </table>
+									</td> </tr> </tbody> </table> <!--[if mso]> </td> <![endif]--> <!--[if mso]> </tr> </table> <![endif]--> </div>
+				</td> </tr><tr class="row">
+				<td align="center" valign="top">
+					<div style="background-color: rgb(255, 255, 255); border-radius: 0px;"> <!--[if mso]> <table align="center" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;"> <tr> <![endif]--> <!--[if mso]> <td valign="top" width="590" style="width:590px;"> <![endif]-->
+						<table border="0" cellpadding="0" cellspacing="0" class="rnb-del-min-width" id="Layout_8" name="Layout_8" style="min-width:100%;" width="100%">
+							<tbody>
+								<tr>
+									<td align="center" class="rnb-del-min-width" valign="top"><table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="rnbcontainerstyle" width="100%">
+											<tbody>
+												<tr>
+													<td height="12" style="font-size:1px; line-height:12px; mso-hide: all;">&nbsp;</td> </tr>
+												<tr>
+													<td align="left" class="rnb-container-padding" valign="top">
+														<table border="0" cellpadding="0" cellspacing="0" class="rnb-columns-container" width="100%">
+															<tbody>
+																<tr>
+																	<th class="rnb-force-col" style="text-align: left; font-weight: normal; padding-right: 0px;" valign="top" width="578">
+																		<table align="left" border="0" cellpadding="0" cellspacing="0" class="rnb-col-1" valign="top" width="578">
+																			<tbody>
+																				<tr>
+																					<td style="font-family:'Lucida Sans Unicode',Lucida Grande,sans-serif; color:#3c4858; text-align:left;"><span style="color:#3c4858; ">
+																					<div style="line-height:20px;"><font color="#800000"><span class="pretitle" style="font-size:16px;">Professor Zhang Weiwei</span><strong><span class="title" style="font-size:18px;"><br>
+																	                Turning the ‘Curse of Geography’ into a ‘Blessing of Geography’</span></strong></font><br><span class="author" style="font-size:14px;"></span></div> </span></td> </tr>
+																				<tr>
+																					<td class="col_td_gap" height="10" style="font-size:1px; line-height:10px; mso-hide: all;">&nbsp;</td> </tr>
+																				<tr>
+																					<td style="font-size:14px; font-family:'Trebuchet MS',Helvetica,sans-serif, sans-serif; color:#3c4858;">
+																						<div class="teaser"><em>The following is an edited transcript of the presentation (as delivered via video) by Zhang Weiwei, Professor of International Relations, Fudan University, China, from Panel 1 of the Dec.7-8 Schiller Institute conference</em></div>
+																					</td> </tr>
+																				<tr>
+																					<td class="col_td_gap" height="10" style="font-size:1px; line-height:10px; mso-hide: all;">&nbsp;</td> </tr>
+																				<tr>
+																					<td valign="top">
+																						<table align="left" border="0" cellpadding="0" cellspacing="0" class="rnb-btn-col-content" style="border-collapse: separate;margin:0 auto;">
+																							<tbody>
+																								<tr>
+																									<td align="left" bgcolor="#2202f2" height="20" class="rmbutton" style="padding-left:18px; padding-right:18px" valign="middle" width="auto"><span style="color:#ffffff; font-weight:normal;"> <a href="https://larouchepub.com/eiw/public/unlisted/2024/eirv51n50-20241220/SrThAmFViVaKAuEsEuCoGd3/5150-turning_the_curse_of_geography.html" style="text-decoration:none; color:#ffffff; font-weight:normal;" target="_blank">Read More</a> </span></td> </tr> </tbody> </table>
+																					</td> <!--[if gte mso 9]><span style="font-size:0px;line-height:0px; mso-hide: all;"> </span><![endif]--> </tr> </tbody> </table> </th> </tr> </tbody> </table>
+													</td> </tr>
+												<tr>
+													<td height="12" style="font-size:1px; line-height:12px; mso-hide: all;">&nbsp;</td> </tr> </tbody> </table>
+									</td> </tr> </tbody> </table> <!--[if mso]> </td> <![endif]--> <!--[if mso]> </tr> </table> <![endif]--> </div>
+				</td> </tr><tr class="row">
+				<td align="center" valign="top">
+					<div style="background-color: rgb(255, 255, 255); border-radius: 0px;"> <!--[if mso]> <table align="center" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;"> <tr> <![endif]--> <!--[if mso]> <td valign="top" width="590" style="width:590px;"> <![endif]-->
+						<table border="0" cellpadding="0" cellspacing="0" class="rnb-del-min-width" id="Layout_9" name="Layout_9" style="min-width:100%;" width="100%">
+							<tbody>
+								<tr>
+									<td align="center" class="rnb-del-min-width" valign="top"><table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="rnbcontainerstyle" width="100%">
+											<tbody>
+												<tr>
+													<td height="12" style="font-size:1px; line-height:12px; mso-hide: all;">&nbsp;</td> </tr>
+												<tr>
+													<td align="left" class="rnb-container-padding" valign="top">
+														<table border="0" cellpadding="0" cellspacing="0" class="rnb-columns-container" width="100%">
+															<tbody>
+																<tr>
+																	<th class="rnb-force-col" style="text-align: left; font-weight: normal; padding-right: 0px;" valign="top" width="578">
+																		<table align="left" border="0" cellpadding="0" cellspacing="0" class="rnb-col-1" valign="top" width="578">
+																			<tbody>
+																				<tr>
+																					<td style="font-family:'Lucida Sans Unicode',Lucida Grande,sans-serif; color:#3c4858; text-align:left;"><span style="color:#3c4858; ">
+																					<div style="line-height:20px;"><font color="#800000"><span class="pretitle" style="font-size:16px;">Ambassador Chas W. Freeman, Jr.</span><strong><span class="title" style="font-size:18px;"><br>
+																	                The Politics of Tragedy, or the Statecraft of Hope?</span></strong></font><br><span class="author" style="font-size:14px;"></span></div> </span></td> </tr>
+																				<tr>
+																					<td class="col_td_gap" height="10" style="font-size:1px; line-height:10px; mso-hide: all;">&nbsp;</td> </tr>
+																				<tr>
+																					<td style="font-size:14px; font-family:'Trebuchet MS',Helvetica,sans-serif, sans-serif; color:#3c4858;">
+																						<div class="teaser"><em>The following is an edited transcript of the presentation by Ambassador Chas W. Freeman, Jr. (U.S. Foreign Service, ret.), from Panel 1 of the Dec.7-8 Schiller Institute conference</em></div>
+																					</td> </tr>
+																				<tr>
+																					<td class="col_td_gap" height="10" style="font-size:1px; line-height:10px; mso-hide: all;">&nbsp;</td> </tr>
+																				<tr>
+																					<td valign="top">
+																						<table align="left" border="0" cellpadding="0" cellspacing="0" class="rnb-btn-col-content" style="border-collapse: separate;margin:0 auto;">
+																							<tbody>
+																								<tr>
+																									<td align="left" bgcolor="#2202f2" height="20" class="rmbutton" style="padding-left:18px; padding-right:18px" valign="middle" width="auto"><span style="color:#ffffff; font-weight:normal;"> <a href="https://larouchepub.com/eiw/public/unlisted/2024/eirv51n50-20241220/SrThAmFViVaKAuEsEuCoGd3/5150-the_politics_of_tragedy_or_the.html" style="text-decoration:none; color:#ffffff; font-weight:normal;" target="_blank">Read More</a> </span></td> </tr> </tbody> </table>
+																					</td> <!--[if gte mso 9]><span style="font-size:0px;line-height:0px; mso-hide: all;"> </span><![endif]--> </tr> </tbody> </table> </th> </tr> </tbody> </table>
+													</td> </tr>
+												<tr>
+													<td height="12" style="font-size:1px; line-height:12px; mso-hide: all;">&nbsp;</td> </tr> </tbody> </table>
+									</td> </tr> </tbody> </table> <!--[if mso]> </td> <![endif]--> <!--[if mso]> </tr> </table> <![endif]--> </div>
+				</td> </tr><tr class="row">
+				<td align="center" valign="top">
+					<div style="background-color: rgb(255, 255, 255); border-radius: 0px;"> <!--[if mso]> <table align="center" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;"> <tr> <![endif]--> <!--[if mso]> <td valign="top" width="590" style="width:590px;"> <![endif]-->
+						<table border="0" cellpadding="0" cellspacing="0" class="rnb-del-min-width" id="Layout_10" name="Layout_10" style="min-width:100%;" width="100%">
+							<tbody>
+								<tr>
+									<td align="center" class="rnb-del-min-width" valign="top"><table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="rnbcontainerstyle" width="100%">
+											<tbody>
+												<tr>
+													<td height="12" style="font-size:1px; line-height:12px; mso-hide: all;">&nbsp;</td> </tr>
+												<tr>
+													<td align="left" class="rnb-container-padding" valign="top">
+														<table border="0" cellpadding="0" cellspacing="0" class="rnb-columns-container" width="100%">
+															<tbody>
+																<tr>
+																	<th class="rnb-force-col" style="text-align: left; font-weight: normal; padding-right: 0px;" valign="top" width="578">
+																		<table align="left" border="0" cellpadding="0" cellspacing="0" class="rnb-col-1" valign="top" width="578">
+																			<tbody>
+																				<tr>
+																					<td style="font-family:'Lucida Sans Unicode',Lucida Grande,sans-serif; color:#3c4858; text-align:left;"><span style="color:#3c4858; ">
+																					<div style="line-height:20px;"><font color="#800000"><span class="pretitle" style="font-size:16px;">Scott Ritter</span><strong><span class="title" style="font-size:18px;"><br>
+																	                A U.S.-Russia Nuclear Conflict Is Not Just a Possibility, but Increasingly Becoming a Probability</span></strong></font><br><span class="author" style="font-size:14px;"></span></div> </span></td> </tr>
+																				<tr>
+																					<td class="col_td_gap" height="10" style="font-size:1px; line-height:10px; mso-hide: all;">&nbsp;</td> </tr>
+																				<tr>
+																					<td style="font-size:14px; font-family:'Trebuchet MS',Helvetica,sans-serif, sans-serif; color:#3c4858;">
+																						<div class="teaser"><em>The following is an edited transcript of a speech from a Dec. 7, 2024 webcast presentation by Scott Ritter (U.S.), former U.S. Marine Corps (ret.), former UN weapons inspector in Iraq, from Panel 1 of the Dec.7-8 Schiller Institute conference</em></div>
+																					</td> </tr>
+																				<tr>
+																					<td class="col_td_gap" height="10" style="font-size:1px; line-height:10px; mso-hide: all;">&nbsp;</td> </tr>
+																				<tr>
+																					<td valign="top">
+																						<table align="left" border="0" cellpadding="0" cellspacing="0" class="rnb-btn-col-content" style="border-collapse: separate;margin:0 auto;">
+																							<tbody>
+																								<tr>
+																									<td align="left" bgcolor="#2202f2" height="20" class="rmbutton" style="padding-left:18px; padding-right:18px" valign="middle" width="auto"><span style="color:#ffffff; font-weight:normal;"> <a href="https://larouchepub.com/eiw/public/unlisted/2024/eirv51n50-20241220/SrThAmFViVaKAuEsEuCoGd3/5150-a_u_s_russia_nuclear_conflict.html" style="text-decoration:none; color:#ffffff; font-weight:normal;" target="_blank">Read More</a> </span></td> </tr> </tbody> </table>
+																					</td> <!--[if gte mso 9]><span style="font-size:0px;line-height:0px; mso-hide: all;"> </span><![endif]--> </tr> </tbody> </table> </th> </tr> </tbody> </table>
+													</td> </tr>
+												<tr>
+													<td height="12" style="font-size:1px; line-height:12px; mso-hide: all;">&nbsp;</td> </tr> </tbody> </table>
+									</td> </tr> </tbody> </table> <!--[if mso]> </td> <![endif]--> <!--[if mso]> </tr> </table> <![endif]--> </div>
+				</td> </tr><tr class="row">
+				<td align="center" valign="top">
+					<div style="background-color: rgb(255, 255, 255); border-radius: 0px;"> <!--[if mso]> <table align="center" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;"> <tr> <![endif]--> <!--[if mso]> <td valign="top" width="590" style="width:590px;"> <![endif]-->
+						<table border="0" cellpadding="0" cellspacing="0" class="rnb-del-min-width" id="Layout_11" name="Layout_11" style="min-width:100%;" width="100%">
+							<tbody>
+								<tr>
+									<td align="center" class="rnb-del-min-width" valign="top"><table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="rnbcontainerstyle" width="100%">
+											<tbody>
+												<tr>
+													<td height="12" style="font-size:1px; line-height:12px; mso-hide: all;">&nbsp;</td> </tr>
+												<tr>
+													<td align="left" class="rnb-container-padding" valign="top">
+														<table border="0" cellpadding="0" cellspacing="0" class="rnb-columns-container" width="100%">
+															<tbody>
+																<tr>
+																	<th class="rnb-force-col" style="text-align: left; font-weight: normal; padding-right: 0px;" valign="top" width="578">
+																		<table align="left" border="0" cellpadding="0" cellspacing="0" class="rnb-col-1" valign="top" width="578">
+																			<tbody>
+																				<tr>
+																					<td style="font-family:'Lucida Sans Unicode',Lucida Grande,sans-serif; color:#3c4858; text-align:left;"><span style="color:#3c4858; ">
+																					<div style="line-height:20px;"><font color="#800000"><span class="pretitle" style="font-size:16px;">Col. (Ret.) Larry Wilkerson</span><strong><span class="title" style="font-size:18px;"><br>
+																	                The Inexorable Shift to the East: Our Answer Must Not Be Nuclear War</span></strong></font><br><span class="author" style="font-size:14px;"></span></div> </span></td> </tr>
+																				<tr>
+																					<td class="col_td_gap" height="10" style="font-size:1px; line-height:10px; mso-hide: all;">&nbsp;</td> </tr>
+																				<tr>
+																					<td style="font-size:14px; font-family:'Trebuchet MS',Helvetica,sans-serif, sans-serif; color:#3c4858;">
+																						<div class="teaser"><em>The following is an edited transcript of the presentation by Col. (ret.) Larry Wilkerson (U.S.), former Chief of Staff to U.S. Secretary of State Colin Powell, from Panel 1 of the Dec.7-8 Schiller Institute conference ...</em></div>
+																					</td> </tr>
+																				<tr>
+																					<td class="col_td_gap" height="10" style="font-size:1px; line-height:10px; mso-hide: all;">&nbsp;</td> </tr>
+																				<tr>
+																					<td valign="top">
+																						<table align="left" border="0" cellpadding="0" cellspacing="0" class="rnb-btn-col-content" style="border-collapse: separate;margin:0 auto;">
+																							<tbody>
+																								<tr>
+																									<td align="left" bgcolor="#2202f2" height="20" class="rmbutton" style="padding-left:18px; padding-right:18px" valign="middle" width="auto"><span style="color:#ffffff; font-weight:normal;"> <a href="https://larouchepub.com/eiw/public/unlisted/2024/eirv51n50-20241220/SrThAmFViVaKAuEsEuCoGd3/5150-the_inexorable_shift_to_the_ea.html" style="text-decoration:none; color:#ffffff; font-weight:normal;" target="_blank">Read More</a> </span></td> </tr> </tbody> </table>
+																					</td> <!--[if gte mso 9]><span style="font-size:0px;line-height:0px; mso-hide: all;"> </span><![endif]--> </tr> </tbody> </table> </th> </tr> </tbody> </table>
+													</td> </tr>
+												<tr>
+													<td height="12" style="font-size:1px; line-height:12px; mso-hide: all;">&nbsp;</td> </tr> </tbody> </table>
+									</td> </tr> </tbody> </table> <!--[if mso]> </td> <![endif]--> <!--[if mso]> </tr> </table> <![endif]--> </div>
+				</td> </tr><tr class="row">
+				<td align="center" valign="top">
+					<div style="background-color: rgb(255, 255, 255); border-radius: 0px;"> <!--[if mso]> <table align="center" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;"> <tr> <![endif]--> <!--[if mso]> <td valign="top" width="590" style="width:590px;"> <![endif]-->
+						<table border="0" cellpadding="0" cellspacing="0" class="rnb-del-min-width" id="Layout_12" name="Layout_12" style="min-width:100%;" width="100%">
+							<tbody>
+								<tr>
+									<td align="center" class="rnb-del-min-width" valign="top"><table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="rnbcontainerstyle" width="100%">
+											<tbody>
+												<tr>
+													<td height="12" style="font-size:1px; line-height:12px; mso-hide: all;">&nbsp;</td> </tr>
+												<tr>
+													<td align="left" class="rnb-container-padding" valign="top">
+														<table border="0" cellpadding="0" cellspacing="0" class="rnb-columns-container" width="100%">
+															<tbody>
+																<tr>
+																	<th class="rnb-force-col" style="text-align: left; font-weight: normal; padding-right: 0px;" valign="top" width="578">
+																		<table align="left" border="0" cellpadding="0" cellspacing="0" class="rnb-col-1" valign="top" width="578">
+																			<tbody>
+																				<tr>
+																					<td style="font-family:'Lucida Sans Unicode',Lucida Grande,sans-serif; color:#3c4858; text-align:left;"><span style="color:#3c4858; ">
+																					<div style="line-height:20px;"><font color="#800000"><span class="pretitle" style="font-size:16px;">Schiller Conference Dialogue, Panel 1</span><strong><span class="title" style="font-size:18px;"><br>
+																	                To Solve the Global Crisis, Reason Must Prevail</span></strong></font><br><span class="author" style="font-size:14px;"></span></div> </span></td> </tr>
+																				<tr>
+																					<td class="col_td_gap" height="10" style="font-size:1px; line-height:10px; mso-hide: all;">&nbsp;</td> </tr>
+																				<tr>
+																					<td style="font-size:14px; font-family:'Trebuchet MS',Helvetica,sans-serif, sans-serif; color:#3c4858;">
+																						<div class="teaser"><em>The following is an edited transcript of the question-and-answer session from Panel 1 of the Dec.7-8 Schiller Institute conference, “In the Spirit of Schiller and Beethoven: All Men, Become Brethren.” The panel was titled, “The Strategic Crisis: New and Final World War, or a New Paradigm of the One Humanity.”</em></div>
+																					</td> </tr>
+																				<tr>
+																					<td class="col_td_gap" height="10" style="font-size:1px; line-height:10px; mso-hide: all;">&nbsp;</td> </tr>
+																				<tr>
+																					<td valign="top">
+																						<table align="left" border="0" cellpadding="0" cellspacing="0" class="rnb-btn-col-content" style="border-collapse: separate;margin:0 auto;">
+																							<tbody>
+																								<tr>
+																									<td align="left" bgcolor="#2202f2" height="20" class="rmbutton" style="padding-left:18px; padding-right:18px" valign="middle" width="auto"><span style="color:#ffffff; font-weight:normal;"> <a href="https://larouchepub.com/eiw/public/unlisted/2024/eirv51n50-20241220/SrThAmFViVaKAuEsEuCoGd3/5150-to_solve_the_global_crisis_rea.html" style="text-decoration:none; color:#ffffff; font-weight:normal;" target="_blank">Read More</a> </span></td> </tr> </tbody> </table>
+																					</td> <!--[if gte mso 9]><span style="font-size:0px;line-height:0px; mso-hide: all;"> </span><![endif]--> </tr> </tbody> </table> </th> </tr> </tbody> </table>
+													</td> </tr>
+												<tr>
+													<td height="12" style="font-size:1px; line-height:12px; mso-hide: all;">&nbsp;</td> </tr> </tbody> </table>
+									</td> </tr> </tbody> </table> <!--[if mso]> </td> <![endif]--> <!--[if mso]> </tr> </table> <![endif]--> </div>
+				</td> </tr><tr class="srow">
+				<td align="center" valign="top">
+					<div style="background-color: rgb(255, 255, 255); border-radius: 0px;"> <!--[if mso]> <table align="center" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;"> <tr> <![endif]--> <!--[if mso]> <td valign="top" width="590" style="width:590px;"> <![endif]-->
+						<table border="0" cellpadding="0" cellspacing="0" class="rnb-del-min-width" name="Layout_13" style="min-width:100%;" width="100%">
+							<tbody>
+								<tr>
+									<td align="center" class="rnb-del-min-width" valign="top"><table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="rnb-container" style="background-color: rgb(255, 255, 255); padding-left: 20px; padding-right: 20px; border-collapse: separate; border-radius: 0px; border-bottom: 2px solid rgb(0, 0, 0);" width="100%">
+											<tbody>
+												<tr>
+													<td height="10" style="font-size:1px; line-height:10px; mso-hide: all;">&nbsp;</td> </tr>
+												<tr>
+													<td align="left" class="rnb-container-padding" valign="top">
+														<table border="0" cellpadding="0" cellspacing="0" class="rnb-columns-container" width="100%">
+															<tbody>
+																<tr>
+																	<th class="rnb-force-col" style="text-align: left; font-weight: normal; padding-right: 0px;" valign="top">
+																		<table align="left" border="0" cellpadding="0" cellspacing="0" class="rnb-col-1" valign="top" width="100%">
+																			<tbody>
+																				<tr>
+																					<td style="font-size:18px; font-family:'Lucida Sans Unicode',Lucida Grande,sans-serif, sans-serif; color:#3c4858;">
+																						<div><strong><span class="sectionTitle" style="font-size:18px;">II. International</span></strong></div>
+																					</td> </tr> </tbody> </table> </th> </tr> </tbody> </table>
+													</td> </tr>
+												<tr>
+													<td height="10" style="font-size:1px; line-height:10px; mso-hide: all;">&nbsp;</td> </tr> </tbody> </table>
+									</td> </tr> </tbody> </table> <!--[if mso]> </td> <![endif]--> <!--[if mso]> </tr> </table> <![endif]--> </div>
+				</td> </tr><tr class="row">
+				<td align="center" valign="top">
+					<div style="background-color: rgb(255, 255, 255); border-radius: 0px;"> <!--[if mso]> <table align="center" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;"> <tr> <![endif]--> <!--[if mso]> <td valign="top" width="590" style="width:590px;"> <![endif]-->
+						<table border="0" cellpadding="0" cellspacing="0" class="rnb-del-min-width" id="Layout_14" name="Layout_14" style="min-width:100%;" width="100%">
+							<tbody>
+								<tr>
+									<td align="center" class="rnb-del-min-width" valign="top"><table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="rnbcontainerstyle" width="100%">
+											<tbody>
+												<tr>
+													<td height="12" style="font-size:1px; line-height:12px; mso-hide: all;">&nbsp;</td> </tr>
+												<tr>
+													<td align="left" class="rnb-container-padding" valign="top">
+														<table border="0" cellpadding="0" cellspacing="0" class="rnb-columns-container" width="100%">
+															<tbody>
+																<tr>
+																	<th class="rnb-force-col" style="text-align: left; font-weight: normal; padding-right: 0px;" valign="top" width="578">
+																		<table align="left" border="0" cellpadding="0" cellspacing="0" class="rnb-col-1" valign="top" width="578">
+																			<tbody>
+																				<tr>
+																					<td style="font-family:'Lucida Sans Unicode',Lucida Grande,sans-serif; color:#3c4858; text-align:left;"><span style="color:#3c4858; ">
+																					<div style="line-height:20px;"><font color="#800000"><span class="pretitle" style="font-size:16px;">International Peace Coalition</span><strong><span class="title" style="font-size:18px;"><br>
+																	                Non-Linear Thinking Is Needed To Stop the Crisis</span></strong></font><br><span class="author" style="font-size:14px;">by <em class="CharOverride-15">EIR</em> staff</span></div> </span></td> </tr>
+																				<tr>
+																					<td class="col_td_gap" height="10" style="font-size:1px; line-height:10px; mso-hide: all;">&nbsp;</td> </tr>
+																				<tr>
+																					<td style="font-size:14px; font-family:'Trebuchet MS',Helvetica,sans-serif, sans-serif; color:#3c4858;">
+																						<div class="teaser">Since the collapse of Syria, Western media have been “jubilant,” and neighboring countries are carving out pieces from Syria’s carcass. Why did all of this happen? Syria was a modern and multiconfessional state, but the flow of mercenaries and weapons from Benghazi ... What will be Trump’s Iran policy?</div>
+																					</td> </tr>
+																				<tr>
+																					<td class="col_td_gap" height="10" style="font-size:1px; line-height:10px; mso-hide: all;">&nbsp;</td> </tr>
+																				<tr>
+																					<td valign="top">
+																						<table align="left" border="0" cellpadding="0" cellspacing="0" class="rnb-btn-col-content" style="border-collapse: separate;margin:0 auto;">
+																							<tbody>
+																								<tr>
+																									<td align="left" bgcolor="#2202f2" height="20" class="rmbutton" style="padding-left:18px; padding-right:18px" valign="middle" width="auto"><span style="color:#ffffff; font-weight:normal;"> <a href="https://larouchepub.com/eiw/public/unlisted/2024/eirv51n50-20241220/SrThAmFViVaKAuEsEuCoGd3/5150-non_linear_thinking_is_needed.html" style="text-decoration:none; color:#ffffff; font-weight:normal;" target="_blank">Read More</a> </span></td> </tr> </tbody> </table>
+																					</td> <!--[if gte mso 9]><span style="font-size:0px;line-height:0px; mso-hide: all;"> </span><![endif]--> </tr> </tbody> </table> </th> </tr> </tbody> </table>
+													</td> </tr>
+												<tr>
+													<td height="12" style="font-size:1px; line-height:12px; mso-hide: all;">&nbsp;</td> </tr> </tbody> </table>
+									</td> </tr> </tbody> </table> <!--[if mso]> </td> <![endif]--> <!--[if mso]> </tr> </table> <![endif]--> </div>
+				</td> </tr><tr class="row">
+				<td align="center" valign="top">
+					<div style="background-color: rgb(255, 255, 255); border-radius: 0px;"> <!--[if mso]> <table align="center" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;"> <tr> <![endif]--> <!--[if mso]> <td valign="top" width="590" style="width:590px;"> <![endif]-->
+						<table border="0" cellpadding="0" cellspacing="0" class="rnb-del-min-width" id="Layout_15" name="Layout_15" style="min-width:100%;" width="100%">
+							<tbody>
+								<tr>
+									<td align="center" class="rnb-del-min-width" valign="top"><table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="rnbcontainerstyle" width="100%">
+											<tbody>
+												<tr>
+													<td height="12" style="font-size:1px; line-height:12px; mso-hide: all;">&nbsp;</td> </tr>
+												<tr>
+													<td align="left" class="rnb-container-padding" valign="top">
+														<table border="0" cellpadding="0" cellspacing="0" class="rnb-columns-container" width="100%">
+															<tbody>
+																<tr>
+																	<th class="rnb-force-col" style="text-align: left; font-weight: normal; padding-right: 0px;" valign="top" width="578">
+																		<table align="left" border="0" cellpadding="0" cellspacing="0" class="rnb-col-1" valign="top" width="578">
+																			<tbody>
+																				<tr>
+																					<td style="font-family:'Lucida Sans Unicode',Lucida Grande,sans-serif; color:#3c4858; text-align:left;"><span style="color:#3c4858; ">
+																					<div style="line-height:20px;"><font color="#800000"><span class="pretitle" style="font-size:16px;">Schiller Institute Weekly Dialogue With Helga Zepp-LaRouche</span><strong><span class="title" style="font-size:18px;"><br>
+																	                Schiller Institute Conference Breaks Through the Fog of War</span></strong></font><br><span class="author" style="font-size:14px;"></span></div> </span></td> </tr>
+																				<tr>
+																					<td class="col_td_gap" height="10" style="font-size:1px; line-height:10px; mso-hide: all;">&nbsp;</td> </tr>
+																				<tr>
+																					<td style="font-size:14px; font-family:'Trebuchet MS',Helvetica,sans-serif, sans-serif; color:#3c4858;">
+																						<div class="teaser">Let me begin by saying for those not familiar with the Schiller Institute, we just celebrated the 40th anniversary of its founding, with a powerful conference on the topic of the dialogue among civilizations. ... you’ll see that the Schiller Institute has become an increasingly influential forum for serious discussion among rational actors, globally.</div>
+																					</td> </tr>
+																				<tr>
+																					<td class="col_td_gap" height="10" style="font-size:1px; line-height:10px; mso-hide: all;">&nbsp;</td> </tr>
+																				<tr>
+																					<td valign="top">
+																						<table align="left" border="0" cellpadding="0" cellspacing="0" class="rnb-btn-col-content" style="border-collapse: separate;margin:0 auto;">
+																							<tbody>
+																								<tr>
+																									<td align="left" bgcolor="#2202f2" height="20" class="rmbutton" style="padding-left:18px; padding-right:18px" valign="middle" width="auto"><span style="color:#ffffff; font-weight:normal;"> <a href="https://larouchepub.com/eiw/public/unlisted/2024/eirv51n50-20241220/SrThAmFViVaKAuEsEuCoGd3/5150-schiller_institute_conference.html" style="text-decoration:none; color:#ffffff; font-weight:normal;" target="_blank">Read More</a> </span></td> </tr> </tbody> </table>
+																					</td> <!--[if gte mso 9]><span style="font-size:0px;line-height:0px; mso-hide: all;"> </span><![endif]--> </tr> </tbody> </table> </th> </tr> </tbody> </table>
+													</td> </tr>
+												<tr>
+													<td height="12" style="font-size:1px; line-height:12px; mso-hide: all;">&nbsp;</td> </tr> </tbody> </table>
+									</td> </tr> </tbody> </table> <!--[if mso]> </td> <![endif]--> <!--[if mso]> </tr> </table> <![endif]--> </div>
+				</td> </tr><tr class="srow">
+				<td align="center" valign="top">
+					<div style="background-color: rgb(255, 255, 255); border-radius: 0px;"> <!--[if mso]> <table align="center" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;"> <tr> <![endif]--> <!--[if mso]> <td valign="top" width="590" style="width:590px;"> <![endif]-->
+						<table border="0" cellpadding="0" cellspacing="0" class="rnb-del-min-width" name="Layout_16" style="min-width:100%;" width="100%">
+							<tbody>
+								<tr>
+									<td align="center" class="rnb-del-min-width" valign="top"><table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="rnb-container" style="background-color: rgb(255, 255, 255); padding-left: 20px; padding-right: 20px; border-collapse: separate; border-radius: 0px; border-bottom: 2px solid rgb(0, 0, 0);" width="100%">
+											<tbody>
+												<tr>
+													<td height="10" style="font-size:1px; line-height:10px; mso-hide: all;">&nbsp;</td> </tr>
+												<tr>
+													<td align="left" class="rnb-container-padding" valign="top">
+														<table border="0" cellpadding="0" cellspacing="0" class="rnb-columns-container" width="100%">
+															<tbody>
+																<tr>
+																	<th class="rnb-force-col" style="text-align: left; font-weight: normal; padding-right: 0px;" valign="top">
+																		<table align="left" border="0" cellpadding="0" cellspacing="0" class="rnb-col-1" valign="top" width="100%">
+																			<tbody>
+																				<tr>
+																					<td style="font-size:18px; font-family:'Lucida Sans Unicode',Lucida Grande,sans-serif, sans-serif; color:#3c4858;">
+																						<div><strong><span class="sectionTitle" style="font-size:18px;">III. Review</span></strong></div>
+																					</td> </tr> </tbody> </table> </th> </tr> </tbody> </table>
+													</td> </tr>
+												<tr>
+													<td height="10" style="font-size:1px; line-height:10px; mso-hide: all;">&nbsp;</td> </tr> </tbody> </table>
+									</td> </tr> </tbody> </table> <!--[if mso]> </td> <![endif]--> <!--[if mso]> </tr> </table> <![endif]--> </div>
+				</td> </tr><tr class="row">
+				<td align="center" valign="top">
+					<div style="background-color: rgb(255, 255, 255); border-radius: 0px;"> <!--[if mso]> <table align="center" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;"> <tr> <![endif]--> <!--[if mso]> <td valign="top" width="590" style="width:590px;"> <![endif]-->
+						<table border="0" cellpadding="0" cellspacing="0" class="rnb-del-min-width" id="Layout_17" name="Layout_17" style="min-width:100%;" width="100%">
+							<tbody>
+								<tr>
+									<td align="center" class="rnb-del-min-width" valign="top"><table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="rnbcontainerstyle" width="100%">
+											<tbody>
+												<tr>
+													<td height="12" style="font-size:1px; line-height:12px; mso-hide: all;">&nbsp;</td> </tr>
+												<tr>
+													<td align="left" class="rnb-container-padding" valign="top">
+														<table border="0" cellpadding="0" cellspacing="0" class="rnb-columns-container" width="100%">
+															<tbody>
+																<tr>
+																	<th class="rnb-force-col" style="text-align: left; font-weight: normal; padding-right: 0px;" valign="top" width="578">
+																		<table align="left" border="0" cellpadding="0" cellspacing="0" class="rnb-col-1" valign="top" width="578">
+																			<tbody>
+																				<tr>
+																					<td style="font-family:'Lucida Sans Unicode',Lucida Grande,sans-serif; color:#3c4858; text-align:left;"><span style="color:#3c4858; ">
+																					<div style="line-height:20px;"><font color="#800000"><span class="pretitle" style="font-size:16px;">Book Review</span><strong><span class="title" style="font-size:18px;"><br>
+																	                Pierre Fermat: Ending the Tyranny of Descartes and the Cartesians</span></strong></font><br><span class="author" style="font-size:14px;">by Pierre Bonnefoy<br>A review of <em class="CharOverride-13">The Battle for Light: Fermat vs. Descartes: A Sourcebook on Pierre de Fermat’s Principle of Least Time</em>, transl. &amp; ed., Jason A. Ross</span></div> </span></td> </tr>
+																				<tr>
+																					<td class="col_td_gap" height="10" style="font-size:1px; line-height:10px; mso-hide: all;">&nbsp;</td> </tr>
+																				<tr>
+																					<td style="font-size:14px; font-family:'Trebuchet MS',Helvetica,sans-serif, sans-serif; color:#3c4858;">
+																						<div class="teaser"><em>We publish here, with permission, the afterword to Jason Ross’s </em>The Battle for Light: Fermat vs. Descartes, A Sourcebook on Pierre de Fermat’s Principle of Least Time<em>. Pierre Bonnefoy’s afterword is a masterful summary of the book that goes beyond a mere review, situating Fermat’s work amidst the battle within science at the time and laying out how later discoveries by Christiaan Huygens and Gottfried Leibniz built upon Fermat’s scientific breakthroughs.</em></div>
+																					</td> </tr>
+																				<tr>
+																					<td class="col_td_gap" height="10" style="font-size:1px; line-height:10px; mso-hide: all;">&nbsp;</td> </tr>
+																				<tr>
+																					<td valign="top">
+																						<table align="left" border="0" cellpadding="0" cellspacing="0" class="rnb-btn-col-content" style="border-collapse: separate;margin:0 auto;">
+																							<tbody>
+																								<tr>
+																									<td align="left" bgcolor="#2202f2" height="20" class="rmbutton" style="padding-left:18px; padding-right:18px" valign="middle" width="auto"><span style="color:#ffffff; font-weight:normal;"> <a href="https://larouchepub.com/eiw/public/unlisted/2024/eirv51n50-20241220/SrThAmFViVaKAuEsEuCoGd3/5150-pierre_fermat_ending_the_tyran.html" style="text-decoration:none; color:#ffffff; font-weight:normal;" target="_blank">Read More</a> </span></td> </tr> </tbody> </table>
+																					</td> <!--[if gte mso 9]><span style="font-size:0px;line-height:0px; mso-hide: all;"> </span><![endif]--> </tr> </tbody> </table> </th> </tr> </tbody> </table>
+													</td> </tr>
+												<tr>
+													<td height="12" style="font-size:1px; line-height:12px; mso-hide: all;">&nbsp;</td> </tr> </tbody> </table>
+									</td> </tr> </tbody> </table> <!--[if mso]> </td> <![endif]--> <!--[if mso]> </tr> </table> <![endif]--> </div>
+				</td> </tr><tr class="srow">
+				<td align="center" valign="top">
+					<div style="background-color: rgb(255, 255, 255); border-radius: 0px;"> <!--[if mso]> <table align="center" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;"> <tr> <![endif]--> <!--[if mso]> <td valign="top" width="590" style="width:590px;"> <![endif]-->
+						<table border="0" cellpadding="0" cellspacing="0" class="rnb-del-min-width" name="Layout_18" style="min-width:100%;" width="100%">
+							<tbody>
+								<tr>
+									<td align="center" class="rnb-del-min-width" valign="top"><table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="rnb-container" style="background-color: rgb(255, 255, 255); padding-left: 20px; padding-right: 20px; border-collapse: separate; border-radius: 0px; border-bottom: 2px solid rgb(0, 0, 0);" width="100%">
+											<tbody>
+												<tr>
+													<td height="10" style="font-size:1px; line-height:10px; mso-hide: all;">&nbsp;</td> </tr>
+												<tr>
+													<td align="left" class="rnb-container-padding" valign="top">
+														<table border="0" cellpadding="0" cellspacing="0" class="rnb-columns-container" width="100%">
+															<tbody>
+																<tr>
+																	<th class="rnb-force-col" style="text-align: left; font-weight: normal; padding-right: 0px;" valign="top">
+																		<table align="left" border="0" cellpadding="0" cellspacing="0" class="rnb-col-1" valign="top" width="100%">
+																			<tbody>
+																				<tr>
+																					<td style="font-size:18px; font-family:'Lucida Sans Unicode',Lucida Grande,sans-serif, sans-serif; color:#3c4858;">
+																						<div><strong><span class="sectionTitle" style="font-size:18px;">IV. From Lyndon LaRouche</span></strong></div>
+																					</td> </tr> </tbody> </table> </th> </tr> </tbody> </table>
+													</td> </tr>
+												<tr>
+													<td height="10" style="font-size:1px; line-height:10px; mso-hide: all;">&nbsp;</td> </tr> </tbody> </table>
+									</td> </tr> </tbody> </table> <!--[if mso]> </td> <![endif]--> <!--[if mso]> </tr> </table> <![endif]--> </div>
+				</td> </tr><tr class="row">
+				<td align="center" valign="top">
+					<div style="background-color: rgb(255, 255, 255); border-radius: 0px;"> <!--[if mso]> <table align="center" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;"> <tr> <![endif]--> <!--[if mso]> <td valign="top" width="590" style="width:590px;"> <![endif]-->
+						<table border="0" cellpadding="0" cellspacing="0" class="rnb-del-min-width" id="Layout_19" name="Layout_19" style="min-width:100%;" width="100%">
+							<tbody>
+								<tr>
+									<td align="center" class="rnb-del-min-width" valign="top"><table bgcolor="#ffffff" border="0" cellpadding="0" cellspacing="0" class="rnbcontainerstyle" width="100%">
+											<tbody>
+												<tr>
+													<td height="12" style="font-size:1px; line-height:12px; mso-hide: all;">&nbsp;</td> </tr>
+												<tr>
+													<td align="left" class="rnb-container-padding" valign="top">
+														<table border="0" cellpadding="0" cellspacing="0" class="rnb-columns-container" width="100%">
+															<tbody>
+																<tr>
+																	<th class="rnb-force-col" style="text-align: left; font-weight: normal; padding-right: 0px;" valign="top" width="578">
+																		<table align="left" border="0" cellpadding="0" cellspacing="0" class="rnb-col-1" valign="top" width="578">
+																			<tbody>
+																				<tr>
+																					<td style="font-family:'Lucida Sans Unicode',Lucida Grande,sans-serif; color:#3c4858; text-align:left;"><span style="color:#3c4858; ">
+																					<div style="line-height:20px;"><font color="#800000"><strong><span class="title" style="font-size:18px;">Creating the Harmony of Nations</span></strong></font><br><span class="author" style="font-size:14px;">by Lyndon H. LaRouche, Jr &nbsp; Sept. 19, 2015</span></div> </span></td> </tr>
+																				<tr>
+																					<td class="col_td_gap" height="10" style="font-size:1px; line-height:10px; mso-hide: all;">&nbsp;</td> </tr>
+																				<tr>
+																					<td style="font-size:14px; font-family:'Trebuchet MS',Helvetica,sans-serif, sans-serif; color:#3c4858;">
+																						<div class="teaser">So, we are now at a point of a very evil condition of mankind. However, there are certain movements which are coming into shape, which can bring about a kind of harmony among different parts of human culture, and that I think is what the objective has to be. Because each part of society does have its own characteristics. But the characteristics we’re looking for are those which are harmonious, harmonious for that population.</div>
+																					</td> </tr>
+																				<tr>
+																					<td class="col_td_gap" height="10" style="font-size:1px; line-height:10px; mso-hide: all;">&nbsp;</td> </tr>
+																				<tr>
+																					<td valign="top">
+																						<table align="left" border="0" cellpadding="0" cellspacing="0" class="rnb-btn-col-content" style="border-collapse: separate;margin:0 auto;">
+																							<tbody>
+																								<tr>
+																									<td align="left" bgcolor="#2202f2" height="20" class="rmbutton" style="padding-left:18px; padding-right:18px" valign="middle" width="auto"><span style="color:#ffffff; font-weight:normal;"> <a href="https://larouchepub.com/eiw/public/unlisted/2024/eirv51n50-20241220/SrThAmFViVaKAuEsEuCoGd3/5150-creating_the_harmony_of_nation.html" style="text-decoration:none; color:#ffffff; font-weight:normal;" target="_blank">Read More</a> </span></td> </tr> </tbody> </table>
+																					</td> <!--[if gte mso 9]><span style="font-size:0px;line-height:0px; mso-hide: all;"> </span><![endif]--> </tr> </tbody> </table> </th> </tr> </tbody> </table>
+													</td> </tr>
+												<tr>
+													<td height="12" style="font-size:1px; line-height:12px; mso-hide: all;">&nbsp;</td> </tr> </tbody> </table>
+									</td> </tr> </tbody> </table> <!--[if mso]> </td> <![endif]--> <!--[if mso]> </tr> </table> <![endif]--> </div>
+				</td> </tr><tr id="about_larouche">
+									<td align="center" valign="top">
+										<div style="background-color: rgb(230, 221, 195); border-radius: 0px;"> <!--[if mso 15]> <table align="center" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;"> <tr> <![endif]--> <!--[if mso 15]> <td valign="top" width="590" style="width:590px;"> <![endif]-->
+											<table border="0" cellpadding="0" cellspacing="0" class="rnb-del-min-width" id="Layout_1" name="Layout_1" style="min-width:100%;" width="100%">
+												<tbody>
+													<tr>
+														<td align="center" class="rnb-del-min-width" valign="top"><a href="#" name="Layout_1a"></a><table bgcolor="#e6ddc3" border="0" cellpadding="0" cellspacing="0" class="rnb-container" style="max-width: 100%; min-width: 100%; table-layout: fixed; background-color: rgb(230, 221, 195); border-bottom: 4px solid rgb(20, 18, 18); border-radius: 0px; border-collapse: separate; padding: 14px 6px 8px;" width="100%">
+																<tbody>
+																	<tr>
+																		<td align="left" class="rnb-container-padding" valign="top">
+																			<table border="0" cellpadding="0" cellspacing="0" class="rnb-columns-container" width="100%">
+																				<tbody>
+																					<tr>
+																						<th class="rnb-force-col img-block-center" style="text-align: left; font-weight: normal; padding-right: 12px;" valign="top" width="216">
+																							<table align="left" border="0" cellpadding="0" cellspacing="0" class="rnb-col-2-noborder-onright" valign="top" width="216">
+																								<tbody>
+																									<tr>
+																										<td align="left" class="img-block-center" style="line-height: auto;" valign="top" width="100%">
+																											<div style="border-top:0px none #000;border-right:0px None #000;border-bottom:0px None #000;border-left:0px None #000;display:inline-block;">
+																												<div><img alt="" border="0" class="rnb-col-2-img-side-xs" hspace="0" src="https://img.mailinblue.com/1977586/images/rnb/original/5bee0729cdfd85c5804ffed5.jpg" style="vertical-align:top; float: left; width:216px;max-width:455px !important; " vspace="0" width="216"></div>
+																												<div style="clear:both;">
+																												</div> </div>
+																										</td> </tr> </tbody> </table> </th>
+																						<th class="rnb-force-col" style="text-align: left; font-weight: normal" valign="top">
+																							<table align="left" border="0" cellpadding="0" cellspacing="0" class="rnb-last-col-2" valign="top" width="350">
+																								<tbody>
+																									<tr>
+																										<td style="font-size:24px; font-family:'Arial',Helvetica,sans-serif; color:#3c4858; text-align:left;"><span style="color:#3c4858; "><span style="color:#000000;"><strong><span style="font-size: 18px;">From Lyndon LaRouche</span></strong></span></span></td> </tr>
+																									<tr>
+																										<td height="10" style="font-size:1px; line-height:10px; mso-hide: all;">&nbsp;</td> </tr>
+																									<tr>
+																										<td class="rnb-mbl-float-none" style="font-size:14px; font-family:'Arial',Helvetica,sans-serif;color:#3c4858;float:right;width:350px;">
+																											<div style="text-align: justify;"><span style="color:#000000;">The greatest economist of the last 100 years<em>, EIR</em> founder, Lyndon LaRouche, for five decades, led the global forces seeking to replace geopolitics and imperial warfare with a New Paradigm of relations among nations based upon cooperative development of science, technology and infrastructure, reaching from Earth into the galaxy.&nbsp;</span></div>
+																										</td> </tr>
+																									<tr>
+																										<td height="10" style="font-size:1px; line-height:10px; mso-hide: all;">&nbsp;</td> </tr>
+																									<tr>
+																										<td valign="top">
+																											<table align="center" border="0" cellpadding="0" cellspacing="0" class="rnb-btn-col-content" style="border-collapse: separate;">
+																												<tbody>
+																													<tr>
+																														<td align="center" bgcolor="#31536a" height="20" style="font-size:12px; font-family:'Arial',Helvetica,sans-serif; text-align:center; color:#ffffff; font-weight:normal; padding-left:14px; padding-right:14px; background-color:#31536a; border-radius:15px;border-top:0px None #000;border-right:0px None #000;border-bottom:0px None #000;border-left:0px None #000;border-collapse: separate;" valign="middle" width="auto"><span style="color:#ffffff; font-weight:normal;"> <a href="https://www.larouchepub.com/lar_writings.html" id="lar_writings" style="text-decoration:none; color:#ffffff; font-weight:normal;" target="_blank"><strong>Read more from LaRouche here</strong> &gt;&gt;</a> </span></td> </tr> </tbody> </table>
+																										</td> </tr> </tbody> </table> </th> </tr> </tbody> </table>
+																		</td> </tr> </tbody> </table>
+														</td> </tr> </tbody> </table> <!--[if mso 15]> </td> <![endif]--> <!--[if mso 15]> </tr> </table> <![endif]--> </div>
+									</td> </tr>
+								<tr id="subscriber_services">
+									<td align="center" valign="top">
+										<div style="background-color: rgb(217, 219, 221);">
+											<table border="0" cellpadding="0" cellspacing="0" class="rnb-del-min-width rnb-tmpl-width" id="Layout_3" name="Layout_3" style="min-width:590px;" width="100%">
+												<tbody>
+													<tr>
+														<td align="center" bgcolor="#d9dbdd" class="rnb-del-min-width" style="min-width:590px; background-color: #d9dbdd; text-align: center;" valign="top"><a href="#" name="Layout_3"></a><table align="center" bgcolor="#d9dbdd" border="0" cellpadding="0" cellspacing="0" class="rnb-container" style="padding-right: 20px; padding-left: 20px; background-color: rgb(217, 219, 221);" width="590">
+																<tbody>
+																	<tr>
+																		<td height="10" style="font-size:1px; line-height:1px; mso-hide: all;">&nbsp;</td> </tr>
+																	<tr>
+																		<td>
+																			<div style="font-size:14px; color:#000000; font-weight:normal; text-align:center; font-family:'Arial',Helvetica,sans-serif;">
+																				<div>
+																					<div><span style="font-size:16px;"><span style="color: rgb(0, 0, 0);"><strong>OTHER READING AND DELIVERY OPTIONS ARE LISTED BELOW:</strong></span></span></div>
+																					<div style="text-align: justify;"><span style="color:#000000;">&nbsp;</span></div>
+																					<div style="line-height: 20px; text-align: justify;"><span style="font-size:14px;"><span style="color:#800000;">To download the <strong>pdf </strong>version of this issue, please click </span><a href="https://larouchepub.com/eiw/private/2024/eirv51n50-20241220/eirv51n50-20241220.pdf" id="pdf" style="text-decoration: underline; color: rgb(7, 47, 219);"><u><span style="color:#0000FF;">here</span></u></a><span style="color:#800000;">. </span></span></div>
+																					<div style="line-height: 20px; text-align: justify;"><span style="font-size:14px;"><span style="color:#800000;">To download the <strong>high-resolution pdf</strong>, best for printing, please click <a href="https://larouchepub.com/eiw/private/2024/eirv51n50-20241220/eirv51n50-20241220lg.pdf" id="hires_pdf" style="text-decoration: underline; color: rgb(7, 47, 219);">here</a>.</span></span></div>
+																					<div style="line-height: 20px; text-align: justify;">&nbsp;</div>
+																					<div style="line-height: 20px; text-align: justify;">&nbsp;</div>
+																					<div style="line-height: 20px;"><strong><span style="color:#000000;">SUBSCRIBER SERVICE</span></strong></div>
+																					<div style="line-height: 20px;">Forgotten password?&nbsp;Click <u><a href="https://www.larouchepub.com/cgi-bin/eiw/index.cgi?type=member&amp;action=lost&amp;" style="text-decoration: underline; color: rgb(7, 47, 219);">here</a></u>.&nbsp;</div>
+																					<div style="line-height: 20px;">To change your password or email address, click <u><a href="https://www.larouchepub.com/cgi-bin/eiw/index.cgi" style="text-decoration: underline; color: rgb(7, 47, 219);">here</a></u>.</div>
+																					<div style="line-height: 20px;">&nbsp;</div> </div>
+																				<div><span style="font-size:12px;"><span id="copyright" style="color:#000000;">© 2022 - EIR News Service, Inc.</span></span></div>
+																				<div><span style="font-size:12px;"><span id="address1" style="color:#000000;">P.O. Box 17390</span></span></div>
+																				<div><span style="font-size:12px;"><span id="address2" style="color:#000000;">Washington, D.C. 20041-0390.</span></span></div>
+																				<div><span style="font-size:12px;"><span id="website" style="color:#000000;">larouchepub.com</span></span></div>
+																				<div><span style="color:#000000;">&nbsp;</span></div>
+																				<div><span style="color:#000000;">Contact:&nbsp;<a href="mailto:fulfillment@larouchepub.com" id="email" style="text-decoration: underline; color: rgb(7, 47, 219);">fulfillment@larouchepub.com</a></span></div>
+																				<div><span style="font-size:12px;"><span style="color:#000000;">&nbsp;</span></span></div>
+																				<div><span style="font-size:12px;"><span style="color:#000000;">This email was sent to {{ contact.EMAIL }}</span></span></div>
+																				<div><span style="font-size:12px;"><span style="color:#000000;">You received this email because you are a subscriber to <em>EIR</em> magazine.</span></span></div>
+																				<div><span style="color:#000000;">&nbsp;</span></div>
+																				<div style="text-align: center;"><span style="font-size:18px;"><span style="color:#000000;">If you forward this email, remove the "Unsubscribe here" link below before you forward it. Otherwise, the recipient of your forwarded email may unsubscribe you from this list without your consent or knowledge.</span></span></div> </div>
+																			<div style="display: block; text-align: center;"><span style="font-size:14px; font-weight:normal; display: inline-block; text-align:center; font-family:'Arial',Helvetica,sans-serif;"> <a href="{{ unsubscribe }}" style="text-decoration:underline; color:#000;font-size:17px;font-weight:normal;font-family:'Trebuchet MS',Helvetica,sans-serif;" target="_blank"><div><em>Unsubscribe here</em></div> </a></span> </div>
+																		</td> </tr>
+																	<tr>
+																		<td height="10" style="font-size:1px; line-height:1px; mso-hide: all;">&nbsp;</td> </tr>
+																	<tr>
+																		<td>
+																			<div style="text-align:center;">
+																				<div style="font-family:Arial, Helvetica, sans-serif;color:#aaaaaa;opacity:0.8">Sent by</div><a href="https://www.sendinblue.com/" target="_blank"><img alt="SendinBlue" border="0" height="40" hspace="0" src="https://img.mailinblue.com/new_images/rnb/logo_nb_en.png" style="margin:auto;" vspace="0" width="129"></a> </div>
+																		</td> </tr>
+																	<tr>
+																		<td height="10" style="font-size:1px; line-height:1px; mso-hide: all;">&nbsp;</td> </tr> </tbody> </table>
+														</td> </tr> </tbody> </table> </div>
+									</td> </tr>
+								<tr id="view_in_browser">
+									<td align="center" valign="top">
+										<div style="background-color: rgb(249, 250, 252);">
+											<table border="0" cellpadding="0" cellspacing="0" class="rnb-del-min-width rnb-tmpl-width" id="Layout_215" name="Layout_215" style="min-width:590px;" width="100%">
+												<tbody>
+													<tr>
+														<td align="center" class="rnb-del-min-width" style="min-width: 590px;" valign="top"><a href="#" name="Layout_215"></a><table align="center" bgcolor="#f9fafc" border="0" cellpadding="0" cellspacing="0" style="background-color: rgb(249, 250, 252);" width="100%">
+																<tbody>
+																	<tr>
+																		<td height="10" style="font-size:1px; line-height:1px; mso-hide: all;">&nbsp;</td> </tr>
+																	<tr>
+																		<td align="center" height="20" style="font-family:Arial,Helvetica,sans-serif; color:#666666;font-size:13px;font-weight:normal;text-align: center;"><span style="color: rgb(102, 102, 102); text-decoration: underline;"> <a href="{{ mirror }}" style="text-decoration: underline; color: rgb(102, 102, 102);" target="_blank">View in browser</a></span></td> </tr>
+																	<tr>
+																		<td height="10" style="font-size:1px; line-height:1px; mso-hide: all;">&nbsp;</td> </tr> </tbody> </table>
+														</td> </tr> </tbody> </table> </div>
+									</td> </tr> </tbody> </table> <!--[if gte mso 9]> </td> </tr> </table> <![endif]-->
+					</td> </tr> </tbody> </table> </body>    </html>

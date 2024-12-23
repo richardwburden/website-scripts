@@ -1,0 +1,178 @@
+<stylesheet xmlns:fn="http://www.w3.org/2005/xpath-functions"
+            xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <globalVariables/>
+   <mode onNo="TC" flags="dW" patternSlots="0">
+      <ruleSet type="namedElements">
+         <ruleChain key="instantiationLocation">
+            <templateRule prec="0"
+                          prio="2.0"
+                          seq="2"
+                          rank="1"
+                          minImp="0"
+                          slots="1"
+                          flags="s"
+                          line="19"
+                          module="file:/C:/Dropbox_insecure/Dropbox/software/website-scripts/website-scripts/input/../pbcore-fix-location.xsl">
+               <p.nodeTest role="match" test="element(Q{}instantiationLocation)"/>
+               <copy role="action"
+                     baseUri="file:/C:/Dropbox_insecure/Dropbox/software/website-scripts/website-scripts/input/../pbcore-fix-location.xsl"
+                     ns="=http://www.pbcore.org/PBCore/PBCoreNamespace.html xsl=~ fn=~ xs=~ xsi=~"
+                     line="21"
+                     flags="cin">
+                  <let role="content"
+                       var="Q{}trimmedText"
+                       as="xs:string"
+                       slot="0"
+                       eval="8">
+                     <fn name="replace">
+                        <check card="?" diag="0|0||fn:replace">
+                           <cvUntyped to="xs:string">
+                              <data>
+                                 <axis name="child" nodeTest="text()"/>
+                              </data>
+                           </cvUntyped>
+                        </check>
+                        <str val="\s+"/>
+                        <str val=""/>
+                        <str val=""/>
+                     </fn>
+                     <choose line="23">
+                        <fn name="matches">
+                           <varRef name="Q{}trimmedText" slot="0"/>
+                           <str val="[ABCDE]-BMB"/>
+                           <str val=""/>
+                        </fn>
+                        <choose line="25">
+                           <or op="or">
+                              <or op="or">
+                                 <or op="or">
+                                    <fn name="matches">
+                                       <varRef name="Q{}trimmedText" slot="0"/>
+                                       <str val="[^\d]\d[^\d]"/>
+                                       <str val=""/>
+                                    </fn>
+                                    <fn name="matches">
+                                       <varRef name="Q{}trimmedText" slot="0"/>
+                                       <str val="[^\d]\d$"/>
+                                       <str val=""/>
+                                    </fn>
+                                 </or>
+                                 <fn name="matches">
+                                    <varRef name="Q{}trimmedText" slot="0"/>
+                                    <str val="^\d[^\d]"/>
+                                    <str val=""/>
+                                 </fn>
+                              </or>
+                              <fn name="matches">
+                                 <varRef name="Q{}trimmedText" slot="0"/>
+                                 <str val="^\d$"/>
+                                 <str val=""/>
+                              </fn>
+                           </or>
+                           <valueOf line="28" flags="l">
+                              <fn name="replace">
+                                 <varRef name="Q{}trimmedText" slot="0"/>
+                                 <str val="(\d)"/>
+                                 <str val="0$1"/>
+                                 <str val="x"/>
+                              </fn>
+                           </valueOf>
+                           <true/>
+                           <valueOf line="31" flags="l">
+                              <varRef name="Q{}trimmedText" slot="0"/>
+                           </valueOf>
+                        </choose>
+                        <true/>
+                        <applyT line="36" flags="i" bSlot="0">
+                           <axis role="select" name="child" nodeTest="node()"/>
+                        </applyT>
+                     </choose>
+                  </let>
+               </copy>
+            </templateRule>
+         </ruleChain>
+         <ruleChain key="pbcoreDescriptionDocument">
+            <templateRule prec="0"
+                          prio="2.0"
+                          seq="1"
+                          rank="1"
+                          minImp="0"
+                          slots="0"
+                          flags="s"
+                          line="10"
+                          module="file:/C:/Dropbox_insecure/Dropbox/software/website-scripts/website-scripts/input/../pbcore-fix-location.xsl">
+               <p.nodeTest role="match" test="element(Q{}pbcoreDescriptionDocument)"/>
+               <sequence role="action"
+                         baseUri="file:/C:/Dropbox_insecure/Dropbox/software/website-scripts/website-scripts/input/../pbcore-fix-location.xsl"
+                         ns="=http://www.pbcore.org/PBCore/PBCoreNamespace.html xsl=~ fn=~ xs=~ xsi=~"
+                         line="15">
+                  <valueOf>
+                     <str val="&#xA;"/>
+                  </valueOf>
+                  <copy flags="cin">
+                     <applyT role="content" flags="i" bSlot="1">
+                        <axis role="select" name="child" nodeTest="node()"/>
+                     </applyT>
+                  </copy>
+               </sequence>
+            </templateRule>
+         </ruleChain>
+      </ruleSet>
+      <ruleSet type="attribute()">
+         <templateRule prec="0"
+                       prio="1.0"
+                       seq="0"
+                       rank="0"
+                       minImp="0"
+                       slots="0"
+                       flags="s"
+                       line="4"
+                       module="file:/C:/Dropbox_insecure/Dropbox/software/website-scripts/website-scripts/input/../pbcore-fix-location.xsl">
+            <p.nodeTest role="match" test="attribute()"/>
+            <copy role="action"
+                  baseUri="file:/C:/Dropbox_insecure/Dropbox/software/website-scripts/website-scripts/input/../pbcore-fix-location.xsl"
+                  ns="=http://www.pbcore.org/PBCore/PBCoreNamespace.html xsl=~ fn=~ xs=~ xsi=~"
+                  line="6"
+                  flags="cin">
+               <applyT role="content" bSlot="2">
+                  <sequence role="select">
+                     <axis name="attribute" nodeTest="attribute()"/>
+                     <axis name="child"
+                           nodeTest="( element() | text() | comment() | processing-instruction() )"/>
+                  </sequence>
+               </applyT>
+            </copy>
+         </templateRule>
+      </ruleSet>
+      <ruleSet type="node()">
+         <templateRule prec="0"
+                       prio="1.0"
+                       seq="0"
+                       rank="0"
+                       minImp="0"
+                       slots="0"
+                       flags="s"
+                       line="4"
+                       module="file:/C:/Dropbox_insecure/Dropbox/software/website-scripts/website-scripts/input/../pbcore-fix-location.xsl">
+            <p.nodeTest role="match"
+                        test="( element() | text() | comment() | processing-instruction() )"/>
+            <copy role="action"
+                  baseUri="file:/C:/Dropbox_insecure/Dropbox/software/website-scripts/website-scripts/input/../pbcore-fix-location.xsl"
+                  ns="=http://www.pbcore.org/PBCore/PBCoreNamespace.html xsl=~ fn=~ xs=~ xsi=~"
+                  line="6"
+                  flags="cin">
+               <applyT role="content" bSlot="2">
+                  <sequence role="select">
+                     <axis name="attribute" nodeTest="attribute()"/>
+                     <axis name="child"
+                           nodeTest="( element() | text() | comment() | processing-instruction() )"/>
+                  </sequence>
+               </applyT>
+            </copy>
+         </templateRule>
+      </ruleSet>
+   </mode>
+   <namedTemplates/>
+   <accumulators/>
+   <functions/>
+</stylesheet>

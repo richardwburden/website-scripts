@@ -1,0 +1,8 @@
+Parsing of undecoded UTF-8 will give garbage when decoding entities at c:/xampp/perl/vendor/lib/HTML/Parser.pm line 102, <INFILE> line 1.
+pauseParsing of undecoded UTF-8 will give garbage when decoding entities at c:/xampp/perl/vendor/lib/HTML/Parser.pm line 102, <INFILE> line 1.
+Parsing of undecoded UTF-8 will give garbage when decoding entities at c:/xampp/perl/vendor/lib/HTML/Parser.pm line 102, <INFILE> line 1.
+pauseParsing of undecoded UTF-8 will give garbage when decoding entities at c:/xampp/perl/vendor/lib/HTML/Parser.pm line 102, <INFILE> line 1.
+Parsing of undecoded UTF-8 will give garbage when decoding entities at c:/xampp/perl/vendor/lib/HTML/Parser.pm line 102, <INFILE> line 1.
+pauseParsing of undecoded UTF-8 will give garbage when decoding entities at c:/xampp/perl/vendor/lib/HTML/Parser.pm line 102, <INFILE> line 1.
+pauseParsing of undecoded UTF-8 will give garbage when decoding entities at c:/xampp/perl/vendor/lib/HTML/Parser.pm line 102, <INFILE> line 1.
+pauseParsing of undecoded UTF-8 will give garbage when decoding entities at c:/xampp/perl/vendor/lib/HTML/Parser.pm line 102, <INFILE> line 1.

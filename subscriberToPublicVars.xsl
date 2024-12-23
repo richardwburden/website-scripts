@@ -4,7 +4,7 @@ xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 xmlns:fn="http://www.w3.org/2005/xpath-functions">
 
 <!-- edit this variable to point to the directory containing the new issue's public index page. This must have a slash at the end, before the closing single quotation mark-->
-<xsl:variable name="issuedir" select="'eirv51n47-20241129/'" />
+<xsl:variable name="issuedir" select="'eirv51n50-20241220/'" />
 
 <!-- abbreviated form for the directories for the public HTML article pages.
 Use html2xhtml.pl to generate the XHTML version of the subscriber's issue index page:

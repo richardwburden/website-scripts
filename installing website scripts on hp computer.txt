@@ -1,0 +1,21 @@
+  DB<3> p $pdfIndexPath
+/eiw/public/2023/eirv50n40-20231013/pdf_links.txt
+                                                                                                                                                                                               DB<4> p $domainName
+http://larouchepub.com
+                                                                                                                                                                                               DB<5> n
+main::(epub2html.pl:376):               $mech->get($domainName.$pdfIndexPath);
+                                                                                                                                                                                               DB<5> n
+main::(epub2html.pl:377):               $PDFLinksExist = 0;
+                                                                                                                                                                                               DB<5> n
+main::(epub2html.pl:378):               if ($mech->success) {$PDFLinksExist = 1}
+                                                                                                                                                                                               DB<5> n
+main::(epub2html.pl:380):               my $pdfIndexTree = HTML::TreeBuilder->new();
+                                                                                                                                                                                               DB<5> p $PDFLinksExist
+0
+                                                                                                                                                                                               DB<6> p $mech
+WWW::Mechanize=HASH(0x4be8e88)
+                                                                                                                                                                                               DB<7> p $mech->success
+
+                                                                                                                                                                                               DB<8> p $mech->content
+LWP will support https URLs if the LWP::Protocol::https module
+is installed.

@@ -1,0 +1,18 @@
+<domain name="http://larouchepub.com" docroot="C:\Users\Richard\Documents\websites\EIR" remoteDocRoot="/www" login="josi" pwd="">
+
+<!-- each of the following paths contains only the part of the path that does not change from issue to issue; the remainder of the path is calculated from the volume number, issue number and date contained in the "PDF edition" table of contents in the epub, or a relative path supplied on the command-line.  The first of these, pdfIndexPath, contains the complete path if it ends with ']]]', e.g. "/eiw/]]]", in which case the ']]]' is NOT included in the path. -->
+<option id="pdfIndexPath" value="/eiw/public/">
+<option id="publicArticlesRootPath" value="/">
+<option id="unlistedArticlesRootPath" value="/eiw/public/unlisted/">
+<option id="publicIssueIndexRootPath" value="/eiw/public/">
+<option id="unlistedIssueIndexRootPath" value="/eiw/public/unlisted/">
+<option id="publicIssueIndexArchiveRootPath" value="/eiw/public/">
+<option id="phpRootPath" value="/eiw/private/">
+
+
+<!-- the following paths are always taken as-is -->
+<option id="browserPath" value="C:\Users\Richard\AppData\Local\Yandex\YandexBrowser\Application\browser.exe">
+<! -- <option id="browserPath" value="C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"> -->
+<option id="browserOptions" value="--headless --dump-dom --enable-logging  --disable-gpu"> <!-- default value is "--headless --dump-dom" -->
+<option id="browserScriptPath" value="C:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\epub2htmlRunJS.bat">
+

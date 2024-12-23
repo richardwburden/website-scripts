@@ -174,17 +174,17 @@ use value of "id" if available; otherwise set it to "clear" -->
 
 
 
-<!-- Reconstruct full issue download links -->
+<!-- Reconstruct article PDF links -->
 <xsl:template match="a[@class='tocLinkPDF']"  priority="2">
 	<xsl:copy>
 	<xsl:attribute name="href">
 <xsl:value-of select="substring-after(@href,$issuedir)" />
 	</xsl:attribute>
-	  <xsl:apply-templates select="text()|@* except @href" />
+	  <xsl:apply-templates select="node()|@* except @href" />
 	</xsl:copy>
 </xsl:template>
 
-
+<!-- Reconstruct article HTML links -->
 <xsl:template match="a[@class='tocLinkAltHTML']"  priority="2">
 <xsl:variable name="pos">
 <xsl:value-of select="count(preceding::a[@class='tocLinkAltHTML']) + 1"/>
@@ -234,7 +234,7 @@ use value of "id" if available; otherwise set it to "clear" -->
 		   <!-- <xsl:text>clear</xsl:text> -->
 			
 		</xsl:attribute>
-	<xsl:apply-templates select="text()|@* except @href" />
+	<xsl:apply-templates select="text() |@* except @href" />
 
 
 </xsl:copy>

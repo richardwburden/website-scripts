@@ -1,0 +1,1 @@
+ "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --headless --dump-dom --disable-gpu http://larouchepub.com/eiw/public/unlisted/2024/eirv51n43-20241101/f39x_1zneC1LdoMrBf3Msx6/5143-sare_and_vega_campaigns_confro.html > C:\Users\rburden\data\websites\EIR\eiw\public\unlisted\2024\eirv51n43-20241101\f39x_1zneC1LdoMrBf3Msx6\5143-sare_and_vega_campaigns_confro.html

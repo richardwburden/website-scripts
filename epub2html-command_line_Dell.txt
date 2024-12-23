@@ -2,13 +2,13 @@ https://img.mailinblue.com/1977586/images/content_library/original/660d85c8cc1a6
 cd C:\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts
 
 set y=2024
-set n=47
+set n=50
 set v=51
-set md=1129
+set md=1220
 set vn=%v%%n%
 set i=%y%/eirv%v%n%n%-%y%%md%
 set j=%y%\eirv%v%n%n%-%y%%md%
-set h=pvuwM3iX8vA3_vMwsJqUoLs
+set h=SrThAmFViVaKAuEsEuCoGd3
 
 set u=\Users\rburden\data\websites\EIR\eiw\public\unlisted
 set p=\Users\rburden\data\websites\EIR\eiw\public\
@@ -24,9 +24,9 @@ rem see installing website scripts on hp computer.txt
 
 
 set y=2024
-set n=39
+set n=49
 set v=51
-set md=1004
+set md=1213
 set vn=%v%%n%
 set i=%y%/eirv%v%n%n%-%y%%md%
 set j=%y%\eirv%v%n%n%-%y%%md%
@@ -45,7 +45,7 @@ rem java net.sf.saxon.Transform -s:%u%\%j%\%h%\index-nc.html -xsl:comply2.xsl -o
 
 set y=2022
 set n=22
-set v=49
+set v=40
 set md=0603
 set vn=%v%%n%
 set i=%y%/eirv%v%n%n%-%y%%md%

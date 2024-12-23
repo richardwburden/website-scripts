@@ -69,10 +69,10 @@ paste code from junkm.html into SendInBlue
 
 -->
 
-<xsl:variable name="issuedir" select="'eirv51n47-20241129/'" />
+<xsl:variable name="issuedir" select="'eirv51n50-20241220/'" />
 
 <!-- if the index page is public, set hashdir to '', otherwise, hashdir's value should end with a forward slash just like issuedir  -->
-<xsl:variable name="hashdir" select="'pvuwM3iX8vA3_vMwsJqUoLs/'" />
+<xsl:variable name="hashdir" select="'SrThAmFViVaKAuEsEuCoGd3/'" />
 
 
 <!-- <xsl:variable name="query_string" select="'?utm_source=sendinblue&amp;utm_campaign=EIR_-_February_25_2022&amp;utm_medium=email'" /> -->

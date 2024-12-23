@@ -19,10 +19,19 @@ p = pr/
 Use html2xhtml.pl to generate the XHTML version of the subscriber's issue index page:
 
 cd C:\Users\Richard\Dropbox_insecure\Dropbox\software\website-scripts\website-scripts
-set j=2022\eirv49n22-20220603
-set h=0fuNxsJaK17-xZeuc
-set u=\Users\Richard\Documents\websites\EIR\eiw\public\unlisted
-set p=\Users\Richard\Documents\websites\EIR\eiw\public\
+set y=2024
+set n=44
+set v=51
+set md=1108
+set vn=%v%%n%
+set i=%y%/eirv%v%n%n%-%y%%md%
+set j=%y%\eirv%v%n%n%-%y%%md%
+set u=\Users\rburden\data\websites\EIR\eiw\public\unlisted
+set p=\Users\rburden\data\websites\EIR\eiw\public\
+set d=https://larouchepub.com/eiw/public/unlisted/
+rem use this dir command to determine what should be the value of h, then set h
+dir %u%\%j%\
+set h=ub0v4lDpEgLaxM32-v8f6N1
 
 perl -w html2xhtml.pl %u%\%j%\%h%\index.html index.xhtml
 rem on the Dell computer:
@@ -38,7 +47,7 @@ java net.sf.saxon.Transform -s:index.xhtml -xsl:subscriberToAllPublic.xsl -o:%p%
 Upload indexp.html and verify that it is correct, then copy over to index.html and upload.
 -->
 
-<xsl:variable name="newdirs" select="'oe o h- o o o o l-'" />
+<xsl:variable name="newdirs" select="'oe'" />
 
-<xsl:variable name="issuedir" select="'eirv51n39-20241004/'" />
+<xsl:variable name="issuedir" select="'eirv51n44-20241108/'" />
 </xsl:stylesheet>

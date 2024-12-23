@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pbcoreDescriptionDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html https://raw.githubusercontent.com/WGBH/PBCore_2.1/master/pbcore-2.1.xsd">
+    <pbcoreAssetType source="PBCore">Compilation</pbcoreAssetType>
+    <pbcoreAssetDate dateType="broadcast">1987-11-13</pbcoreAssetDate>
+    <pbcoreIdentifier source="LLF">D009073</pbcoreIdentifier>
+    <pbcoreTitle>Lyndon LaRouche at Des Moines Iowa, Norbert Brainin-Carlo Levi-Minzi Concert in honor of LaRouche's 65th birthday</pbcoreTitle>
+    <pbcoreDescription descriptionType="Rundown">Lyndon LaRouche at Des Moines Iowa (1987-11-13) 45 min., followed by 75 min. Q &amp; A; 2. Norbert Brainin-Carlo Levi-Minzi Concert (1987-09-09, in West Germany) in honor of LaRouche's 65th birthday. Mozart sonata E-flat major KV481, Brahms sonata G-major #1, Beethoven "Spring" sonata</pbcoreDescription>
+    <pbcoreDescription descriptionType="Description">see rundown</pbcoreDescription>
+    <pbcoreDescription descriptionType="Transcript">EIR online - https://larouchepub.com/lar/1997/lhl_laying_down_laws.html | Somewhat abridged</pbcoreDescription>
+    <pbcoreCoverage>
+        <coverage>Des Moines, IA, USA</coverage>
+        <coverageType>Spatial</coverageType>
+    </pbcoreCoverage>
+    <pbcoreCoverage>
+        <coverage>West Germany</coverage>
+        <coverageType>Spatial</coverageType>
+    </pbcoreCoverage>
+    <pbcoreCoverage>
+        <coverage>1987-11-13</coverage>
+        <coverageType>Temporal</coverageType>
+    </pbcoreCoverage>
+    <pbcoreCoverage>
+        <coverage>1987-09-09</coverage>
+        <coverageType>Temporal</coverageType>
+    </pbcoreCoverage>
+    <pbcoreCreator>
+        <creator>LaRouche, Lyndon H.</creator>
+        <creatorRole source="">Speaker</creatorRole>
+    </pbcoreCreator>
+    <pbcorePublisher>
+        <publisher>?</publisher>
+        <publisherRole source="PBCore">?</publisherRole>
+    </pbcorePublisher>
+    <pbcoreRightsSummary>
+        <rightsSummary>?</rightsSummary>
+    </pbcoreRightsSummary>
+    <pbcoreInstantiation>
+        <instantiationIdentifier source="LLF">009205</instantiationIdentifier>
+        <instantiationDate dateType="event">1987-11-13</instantiationDate>
+        <instantiationPhysical source="PBCore">VHS</instantiationPhysical>
+        <instantiationStandard>NTSC</instantiationStandard>
+        <instantiationLocation>D-BMB-2</instantiationLocation>
+        <instantiationMediaType source="PBCore">Moving Image</instantiationMediaType>
+        <instantiationGenerations source="PBCore">?</instantiationGenerations>
+        <instantiationDuration>?</instantiationDuration>
+        <instantiationAnnotation annotationType="Physical condition">Good</instantiationAnnotation>
+        <instantiationAnnotation annotationType="Transfer Status">none</instantiationAnnotation>
+        <instantiationAnnotation annotationType="Note">Typed label on cartridge top: Lyndon LaRouche 45 mins( Q &amp; A 75 mins. Brainin- Minzi Concert total 2 hrs. Mozart sonata E-flat major KV481, Brahms sonata G-major #1, Beethoven "Spring" sonata; Note: Due to error, auto rewind may malfunction; may need hitting rewind 2 times due to 3 sec break in record; on cartridge spine: Lyndon H. LaRouche, Des Moines Iowa 11/13/87 2 hrs. w/Q&amp; A | Norbert Brainin- Carlo Levi-Minzi Concert, West Germany | 9/9/87 (in honor of LaRouche's 65th Birthday</instantiationAnnotation>
+    </pbcoreInstantiation>
+    <pbcoreAnnotation annotationType="Cataloger">RWB</pbcoreAnnotation>
+    <pbcoreAnnotation annotationType="Unique count">1</pbcoreAnnotation>
+</pbcoreDescriptionDocument>

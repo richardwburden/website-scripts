@@ -1,0 +1,67 @@
+<xsl:stylesheet version="2.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"  
+xmlns:fn="http://www.w3.org/2005/xpath-functions">
+
+<!-- This stylesheet generates a sendInBlue EIR subscriber email in HTML format from an EIR issue directory of the form vVVnNN-YYYYMMDD/, an EIR subscriber issue index page converted to XHTML, and pieces of a saved sendInBlue email in HTML format.  -->
+<xsl:include href="sendInBlueVars.xsl" />
+
+<xsl:variable name="year" select="substring(substring-after($issuedir,'-'),1,4)" />
+ <xsl:variable name="yeardir" select="concat($year,'/')" />
+
+<!-- local webserver document root should be the C drive root directory -->
+
+<xsl:variable name="wspath" select="'http://localhost:8000/Users/Richard/Dropbox_insecure/Dropbox/software/website-scripts/website-scripts/'" />
+<xsl:variable name="sipath" select="concat('http://localhost:8000/Users/Richard/Documents/websites/EIR/public/eiw/unlisted/',$yeardir,$issuedir,$hashdir,'index.html')" />
+
+
+<xsl:variable name="nALuri" select="concat($wspath,'sendInBlueEmail-noArticleLinks.xhtml')" />
+<xsl:variable name="nAL" select="if (doc-available($nALuri)) then doc($nALuri) else ($nALuri)" />
+
+<xsl:variable name="rowuri" select="concat($wspath,'sendInBlueEmail-row-template.xhtml')" />
+<xsl:variable name="row" select="if (doc-available($rowuri)) then doc($rowuri) else ($rowuri)" />
+
+<xsl:variable name="srowuri" select="concat($wspath,'sendInBlueEmail-section-row-template.xhtml')" />
+<xsl:variable name="srow" select="if (doc-available($srowuri)) then doc($srowuri) else ($srowuri)" />
+
+<xsl:variable name="si" select="if (doc-available($sipath)) then doc($sipath) else ($sipath)" />
+
+<xsl:output method="html" omit-xml-declaration="yes" indent="no"/>
+
+<!-- output the email message -->
+<xsl:template match="/" name="main" priority="3">
+<xsl:copy-of select="$nAL" />
+</xsl:template>  
+
+
+<!-- identity template -->
+<xsl:template match="node()|@*" priority="1">
+	<xsl:copy>
+		<xsl:apply-templates select="node()|@*"/>
+	</xsl:copy>
+</xsl:template>
+
+<xsl:template match="tr[@id='about_larouche']" priority="2">
+<!-- <xsl:copy-of select="$row/*/tr[@class='row']" /> -->
+<xsl:element name="tr">
+<xsl:attribute name="id">
+<xsl:value-of select="'ohshit'" />
+</xsl:attribute>
+</xsl:element>
+<xsl:copy>
+<xsl:apply-templates select="node()|@*" />
+</xsl:copy>
+</xsl:template>
+
+<!-- Add doctype and add language to html element 
+<xsl:template match="html" priority="2">
+ 	<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;
+</xsl:text>
+ 	<xsl:element name="html">
+ 		<xsl:attribute name="lang">
+ 			<xsl:text>en</xsl:text>
+ 		</xsl:attribute>
+ <xsl:apply-templates />
+ 	</xsl:element>
+</xsl:template> -->
+</xsl:stylesheet>

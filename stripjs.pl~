@@ -1,0 +1,4 @@
+while (<>)
+{
+    if ($_ !~ m%<script type="text/javascript".*%) {print $_}
+}

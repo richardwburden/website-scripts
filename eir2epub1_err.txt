@@ -1,0 +1,2 @@
+Parsing of undecoded UTF-8 will give garbage when decoding entities at C:/ProgramFiles/Perl-5.16.3-64bit/lib/HTML/Parser.pm line 102, <INFILE> line 1.
+pausepausepause

@@ -1,0 +1,31 @@
+Processing C:\Users\Richard\Documents\websites\EIR\r\special_report\2019\1123-EndChinaWitchhunt\OEBPS\Text\Section0001.xhtml
+Processing C:\Users\Richard\Documents\websites\EIR\r\special_report\2019\1123-EndChinaWitchhunt\OEBPS\Text\Section0002.xhtml
+Processing C:\Users\Richard\Documents\websites\EIR\r\special_report\2019\1123-EndChinaWitchhunt\OEBPS\Text\Section0003.xhtml
+Parsing of undecoded UTF-8 will give garbage when decoding entities at C:/ProgramFiles/Perl-5.16.3-64bit/lib/HTML/Parser.pm line 102, <INFILE> line 3.
+Processing C:\Users\Richard\Documents\websites\EIR\r\special_report\2019\1123-EndChinaWitchhunt\OEBPS\Text\Section0004.xhtml
+Processing C:\Users\Richard\Documents\websites\EIR\r\special_report\2019\1123-EndChinaWitchhunt\OEBPS\Text\Section0005.xhtml
+Parsing of undecoded UTF-8 will give garbage when decoding entities at C:/ProgramFiles/Perl-5.16.3-64bit/lib/HTML/Parser.pm line 102, <INFILE> line 5.
+Processing C:\Users\Richard\Documents\websites\EIR\r\special_report\2019\1123-EndChinaWitchhunt\OEBPS\Text\Section0006.xhtml
+Processing C:\Users\Richard\Documents\websites\EIR\r\special_report\2019\1123-EndChinaWitchhunt\OEBPS\Text\Section0007.xhtml
+Processing C:\Users\Richard\Documents\websites\EIR\r\special_report\2019\1123-EndChinaWitchhunt\OEBPS\Text\toc-1.xhtml
+assigning filename 'index.html' to toc-1.xhtml
+computing outfilepath for toc-1.xhtml
+Use of uninitialized value in string ne at epub2html-sr.pl line 521.
+Use of uninitialized value in string ne at epub2html-sr.pl line 521.
+Processing C:\Users\Richard\Documents\websites\EIR\r\special_report\2019\1123-EndChinaWitchhunt\OEBPS\Text\Section0001.xhtml
+computing outfilepath for Section0001.xhtml
+Argument "SEEK_SET" isn't numeric in seek at epub2html-sr.pl line 785, <INFILE> line 1.
+Processing C:\Users\Richard\Documents\websites\EIR\r\special_report\2019\1123-EndChinaWitchhunt\OEBPS\Text\Section0002.xhtml
+computing outfilepath for Section0002.xhtml
+Processing C:\Users\Richard\Documents\websites\EIR\r\special_report\2019\1123-EndChinaWitchhunt\OEBPS\Text\Section0003.xhtml
+Parsing of undecoded UTF-8 will give garbage when decoding entities at C:/ProgramFiles/Perl-5.16.3-64bit/lib/HTML/Parser.pm line 102, <INFILE> line 1.
+computing outfilepath for Section0003.xhtml
+Processing C:\Users\Richard\Documents\websites\EIR\r\special_report\2019\1123-EndChinaWitchhunt\OEBPS\Text\Section0004.xhtml
+computing outfilepath for Section0004.xhtml
+Processing C:\Users\Richard\Documents\websites\EIR\r\special_report\2019\1123-EndChinaWitchhunt\OEBPS\Text\Section0005.xhtml
+Parsing of undecoded UTF-8 will give garbage when decoding entities at C:/ProgramFiles/Perl-5.16.3-64bit/lib/HTML/Parser.pm line 102, <INFILE> line 1.
+computing outfilepath for Section0005.xhtml
+Processing C:\Users\Richard\Documents\websites\EIR\r\special_report\2019\1123-EndChinaWitchhunt\OEBPS\Text\Section0006.xhtml
+computing outfilepath for Section0006.xhtml
+Processing C:\Users\Richard\Documents\websites\EIR\r\special_report\2019\1123-EndChinaWitchhunt\OEBPS\Text\Section0007.xhtml
+computing outfilepath for Section0007.xhtml

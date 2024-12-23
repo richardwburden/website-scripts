@@ -1,0 +1,42 @@
+Processing C:\Users\rburden\data\websites\EIR\r\eiw\private\2024\50\Text\06-22_2024_EIR50_section_a_converted.xhtml
+Parsing of undecoded UTF-8 will give garbage when decoding entities at C:/Perl/lib/HTML/Parser.pm line 102, <INFILE> line 1.
+Processing C:\Users\rburden\data\websites\EIR\r\eiw\private\2024\50\Text\23-32_2024_EIR50_section_b_converted.xhtml
+Parsing of undecoded UTF-8 will give garbage when decoding entities at C:/Perl/lib/HTML/Parser.pm line 102, <INFILE> line 2.
+Processing C:\Users\rburden\data\websites\EIR\r\eiw\private\2024\50\Text\33-37_2024_EIR50_section_c_converted.xhtml
+Processing C:\Users\rburden\data\websites\EIR\r\eiw\private\2024\50\Text\38-52_2024_EIR50_section_d_converted.xhtml
+Parsing of undecoded UTF-8 will give garbage when decoding entities at C:/Perl/lib/HTML/Parser.pm line 102, <INFILE> line 4.
+Processing C:\Users\rburden\data\websites\EIR\r\eiw\private\2024\50\Text\Section0001.xhtml
+Parsing of undecoded UTF-8 will give garbage when decoding entities at C:/Perl/lib/HTML/Parser.pm line 102, <INFILE> line 5.
+assigning filename 'index.html' to Section0001.xhtml
+computing outfilepath for Section0001.xhtml
+Unrecognized LWP::UserAgent options: ssl_opts at epub2html.pl line 375
+Processing C:\Users\rburden\data\websites\EIR\r\eiw\private\2024\50\Text\06-22_2024_EIR50_section_a_converted.xhtml
+Parsing of undecoded UTF-8 will give garbage when decoding entities at C:/Perl/lib/HTML/Parser.pm line 102, <INFILE> line 1.
+computing outfilepath for 06-22_2024_EIR50_section_a_converted.xhtml
+Argument "SEEK_SET" isn't numeric in seek at epub2html.pl line 821, <INFILE> line 1.
+Processing C:\Users\rburden\data\websites\EIR\r\eiw\private\2024\50\Text\23-32_2024_EIR50_section_b_converted.xhtml
+Parsing of undecoded UTF-8 will give garbage when decoding entities at C:/Perl/lib/HTML/Parser.pm line 102, <INFILE> line 1.
+computing outfilepath for 23-32_2024_EIR50_section_b_converted.xhtml
+Processing C:\Users\rburden\data\websites\EIR\r\eiw\private\2024\50\Text\33-37_2024_EIR50_section_c_converted.xhtml
+computing outfilepath for 33-37_2024_EIR50_section_c_converted.xhtml
+Processing C:\Users\rburden\data\websites\EIR\r\eiw\private\2024\50\Text\38-52_2024_EIR50_section_d_converted.xhtml
+Parsing of undecoded UTF-8 will give garbage when decoding entities at C:/Perl/lib/HTML/Parser.pm line 102, <INFILE> line 1.
+computing outfilepath for 38-52_2024_EIR50_section_d_converted.xhtml
+Processing C:\Users\rburden\data\websites\EIR\r\eiw\private\2024\50\Text\Section0002.xhtml
+Parsing of undecoded UTF-8 will give garbage when decoding entities at C:/Perl/lib/HTML/Parser.pm line 102, <INFILE> line 1.
+computing outfilepath for Section0002.xhtml
+Processing C:\Users\rburden\data\websites\EIR\r\eiw\private\2024\50\Text\Section0003.xhtml
+Parsing of undecoded UTF-8 will give garbage when decoding entities at C:/Perl/lib/HTML/Parser.pm line 102, <INFILE> line 1.
+computing outfilepath for Section0003.xhtml
+Processing C:\Users\rburden\data\websites\EIR\r\eiw\private\2024\50\Text\Section0004.xhtml
+Parsing of undecoded UTF-8 will give garbage when decoding entities at C:/Perl/lib/HTML/Parser.pm line 102, <INFILE> line 1.
+computing outfilepath for Section0004.xhtml
+Processing C:\Users\rburden\data\websites\EIR\r\eiw\private\2024\50\Text\Section0005.xhtml
+Parsing of undecoded UTF-8 will give garbage when decoding entities at C:/Perl/lib/HTML/Parser.pm line 102, <INFILE> line 1.
+computing outfilepath for Section0005.xhtml
+Processing C:\Users\rburden\data\websites\EIR\r\eiw\private\2024\50\Text\Section0006.xhtml
+Parsing of undecoded UTF-8 will give garbage when decoding entities at C:/Perl/lib/HTML/Parser.pm line 102, <INFILE> line 1.
+computing outfilepath for Section0006.xhtml
+Processing C:\Users\rburden\data\websites\EIR\r\eiw\private\2024\50\Text\Section0007.xhtml
+Parsing of undecoded UTF-8 will give garbage when decoding entities at C:/Perl/lib/HTML/Parser.pm line 102, <INFILE> line 1.
+computing outfilepath for Section0007.xhtml

@@ -182,7 +182,7 @@ use value of "id" if available; otherwise set it to "clear" -->
 		  </xsl:copy>
   </xsl:template>
   
-  <!-- Reconstruct article links -->
+  <!-- Reconstruct article PDF links -->
   <xsl:template match="a[@class='tocLinkPDF']" mode="tocArticle" priority="2">
     <xsl:param name="textnode" tunnel="yes" />
     <xsl:param name="dirkey" tunnel="yes" />
@@ -222,6 +222,7 @@ use value of "id" if available; otherwise set it to "clear" -->
 		<xsl:comment>dirkey: <xsl:value-of select="concat('%',$dirkey,'%')"></xsl:value-of></xsl:comment>
     </xsl:copy>
   </xsl:template>
+  
   <xsl:variable name="newdirs"><dir key="o" value="other/" /><dir key="oe" value="other/editorials/" /><dir key="oi" value="other/interviews/" /><dir key="ob" value="other/book_reviews/" /><dir key="og" value="other/govt_docs/" /><dir key="h" value="hzl/" /><dir key="h-" value="hzl/" /><dir key="l" value="lar/" /><dir key="l-" value="lar/" /><dir key="p" value="pr/" /></xsl:variable>
   <xsl:variable name="newFnSuffixes">
   <sfx key="o" value="" />
@@ -250,7 +251,8 @@ use value of "id" if available; otherwise set it to "clear" -->
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
-	
+
+  <!-- Reconstruct article HTML links -->
   <xsl:template match="a[@class='tocLinkAltHTML']" mode="tocArticle" priority="2">
     <xsl:param name="textnode" tunnel="yes" />
     <xsl:param name="dirkey" tunnel="yes" />
